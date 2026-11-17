@@ -29,6 +29,26 @@ def check(nome, cond, detalhe=""):
         print(f"FALHA - {nome} {detalhe}")
 
 
+def encerrar(proc):
+    proc.terminate()
+    try:
+        proc.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        proc.wait(timeout=5)
+
+
+def espera_porta_livre(port, timeout=15.0):
+    fim = time.time() + timeout
+    while time.time() < fim:
+        try:
+            with socket.create_connection(("127.0.0.1", port), timeout=0.3):
+                time.sleep(0.1)
+        except OSError:
+            return True
+    return False
+
+
 def wait_port(port, proc, timeout=15.0):
     fim = time.time() + timeout
     while time.time() < fim:
@@ -126,11 +146,12 @@ def testar_load_balancer():
         ) if ordem and ordem[0] in ciclo else False
         check("rust30/round-robin", ciclico, str(ordem))
     finally:
-        proc.terminate()
+        encerrar(proc)
         parar.set()
 
 
 def testar_mini_redis(binario, prefixo, avancado):
+    check(f"{prefixo}/porta-6379-livre-antes", espera_porta_livre(6379))
     proc = subprocess.Popen(
         [str(binario)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
@@ -192,7 +213,7 @@ def testar_mini_redis(binario, prefixo, avancado):
             check("rust31/clientes-concorrentes", True)
         c.close()
     finally:
-        proc.terminate()
+        encerrar(proc)
 
 
 def testar_load_balancer_isolado():
@@ -240,7 +261,7 @@ def testar_python():
                                     timeout=5) as r:
             check("python30/health-ao-vivo", r.status == 200)
     finally:
-        servidor.terminate()
+        encerrar(servidor)
 
     with tempfile.TemporaryDirectory() as tmp:
         Path(tmp, "a.txt").write_text("a\n")
