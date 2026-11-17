@@ -66,3 +66,7 @@ Cada linha abaixo define uma atividade **a produzir**; citar uma aula existente 
 5. **Publicação:** manter o volume em **rascunho** até que todas as linhas da matriz apontem para aula, exercício separado e avaliação executada; não existe aprovação retroativa pela mera presença de 32 arquivos. Projetos de kernel, GPU e multi-nó têm de provar a rota obrigatória em hardware comum antes do lançamento.
 
 Este mapa especifica o trabalho faltante. O [índice](indice.md) continua navegando pelas aulas existentes e deve incorporar as pontes à medida que forem verificadas, sem criar links quebrados para os arquivos ainda planejados.
+
+## Revisão integral — estado (continuação 3)
+
+Varredura das aulas numeradas ainda `pendente`: blocos com `main` extraídos e compilados (C++20/23). Dois defeitos reais foram achados e corrigidos **nas aulas**: o thread pool da aula 21 guardava `packaged_task` (move-only) em `std::function` (exige alvo copiável) — corrigido com `shared_ptr` para a task; e a aula 24 passava `&arena` de novo a `emplace_back` de strings pmr, o que não compila — corrigido usando a propagação do alocador do vetor. A aula 12 é projeto multiarquivo (como a 06 de C) e a 01 tem bloco misto de texto/código: ambas ficam com exemplos `pendente` no CSV até extração como fonte única. O gate do volume segue aberto pelos mesmos motivos da trilha de C: separar atividades por aula e executar fontes extraídas.
