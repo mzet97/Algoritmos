@@ -74,3 +74,7 @@ Os IDs seguem a especificação geral. A coluna “atividade” nomeia a avalia�
 - [30](30.md)–[32 bônus](32_bonus.md): executar projetos completos em ambiente limpo, testar framing, desconexão, saturação e persistência/recuperação antes de alegar robustez. A [auditoria por arquivo](../AUDITORIA_POR_ARQUIVO.csv) ainda marca execução como pendente.
 
 **Ordem editorial:** fechar pré-requisitos de R1–R4, endurecer R5, ensinar R6–R7, construir R8 e validar R9. Corrigir achados P0 em qualquer aula imediatamente, mas não declarar aprovação curricular por uma correção isolada.
+
+## Revisão integral — estado (continuação 3)
+
+Varredura das aulas numeradas `pendente`: blocos com `fn main` extraídos e verificados com `rustc --edition 2024 --emit metadata`. A maioria compila; as falhas restantes são de trechos (tokens `...`, crates externas como `tokio`/`spirv_std` fora de projeto Cargo, e um uso de `Receiver::clone` que não existe na std atual — registrado aqui como trecho a reescrever quando a aula 13 for separada em fonte única). O CSV marca `revisao_parcial`/`compilado_rustc_2024` onde houve compilação. **Gate aberto:** projetos 30–32 (crates externas) nunca executados, e a separação enunciado/pistas/solução por aula segue pendente.
