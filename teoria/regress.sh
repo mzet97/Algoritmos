@@ -68,6 +68,18 @@ for f in 03a_invariante 08a_algoritmos 12a_sistema 17a_concorrencia 23b_distribu
         printf 'FALHA(compila) - cpp/%s\n' "$f"; tail -20 "$OUT/log"
     fi
 done
+if make -C teoria/cpp/kernel kernel.elf >"$OUT/log" 2>&1; then
+    run "cpp/kernel-riscv-qemu" python3 teoria/cpp/kernel/test_kernel.py teoria/cpp/kernel/kernel.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED cpp/kernel(compila)"
+    printf 'FALHA(compila) - cpp/kernel\n'; tail -20 "$OUT/log"
+fi
+if make -C teoria/cpp/kernel-x86 kernel-x86.elf >"$OUT/log" 2>&1; then
+    run "cpp/kernel-x86-qemu" python3 teoria/cpp/kernel-x86/test_kernel_x86.py teoria/cpp/kernel-x86/kernel-x86.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED cpp/kernel-x86(compila)"
+    printf 'FALHA(compila) - cpp/kernel-x86\n'; tail -20 "$OUT/log"
+fi
 run "cpp/23a_endurecido+test" python3 teoria/cpp/exemplos/test_23a.py
 run "cpp/13a_seguranca+test" python3 teoria/cpp/exemplos/test_13a.py
 

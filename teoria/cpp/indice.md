@@ -163,3 +163,8 @@ O conjunto atual cobre uma trilha de C++ do zero ate uma fase estendida de engen
 - projetos praticos.
 
 Este indice serve como mapa geral da trilha.
+
+## Kernel (percurso CPP-12/CPP-13)
+
+- [`33.md`](33.md) - Kernel didatico RISC-V em C++ freestanding (`cpp/kernel/`): os sete marcadores da trilha de C, compilados como C++20 sem excecoes/RTTI
+- [`40.md`](40.md) - Comparacao x86-64 executada (`cpp/kernel-x86/`): Multiboot, modo longo, IDT e a tabela do que nao porta (PMP)
