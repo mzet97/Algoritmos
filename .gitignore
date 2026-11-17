@@ -9,6 +9,11 @@
 *.pdb
 *.d
 
+# Site gerado (fonte e o Markdown; _site e artefato)
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
 # Estado local das ferramentas de agentes
 .omx/
 .codegraph/
