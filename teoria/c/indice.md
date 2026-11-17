@@ -51,6 +51,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 12. `12.md` - Bibliotecas estaticas, dinamicas, linkagem e ABI
 13. `13.md` - Estruturas de dados classicas em C
 - [`13a_algoritmos_e_estruturas.md`](13a_algoritmos_e_estruturas.md) - Aula de ponte: busca binaria, hash com sondagem, qsort como oraculo e conta de alocacao verificada
+- [`13b_arvores_e_ordenacao.md`](13b_arvores_e_ordenacao.md) - Aula de ponte: BST com tres casos de remocao, degeneracao medida (altura 1000 vs 24) e mergesort estavel contra qsort
 14. [`14.md`](14.md) - Concorrencia com `pthreads`, mutexes, condvars e atomics
 - [`14a_concorrencia_e_threads.md`](14a_concorrencia_e_threads.md) - Aula de ponte: modelo de memoria C11, data race, ciclo de vida e condvar com predicado
 15. `15.md` - Sockets, rede e programacao de sistemas Unix-like
@@ -81,6 +82,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 22. `22.md` - IPC com pipes, Unix domain sockets e memoria compartilhada
 23. [`23.md`](23.md) - Framing de protocolo, parsing incremental e robustez de entrada
 - [`23a_sistemas_distribuidos.md`](23a_sistemas_distribuidos.md) - Aula de ponte: dois nós chave-valor, log com `fsync`, idempotência por `id`, `SIGKILL`, replay, cauda rasgada e atraso injetado
+- [`23b_fuzzing_e_limites.md`](23b_fuzzing_e_limites.md) - Aula de ponte: fuzzing determinístico (200 mil mutações, semente fixa) do parser da 23a, tetos e alfabeto sob ASan/UBSan
 
 ### Modulo 2 - Heap, Alocacao e Infraestrutura Manual
 

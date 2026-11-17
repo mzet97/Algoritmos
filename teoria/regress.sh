@@ -24,7 +24,7 @@ run() { # nome comando...
 CFLAGS="-std=c11 -Wall -Wextra -Wpedantic -Werror"
 CXXFLAGS="-std=c++20 -Wall -Wextra -Wpedantic -Werror"
 
-for f in 03a_mdc 10a_memoria 13a_estruturas 14a_threads 16a_processo \
+for f in 03a_mdc 10a_memoria 13a_estruturas 13b_arvores 14a_threads 16a_processo 23b_fuzz \
          28a_benchmark 30a_modelo_gpu aula01 aula04 aula07 aula14 aula23; do
     if gcc $CFLAGS -pthread "teoria/c/exemplos/$f.c" -o "$OUT/$f" 2>"$OUT/log"; then
         run "c/$f" "$OUT/$f"
