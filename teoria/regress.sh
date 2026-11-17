@@ -42,6 +42,13 @@ gcc $CFLAGS -O2 teoria/c/exemplos/30b_simd.c -o "$OUT/c30b" -lm 2>"$OUT/log" \
     && run "c/30b_simd" "$OUT/c30b" \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/30b(compila)"; printf 'FALHA(compila) - c/30b\n'; tail -20 "$OUT/log"; }
 
+if make -C teoria/c/kernel kernel.elf >"$OUT/log" 2>&1; then
+    run "c/kernel-riscv-qemu" python3 teoria/c/kernel/test_kernel.py teoria/c/kernel/kernel.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED c/kernel(compila)"
+    printf 'FALHA(compila) - c/kernel\n'; tail -20 "$OUT/log"
+fi
+
 gcc $CFLAGS -pthread teoria/c/exemplos/aula31.c -o "$OUT/aula31" 2>"$OUT/log" \
     && run "c/aula31+test" python3 teoria/c/exemplos/test_aula31.py "$OUT/aula31" \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/aula31(compila)"; printf 'FALHA(compila) - c/aula31\n'; tail -20 "$OUT/log"; }

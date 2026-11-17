@@ -105,6 +105,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 31. [`31.md`](31.md) - Projeto pratico de servidor TCP/event-driven em C
 32. `32.md` - Projeto pratico de biblioteca/CLI de infraestrutura em C
+- [`32a_kernel_riscv.md`](32a_kernel_riscv.md) - Aula de ponte/projeto: kernel RISC-V em QEMU (boot, PMP, Sv39, traps, syscall, falta sob demanda, escalonador preemptivo, 2 harts) em `kernel/`, com teste automatizado de 7 marcadores
 
 ---
 
