@@ -49,6 +49,13 @@ else
     printf 'FALHA(compila) - c/kernel\n'; tail -20 "$OUT/log"
 fi
 
+if make -C teoria/c/kernel-x86 kernel-x86.elf >"$OUT/log" 2>&1; then
+    run "c/kernel-x86-qemu" python3 teoria/c/kernel-x86/test_kernel_x86.py teoria/c/kernel-x86/kernel-x86.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED c/kernel-x86(compila)"
+    printf 'FALHA(compila) - c/kernel-x86\n'; tail -20 "$OUT/log"
+fi
+
 gcc $CFLAGS -pthread teoria/c/exemplos/aula31.c -o "$OUT/aula31" 2>"$OUT/log" \
     && run "c/aula31+test" python3 teoria/c/exemplos/test_aula31.py "$OUT/aula31" \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/aula31(compila)"; printf 'FALHA(compila) - c/aula31\n'; tail -20 "$OUT/log"; }

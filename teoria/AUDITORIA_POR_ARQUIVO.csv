@@ -45,6 +45,7 @@ teoria/c/30b_simd_e_afinidade.md,ok,revisao_autor,executado_gcc,revisao_autor,ra
 teoria/c/31.md,ok,revisao_piloto,executado_gcc,revisao_piloto,rascunho
 teoria/c/32.md,ok,pendente,pendente,pendente,rascunho
 teoria/c/32a_kernel_riscv.md,ok,revisao_autor,executado_gcc,revisao_autor,rascunho
+teoria/c/32b_x86_64_comparativo.md,ok,revisao_autor,executado_gcc,revisao_autor,rascunho
 teoria/c/indice.md,nao_aplicavel,pendente,pendente,pendente,rascunho
 teoria/c/prompt.md,nao_aplicavel,pendente,pendente,pendente,rascunho
 teoria/cpp/01.md,ok,pendente,pendente,pendente,rascunho
