@@ -33,6 +33,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 3. `03.md` - Modelo de objetos, referencias, mutabilidade, identidade e escopo
 4. `04.md` - Strings, listas, tuplas, dicionarios e conjuntos
 - [`04a_raciocinio_e_algoritmos.md`](04a_raciocinio_e_algoritmos.md) - Aula de ponte: invariantes, inducao, busca binaria, grafos, hash e custo antes de estudar objetos em profundidade
+- [`04b_arvores_e_ordenacao.md`](04b_arvores_e_ordenacao.md) - Aula de ponte (PY2): BST em Python puro, degeneracao medida e por que a std vence
 5. `05.md` - Funcoes avancadas, argumentos, closures e decorators
 6. `06.md` - Modulos, imports, pacotes e organizacao de projetos
 7. `07.md` - Orientacao a objetos em Python: classes, instancias, atributos e heranca
@@ -47,9 +48,12 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 13. `13.md` - Arquivos, serializacao e I/O
 14. `14.md` - Testes, debug e qualidade de codigo
 - [`14a_do_interpretador_ao_kernel.md`](14a_do_interpretador_ao_kernel.md) - Aula de ponte: bytecode, CPython, RSS contra tracemalloc, syscalls e SO pelo espaco de usuario
+- [`14b_cache_e_pagina.md`](14b_cache_e_pagina.md) - Aula de ponte (PY4): localidade em duas representacoes, pagina e pico de RSS do SO
 15. `15.md` - Concorrencia com `threading` e `multiprocessing`
 16. `16.md` - `async`/`await` e fundamentos de `asyncio`
 - [`16a_concorrencia_e_gil.md`](16a_concorrencia_e_gil.md) - Aula de ponte: GIL por versao, corrida demonstrada, threads contra processos e `asyncio`
+- [`16b_deadlock_e_backpressure.md`](16b_deadlock_e_backpressure.md) - Aula de ponte (PY5): deadlock coreografado e detectado, ordem global e fila com teto
+- [`19a_protocolos_tcp.md`](19a_protocolos_tcp.md) - Aula de ponte (PY6): framing TCP puro com tetos, antes de framework
 17. `17.md` - Performance tuning, profiling e uso eficiente de memoria
 18. `18.md` - Integracao com C/C++, NumPy e bases para HPC
 19. `19.md` - Boas praticas para backend, automacao e sistemas de producao
@@ -75,6 +79,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 22. `22.md` - Filas, workers, retries e idempotencia
 23. `23.md` - Observabilidade e operacao de servicos Python
 - [`23a_sistemas_distribuidos.md`](23a_sistemas_distribuidos.md) - Aula de ponte: falhas parciais, idempotencia, log duravel e recuperacao com dois nos locais
+- [`23b_relogios_e_particao.md`](23b_relogios_e_particao.md) - Aula de ponte (PY7): Lamport, vetores, particao bilateral e politica de consistencia declarada
 
 ### Modulo 2 - Automacao, CLIs e Integracao com Infraestrutura
 
@@ -88,12 +93,15 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 28. `28.md` - Pandas, ETL e processamento de dados com criterio
 29. `29.md` - Profiling avancado, memoria e integracao com Cython, Numba e FFI
 - [`29a_hpc_e_modelo_gpu.md`](29a_hpc_e_modelo_gpu.md) - Aula de ponte: baseline escalar, NumPy, threads, processos e a conta da viagem para GPU
+- [`29b_seguranca_defensiva.md`](29b_seguranca_defensiva.md) - Aula de ponte (PY9): pickle recusado, JSON com esquema, subprocess sem shell
+- [`29c_localidade_e_amdahl.md`](29c_localidade_e_amdahl.md) - Aula de ponte (PY8): processos medidos, serializacao como viagem e tetos de Amdahl
 
 ### Modulo 4 - Projetos Praticos
 
 30. `30.md` - Projeto pratico: construindo um servico backend em Python
 31. `31.md` - Projeto pratico: ferramenta de automacao de infraestrutura em Python
 32. `32.md` - Projeto pratico: pipeline de dados com Python, NumPy e Pandas
+- [`33_projeto_integrador.md`](33_projeto_integrador.md) - Projeto integrador (PY10): servico replicado + CLI de SO + carga, sob rubrica
 
 ---
 

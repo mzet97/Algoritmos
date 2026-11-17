@@ -83,7 +83,7 @@ fi
 run "cpp/23a_endurecido+test" python3 teoria/cpp/exemplos/test_23a.py
 run "cpp/13a_seguranca+test" python3 teoria/cpp/exemplos/test_13a.py
 
-for f in 08a_busca 08b_sistema 11a_concorrencia 23a_distribuido 28a_hpc; do
+for f in 08a_busca 08b_sistema 08c_algoritmos 08d_ferramenta 11a_concorrencia 23a_distribuido 23b_relogios 28a_hpc 28b_vetorizacao; do
     if go vet "teoria/go/exemplos/$f.go" >"$OUT/log" 2>&1; then
         run "go/$f" go run -race "teoria/go/exemplos/$f.go"
     else
@@ -114,7 +114,7 @@ for f in 12a_busca 12b_estruturas 14a_protocolo 14b_ordem 16a_sistema 16b_cache 
     fi
 done
 
-for f in 04a_busca 14a_sistema 16a_concorrencia 29a_hpc; do
+for f in 04a_busca 04b_arvores 14a_sistema 14b_cache 16a_concorrencia 16b_deadlock 19a_protocolo 23b_relogios 29a_hpc 29b_seguranca 29c_localidade; do
     run "python/$f" python3 "teoria/python/exemplos/$f.py"
 done
 run "python/23a_distribuido" python3 teoria/python/exemplos/23a_distribuido.py checar

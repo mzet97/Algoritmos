@@ -38,6 +38,8 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 8. `08.md` - Packages, modulos, imports e organizacao de projetos
 - [`08a_raciocinio_e_algoritmos.md`](08a_raciocinio_e_algoritmos.md) - Aula de ponte: invariantes, inducao, busca binaria, BFS, hash e custo antes de ponteiros e memoria
 - [`08b_maquina_memoria_e_so.md`](08b_maquina_memoria_e_so.md) - Aula de ponte: runtime, heap contra RSS, syscall, `/proc` e SO pelo espaco de usuario
+- [`08c_duas_solucoes.md`](08c_duas_solucoes.md) - Aula de ponte (G2): BST e ordenacao, duas solucoes medidas contra a std
+- [`08d_ferramenta_so.md`](08d_ferramenta_so.md) - Aula de ponte (G3): ferramenta que observa goroutines, heap, threads e page faults do proprio processo
 9. `09.md` - Ponteiros, memoria, escape analysis e modelo de alocacao
 10. `10.md` - Concorrencia com goroutines, channels e `select`
 
@@ -75,6 +77,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 22. `22.md` - Banco de Dados, Pools e Transacoes
 23. `23.md` - gRPC e Comunicacao entre Servicos
 - [`23a_protocolos_distribuidos.md`](23a_protocolos_distribuidos.md) - Aula de ponte: framing com teto, replicacao com idempotencia, log duravel e falhas injetadas
+- [`23b_relogios_e_consistencia.md`](23b_relogios_e_consistencia.md) - Aula de ponte (G6): Lamport, vetores, particao bilateral e reconciliacao com perda declarada
 
 ### Modulo 2 - Observabilidade, Confiabilidade e Operacao
 
@@ -87,6 +90,8 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 27. `27.md` - Scheduler do Runtime, Garbage Collector e Latencia
 28. `28.md` - Syscalls, `mmap`, Arquivos Grandes e I/O Avancado
 - [`28a_hpc.md`](28a_hpc.md) - Aula de ponte: benchmark honesto, escala limitada por banda, contenção e conta da viagem para GPU
+- [`28b_vetorizacao_e_numa.md`](28b_vetorizacao_e_numa.md) - Aula de ponte (G7): soma verificada contra float64, o empate com a soma simples e NUMA contado
+- [`31a_projeto_integrador.md`](31a_projeto_integrador.md) - Projeto integrador (G8): servico + ferramenta + benchmark sob a mesma rubrica
 29. `29.md` - `cgo` Avancado, ABI e Integracao com Bibliotecas Nativas
 
 ### Modulo 4 - Projetos Praticos
