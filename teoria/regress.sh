@@ -92,7 +92,20 @@ for f in 08a_busca 08b_sistema 11a_concorrencia 23a_distribuido 28a_hpc; do
     fi
 done
 
-for f in 12a_busca 14a_protocolo 16a_sistema 23a_hpc; do
+if make -C teoria/rust/kernel kernel.elf >"$OUT/log" 2>&1; then
+    run "rust/kernel-riscv-qemu" python3 teoria/rust/kernel/test_kernel.py teoria/rust/kernel/kernel.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED rust/kernel(compila)"
+    printf 'FALHA(compila) - rust/kernel\n'; tail -20 "$OUT/log"
+fi
+if make -C teoria/rust/kernel-x86 kernel-x86.elf >"$OUT/log" 2>&1; then
+    run "rust/kernel-x86-qemu" python3 teoria/rust/kernel-x86/test_kernel_x86.py teoria/rust/kernel-x86/kernel-x86.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED rust/kernel-x86(compila)"
+    printf 'FALHA(compila) - rust/kernel-x86\n'; tail -20 "$OUT/log"
+fi
+
+for f in 12a_busca 14a_protocolo 16a_sistema 23a_hpc 23b_distribuido; do
     if rustc --edition 2024 -D warnings "teoria/rust/exemplos/$f.rs" -o "$OUT/$f" 2>"$OUT/log"; then
         run "rust/$f" "$OUT/$f"
     else

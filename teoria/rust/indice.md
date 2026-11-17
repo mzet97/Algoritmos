@@ -74,6 +74,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 22. `22.md` - Bancos de dados de alta performance: `sqlx` e zero-copy deserialization
 23. `23.md` - Comunicacao entre microservicos: gRPC, Protobuf e `tonic`
 - [`23a_hpc_baseline.md`](23a_hpc_baseline.md) - Aula de ponte: baseline honesto, multicore com `scope`, contenção granular e conta da GPU
+- [`23b_sistemas_distribuidos.md`](23b_sistemas_distribuidos.md) - Aula de ponte (R6): dois nós com log e `sync_all`, idempotência por id, kill, cauda rasgada, replay e atraso
 
 ### Modulo 2 - Computacao de Alto Desempenho, GPU e SIMD
 
@@ -154,3 +155,8 @@ O conjunto atual introduz Rust do zero e avança até temas de engenharia de sis
 - projetos praticos de alto nivel tecnico.
 
 O [mapa SDD](MAPA_SDD.md) identifica as competências, lacunas e avaliações necessárias antes que este material possa ser tratado como livro concluído.
+
+## Kernel (percurso R8)
+
+- [`28a_kernel_riscv.md`](28a_kernel_riscv.md) - Kernel RISC-V em Rust `no_std` (`rust/kernel/`): os sete marcadores das trilhas C/C++ so com `core`
+- [`28b_x86_64_comparativo.md`](28b_x86_64_comparativo.md) - Comparativo x86-64 executado (`rust/kernel-x86/`) e a tabela do que nao porta
