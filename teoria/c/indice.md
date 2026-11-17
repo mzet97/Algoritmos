@@ -83,6 +83,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 23. [`23.md`](23.md) - Framing de protocolo, parsing incremental e robustez de entrada
 - [`23a_sistemas_distribuidos.md`](23a_sistemas_distribuidos.md) - Aula de ponte: dois nós chave-valor, log com `fsync`, idempotência por `id`, `SIGKILL`, replay, cauda rasgada e atraso injetado
 - [`23b_fuzzing_e_limites.md`](23b_fuzzing_e_limites.md) - Aula de ponte: fuzzing determinístico (200 mil mutações, semente fixa) do parser da 23a, tetos e alfabeto sob ASan/UBSan
+- [`23c_relogios_e_particao.md`](23c_relogios_e_particao.md) - Aula de ponte: relógios de Lamport e vetoriais, concorrência detectada, partição bilateral reconciliada com perda declarada
 
 ### Modulo 2 - Heap, Alocacao e Infraestrutura Manual
 
