@@ -88,6 +88,9 @@ fn main() {
     for i in (0..bloco.len()).step_by(4096) {
         bloco[i] = 1; // uma pagina nova por iteracao
     }
+    // Sem esta ancora, o otimizador apaga alocacao e toques: o bloco nao
+    // e lido e o drop e livre. black_box torna a residencia observavel.
+    std::hint::black_box(&bloco);
     let depois = rss_kb();
     println!("rss_kb: {antes:?} -> {depois:?}");
     if let (Some(a), Some(d)) = (antes, depois) {

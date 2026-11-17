@@ -105,8 +105,8 @@ else
     printf 'FALHA(compila) - rust/kernel-x86\n'; tail -20 "$OUT/log"
 fi
 
-for f in 12a_busca 14a_protocolo 16a_sistema 23a_hpc 23b_distribuido; do
-    if rustc --edition 2024 -D warnings "teoria/rust/exemplos/$f.rs" -o "$OUT/$f" 2>"$OUT/log"; then
+for f in 12a_busca 12b_estruturas 14a_protocolo 14b_ordem 16a_sistema 16b_cache 23a_hpc 23b_distribuido 23c_vetorizacao; do
+    if rustc --edition 2024 -O -D warnings "teoria/rust/exemplos/$f.rs" -o "$OUT/$f" 2>"$OUT/log"; then
         run "rust/$f" "$OUT/$f"
     else
         FAIL=$((FAIL + 1)); FAILED="$FAILED rust/$f(compila)"

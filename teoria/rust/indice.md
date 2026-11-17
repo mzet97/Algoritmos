@@ -44,12 +44,15 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 11. `11.md` - Iterators e closures
 12. `12.md` - Smart pointers
 - [`12a_raciocinio_e_algoritmos.md`](12a_raciocinio_e_algoritmos.md) - Aula de ponte: invariantes, inducao, busca binaria, BFS, hash e custo antes da concorrencia
+- [`12b_arvores_e_ordenacao.md`](12b_arvores_e_ordenacao.md) - Aula de ponte (R3): BST com `Box`, degeneracao medida e `sort_unstable` como oraculo
 13. `13.md` - Concorrencia e paralelismo em Rust
 14. `14.md` - Async e runtime fundamentals
 - [`14a_framing_e_concorrencia.md`](14a_framing_e_concorrencia.md) - Aula de ponte: framing TCP, limites, timeouts e concorrencia com `std`
+- [`14b_ordem_e_backpressure.md`](14b_ordem_e_backpressure.md) - Aula de ponte (R5): Release/Acquire medido, canal limitado com backpressure e cancelamento cooperativo
 15. `15.md` - Unsafe Rust
 16. `16.md` - FFI com C/C++
 - [`16a_maquina_e_so.md`](16a_maquina_e_so.md) - Aula de ponte: processos, syscalls, `/proc`, RSS e localidade em Rust seguro
+- [`16b_maquina_e_cache.md`](16b_maquina_e_cache.md) - Aula de ponte (R4): localidade linhas/colunas medida, custo de syscall e pagina via /proc
 17. `17.md` - Performance tuning e profiling
 18. `18.md` - Boas praticas para sistemas de alto desempenho e codigo de producao
 
@@ -75,6 +78,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 23. `23.md` - Comunicacao entre microservicos: gRPC, Protobuf e `tonic`
 - [`23a_hpc_baseline.md`](23a_hpc_baseline.md) - Aula de ponte: baseline honesto, multicore com `scope`, contenção granular e conta da GPU
 - [`23b_sistemas_distribuidos.md`](23b_sistemas_distribuidos.md) - Aula de ponte (R6): dois nós com log e `sync_all`, idempotência por id, kill, cauda rasgada, replay e atraso
+- [`23c_vetorizacao.md`](23c_vetorizacao.md) - Aula de ponte (R7): soma com quatro acumuladores contra referencia f64, razao medida e NUMA contado
 
 ### Modulo 2 - Computacao de Alto Desempenho, GPU e SIMD
 
