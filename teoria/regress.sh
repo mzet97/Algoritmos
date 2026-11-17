@@ -119,6 +119,8 @@ for f in 04a_busca 04b_arvores 14a_sistema 14b_cache 16a_concorrencia 16b_deadlo
 done
 run "python/23a_distribuido" python3 teoria/python/exemplos/23a_distribuido.py checar
 
+run "transversal/consistencia" python3 teoria/verificar_consistencia.py
+
 echo "----------------------------------------"
 echo "regress: $PASS passaram, $FAIL falharam"
 [ "$FAIL" -eq 0 ] || echo "falhas:$FAILED"
