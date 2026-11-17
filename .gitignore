@@ -1,0 +1,14 @@
+# Saídas geradas por compiladores e interpretadores
+**/target/
+**/__pycache__/
+*.py[cod]
+*.exe
+*~
+*.obj
+*.o
+*.pdb
+*.d
+
+# Estado local das ferramentas de agentes
+.omx/
+.codegraph/

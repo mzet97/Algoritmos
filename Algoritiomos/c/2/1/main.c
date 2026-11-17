@@ -1,0 +1,47 @@
+﻿#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct No {
+    int E;
+    struct No * Prox;
+} No;
+
+int NumeroElementos(No * L) {
+    int count = 0;
+    No * p = L;
+    while (p != NULL) {
+        count++;
+        p = p->Prox;
+    }
+    return count;
+}
+
+void Insere(No ** L, int e) {
+    No * novo = (No *) malloc(sizeof(No));
+    novo->E = e;
+    novo->Prox = *L;
+    *L = novo;
+}
+
+int main() {
+    setbuf(stdout, NULL); setbuf(stderr, NULL);
+    No * L = NULL;
+    char op[2]; int e, k;
+    while (scanf("%1s", op)>0) {
+        if (op[0] != 'a') {
+            if (op[0] == 'i') {
+                scanf("%d", &e); Insere(&L,e);
+            } else {
+                printf("%d\n", NumeroElementos(L));
+            }
+        } else {
+            for (int i=1; i<=1000000; i++) {
+                Insere(&L,i);
+            }
+            printf("%d\n", NumeroElementos(L));
+        }
+    }
+
+    return 0;
+}
+

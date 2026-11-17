@@ -1,0 +1,7 @@
+[package]
+name = "t3e9"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bib1 = { path = "../bib1" }

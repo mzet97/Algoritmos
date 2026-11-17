@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <meta name="color-scheme" content="light">
+    <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="Masterclass de sistemas, página inicial">
+          <span class="brand-mark" aria-hidden="true">{ }</span>
+          <span>Algoritmos <span class="brand-divider">/</span> teoria</span>
+        </a>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a href="{{ '/#livros' | relative_url }}">Livros</a>
+          <a href="{{ '/teoria/README.html' | relative_url }}">Como estudar</a>
+          <a href="{{ '/teoria/ESPECIFICACAO_SDD.html' | relative_url }}">Padrão editorial</a>
+          <a href="https://github.com/mzet97/Algoritmos">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo" class="{% if page.url == '/' %}landing-main{% else %}document-main{% endif %}">
+      {% unless page.url == '/' %}
+      <nav class="breadcrumbs" aria-label="Localização">
+        <a href="{{ '/' | relative_url }}">Início</a>
+        <span aria-hidden="true">/</span>
+        {% if page.url contains '/teoria/c/' %}
+          <a href="{{ '/teoria/c/indice.html' | relative_url }}">Livro de C</a>
+        {% else %}
+          <a href="{{ '/teoria/README.html' | relative_url }}">Teoria</a>
+        {% endif %}
+      </nav>
+      <article class="book-content">{{ content }}</article>
+      {% else %}
+      {{ content }}
+      {% endunless %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>Aprender sistemas exige construir, medir e revisar. Este material é aberto e está em desenvolvimento.</p>
+        <p><a href="https://github.com/mzet97/Algoritmos/blob/main/LICENSE">Licença MIT</a> <span aria-hidden="true">·</span> <a href="https://github.com/mzet97/Algoritmos">Código-fonte</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

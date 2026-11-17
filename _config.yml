@@ -1,0 +1,16 @@
+title: Masterclass aberta de programação de sistemas
+description: Cinco livros gratuitos de C, C++, Rust, Go e Python, do primeiro programa à engenharia de sistemas.
+lang: pt-BR
+url: https://mzet97.github.io
+baseurl: /Algoritmos
+markdown: kramdown
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+exclude:
+  - AGENTS.md
+  - .omx
+  - .codegraph
+  - assets/DESIGN.md

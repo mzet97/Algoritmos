@@ -1,0 +1,3 @@
+Escreva uma função que, dados dois números x, y, e uma operação
+op (op ∈ {"+", "-", "/", "x"}), retorne o resultado "x op y".
+Ex: se x = 9, y = 2, op = "/", deve-se retornar o valor 4.5.

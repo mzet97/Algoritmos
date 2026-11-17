@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* Count pairs (i,j) such that A[i] == B[j], where A and B are sorted arrays of size n.
+   O(n) using two-pointer technique. */
+long long int ParesIguais(int A[], int B[], int n) {
+    long long int count = 0;
+    int i = 0, j = 0;
+    while (i < n && j < n) {
+        if (A[i] == B[j]) {
+            /* Count how many of each */
+            long long int ca = 0, cb = 0;
+            int val = A[i];
+            while (i < n && A[i] == val) { ca++; i++; }
+            while (j < n && B[j] == val) { cb++; j++; }
+            count += ca * cb;
+        } else if (A[i] < B[j]) {
+            i++;
+        } else {
+            j++;
+        }
+    }
+    return count;
+}
+
+void Insere(int L[], int *n, int e) {
+    L[*n] = e; *n = *n + 1;
+}
+
+int main() {
+    setbuf(stdout, NULL); setbuf(stderr, NULL);
+    int max_n; int * A, * B; int na, nb;
+    while (scanf("%d", &max_n)>0) {
+        if (max_n>-1) {
+            A = (int *) malloc(sizeof(int)*max_n); na = 0;
+            B = (int *) malloc(sizeof(int)*max_n); nb = 0;
+            for (int i=0; i<max_n; i++) {
+                int e; scanf("%d", &e); Insere(A,&na,e);
+            }
+            for (int i=0; i<max_n; i++) {
+                int e; scanf("%d", &e); Insere(B,&nb,e);
+            }
+            printf("%lld\n", ParesIguais(A,B,na));
+            free(A); free(B);
+        } else {
+            int nlin = max_n;
+            max_n = 200000;
+            A = (int *) malloc(sizeof(int)*max_n); na = 0;
+            B = (int *) malloc(sizeof(int)*max_n); nb = 0;
+            if (nlin == -1) {
+                for (int i=0; i<max_n; i++) {
+                    Insere(A,&na,i);
+                    Insere(B,&nb,i);
+                }
+            } else if (nlin == -2) {
+                for (int i=0; i<max_n; i++) {
+                    Insere(A,&na,1);
+                    Insere(B,&nb,1);
+                }
+            } else {
+                for (int i=0; i<max_n/10000; i++) {
+                    for (int j=0; j<10000; j++) {
+                        Insere(A,&na,i);
+                        Insere(B,&nb,i);
+                    }
+                }
+            }
+            printf("%lld\n", ParesIguais(A,B,na));
+            free(A); free(B);
+        }
+    }
+    return 0;
+}

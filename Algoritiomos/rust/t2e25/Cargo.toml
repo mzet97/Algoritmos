@@ -1,0 +1,7 @@
+[package]
+name = "t2e25"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bib1 = { path = "../bib1" }
