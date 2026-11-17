@@ -181,9 +181,9 @@ teoria/python/29a_hpc_e_modelo_gpu.md,ok,revisao_autor,executado_py312,revisao_a
 teoria/python/29b_seguranca_defensiva.md,ok,revisao_autor,executado_py312,revisao_autor,rascunho
 teoria/python/29c_localidade_e_amdahl.md,ok,revisao_autor,executado_py312,revisao_autor,rascunho
 teoria/python/33_projeto_integrador.md,ok,revisao_autor,executado_py312,revisao_autor,rascunho
-teoria/python/30.md,ok,revisao_parcial,executado_py312_fastapi,revisao_parcial,rascunho
-teoria/python/31.md,ok,revisao_parcial,executado_py312,revisao_parcial,rascunho
-teoria/python/32.md,ok,revisao_parcial,executado_py312_pandas,revisao_parcial,rascunho
+teoria/python/30.md,ok,revisao_parcial,executado_projeto_uv_py314,revisao_parcial,rascunho
+teoria/python/31.md,ok,revisao_parcial,executado_projeto_uv_py314,revisao_parcial,rascunho
+teoria/python/32.md,ok,revisao_parcial,executado_projeto_uv_py314,revisao_parcial,rascunho
 teoria/python/indice.md,nao_aplicavel,revisao_parcial,pendente,revisao_parcial,rascunho
 teoria/python/prompt.md,nao_aplicavel,revisao_parcial,pendente,revisao_parcial,rascunho
 teoria/rust/01.md,ok,revisao_parcial,pendente,revisao_parcial,rascunho
@@ -226,8 +226,8 @@ teoria/rust/28.md,ok,revisao_parcial,compilado_rustc_2024,revisao_parcial,rascun
 teoria/rust/28a_kernel_riscv.md,ok,revisao_autor,executado_rustc_2024,revisao_autor,rascunho
 teoria/rust/28b_x86_64_comparativo.md,ok,revisao_autor,executado_rustc_2024,revisao_autor,rascunho
 teoria/rust/29.md,ok,revisao_parcial,pendente,revisao_parcial,rascunho
-teoria/rust/30.md,ok,revisao_parcial,pendente,revisao_parcial,rascunho
-teoria/rust/31.md,ok,revisao_parcial,pendente,revisao_parcial,rascunho
-teoria/rust/32_bonus.md,ok,revisao_parcial,pendente,revisao_parcial,rascunho
+teoria/rust/30.md,ok,revisao_parcial,executado_cargo_tokio_lb,revisao_parcial,rascunho
+teoria/rust/31.md,ok,revisao_parcial,executado_cargo_dashmap,revisao_parcial,rascunho
+teoria/rust/32_bonus.md,ok,revisao_parcial,executado_cargo_bytes_ttl_incr,revisao_parcial,rascunho
 teoria/rust/indice.md,nao_aplicavel,revisao_parcial,pendente,revisao_parcial,rascunho
 teoria/rust/prompt.md,nao_aplicavel,revisao_parcial,pendente,revisao_parcial,rascunho

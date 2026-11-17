@@ -1,0 +1,15 @@
+[project]
+name = "projetos-python-30-32"
+version = "0.1.0"
+description = "Projetos das aulas Python 30-32 executados em ambiente limpo"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pytest",
+    "httpx",
+    "pandas",
+]
+
+[tool.uv]
+package = false

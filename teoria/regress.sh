@@ -119,6 +119,13 @@ for f in 04a_busca 04b_arvores 14a_sistema 14b_cache 16a_concorrencia 16b_deadlo
 done
 run "python/23a_distribuido" python3 teoria/python/exemplos/23a_distribuido.py checar
 
+if timeout 900 python3 teoria/verificar_projetos.py >"$OUT/log" 2>&1; then
+    PASS=$((PASS + 1)); printf 'ok - projetos/rust30-32+python30-32\n'
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED projetos"
+    printf 'FALHA - projetos/rust30-32+python30-32\n'; tail -20 "$OUT/log"
+fi
+
 run "transversal/consistencia" python3 teoria/verificar_consistencia.py
 
 echo "----------------------------------------"

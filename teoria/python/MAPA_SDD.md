@@ -60,4 +60,4 @@ Os identificadores `04a`, `14a`, `16a`, `23a`, `29a`, `29b` e `33` abaixo **rese
 
 ## Revisão integral — estado (continuação 3)
 
-Varredura das aulas numeradas `pendente`: blocos Python com `def main` verificados com `py_compile` (21/24 compilam; 3 "falhas" são blocos mistos de texto e código da aula 06, artefatos de extração). CSV em `revisao_parcial` (exemplos das aulas originais seguem `pendente` até virarem fontes únicas executadas). Gate aberto: separar atividades por aula e executar os projetos 30–32 em ambiente limpo.
+Varredura das aulas numeradas `pendente`: blocos Python com `def main` verificados com `py_compile` (21/24 compilam; 3 "falhas" são blocos mistos de texto e código da aula 06, artefatos de extração). CSV em `revisao_parcial` (exemplos das aulas originais seguem `pendente` até virarem fontes únicas executadas). Gate aberto: separar atividades por aula. Projetos 30–32 executados em ambiente limpo em [projetos](projetos/README.md) (`.venv` uv no projeto; `verificar_projetos.py`), sem mudar o estado `revisao_parcial`/`rascunho` das aulas.
