@@ -38,6 +38,10 @@ gcc $CFLAGS -pthread teoria/c/exemplos/23a_distribuido.c -o "$OUT/c23a" 2>"$OUT/
     && run "c/23a_distribuido" "$OUT/c23a" checar \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/23a(compila)"; printf 'FALHA(compila) - c/23a\n'; tail -20 "$OUT/log"; }
 
+gcc $CFLAGS -O2 teoria/c/exemplos/30b_simd.c -o "$OUT/c30b" -lm 2>"$OUT/log" \
+    && run "c/30b_simd" "$OUT/c30b" \
+    || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/30b(compila)"; printf 'FALHA(compila) - c/30b\n'; tail -20 "$OUT/log"; }
+
 gcc $CFLAGS -pthread teoria/c/exemplos/aula31.c -o "$OUT/aula31" 2>"$OUT/log" \
     && run "c/aula31+test" python3 teoria/c/exemplos/test_aula31.py "$OUT/aula31" \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/aula31(compila)"; printf 'FALHA(compila) - c/aula31\n'; tail -20 "$OUT/log"; }

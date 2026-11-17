@@ -98,6 +98,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 29. `29.md` - Profiling de CPU e memoria com `perf`, `callgrind` e counters
 30. `30.md` - SIMD, vetorizacao e criterio para otimizar loops criticos
 - [`30a_modelo_gpu.md`](30a_modelo_gpu.md) - Aula de ponte: SIMT, hierarquia de memoria, conta da transferencia e referencia em CPU
+- [`30b_simd_e_afinidade.md`](30b_simd_e_afinidade.md) - Aula de ponte: SIMD verificado contra oraculo em double, dispatch AVX2 em tempo de execucao, afinidade confirmada e NUMA contado
 
 ### Modulo 4 - Projetos Praticos
 
