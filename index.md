@@ -37,34 +37,34 @@ description: Escolha um dos cinco livros gratuitos e acompanhe a revisão editor
 
   <div class="books-grid">
     <article class="book-card book-card-featured">
-      <div class="book-card-top"><span class="book-letter" aria-hidden="true">C</span><span class="status status-pilot">Piloto SDD</span></div>
+      <div class="book-card-top"><span class="book-letter" aria-hidden="true">C</span><span class="status status-pilot">Conteúdo completo · em revisão</span></div>
       <h3>Livro de C</h3>
-      <p>Base de memória, interfaces de sistema e depuração. A revisão começa por seis aulas representativas.</p>
+      <p>47 arquivos: base de memória, sistemas distribuídos, kernel RISC-V executado em QEMU e comparativo x86-64. Gate editorial aberto (revisão das aulas originais).</p>
       <a class="text-link" href="{{ '/teoria/c/indice.html' | relative_url }}">Abrir índice de C <span aria-hidden="true">→</span></a>
     </article>
     <article class="book-card">
-      <div class="book-card-top"><span class="book-letter" aria-hidden="true">C++</span><span class="status">Em revisão</span></div>
+      <div class="book-card-top"><span class="book-letter" aria-hidden="true">C++</span><span class="status">Conteúdo completo · em revisão</span></div>
       <h3>Livro de C++</h3>
-      <p>Abstrações, recursos, desempenho e engenharia de software nativo.</p>
-      <span class="draft-note">Índice em revisão antes da publicação</span>
+      <p>44 arquivos: abstrações, recursos, segurança de memória com sanitizers e kernel em C++ freestanding.</p>
+      <a class="text-link" href="{{ '/teoria/cpp/indice.html' | relative_url }}">Abrir índice de C++ <span aria-hidden="true">→</span></a>
     </article>
     <article class="book-card">
-      <div class="book-card-top"><span class="book-letter" aria-hidden="true">Rs</span><span class="status">Em revisão</span></div>
+      <div class="book-card-top"><span class="book-letter" aria-hidden="true">Rs</span><span class="status">Conteúdo completo · em revisão</span></div>
       <h3>Livro de Rust</h3>
-      <p>Ownership, segurança de memória e programação de sistemas com garantias explícitas.</p>
-      <span class="draft-note">Índice em revisão antes da publicação</span>
+      <p>43 arquivos: ownership, distribuídos, vetorização e kernel no_std pelos mesmos testes das trilhas C/C++.</p>
+      <a class="text-link" href="{{ '/teoria/rust/indice.html' | relative_url }}">Abrir índice de Rust <span aria-hidden="true">→</span></a>
     </article>
     <article class="book-card">
-      <div class="book-card-top"><span class="book-letter" aria-hidden="true">Go</span><span class="status">Em revisão</span></div>
+      <div class="book-card-top"><span class="book-letter" aria-hidden="true">Go</span><span class="status">Conteúdo completo · em revisão</span></div>
       <h3>Livro de Go</h3>
-      <p>Serviços, redes, concorrência e infraestrutura distribuída.</p>
-      <span class="draft-note">Índice em revisão antes da publicação</span>
+      <p>42 arquivos: serviços, redes, relógios lógicos, ferramenta de observação do SO e projeto integrador.</p>
+      <a class="text-link" href="{{ '/teoria/go/indice.html' | relative_url }}">Abrir índice de Go <span aria-hidden="true">→</span></a>
     </article>
     <article class="book-card">
-      <div class="book-card-top"><span class="book-letter" aria-hidden="true">Py</span><span class="status">Em revisão</span></div>
+      <div class="book-card-top"><span class="book-letter" aria-hidden="true">Py</span><span class="status">Conteúdo completo · em revisão</span></div>
       <h3>Livro de Python</h3>
-      <p>Da linguagem aos modelos de execução, ferramentas e sistemas distribuídos.</p>
-      <span class="draft-note">Índice em revisão antes da publicação</span>
+      <p>46 arquivos: da linguagem ao protocolo TCP puro, segurança defensiva, processos e plataforma distribuída.</p>
+      <a class="text-link" href="{{ '/teoria/python/indice.html' | relative_url }}">Abrir índice de Python <span aria-hidden="true">→</span></a>
     </article>
   </div>
 </section>

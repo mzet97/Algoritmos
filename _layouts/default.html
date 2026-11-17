@@ -31,7 +31,15 @@
       <nav class="breadcrumbs" aria-label="Localização">
         <a href="{{ '/' | relative_url }}">Início</a>
         <span aria-hidden="true">/</span>
-        {% if page.url contains '/teoria/c/' %}
+        {% if page.url contains '/teoria/cpp/' %}
+          <a href="{{ '/teoria/cpp/indice.html' | relative_url }}">Livro de C++</a>
+        {% elsif page.url contains '/teoria/rust/' %}
+          <a href="{{ '/teoria/rust/indice.html' | relative_url }}">Livro de Rust</a>
+        {% elsif page.url contains '/teoria/go/' %}
+          <a href="{{ '/teoria/go/indice.html' | relative_url }}">Livro de Go</a>
+        {% elsif page.url contains '/teoria/python/' %}
+          <a href="{{ '/teoria/python/indice.html' | relative_url }}">Livro de Python</a>
+        {% elsif page.url contains '/teoria/c/' %}
           <a href="{{ '/teoria/c/indice.html' | relative_url }}">Livro de C</a>
         {% else %}
           <a href="{{ '/teoria/README.html' | relative_url }}">Teoria</a>

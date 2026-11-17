@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Indice Geral da Trilha de Python
 
 > **Estado editorial:** livro em revisão SDD. Consulte o [mapa de competências e lacunas](MAPA_SDD.md) antes de usar a trilha como curso completo.

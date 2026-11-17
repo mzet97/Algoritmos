@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Indice Geral da Trilha de Go
 
 ---
