@@ -39,3 +39,7 @@ As lacunas nao serao acrescentadas como apendice tardio sem pre-requisito: o ind
 | [31](31.md) | Executar e explicar servidor TCP com varios clientes e limites explicitos | cliente lento, desconexao, escrita parcial, SIGPIPE e exaustao |
 
 O piloto aprova o **formato**, nao o livro. Cada aula precisa de pre-requisitos, objetivo observavel, fonte executavel coerente com o texto, comando e saida esperada, implicacao de memoria/seguranca, atividade, pista, solucao separada e checklist. A aprovacao do livro depende tambem de concluir C3, C4, C6 (base entregue na 23a; faltam consenso/quorum e partição resolvida), C7 e C8, ainda ausentes ou parciais.
+
+## Revisão integral — estado (continuação 3)
+
+As 25 aulas numeradas que estavam `pendente` passaram por varredura sistemática: extração de todos os blocos `c` com `main` e compilação com `-std=gnu11 -Wall -Wextra` (25/26 compilam; a 06 é projeto multiarquivo e foi compilada e executada unindo os blocos `calculadora.h/.c` + `main.c`, saída `5`/`20`), mais busca de padrões de risco (`gets`/`strcpy`/`strcat`/`sprintf`/`system`): só a aula 25 usa `strcpy`, com literais que cabem no campo de 32 bytes — anotado em aula que entrada externa pede `snprintf`. O CSV marca essas aulas como `revisao_parcial`/`compilado_gcc`. **O gate do volume continua aberto:** falta, por aula, separar enunciado/pistas/solução em arquivos próprios e executar os exemplos completos extraídos como fonte única (hoje a maioria vive como blocos dentro do Markdown). Tratar esta seção como progresso auditado, não como aprovação.
