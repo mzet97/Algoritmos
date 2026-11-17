@@ -45,6 +45,7 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 6. `06.md` - Ponteiros, referencias, `new`, `delete`, smart pointers e ownership
 7. `07.md` - Templates, genericidade, `auto`, deducao de tipos e `concepts`
 8. `08.md` - `std::string`, containers da STL, iteradores e algoritmos
+- [`08a.md`](08a.md) - Aula de ponte: busca binaria, insercao e mergesort a mao contra `std::sort`/`binary_search` como oraculos, medidos em tres tamanhos
 9. `09.md` - Lambdas, functors, `std::function`, callbacks e callable objects
 10. `10.md` - Polimorfismo, heranca, `virtual`, interfaces e object model de C++
 
@@ -54,6 +55,7 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 12. `12.md` - Headers, multiplos arquivos, templates em headers, ODR, linkagem e ABI
 - [`12a.md`](12a.md) - Aula de ponte: ISA, ABI, modo usuario/kernel, syscalls, `/proc` e faltas de pagina
 13. `13.md` - Depuracao com `gdb`, sanitizers e `valgrind`
+- [`13a.md`](13a.md) - Aula de ponte: overflow, use-after-free e double-free reproduzidos sob ASan, com `at()`, `unique_ptr`, conta verificada e copia com teto
 14. `14.md` - Concorrencia com `std::thread`, mutexes, condvars, atomics e memory model
 15. `15.md` - Alocadores, layout, cache, profiling e otimizacao real
 16. `16.md` - `filesystem`, streams, parsing e CLIs em C++
@@ -97,6 +99,8 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 28. `28.md` - Cache lines, layout, false sharing e performance multicore em C++
 29. `29.md` - Profiling de CPU e memoria com `perf`, `callgrind` e counters em C++
 30. `30.md` - SIMD, vetorizacao, `-march`, auto-vectorization e criterio para otimizar loops criticos em C++
+- [`30a.md`](30a.md) - Aula de ponte: matvec multicore por linhas, ganho medido e o caso em que paralelizar perde
+- [`30b.md`](30b.md) - Aula de ponte: referencia CPU de SAXPY, conta da viagem PCIe e o limiar onde a GPU perderia
 
 ### Modulo 4 - Projetos Praticos
 

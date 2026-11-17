@@ -60,8 +60,8 @@ gcc $CFLAGS -pthread teoria/c/exemplos/aula31.c -o "$OUT/aula31" 2>"$OUT/log" \
     && run "c/aula31+test" python3 teoria/c/exemplos/test_aula31.py "$OUT/aula31" \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/aula31(compila)"; printf 'FALHA(compila) - c/aula31\n'; tail -20 "$OUT/log"; }
 
-for f in 03a_invariante 12a_sistema 17a_concorrencia 23b_distribuido; do
-    if g++ $CXXFLAGS -pthread "teoria/cpp/exemplos/$f.cpp" -o "$OUT/$f" 2>"$OUT/log"; then
+for f in 03a_invariante 08a_algoritmos 12a_sistema 17a_concorrencia 23b_distribuido 30a_hpc 30b_gpu_modelo; do
+    if g++ $CXXFLAGS -O2 -pthread "teoria/cpp/exemplos/$f.cpp" -o "$OUT/$f" 2>"$OUT/log"; then
         run "cpp/$f" "$OUT/$f"
     else
         FAIL=$((FAIL + 1)); FAILED="$FAILED cpp/$f(compila)"
@@ -69,6 +69,7 @@ for f in 03a_invariante 12a_sistema 17a_concorrencia 23b_distribuido; do
     fi
 done
 run "cpp/23a_endurecido+test" python3 teoria/cpp/exemplos/test_23a.py
+run "cpp/13a_seguranca+test" python3 teoria/cpp/exemplos/test_13a.py
 
 for f in 08a_busca 08b_sistema 11a_concorrencia 23a_distribuido 28a_hpc; do
     if go vet "teoria/go/exemplos/$f.go" >"$OUT/log" 2>&1; then
