@@ -213,4 +213,11 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 **Referências primárias:** `man 2 recv` (repetição é propriedade da rede, não defeito dela); a especificação de [Idempotency-Key do Stripe](https://docs.stripe.com/api/idempotent_requests) como exemplo industrial do mesmo `id` (com janela de 24h = TTL documentado); [Raft](https://raft.github.io/raft.pdf) §8 para por que o RPC sozinho não é consenso (o líder filtra duplicatas *após* o commit decidir).
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 10. Exercícios obrigatórios
+
+1. (Previsão) Reenvie `req-1` com argumento diferente (`dobrar(100)`): preveja — volta 42 ou 200? Rode e explique por que o cache é indexado por `id`, não pelo conteúdo — e o perigo de um cliente que recicla `id`.
+2. (Diagnóstico) Remova a rejeição de `id` vazio (apague a primeira guarda de `servir`): preveja quantas execuções dois pedidos sem `id` causam. Rode e explique por que "sem `id`, sem resposta" é a trava contra colisão.
+3. (Projeto) Envie 17 `id`s distintos e observe o `assert(n_cache < MAX_PEDIDOS)` abortar. Substitua o abort por erro explícito (retorne `-2` = cache cheio, sem gravar) e teste: o 17º pedido falha, os 16 anteriores continuam servindo do cache.
+4. (Previsão) O `id` chega da rede num buffer maior; o servidor o copia para `char[32]` com truncamento. Preveja: dois `id`s longos que só diferem após o 31º caractere colidem? Prove com um programa mínimo e corrija `servir` rejeitando `id` com 31 ou mais caracteres.
+
+Use [pistas graduais](exercicios/23e_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23e_solucoes.md) depois de registrar sua própria explicação.

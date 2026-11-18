@@ -342,7 +342,16 @@ C++ faz a ROM didática por id na [38](../cpp/38.md) (sem caminho, sem diretóri
 
 **Referências primárias:** o conceito de VFS (camada que separa resolvedor de suporte, presente em todo Unix didático — o resolvedor aqui é próprio, a separação é a lição) e o contrato `open(2)`/`read(2)` do POSIX (`O_DIRECTORY`, EOF parcial, `EBADF`) como especificação de comportamento. Nenhum texto foi copiado — o resolvedor foi confirmado executando este estágio no QEMU com um hart.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 9. Exercícios obrigatórios
+
+Estes exercícios rodam no QEMU real (`make -C teoria/c/kernel32d && python3 teoria/c/kernel32d/test_kernel.py teoria/c/kernel32d/kernel.elf`). Trabalhe numa cópia do diretório — o estágio do repositório não muda.
+
+1. (Previsão) Na tarefa, tente `sys_abrir("/dado")` (prefixo de `/dados`) esperando `-1`, e `sys_abrir("/dados//const.txt")` (barra dupla) esperando sucesso. Preveja antes: qual nega, qual resolve? Rode e explique as duas regras envolvidas (comprimento + conteúdo; barras extras puladas no andador).
+2. (Diagnóstico) Apague a guarda de `..` no `resolver` (a linha `n == 2 && ..`) e rode o teste: ele continua passando (`DOTDOT_PASSOU` não aparece)? Explique por que o veredito é o mesmo — e por que a guarda continua no código (negar no parse vs. negar na busca: mesma resposta hoje, estados diferentes; com montagem futura, a busca poderia achar).
+3. (Projeto) Adicione um quarto arquivo à tabela (`/dados/novo.txt`, sem tocar no andador nem no `resolver`) e estenda a tarefa para abri-lo, ler e fechar. Rode e explique o que isso prova: o resolvedor é função da tabela, não do teste.
+4. (Previsão) Reabra `/versao.txt`, feche duas vezes e leia após fechar: preveja os três retornos. Rode e explique por que close duplo e leitura pós-close negam — e o que corromperia se aceitassem (tabela de fds como estado compartilhado).
+
+Use [pistas graduais](exercicios/32d_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/32d_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

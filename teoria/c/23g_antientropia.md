@@ -223,7 +223,14 @@ C++ resolve a mesma divergência por cura com termo novo na [23f](../cpp/23f_ele
 
 **Referências primárias:** o algoritmo de *anti-entropy* com Merkle trees do Dynamo (DeCandia et al., SOSP 2007) como origem do padrão resumo-escopo/versão-direção (aqui, versão em vez de timestamp); especificação da [FNV-1a](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) para a função usada. Nenhum texto foi copiado — a implementação é própria, em um processo, sem rede; a simulação isola a regra como a 23d isola o commit.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 9. Exercícios obrigatórios
+
+1. (Previsão) Dobre o grão (`FAIXAS = 4`, 16 entradas por faixa) e preveja: no cenário 3, quantas faixas e quantas entradas o contador mostra? Rode e explique o que o contador *esconde* — quantas entradas intactas viajaram por faixa divergente.
+2. (Diagnóstico) Apague a guarda de versão (copie sempre que o resumo difere): preveja o que o cenário 2 (a→b) faz com a escrita mais nova de `b`. Rode e explique por que "resumo sem versão detecta onde diverge, mas resolve errado".
+3. (Projeto) Suba o resumo para FNV-1a de 64 bits (offset `14695981039346656037`, primo `1099511628211`) e rode os três cenários: passam iguais? Explique o que mudou (espaço de colisão 2³²→2⁶⁴, resumo de 4→8 bytes por faixa) e o que *não* mudou (a mentira continua possível, só mais rara).
+4. (Previsão) Re-rode a anti-entropia logo após o cenário 3, sem mudar nada: preveja faixas e entradas. Rode e explique por que esse zero é o que permite rodar a rodada sempre — barata no caso comum.
+
+Use [pistas graduais](exercicios/23g_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23g_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

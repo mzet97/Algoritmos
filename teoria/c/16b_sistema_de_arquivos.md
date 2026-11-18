@@ -217,4 +217,11 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 **Referências primárias:** `man 2 rename` (atomicidade), `man 2 fsync` (durabilidade) e a documentação do [ext4](https://www.kernel.org/doc/html/latest/filesystems/ext4/index.html) sobre ordem de journal. Nada aqui substitui o capítulo de crash consistency de um livro de sistemas — ele diz onde esta aula termina.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 10. Exercícios obrigatórios
+
+1. (Previsão) Mova o `rename` para logo após o `write`, antes do `fsync` — e preveja, antes de compilar: a fase 1 continua imprimindo sucesso? O que muda na garantia, mesmo com o teste verde? Rode e explique por que "passou" não significa "publicado".
+2. (Diagnóstico) Troque `escreve_tudo` por uma única chamada `write` e publique 1 MiB num pipe com o leitor dormindo 1 s antes de ler: o retorno da escrita cobre tudo? Transcreva o valor retornado, restaure o loop e explique onde o loop mora em produção.
+3. (Projeto) Extraia uma função `publica_atomica(dir, nome, dados, n)` que retorna código de erro em vez de abortar (`EIO` em falha de `fsync`, limpeza do temporário em qualquer erro) e inclua o `fsync` do diretório pai. Teste: publique v1, simule a queda no meio de v2 (metade sem `rename`) e prove que v1 continua intacta.
+4. (Medição) Meça com `clock_gettime` o custo de 100 publicações com e sem `fsync` (descarte sem `fsync` depois). Calcule o preço por publicação durável e decida: neste disco, publicar a cada escrita ou acumular em lote?
+
+Use [pistas graduais](exercicios/16b_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/16b_solucoes.md) depois de registrar sua própria explicação.

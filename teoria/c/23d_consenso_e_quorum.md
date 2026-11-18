@@ -99,4 +99,11 @@ O padrão é o mesmo das pontes irmãs: Go exige quorum nomeado no G6 antes de c
 
 **Referências primárias:** [In Search of an Understandable Consensus Algorithm (Raft)](https://raft.github.io/raft.pdf) para eleição, termos e commit por maioria; [Paxos Made Simple](https://lamport.azurewebsites.net/pubs/paxos-simple.pdf) para a ideia de quorum como interseção. O [6.824 do MIT](https://pdos.csail.mit.edu/6.824/) orienta o nível dos laboratórios; nada dele foi copiado para esta aula.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+1. (Previsão) Troque `MAIORIA` para 3 e preveja, antes de rodar: qual fase aborta primeiro, e em qual `assert`? Rode e explique por que "todos" trava o sistema na primeira queda.
+2. (Diagnóstico) Troque `MAIORIA` para 1 e preveja: a minoria elege líder? O `assert` da fase 2 cai em qual linha? Rode e explique por que "qualquer um" confirma a escrita solitária — e por que duas partições confirmariam duas verdades.
+3. (Projeto) Com 4 nós (`NOS 4`, quorum 3), particione 2–2 e demonstre que nenhum lado elege nem confirma. Explique por que o quorum ímpar existe: de que lado a indisponibilidade deve cair.
+4. (Previsão) Na fase 4, pule a eleição nova e reuse o líder do termo 1 (reponha `papel = LIDER` à mão). Preveja: a cura "passa"? Depois replique 444 com todos e observe N2. Explique por que o termo do isolado sobrevive e o líder velho passa a falar sozinho.
+
+Use [pistas graduais](exercicios/23d_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23d_solucoes.md) depois de registrar sua própria explicação.

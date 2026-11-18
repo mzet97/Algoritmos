@@ -196,4 +196,11 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 **Referências primárias:** `man 8 numactl`, `man 2 set_mempolicy` e a documentação de [NUMA no kernel](https://www.kernel.org/doc/html/latest/vm/numa.html) (política padrão de first-touch). Nenhuma afirmação de ganho multinó nesta aula — por decisão editorial, o limite é o conteúdo.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 9. Exercícios obrigatórios
+
+1. (Previsão) Troque o passo de 64 por 1 (byte a byte) e preveja: a banda sobe, cai ou empata? Rode e explique por que tocar 64× mais endereços na mesma quantidade de cache lines custa mais caro — e o que isso prova sobre o passo 64.
+2. (Diagnóstico) Apague o acumulador (`soma`) e compile com `-O2`: preveja a banda antes de rodar. Rode, transcreva o número absurdo e explique por que a `soma` existe (anti-DCE) — e por que benchmark sem consumo observável mede o otimizador, não a máquina.
+3. (Projeto) Meça banda de *escrita* (repita `memset` de 64 MiB 4× com `clock_gettime` ao redor) e compare com a de leitura: preveja antes qual é maior e por quê (write-allocate). Rode e explique a diferença com o caminho da linha de cache na escrita.
+4. (Previsão) Se `numactl` existir nesta máquina, rode o programa com `--interleave=all` e preveja: muda a banda? Explique por que, com 1 nó, interleave é sem efeito mensurável — e recite as três linhas do protocolo que valem quando houver 2+ nós.
+
+Use [pistas graduais](exercicios/30c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/30c_solucoes.md) depois de registrar sua própria explicação.

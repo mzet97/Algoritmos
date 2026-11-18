@@ -484,7 +484,14 @@ C++ faz o mesmo trio de tetos em simulação na [23d](../cpp/23d_limites_globais
 
 **Referências primárias:** manual do `poll`/`accept` (dreno até `EAGAIN`, `revents` válido só para fds consultados), `man 7 socket` (comportamento de `close` com dados não lidos: RST), e *UNIX Network Programming* (Stevens) para throttle vs close. Nenhum texto foi copiado — os dois bugs acima foram pegos executando este teste, e a política de throttle nasceu deles.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 8. Exercícios obrigatórios
+
+1. (Previsão) Suba `TETO_POR_IP` para 8 e preveja, antes de rodar o teste: qual dos cinco comportamentos quebra primeiro, e em que linha do teste? Rode e explique a aritmética dos aliases que deixou de fechar.
+2. (Diagnóstico) Apague o `continue` pós-dreno (troque por `(void)aceitou;`): preveja o sintoma — recusa espúria, contagem corrompida ou teste verde? Rode o teste e explique de onde vem o `revents` que morde o recém-aceito.
+3. (Projeto) Escreva o sexto abuso: um cliente que envia uma linha por segundo durante 10 s. Preveja — algum teto morde? Rode contra o servidor e explique qual teto falta (taxa por conexão) e por que nenhum dos três existentes o pegaria.
+4. (Previsão) Troque a política da rajada de silenciar para fechar (`close` direto ao estourar a janela): preveja o que o teste recebe — `CHEIO bytes` ou `ConnectionResetError`? Rode e explique por que fechar com 146 KiB não lidos apaga o motivo.
+
+Use [pistas graduais](exercicios/23f_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23f_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

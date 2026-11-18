@@ -208,4 +208,11 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 **Referências primárias:** [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) como referência de processo (não checklist — processo diz *quando* validar, a tabela diz *o quê*); `man 2 read`/`man 2 recv` para parcialidade de leitura (toda fronteira de rede lê parcial antes de decidir); a [rubrica de projeto SDD](../RUBRICA_SDD.md) para as dimensões cobradas. Modelo de ameaças sem teste de abuso é ensaio — esta aula exige os dois, e o exemplo é os dois.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 9. Exercícios obrigatórios
+
+1. (Previsão) Passe `n = 0` a `aceitar_linha`: preveja o retorno antes de rodar. Explique por que linha vazia é rejeitada — e qual abuso uma linha vazia aceita permitiria (comando sem verbo no protocolo).
+2. (Diagnóstico) Apague a varredura de NUL embutido e passe `"AB\0CD"` com `n = 5`: ela passa agora? Explique o ataque — `strlen` diria 2, o framing diria 5 — e onde os 3 bytes escondidos viajariam.
+3. (Projeto) Escreva a quarta linha da tabela: novo ator (ex.: cliente que envia chave de 300 bytes para o distribuído), entrada, limite e teste. Implemente `aceitar_chave` com teto `MAX_CHAVE` e adicione o par válido/inválido em `main` — o off-by-one precisa estar preso pelos dois lados.
+4. (Previsão) `id` de exatamente 256 caracteres passa em `aceitar_replay`? E de 257? Preveja, rode o par lado a lado e explique por que o buffer de saída tem `MAX_CHAVE + 1` — e o que esse `+1` compra.
+
+Use [pistas graduais](exercicios/32c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/32c_solucoes.md) depois de registrar sua própria explicação.
