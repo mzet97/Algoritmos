@@ -128,6 +128,7 @@ teoria/go/09.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/10.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/11.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/11a_modelo_de_memoria.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
+teoria/go/11b_cancelamento_e_gomaxprocs.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
 teoria/go/12.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/13.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/14.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
@@ -138,6 +139,7 @@ teoria/go/18.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/19.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/19_plano_estudos.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/20.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
+teoria/go/20b_tls_e_ssrf.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
 teoria/go/21.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/22.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/23.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
@@ -151,6 +153,7 @@ teoria/go/27.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/28.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/28a_hpc.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
 teoria/go/28b_vetorizacao_e_numa.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
+teoria/go/28c_multino_simulado.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
 teoria/go/31a_projeto_integrador.md,ok,revisao_autor,compilado_go,revisao_autor,rascunho
 teoria/go/29.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho
 teoria/go/30.md,ok,revisao_parcial,compilado_go,revisao_parcial,rascunho

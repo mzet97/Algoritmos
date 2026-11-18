@@ -91,7 +91,7 @@ done
 run "cpp/23a_endurecido+test" python3 teoria/cpp/exemplos/test_23a.py
 run "cpp/13a_seguranca+test" python3 teoria/cpp/exemplos/test_13a.py
 
-for f in 08a_busca 08b_sistema 08c_algoritmos 08d_ferramenta 11a_concorrencia 23a_distribuido 23b_relogios 28a_hpc 28b_vetorizacao; do
+for f in 08a_busca 08b_sistema 08c_algoritmos 08d_ferramenta 11a_concorrencia 11b_cancelamento 20b_tls_ssrf 23a_distribuido 23b_relogios 28a_hpc 28b_vetorizacao 28c_multino; do
     if go vet "teoria/go/exemplos/$f.go" >"$OUT/log" 2>&1; then
         run "go/$f" go run -race "teoria/go/exemplos/$f.go"
     else

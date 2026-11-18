@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+# Aula 28c — Multinó simulado: a tríade em dois processos (G7)
+
+**Competências SDD:** HPC, DST, NET. **Pré-requisitos:** aulas [28a](28a_hpc.md) (baseline, banda, conta da viagem), [28b](28b_vetorizacao_e_numa.md) (NUMA contado, multinó declarado como simulado) e [23a](23a_protocolos_distribuidos.md) (framing, deadline, falha). Toolchain registrada: Go 1.26.8 (`go vet`, `-race` para correção). Máquina registrada: 24 núcleos, um nó NUMA.
+
+**Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o checksum combinado igual à referência local, apontar no código onde o deadline limita cada fase do protocolo — e explicar por que a razão medida aqui não prova nada sobre multinó real.
+
+**Motivação:** a 28b contou um nó NUMA e declarou o multinó como simulado; o G7 pede o multinó "simulado declarado" virar procedimento. Esta aula atravessa a fronteira: a mesma tríade, metade calculada em cada um de dois processos conversando por TCP em `127.0.0.1`, checksum confrontado com a referência de um processo só. O que viaja é metadado (fatia + checksum + tempo); o dado é derivado da mesma semente nos dois lados — mover 32 MiB pelo loopback para provar soma seria medir o loopback, não o multinó.
+
+## 1. Contrato antes do código
+
+O [arquivo-fonte](exemplos/28c_multino.go) contém coordenador e trabalhador (o mesmo binário, `argv` decide; porta efêmera):
+
+```bash
+go vet teoria/go/exemplos/28c_multino.go && go run -race teoria/go/exemplos/28c_multino.go
+# referencia local: ~0.5 GB/s em ~90ms (sob -race; ordem de grandeza, nao tabela)
+# duas metades remotas: pior em ~50ms (loopback, 1 no)
+# razao remoto/local: ~0.5x (medida, nao veredito)
+# 28c ok: checksum combinado igual a referencia, protocolo com deadline, multino simulado declarado
+```
+
+(Os tempos variam com máquina e carga — e sob `-race` são piores por construção. O `assert` é sobre o checksum; a tabela de speedup se mede sem `-race`, como a 28a manda. A razão < 1 aqui reflete duas metades em paralelo contra referência serial: paralelismo real, transporte simulado.)
+
+## 2. Protocolo mínimo que já é distribuído de verdade
+
+**Descoberta sem config:** o coordenador escuta em porta efêmera e passa o endereço por `argv` ao `exec` do trabalhador (`os.Executable()` — o binário se replica, sem segundo artefato). Sem config, sem DNS, sem service discovery fingido: em dois nós reais, esse `argv` seria o inventário — e a aula diz isso em vez de inventar um.
+
+**Deadline em cada fase:** `SetDeadline` cobre accept, leitura da fatia e resposta. Trabalhador que trava não pendura o coordenador: estoura o deadline e o erro acusa qual fase parou. É a disciplina da 25 (timeouts) aplicada ao HPC: sem deadline, "multinó" vira "esperança com dois computadores".
+
+**Dado derivado, não movido:** as duas metades geram `b` e `c` da mesma fórmula; só `ini/fim` viajam na ida e `checksum + nanos` na volta. Em multinó real com dado particionado de verdade, o custo de mover a partição entraria na conta da viagem (28a) — aqui o protocolo isola o custo de coordenação do custo de transporte, e declara a isolação.
+
+## 3. Erros comuns e implicações defensivas
+
+1. **Comparar tempo com `-race`:** o detector serializa e aloca; referência local sob `-race` contra metades sob `-race` ainda compara certo (ambos instrumentados), mas tabela contra binário limpo é fraude. Correção com `-race`, tabela sem.
+2. **Mover o dado para "ser realista":** enviar 32 MiB pelo loopback mede o loopback com precisão e o multinó com zero. Realismo de transporte se mede com `numactl`/RDMA de verdade (futuro), não com socket local gordo.
+3. **Sem deadline "porque é localhost":** teste que pendura no localhost pendura pior na rede. Deadline curto e erro nomeado por fase desde o primeiro dia.
+4. **Chamar de "medição multinó":** um nó, um loopback, duas metades em paralelo. O que se mediu: coordenação + paralelismo. O que falta para multinó: latência real, partição real, falha parcial real (a 23b mostra como injetar as duas últimas).
+
+## 4. Ponte com as demais trilhas
+
+Rust mede a mesma tríade com `taskset` na [23e](../rust/23e_afinidade_e_numa.md) (um processo, afinidade externa); C conta o nó na 30c; C++ modela transferência sem placa na 30b. O par "checksum afirma, tempo publica, máquina acompanha o número" é o mesmo nas quatro — aqui com um ingrediente a mais: o checksum atravessa processo, então prova protocolo além de conta. Em Python, o análogo honesto é `multiprocessing` com a mesma derivação de dado — e a mesma declaração de nó único.
+
+## 5. Critério de aprovação e checklist
+
+- [ ] Rodo o exemplo e mostro o checksum combinado igual à referência (e digo por que é igualdade, não tolerância).
+- [ ] Aponto os três deadlines e o erro que cada um produz.
+- [ ] Explico por que o dado é derivado (e o que mudaria se fosse movido).
+- [ ] Digo por que a razão medida não prova multinó (loopback, 1 nó, referência serial).
+- [ ] Nomeio o que falta: 2 nós reais, partição com transporte, falha parcial, RDMA (G7 segue aberto).
+
+**Referências primárias:** documentação do pacote `net` (deadlines como contrato, não cortesia) e do `os/exec` (o binário como seu próprio trabalhador). Nenhum texto foi copiado — os números acima foram medidos nesta máquina.
+
+*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*

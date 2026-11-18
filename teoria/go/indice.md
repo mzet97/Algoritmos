@@ -55,6 +55,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 11. `11.md` - Sincronizacao com `WaitGroup`, `Mutex`, atomics e race detector
 - [`11a_modelo_de_memoria.md`](11a_modelo_de_memoria.md) - Aula de ponte: happens-before, data race contra corrida logica e pool limitado com invariante
+- [`11b_cancelamento_e_gomaxprocs.md`](11b_cancelamento_e_gomaxprocs.md) - Aula de ponte (G4): cancelamento cooperativo, shutdown com teto e comparacao GOMAXPROCS sem `-race` na tabela
 12. `12.md` - Generics em Go
 13. `13.md` - Arquivos, I/O, `io`, `bufio`, `os`, `path/filepath` e serializacao
 14. `14.md` - Testes, benchmarks, profiling e ferramentas da toolchain
@@ -81,6 +82,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 ### Modulo 1 - Backend de Alta Performance e Servicos de Rede
 
 20. `20.md` - Servidores HTTP de Producao
+- [`20b_tls_e_ssrf.md`](20b_tls_e_ssrf.md) - Aula de ponte (G5): TLS com certificado efemero e pin TOFU, token dentro do tunel e guarda anti-SSRF
 21. `21.md` - WebSockets, Streaming e Fan-In/Fan-Out
 22. `22.md` - Banco de Dados, Pools e Transacoes
 23. `23.md` - gRPC e Comunicacao entre Servicos
@@ -100,6 +102,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 28. `28.md` - Syscalls, `mmap`, Arquivos Grandes e I/O Avancado
 - [`28a_hpc.md`](28a_hpc.md) - Aula de ponte: benchmark honesto, escala limitada por banda, contenção e conta da viagem para GPU
 - [`28b_vetorizacao_e_numa.md`](28b_vetorizacao_e_numa.md) - Aula de ponte (G7): soma verificada contra float64, o empate com a soma simples e NUMA contado
+- [`28c_multino_simulado.md`](28c_multino_simulado.md) - Aula de ponte (G7): triade em dois processos por TCP com deadline, checksum combinado e multino simulado declarado
 - [`31a_projeto_integrador.md`](31a_projeto_integrador.md) - Projeto integrador (G8): servico + ferramenta + benchmark sob a mesma rubrica
 29. `29.md` - `cgo` Avancado, ABI e Integracao com Bibliotecas Nativas
 
