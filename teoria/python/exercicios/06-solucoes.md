@@ -16,32 +16,30 @@ from pathlib import Path
 def main() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         raiz = Path(tmp)
-        (raiz / "ops.py").write_text(
-            'def somar(a, b):
-    return a + b
-
-'
-            'if __name__ == "__main__":
-    print("ops executado")
-',
-            encoding="utf-8")
-        (raiz / "msgs.py").write_text(
-            'def formatar(nome, total):
-    return f"{nome}: total={total}"
-',
-            encoding="utf-8")
-        (raiz / "main.py").write_text(
-            "from ops import somar
-from msgs import formatar
-"
-            'print(formatar("Ada", somar(2, 3)))
-',
-            encoding="utf-8")
+        nl = chr(10)
+        (raiz / "ops.py").write_text(nl.join([
+            "def somar(a, b):",
+            "    return a + b",
+            "",
+            'if __name__ == "__main__":',
+            '    print("ops executado")',
+            "",
+        ]), encoding="utf-8")
+        (raiz / "msgs.py").write_text(nl.join([
+            "def formatar(nome, total):",
+            '    return f"{nome}: total={total}"',
+            "",
+        ]), encoding="utf-8")
+        (raiz / "main.py").write_text(nl.join([
+            "from ops import somar",
+            "from msgs import formatar",
+            'print(formatar("Ada", somar(2, 3)))',
+            "",
+        ]), encoding="utf-8")
         pacote = raiz / "pacote"
         pacote.mkdir()
         (pacote / "__init__.py").write_text("", encoding="utf-8")
-        (pacote / "nucleo.py").write_text("VALOR = 42
-", encoding="utf-8")
+        (pacote / "nucleo.py").write_text("VALOR = 42" + nl, encoding="utf-8")
 
         def rodar(*args: str) -> str:
             r = subprocess.run([sys.executable, *args], cwd=raiz,
