@@ -53,6 +53,10 @@ rpc: repeticao do cache, erro memorizado, sem id recusado
 
 Dois erros reais foram pegos no caminho, ambos antes de qualquer execução: sintaxe de outra linguagem no `assert` e chamada a método inexistente (restos de rascunho), e o `#include <vector>` faltando que o `-Werror` transformou em cascata instrutiva — incluir o que usa, sempre.
 
+### Leitura guiada: seis linhas, uma história de maioria
+
+Cada fase prova uma propriedade diferente, e a ordem é a demonstração: fase 1 estabelece o normal (líder + maioria confirma) para que as fases seguintes tenham contra o que contrastar; fase 2 isola a minoria (1 nó escreve, nada confirma — o `commit` parado é a prova de que confirmação é contagem, não vontade); fase 3 mostra a maioria vivendo sem o isolado (quorum é sobre quem resta, não sobre quem falta); fase 4 executa a cura (termo novo, log do líder sobrescreve o não confirmado — descarte com testemunha, a `op-2` confirmada); a linha do RPC prova que repetição e erro moram no cache, não na reexecução; o veredito fecha o par eleição+RPC. Se a fase 4 viesse antes da 2, o descarte pareceria arbitrário — a ordem fase-a-fase é o argumento de que maioria confirma, minoria sugere e cura decide.
+
 ## 4. Erros comuns e implicações defensivas
 
 1. **Confirmar sem maioria:** resposta "ok" com 1 ack é a confirmação falsa da 23d de C. Commit é contagem, não intenção.
@@ -60,6 +64,8 @@ Dois erros reais foram pegos no caminho, ambos antes de qualquer execução: sin
 3. **Reexecutar na repetição:** retry sem `id` é duplicação com passos extras; com `id` e sem cache, é duplicação com placa.
 4. **Reavaliar o erro:** cada repetição redecide o indecidível. Erro gravado é decisão, não palpite.
 5. **Chamar isto de Raft:** sem heartbeat, sem persistência em disco e sem compaction, é o núcleo didático. O nome certo evita a confiança errada.
+6. **Votar sem olhar o log:** eleitor que vota no primeiro candidato com termo maior elege desatualizado — e o líder novo apaga confirmada. A regra de atualização (tamanho do log como relógio) é o que faz o voto proteger o commit antigo em vez de só contar cabeças.
+7. **Cachear só o acerto:** se o erro não é gravado, o retry do cliente reexecuta método inválido até ele "passar" por efeito parcial — e a recusa vira mentira retroativa. O cache guarda decisões, não sucessos; erro é decisão.
 
 ## 5. Ponte com as demais trilhas
 

@@ -43,6 +43,10 @@ classes cobertas: Ok, Incompleta, Erro — 0 violacoes
 
 Um erro real foi pego pelo `-Werror` no caminho: variável de contagem escrita e nunca lida (`unused-but-set-variable`). O compilador acusou antes do fuzzer precisar — camadas diferentes pegam bugs diferentes, e é por isso que as duas rodam.
 
+### Leitura guiada: o que os números dizem sobre o mutador
+
+`ok=47063 incompletas=85153 erros=67784` não é placar — é o retrato do mutador: as três classes aparecem em proporção comparável, o que prova que a mutação visita o parser inteiro em vez de ficar presa no caminho feliz. Se `erros` fosse 0, o mutador nunca geraria NUL nem estouro — e as invariantes de `Erro` seriam vacinas sem doença. Se `ok` fosse 0, o corpus não teria semente válida e o `Incompleta` nunca seria distinguido do `Erro`. A invariante "determinismo cobrado reexecutando cada entrada" fecha o círculo: o mesmo número, duas vezes, prova que a contagem é propriedade do par (corpus, semente), não do relógio. Por isso os números fazem parte do contrato — mudaram, algo mudou (no parser, no mutador ou na semente), e o `git bisect` acha o quê.
+
 ## 4. Erros comuns e implicações defensivas
 
 1. **Fuzzar sem invariante:** entradas sem `assert` só acham crash; invariante acha lógica errada que não crasha (linha acima do teto retornada como `Ok`).
@@ -50,6 +54,8 @@ Um erro real foi pego pelo `-Werror` no caminho: variável de contagem escrita e
 3. **Corpus só de válidas:** mutar só o caminho feliz nunca visita o `Erro`. O corpus precisa das três classes desde a semente.
 4. **Confundir cobertura de classes com cobertura de código:** as três classes cobertas não provam todos os ramos visitados. Próximo passo honesto: medir com `llvm-cov`, não presumir.
 5. **Achar que fuzzing substitui teto:** fuzzer acha onde o teto falha; teto impede o que o fuzzer nem precisa achar. As duas camadas ficam.
+6. **Mutar bytes sem mutar comprimentos:** o mutador que só troca conteúdo nunca gera "acima do teto" nem "incompleta" — as duas classes que vivem na fronteira do tamanho. Peça gigante e peça cortada existem no corpus exatamente porque tamanho é dimensão de mutação, não detalhe.
+7. **Cobrar determinismo sem reexecutar:** afirmar "mesma semente, mesmo resultado" sem rodar duas vezes é promessa. A reexecução por entrada custa o dobro e compra a única prova que importa: a de que o relatório de ontem vale hoje.
 
 ## 5. Ponte com as demais trilhas
 

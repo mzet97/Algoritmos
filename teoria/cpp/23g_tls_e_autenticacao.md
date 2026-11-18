@@ -21,6 +21,14 @@ layout: default
 
 **O certificado nasce e morre no processo.** `EVP_RSA_gen` + `X509_new` + `X509_sign` criam a credencial com validade de 10 minutos; o contexto do servidor a referencia e a libera no fim. Não há arquivo, logo não há permissão de arquivo para errar, nem chave esquecida no disco para vazar. O preço: todo restart gera outra identidade — exatamente por isso o cliente não pode "conhecer" o servidor de antemão.
 
+### Anatomia do handshake que o exemplo executa
+
+Siga os bytes, lado a lado: o cliente abre TCP, cria o `SSL*` sobre o socket e chama `SSL_connect`; o servidor aceita, cria o seu `SSL*` e chama `SSL_accept`. Dentro dessas duas chamadas viajam, nesta ordem: (1) o cliente anuncia o que sabe falar (versões, cifras); (2) o servidor responde com a cifra escolhida e o certificado autofirmado; (3) o cliente valida (aqui: compara a impressão SHA-256 com a do pipe, em vez de cadeia CA); (4) os dois derivam as chaves de sessão e trocam a mensagem de "mãos dadas". Só depois do passo 4 o primeiro byte do token atravessa o socket — e atravessa cifrado com chave efêmera, o que dá *forward secrecy*: mesmo que a chave privada do certificado vaze amanhã, a sessão de hoje continua ilegível, porque a chave de sessão não foi transportada, foi derivada. O ponto de ensino: `SSL_read`/`SSL_write` depois do handshake são `read`/`write` com cifra — o programador que entende onde o handshake termina (passo 4) nunca manda segredo no passo 1.
+
+### TOFU, com o modelo de ameaça escrito por extenso
+
+Pinagem de primeiro contato diz: "confio nesta impressão porque chegou por um canal que confio (o pipe local), e daqui em diante só falo com quem a repetir". O modelo de ameaça tem três cláusulas: (a) o primeiro contato é seguro por construção (pipe entre pai e filho, mesma máquina, sem rede); (b) contatos seguintes detectam troca de identidade (atacante com outro certificado gera outra impressão e é negado); (c) o primeiro contato numa rede hostil NÃO é seguro — e é exatamente esse o caso que a produção resolve com CA. A honestidade editorial está em escrever (c): o exemplo não "resolve confiança", ele transfere a confiança do pipe para o pin e declara o pipe como raiz. Quem lê "TOFU" sem (c) sai achando que pinar é alternativa à CA; quem lê com (c) entende que pinar é *adiar* a CA para um canal lateral que, aqui, existe de verdade.
+
 **O pin viaja pelo pipe, não pelo TLS.** Publicar a impressão antes do primeiro `accept` evita o deadlock (pai bloqueado lendo, filho bloqueado aceitando) e modela honestamente o TOFU: a raiz de confiança chega por canal lateral. O cliente compara a impressão do handshake com a do pipe — `SSL_VERIFY_NONE` na CA com pinagem explícita, em vez de verificação silenciosamente desligada.
 
 **O token viaja depois do handshake, nunca antes.** `SSL_connect` completo precede qualquer byte de aplicação nos dois lados. Token antes do túnel seria a 23c de novo; túnel sem token seria transporte anônimo. A ordem é o contrato.
@@ -51,6 +59,10 @@ token 'errada': NEGADO
 23g ok: TLS com pin TOFU + token certo passa, errado nega
 ```
 
+### Leitura guiada: duas negações, um túnel
+
+A saída tem três linhas e conta dois experimentos: o token certo atravessa o túnel e volta `OK` (prova que o handshake completou — sem ele, nenhum byte de aplicação passaria); o errado atravessa o MESMO túnel e volta `NEGADO` (prova que o túnel não autentica ninguém sozinho — cifra sem crachá é transporte anônimo). Se a segunda linha fosse `OK`, o bug estaria na comparação do token; se a primeira fosse `NEGADO`, o bug estaria no handshake ou no pin. A terceira linha só sai se as duas anteriores saíram certas — é o veredito sobre o par, não sobre cada um. E a porta varia a cada execução sem quebrar nada: efêmera por construção, impressa para depuração, irrelevante para o contrato — o que é observável (conteúdo) separa-se do que é acidental (porta), e o teste cola só o observável.
+
 ## 4. Erros comuns e implicações defensivas
 
 1. **Verificação desligada sem pin:** `SSL_VERIFY_NONE` sozinho é cliente que fala com qualquer um — o exemplo só o usa porque a pinagem decide depois. Um dos dois tem de amarrar a identidade; nenhum dos dois é configuração, é vulnerabilidade.
@@ -58,6 +70,8 @@ token 'errada': NEGADO
 3. **Oráculo de formato:** distinguir "token ausente" de "token errado" na resposta ensina o atacante a forma do pedido. `NEGADO` único para os dois casos fecha o oráculo.
 4. **Chamar TOFU de PKI:** o pipe deste experimento é honesto porque é local e efêmero; numa rede real, primeiro contato sem CA é interceptável. Produção exige cadeia verificada — o exemplo lista isso no contrato em vez de prometer.
 5. **Certificado em disco "só para teste":** chave de teste commitada vira chave de produção em algum deploy distraído. Certificado efêmero em memória elimina a categoria inteira de vazamento.
+6. **Comparar token com `==` em `std::string` sem pensar em tempo:** a comparação do exemplo é funcional, não de tempo constante — atacante medindo latência distingue prefixo certo de errado byte a byte (timing oracle). Em produção, token se compara em tempo constante; o exemplo declara a comparação como funcional e lista o timing como endurecimento futuro.
+7. **Reutilizar a sessão sem revalidar o pin:** sessão TLS resumida (`SSL_session`) que pula o handshake pula a entrega do certificado — e sem certificado não há impressão para comparar. Resumir sem revalidar é herdar confiança de uma sessão que pode ter sido negociada antes de uma troca de identidade. Por isso "sessão resumida" está no fora-do-contrato: não é otimização inocente, é decisão de confiança.
 
 ## 5. Ponte com as demais trilhas
 
@@ -69,7 +83,9 @@ C cifra o análogo na [23e](../c/23e_rpc_sobre_consenso.md) sem TLS (numerar e c
 - [ ] Explico o TOFU deste exemplo e o que uma CA mudaria (e onde no código).
 - [ ] Mostro o token errado negado e justifico o `NEGADO` único.
 - [ ] Descrevo o deadlock que o pin-antes-do-accept evita.
-- [ ] Nomeio o que falta: mTLS, revogação, sessão resumida, certificado persistido com permissão certa.
+- [ ] Enuncio as três cláusulas do modelo de ameaça do TOFU (primeiro contato seguro, troca detectada, rede hostil fora).
+- [ ] Explico por que sessão resumida é decisão de confiança, não otimização inocente.
+- [ ] Nomeio o que falta: mTLS, revogação, sessão resumida, certificado persistido com permissão certa, comparação em tempo constante.
 
 **Referências primárias:** [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446.html) para o handshake que o OpenSSL executa aqui; documentação do OpenSSL (`SSL_CTX_new`, `X509_digest`) para a API usada. Nenhum texto foi copiado — o exemplo é implementação própria sobre essas interfaces.
 

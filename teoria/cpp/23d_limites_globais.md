@@ -22,7 +22,20 @@ Trinta e dois clientes, cada um dentro do seu teto de 64 KiB de saída, somam 2 
 
 Porque cada abuso estoura uma dimensão diferente: quantidade (conexões), origem (IP) e volume (bytes). Um teto só de conexões deixa a rajada passar; só de bytes deixa as lentas ocuparem tudo; só por IP deixa a enchente distribuída entrar. Defesa em profundidade não é ter muitos tetos — é ter um teto por dimensão que o atacante controla.
 
-## 3. Exemplo completo e executável
+## 3. Onde cada check mora no loop da 23a
+
+O exemplo simula a admissão isolada, mas o objetivo da aula exige dizer onde cada check entraria no servidor real — então aqui está o mapa, ponto a ponto do loop `poll`:
+
+| Ponto do loop | Check | Por que aqui e não depois |
+|---|---|---|
+| `accept` retorna | teto global (32) + por IP (4): contar → comparar → admitir | depois do `accept`, o descritor já existe; recusar aqui é fechar na hora, antes de alocar estado. Admitir antes de contar vaza uma vaga por decisão (erro nº 1) |
+| `poll` sinaliza legível | janela de bytes (1 MiB): somar → comparar → cortar ou drenar | o byte já chegou ao kernel; o teto decide se a aplicação o consome ou o descarta. Cortar aqui protege o processamento, não o socket |
+| fim da iteração / `close` | liberar vaga global + contador do IP | vaga não devolvida é vazamento de capacidade (erro nº 2). Liberação mora no caminho de saída — todos eles, incluindo erro e timeout |
+| `nova_janela` (timer) | zerar o contador de bytes, manter o resto | janela é tempo, não castigo: só o contador de volume reabre; conexões e IPs continuam valendo. Reabrir tudo junto transformaria pico em passe-livre |
+
+A regra geral: teto se cobra no ponto onde o recurso é consumido (admissão, leitura, saída, tempo) — nunca "no fim do loop, se der". Cada linha da tabela é um lugar onde o recurso muda de dono, e é ali que o orçamento é conferido.
+
+## 4. Exemplo completo e executável
 
 O [arquivo-fonte desta aula](exemplos/23d_limites.cpp) simula a admissão (`g++` e `clang++`, `-Werror` nos dois):
 
@@ -52,19 +65,25 @@ lentas: 32 ociosas bloqueiam a vitima (tempo limite resolve na 23a)
 
 Um bug real foi pego no caminho: a primeira versão admitia 32 conexões do mesmo IP e esperava sucesso — o teto por IP (4) recusava a quinta. O teste estava errado, não o teto: lenta de verdade se distribui, e o exemplo agora distribui em 8 origens.
 
-## 4. Erros comuns e implicações defensivas
+### Leitura guiada: cinco linhas, três dimensões
+
+As três primeiras linhas cobrem as três dimensões (quantidade, origem, volume) — cada uma com verbo próprio: conexões "cobradas" (o teto contou e admitiu até 32), IP "recusado" (a 5ª caiu), bytes "cortados e liberados" (o corte é temporário, a janela reabre). A quarta linha é a confissão: 32 ociosas bloqueiam a vítima *neste estágio*, e o parêntese aponta para a 23a — teto sem timeout é meia defesa, e a aula diz isso na saída em vez de esconder no texto. A quinta é o veredito sobre o conjunto. Repare que a saída documenta um bloqueio real (as 32 ociosas) como comportamento observado, não como falha: sob teto sem timeout, servidor cheio de lentas é o estado correto do modelo — e é exatamente por ser correto que o timeout precisa existir.
+
+## 5. Erros comuns e implicações defensivas
 
 1. **Contar o IP depois de decidir:** admitir e só então incrementar vaza uma a mais por condição de corrida lógica. A ordem é contar, comparar, admitir.
 2. **Esquecer de liberar:** vaga não devolvida é vazamento de capacidade — o servidor "cheio" com 3 clientes reais. Todo `admitir` tem um `liberar` no caminho de saída.
 3. **Janela que nunca reabre:** teto de bytes sem `nova_janela` vira negação permanente após o primeiro pico. Janela é tempo, não castigo.
 4. **Tratar recusa como erro interno:** 33ª conexão recusada é operação normal sob carga, não incidente. Loga-se como capacidade, alerta-se por tendência.
 5. **Achar que teto substitui timeout:** teto limita quantos entram; timeout limita quanto tempo ficam. Lenta dentro de todos os tetos só sai pelo relógio.
+6. **Cobrar o teto longe do consumo:** verificar conexões "no fim do loop" admite 32 + N antes de olhar — a vaga vaza entre o `accept` e o check. Teto se cobra onde o recurso muda de dono (a tabela da §3), nunca em ponto conveniente.
+7. **Somar sem janela:** acumular bytes "desde o boot" transforma o primeiro pico legítimo em bloqueio permanente. Todo contador de volume precisa de expiração — sem `nova_janela`, o teto é armadilha para tráfego normal com o tempo.
 
-## 5. Ponte com as demais trilhas
+## 6. Ponte com as demais trilhas
 
 C cobra teto de linha e conexões na 32c; Go limita corpo e conexões no middleware da aula 20; Python corta corpo com `MaxBytesReader`. Em JavaScript, o análogo é o rate limit do gateway — mesma soma, mesma recusa, outro nome.
 
-## 6. Critério de aprovação e checklist
+## 7. Critério de aprovação e checklist
 
 - [ ] Aponto os três tetos e o abuso que cada um recusa, com o número.
 - [ ] Mostro onde cada check entraria no loop da 23a (admissão, consumo, liberação).
