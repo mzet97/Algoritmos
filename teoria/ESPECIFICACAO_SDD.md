@@ -83,7 +83,7 @@ Segurança defensiva é transversal: entrada hostil, parser e limites, memória,
 
 Em C, C++ e Rust, o percurso de kernel começa em RISC-V/QEMU e termina com comparação ou portabilidade de componentes em x86-64. A ordem interna ensina boot, exceções, gerenciamento de memória, syscalls, escalonamento, sincronização e I/O antes de multicore. Go e Python concluem com serviços e ferramentas distribuídas, observáveis e robustas, incluindo interação com recursos do SO. Todos os livros incluem experimentos de HPC/GPU, com implementação de referência acessível sem GPU dedicada.
 
-Markdown é a fonte. O site é uma visualização navegável dos livros, não uma segunda cópia editável. A licença [MIT](../LICENSE) cobre o material original; fontes externas são citadas e não copiadas extensivamente. Publicação ocorre por volume após zerar P0/P1, verificar links, executar exemplos classificados como completos e percorrer um projeto do começo ao fim em ambiente limpo.
+Markdown é a fonte. O site é uma visualização navegável dos livros, não uma segunda cópia editável. A licença [MIT](./LICENSE) cobre o material original; fontes externas são citadas e não copiadas extensivamente. Publicação ocorre por volume após zerar P0/P1, verificar links, executar exemplos classificados como completos e percorrer um projeto do começo ao fim em ambiente limpo.
 
 ## 7. Ordem de entrega
 

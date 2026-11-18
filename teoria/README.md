@@ -26,4 +26,4 @@ A [rubrica de avaliação](RUBRICA_SDD.md) explica o que precisa ser demonstrado
 
 Os laboratórios de kernel usarão primeiro RISC-V em QEMU e depois compararão x86-64. C, C++ e Rust terão projetos de núcleo. Go e Python aprofundarão ferramentas de sistema e sistemas distribuídos. Recursos que exigem hardware específico ou toolchain experimental serão identificados como opcionais.
 
-O material é gratuito e original, sob a [licença MIT](../LICENSE). Referências externas são fontes para estudo e verificação técnica; não substituem a explicação e os exercícios destes livros.
+O material é gratuito e original, sob a [licença MIT](./LICENSE). Referências externas são fontes para estudo e verificação técnica; não substituem a explicação e os exercícios destes livros.
