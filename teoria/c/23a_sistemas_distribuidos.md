@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a aula 23 ensinou a enquadrar bytes; a aula 31 mostrará um servidor TCP completo. Falta a pergunta que separa servidor que funciona de sistema distribuído defensável: *o que acontece quando a outra ponta cai, atrasa ou recebe duas vezes a mesma operação?* Em um processo só, chamar a função duas vezes é erro de quem chama. Entre processos, a rede repete por você — retry é o comportamento normal, não o abuso.
 
+**Como ler esta aula (três níveis):** *fundamental* — PUT/GET com log, `fsync` e idempotência; *intermediário* — o roteiro de falhas (duplicata, rasgo, `SIGKILL`, atraso); *aprofundamento* — o que o projeto não garante e onde 23c/23d entram.
+
 ## 1. Contrato antes do código
 
 Protocolo desta aula (texto por linhas, somente loopback, teto de 512 bytes por linha):
@@ -124,5 +126,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - apontar onde o mutex protege estado e por que o encaminhamento fica fora dele;
 - declarar o que o projeto **não** garante: partição com escrita bilateral, ordem total, failover automático, segurança fora de loopback;
 - compilar com `-Werror`, executar os 17 checks e confrontar cada `ok` com o contrato, não com a sorte.
+
+### Pesos da avaliacao
+
+| Critério | Peso |
+|---|---|
+| Protocolo executado com os 17 checks confrontados com o contrato | 40% |
+| Falhas do roteiro reproduzidas e explicadas sem atalho | 25% |
+| Diagnóstico (prever comportamento sob falha antes de injetar) | 20% |
+| Documentação (roteiro, saídas, limites declarados) | 15% |
+
+**Referências primárias:** *Designing Data-Intensive Applications* (Kleppmann), capítulos 5, 8 e 9, para log, replicação e falhas parciais; `man fsync` para a durabilidade prometida.
 
 **Próxima aula:** 24 — heap real e fragmentação. O log desta aula é o primeiro estado que sobrevive ao processo; a aula 24 pergunta o que acontece com a memória que não sobrevive.

@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** os três projetos funcionam no caminho feliz. O caminho feliz é onde o atacante não está. Esta aula coloca o atacante na sala: o cliente que manda 1 MiB onde cabem 1024 bytes, o par que repete a escrita de ontem, o programa de usuário que passa `NULL` como ponteiro na syscall. Cada um recebe a mesma resposta: *recusa nomeada, com limite publicado, testada em código*.
 
+**Como ler esta aula (três níveis):** *fundamental* — a tabela fronteira/abuso/limite/teste; *intermediário* — o par válido+negação que prende o off-by-one; *aprofundamento* — o que o modelo não cobre e qual curso cobriria.
+
 ## 1. Contrato antes do código
 
 - **Servidor 31 (rede hostil):** todo byte vem do adversário. Linha acima de 1024 bytes é rejeitada; NUL embutido é rejeitado (framing, não string C — `strlen` para no NUL e o resto passa batido); além de 64 conexões, a nova é recusada — nunca enfileirada em silêncio (fila silenciosa é espera infinita com outro nome).

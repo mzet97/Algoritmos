@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** em máquina multinó, "memória" não é um lugar só: cada página mora num nó, e o núcleo que a toca de longe paga a viagem a cada cache line. Programa que ignora isso mede bem no laptop e sangra no servidor — 2× de banda perdida sem uma linha de código errada. Esta aula ensina a regra de moradia antes que o servidor cobre a aula: quem ancora, onde ancora, e como provar.
 
+**Como ler esta aula (três níveis):** *fundamental* — quem toca primeiro decide o nó; *intermediário* — banda local medida e o passo de 64; *aprofundamento* — o protocolo multinó escrito sem placa para executar.
+
 ## 1. Contrato antes do código
 
 - **Detecção:** contar `/sys/devices/system/node/node*` lendo o diretório, não presumindo. Nesta máquina, o resultado é 1 — e o programa imprime isso em vez de supor. Detecção que presume é configuração com outro nome.

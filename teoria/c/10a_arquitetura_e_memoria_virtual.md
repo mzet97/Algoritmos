@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** em Python ou JavaScript, `v[i]` parece acessar diretamente um elemento. Em C, `v[i]` também é uma expressão da linguagem, mas compreender desempenho, isolamento e falhas de memória exige perguntar quais instruções foram geradas e o que o sistema operacional e a CPU fazem com o endereço usado. A mesma ponte será necessária para estudar syscalls, kernels, concorrência e HPC.
 
+**Como ler esta aula (três níveis):** *fundamental* — o caminho expressão→CPU, virtual vs físico; *intermediário* — cache/TLB/falta de página, leitura de `maps`; *aprofundamento* — quem implementa isso é o kernel (32a); aqui se observa, não se constrói.
+
 ## 1. Quatro contratos diferentes
 
 | Camada | Pergunta que responde | Exemplo |
@@ -111,5 +113,16 @@ As [pistas graduais](exercicios/10a_pistas.md) e [soluções comentadas](exercic
 - Consigo relacionar duração estática, automática e alocada aos modelos práticos sem chamar o modelo de garantia da linguagem.
 - Consigo ler `/proc/PID/maps` e reconhecer o que ele **não** mostra.
 - Consigo formular uma hipótese de localidade e planejar medi-la sem inventar uma observação.
+
+### Pesos da avaliacao
+
+| Critério | Peso |
+|---|---|
+| Caminho do acesso desenhado camada a camada | 35% |
+| Experimento executado + `maps` lido sem inferir endereço físico | 25% |
+| Diagnóstico (hipótese de localidade antes de medir) | 25% |
+| Documentação (comandos, saídas, desenho) | 15% |
+
+**Referências primárias:** *Computer Systems: A Programmer's Perspective* (Bryant & O'Hallaron), capítulo 9, para memória virtual; `man proc` para o formato de `maps`.
 
 **Próxima aula:** [11 — depuração](11.md), usando símbolos, pilha de chamadas e instrumentação para investigar programas reais.

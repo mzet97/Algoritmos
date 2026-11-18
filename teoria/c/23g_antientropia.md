@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a 23c sincroniza mandando os logs inteiros: funciona, mas o custo é proporcional ao tamanho da loja, não ao tamanho da divergência. Quando dois nós passam 99% do tempo iguais, mandar 100% para conferir 1% é desperdício — e em enlace caro (satélite, inter-região, bateria), o desperdício impede a sincronização frequente. O resultado é o pior dos mundos: nós que divergem porque sincronizar custa caro, e sincronizar custa caro porque mandam tudo. Esta aula quebra o ciclo: 8 resumos FNV-1a (um por faixa de 8 chaves) decidem o que viaja; faixa igual nem entra no fio. A versão por entrada decide a direção; o resumo decide o escopo.
 
+**Como ler esta aula (três níveis):** *fundamental* — resumo que evita viajar dado igual; *intermediário* — grão da faixa e `memcpy` sem padding; *aprofundamento* — Merkle hierárquico e tumbas (fora do contrato).
+
 ## 1. Contrato antes do código
 
 O [arquivo-fonte](exemplos/23g_antientropia.c) contém a simulação determinística (dois nós em um processo, sem rede, sem tempo — o objeto é a regra de sincronização, e a simulação a isola do transporte, como a 23d isola o commit):

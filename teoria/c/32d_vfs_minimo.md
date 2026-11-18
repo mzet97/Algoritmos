@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a 32a entrega o kernel com sete marcadores e declara o VFS como lacuna; esta aula a preenche sem fingir um sistema de arquivos de produção. O ponto arquitetural que justifica a aula inteira: VFS não é disco — é *resolução de caminho + descritores*. A tabela aqui é estática (três arquivos, um diretório, somente leitura), mas o resolvedor anda componente a componente pelo pai, confere cada nível e nega subida, diretório e ausente. Se um dia existir outro suporte (outro dispositivo, outra tabela), o resolvedor continua valendo; o que muda é de onde vêm os bytes. Quem entende este resolvedor entende o que o Linux faz antes de tocar em qualquer bloco.
 
+**Como ler esta aula (três níveis):** *fundamental* — resolvedor e os três arquivos; *intermediário* — `..` recusado no parse, EOF vs negação; *aprofundamento* — escrita, montagem e validação de ponteiro (fora do contrato).
+
 ## 1. Contrato antes do código
 
 - `make -C teoria/c/kernel32d && python3 teoria/c/kernel32d/test_kernel.py teoria/c/kernel32d/kernel.elf` imprime `KERNEL32D_OK` (QEMU `virt`, `-bios none`, `-smp 1`: um hart basta, o tema é resolução, não paralelismo).

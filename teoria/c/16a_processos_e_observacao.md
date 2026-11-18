@@ -12,6 +12,8 @@ layout: default
 
 **Limite explícito:** nada aqui prova como o kernel implementa nada — só que chamá-lo custa, que processos são isolados e que memória é mapeada por páginas. Afirmações sobre o interior do kernel ficam para o laboratório emulado.
 
+**Como ler esta aula (três níveis):** *fundamental* — `fork`/`waitpid`, syscall custa; *intermediário* — `/proc/self/maps`, faltas menores e maiores; *aprofundamento* — o kernel que implementa isso mora no QEMU (C4), aqui só se mede.
+
 ## 1. Processo é isolamento com contabilidade
 
 Um **processo** é uma instância em execução com espaço de endereços próprio, descritores e estado administrado pelo SO. `fork()` duplica o processo chamador (o filho recebe uma cópia); `waitpid()` colhe o código de saída e libera o estado de zumbi; `_exit()` termina sem descarregar buffers de `stdio` (use-o no filho após `fork` quando o pai ainda vai usar os buffers).
@@ -191,6 +193,17 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - distinguir falta menor de falta maior e dizer quando cada uma sobe;
 - explicar por que o filho usa `_exit` e o que o passo 5 contém;
 - executar o exemplo e confrontar cada número com o modelo, não com o chute.
+
+### Pesos da avaliacao
+
+| Critério | Peso |
+|---|---|
+| Processo filho criado e colhido com código explicado | 30% |
+| Custo de syscall + faltas medidos com ferramenta do espaço de usuário | 30% |
+| Diagnóstico (prever custo antes de medir, ler `maps` sem inferir físico) | 25% |
+| Documentação (comandos, saídas, ambiente) | 15% |
+
+**Referências primárias:** *The Linux Programming Interface* (Kerrisk), capítulos 24–25, para processos; `man fork`, `man waitpid`, `man getrusage` para os contratos.
 
 **Próxima aula:** performance tuning. As réguas de medição desta aula (tempo monotônico, contadores, ambiente anotado) são o método do capítulo de desempenho.
 

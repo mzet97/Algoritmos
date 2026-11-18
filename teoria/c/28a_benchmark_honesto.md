@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** benchmarks mentirosos são fáceis: medir código errado, cronometrar uma vez, ignorar a variância, esconder o ambiente e declarar vitória. Esta aula define o protocolo honesto — hipótese, baseline correto, aquecimento, repetições, dispersão, ambiente — e o aplica a dois fenômenos reais: escala limitada por banda e falso compartilhamento.
 
+**Como ler esta aula (três níveis):** *fundamental* — protocolo honesto e os dois fenômenos medidos; *intermediário* — dispersão, ambiente e a conta da transferência; *aprofundamento* — o acelerador hipotético decidido no papel.
+
 ## 1. O protocolo, antes do cronômetro
 
 1. **Hipótese escrita:** "somar em N threads é mais rápido que em 1 porque..." — se você não sabe por que deveria ser, a medição não ensina nada.

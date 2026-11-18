@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** teto por conexão protege a conexão; ataque real abre N conexões. Sem teto global, 8 clientes lentos — cada um dentro de todos os tetos por conexão — esgotam o servidor que passou em todos os testes unitários. Esta aula entrega os três tetos sobre a base da 23b e da 31, com o teste provando que cliente lento não paralisa os demais, que a rajada é avisada, silenciada e depois recuperada — e que recusar no lugar errado quebra o protocolo antes do atacante chegar.
 
+**Como ler esta aula (três níveis):** *fundamental* — três tetos e a janela que reabre; *intermediário* — dreno, aliases e o sexto abuso que falta; *aprofundamento* — taxa por conexão e TLS (31).
+
 ## 1. Contrato antes do código
 
 O [servidor](exemplos/23f_limites.c) (`poll`, sem threads, sem `accept` bloqueante) e o [teste](exemplos/test_23f.py) (sobe, exercita, derruba; falha se houver ASan/UBSan no `stderr`):

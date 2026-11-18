@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** quase todo bug de durabilidade tem a mesma forma: o programa escreveu "quase tudo" e caiu. Sem disciplina, o leitor seguinte encontra meio arquivo e confia nele. Esta aula estabelece a disciplina mínima: publique de uma vez, desconfie de tudo que não foi publicado, e prove a integridade antes de confiar.
 
+**Como ler esta aula (três níveis):** *fundamental* — ordem de escrita e rasgo detectado; *intermediário* — `write` parcial e o loop; *aprofundamento* — `fsync` de diretório, journal e o VFS da 32d.
+
 ## 1. Contrato antes do código
 
 - **Diretório é mapa, não cofre:** ele liga um nome a um inode. O `rename` troca a ligação de lugar atomicamente — quem abre o nome vê o velho ou o novo, nunca uma mistura.

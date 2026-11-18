@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a aula 14 apresentou pthreads; esta aula responde o que o padrão *garante*. Em C, ao contrário de Go ou Java, data race não é "comportamento indefinido pelo modelo com diagnóstico garantido" — é comportamento indefinido ponto final: o compilador pode assumir que isso nunca acontece e otimizar em cima. A prova de correção vem antes do teste, e o teste vem com sanitizers.
 
+**Como ler esta aula (três níveis):** *fundamental* — data race vs corrida lógica, mutex que preserva invariante; *intermediário* — condvar e ciclo de vida do argumento da thread; *aprofundamento* — `<stdatomic.h>` e o modelo de memória (aula 14 retoma).
+
 ## 1. O modelo de memória em uma frase
 
 Duas avaliações em threads diferentes, sem ordenação imposta entre elas, no mesmo objeto, com ao menos uma escrita: **data race, comportamento indefinido**. "Ordenação imposta" nasce de: criar/join de thread, `pthread_mutex_lock/unlock`, `pthread_cond_wait` com seu mutex, `pthread_once`, semáforos e operações atômicas de `<stdatomic.h>`. Todo o resto é torcida.
@@ -183,5 +185,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - rodar o exemplo com ASan/UBSan limpo e explicar cada invariante;
 - produzir um WARNING do TSan sob demanda onde ele funcionar;
 - apontar o que o teste prova e o que só o argumento prova.
+
+### Pesos da avaliacao
+
+| Critério | Peso |
+|---|---|
+| Race demonstrada e eliminada com invariante preservada | 35% |
+| Condvar + ciclo de vida do argumento explicados | 25% |
+| Diagnóstico (prever race antes do sanitizer, classificar o relatório) | 25% |
+| Documentação (comandos, saídas, invariante escrita) | 15% |
+
+**Referências primárias:** [N1570, seção 5.1.2.4 (execuções multithread) e 7.26 (atomics)](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf); `man pthreads` para criação, junção e sincronização.
 
 **Próxima aula:** sockets e programação de sistemas Unix-like. O raciocínio desta aula sustenta servidores: cada conexão precisa de dono, ciclo de vida e invariante.

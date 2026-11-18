@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** redes repetem. Timeout não diz se o servidor executou e a resposta se perdeu, ou se o pedido nunca chegou. Sem `id`, o cliente que tenta de novo aposta: pode estar pedindo pela primeira ou pela segunda vez sem saber. Com `id`, a aposta some: repetir é pedir a resposta gravada. E a aposta some para os dois desfechos — acerto e erro — porque o cliente repete o erro tanto quanto repete o acerto.
 
+**Como ler esta aula (três níveis):** *fundamental* — `id` que transforma retry em reenvio seguro; *intermediário* — erro memorizado e teto do cache; *aprofundamento* — nonce autenticado e a fronteira com consenso (23d).
+
 ## 1. Contrato antes do código
 
 - **Pedido:** `(id, método, argumento)`. Sem `id`, sem resposta — o servidor recusa na porta, sem olhar o método.

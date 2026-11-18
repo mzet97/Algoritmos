@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a aula 13 mostrou pilha, fila, lista e tabela simples. Falta a pergunta que separa estrutura que funciona de estrutura que se pode defender: *qual é o invariante que cada operação preserva, quanto custa quando a entrada cresce, e o que acontece quando a conta de memória estoura?* O `malloc(nmemb * size)` da aula 07 já avisou: multiplicar tamanhos sem verificar é convidar o overflow. Esta aula fecha o módulo C3.
 
+**Como ler esta aula (três níveis):** *fundamental* — busca binária com invariante, hash que recusa crescer; *intermediário* — `size_t` verificado e `qsort` como oráculo; *aprofundamento* — fator de carga, redimensionamento e prova de correção (exercícios).
+
 ## 1. Contrato antes do código
 
 Busca binária sobre vetor ordenado de `int`:
@@ -255,6 +257,17 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - compilar e executar com warnings como erro e confrontar `O(log n)` com a medição;
 - explicar por que o teste de propriedade usa `qsort` como oráculo e LCG com semente fixa;
 - apontar onde a conta de alocação pode estourar e como o código se protege.
+
+### Pesos da avaliacao
+
+| Critério | Peso |
+|---|---|
+| Busca com invariante + hash que recusa crescer, executados | 35% |
+| Overflow da conta de alocação prevenido com `size_t` verificado | 25% |
+| Diagnóstico (prever invariante quebrada, explicar divergência do oráculo) | 25% |
+| Documentação (contrato, comandos, saídas) | 15% |
+
+**Referências primárias:** *Introduction to Algorithms* (Cormen et al.), capítulos de busca, hash e ordenação; [N1570, seção 7.22.3](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) para a conta de alocação.
 
 **Próxima aula:** concorrência com pthreads. O raciocínio por invariantes desta aula sustenta invariantes compartilhadas: o que cada thread pode assumir sobre a estrutura.
 

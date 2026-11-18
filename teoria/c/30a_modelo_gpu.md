@@ -12,6 +12,8 @@ layout: default
 
 **Limite explícito:** nada aqui executa em GPU. Números de GPU citados como motivação são ordem de grandeza pública, não promessa para nenhum modelo. O que é medido neste livro roda em CPU e está marcado como tal.
 
+**Como ler esta aula (três níveis):** *fundamental* — SIMT, hierarquia e a conta da transferência; *intermediário* — granularidade e o análogo em CPU; *aprofundamento* — laboratório opcional com placa (fora do núcleo).
+
 ## 1. O modelo: grade, bloco, thread
 
 Um kernel GPU organiza o trabalho em três níveis:
