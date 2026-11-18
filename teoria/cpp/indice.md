@@ -95,6 +95,7 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 - [`23d_limites_globais.md`](23d_limites_globais.md) - Aula de ponte: tetos globais do servidor (conexoes, por IP, bytes por janela) sobre a base da 23a
 - [`23e_fuzzing_sistematico.md`](23e_fuzzing_sistematico.md) - Aula de ponte: fuzzing sistematico do parser de framing com mutador deterministico sob sanitizers
 - [`23f_eleicao_commit_rpc.md`](23f_eleicao_commit_rpc.md) - Aula de ponte: eleicao por maioria, commit por maioria, cura com descarte nomeado e RPC idempotente
+- [`23g_tls_e_autenticacao.md`](23g_tls_e_autenticacao.md) - Aula de ponte: TLS com certificado efemero, pinagem TOFU e token dentro do tunel sobre a base da 23d
 
 ### Modulo 2 - Memoria, ABI e Infraestrutura de Biblioteca
 
@@ -176,4 +177,10 @@ Este indice serve como mapa geral da trilha.
 ## Kernel (percurso CPP-12/CPP-13)
 
 - [`33.md`](33.md) - Kernel didatico RISC-V em C++ freestanding (`cpp/kernel/`): os sete marcadores da trilha de C, compilados como C++20 sem excecoes/RTTI
+- [`34.md`](34.md) - Trap e interrupcao isolados (`cpp/kernel34/`): `ecall` e instrucao ilegal com retomada explicita
+- [`35.md`](35.md) - Paginacao Sv39 sob demanda (`cpp/kernel35/`): PMP aberta, descida a S e falta que mapeia e reexecuta
+- [`36.md`](36.md) - Modo usuario e syscall (`cpp/kernel36/`): sonda de `mstatus`, causa 9, retorno em `a0`
+- [`37.md`](37.md) - Escalonador preemptivo (`cpp/kernel37/`): timer CLINT alternando A/B com frame salvo
+- [`38.md`](38.md) - E/S e FS minimo (`cpp/kernel38/`): ROM didatica com `a7 == 3`, tamanho devolvido, id invalido negado
+- [`39.md`](39.md) - Multicore e spinlock (`cpp/kernel39/`, `-smp 2`): `amoswap` `.aq`/`.rl`, soma exata de 1000
 - [`40.md`](40.md) - Comparacao x86-64 executada (`cpp/kernel-x86/`): Multiboot, modo longo, IDT e a tabela do que nao porta (PMP)

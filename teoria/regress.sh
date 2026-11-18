@@ -80,6 +80,14 @@ else
     FAIL=$((FAIL + 1)); FAILED="$FAILED cpp/kernel-x86(compila)"
     printf 'FALHA(compila) - cpp/kernel-x86\n'; tail -20 "$OUT/log"
 fi
+for k in 34 35 36 37 38 39; do
+if make -C "teoria/cpp/kernel$k" kernel.elf >"$OUT/log" 2>&1; then
+    run "cpp/kernel$k-qemu" python3 "teoria/cpp/kernel$k/test_kernel.py" "teoria/cpp/kernel$k/kernel.elf"
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED cpp/kernel$k(compila)"
+    printf 'FALHA(compila) - cpp/kernel%s\n' "$k"; tail -20 "$OUT/log"
+fi
+done
 run "cpp/23a_endurecido+test" python3 teoria/cpp/exemplos/test_23a.py
 run "cpp/13a_seguranca+test" python3 teoria/cpp/exemplos/test_13a.py
 
