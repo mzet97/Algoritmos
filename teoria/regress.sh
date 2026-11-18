@@ -24,7 +24,7 @@ run() { # nome comando...
 CFLAGS="-std=c11 -Wall -Wextra -Wpedantic -Werror"
 CXXFLAGS="-std=c++20 -Wall -Wextra -Wpedantic -Werror"
 
-for f in 03a_mdc 10a_memoria 13a_estruturas 13b_arvores 14a_threads 16a_processo 23b_fuzz 23c_relogios \
+for f in 03a_mdc 10a_memoria 13a_estruturas 13b_arvores 14a_threads 16a_processo 23b_fuzz 23c_relogios 23g_antientropia \
          28a_benchmark 30a_modelo_gpu aula01 aula04 aula07 aula14 aula23; do
     if gcc $CFLAGS -pthread "teoria/c/exemplos/$f.c" -o "$OUT/$f" 2>"$OUT/log"; then
         run "c/$f" "$OUT/$f"
@@ -59,6 +59,17 @@ fi
 gcc $CFLAGS -pthread teoria/c/exemplos/aula31.c -o "$OUT/aula31" 2>"$OUT/log" \
     && run "c/aula31+test" python3 teoria/c/exemplos/test_aula31.py "$OUT/aula31" \
     || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/aula31(compila)"; printf 'FALHA(compila) - c/aula31\n'; tail -20 "$OUT/log"; }
+
+gcc $CFLAGS teoria/c/exemplos/23f_limites.c -o "$OUT/c23f" 2>"$OUT/log" \
+    && run "c/23f_limites+test" python3 teoria/c/exemplos/test_23f.py "$OUT/c23f" \
+    || { FAIL=$((FAIL + 1)); FAILED="$FAILED c/23f(compila)"; printf 'FALHA(compila) - c/23f\n'; tail -20 "$OUT/log"; }
+
+if make -C teoria/c/kernel32d kernel.elf >"$OUT/log" 2>&1; then
+    run "c/kernel32d-vfs-qemu" python3 teoria/c/kernel32d/test_kernel.py teoria/c/kernel32d/kernel.elf
+else
+    FAIL=$((FAIL + 1)); FAILED="$FAILED c/kernel32d(compila)"
+    printf 'FALHA(compila) - c/kernel32d\n'; tail -20 "$OUT/log"
+fi
 
 for f in 03a_invariante 08a_algoritmos 12a_sistema 17a_concorrencia 23b_distribuido 30a_hpc 30b_gpu_modelo; do
     if g++ $CXXFLAGS -O2 -pthread "teoria/cpp/exemplos/$f.cpp" -o "$OUT/$f" 2>"$OUT/log"; then

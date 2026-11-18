@@ -87,6 +87,8 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 - [`23c_relogios_e_particao.md`](23c_relogios_e_particao.md) - Aula de ponte: relógios de Lamport e vetoriais, concorrência detectada, partição bilateral reconciliada com perda declarada
 - [`23d_consenso_e_quorum.md`](23d_consenso_e_quorum.md) - Aula de ponte: eleição por maioria, commit por maioria, minoria que não confirma e cura com termo novo
 - [`23e_rpc_sobre_consenso.md`](23e_rpc_sobre_consenso.md) - Aula de ponte: RPC com `id`, repetição servida do cache e erro memorizado sobre o commit da 23d
+- [`23f_limites_globais.md`](23f_limites_globais.md) - Aula de ponte (C5): tetos por IP, global e de bytes sobre a 23b e a 31, lento não paralisa, rajada silenciada com aviso
+- [`23g_antientropia.md`](23g_antientropia.md) - Aula de ponte (C6): anti-entropia por resumos FNV, faixa igual não viaja, versão decide a direção
 
 ### Modulo 2 - Heap, Alocacao e Infraestrutura Manual
 
@@ -112,6 +114,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 - [`32a_kernel_riscv.md`](32a_kernel_riscv.md) - Aula de ponte/projeto: kernel RISC-V em QEMU (boot, PMP, Sv39, traps, syscall, falta sob demanda, escalonador preemptivo, 2 harts) em `kernel/`, com teste automatizado de 7 marcadores
 - [`32b_x86_64_comparativo.md`](32b_x86_64_comparativo.md) - Aula comparativa: Multiboot, modo longo e IDT em x86-64 (`kernel-x86/`), com tabela de correspondências RISC-V x x86-64
 - [`32c_modelo_de_ameacas.md`](32c_modelo_de_ameacas.md) - Aula de ponte/projeto: modelo de ameaças executável dos três projetos (teto, replay, syscall, log sem segredo)
+- [`32d_vfs_minimo.md`](32d_vfs_minimo.md) - Aula de ponte (C4): VFS mínimo sobre a 32a (`kernel32d/`), resolvedor por componente, `..` recusado, ROM com fds
 
 ---
 
