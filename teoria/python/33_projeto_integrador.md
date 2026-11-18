@@ -16,6 +16,10 @@ layout: default
 - **Observação honesta:** RSS lido de `/proc` (residência) e não só de `tracemalloc` (que não mede memória nativa nem a de outros processos); pico (`ru_maxrss`) e atual (VmRSS) nunca trocados no relatório.
 - **Limitações nomeadas:** sem consenso/eleição, sem TLS, log sem rotação, GPU apenas modelada. A seção de limitações é entregável, não confissão opcional.
 
+## Como as quatro peças se cobram (o que a integração prova)
+
+O serviço (23a/23b) sob carga numérica (29c) observado pela CLI (14a) com falhas injetadas: cada peça verificada isolada agora convive, e a convivência é o teste. A carga da 29c contra o serviço mostra o que o livro inteiro ensinou sobre transporte — pickle serializando blocos entre processos é a mesma "viagem" que a conta da 29c já precificou, agora atravessando o serviço em vez do pool. A CLI de observação lê RSS por `/proc` (residência real, incluindo o que `tracemalloc` não vê) e distingue pico de atual — e é por isso que a solução comentada avisa onde `tracemalloc` engana: instrumento de alocação Python não mede memória de outro processo, e o relatório que troca um pelo outro mente com número verdadeiro. O roteiro de falhas fecha o círculo: atraso exercita deadline, duplicação exercita idempotência com replay, queda com `kill` exercita o log com fsync da 23a, reinício exercita a reconciliação da 23b — cada falha com esperado escrito antes e observado depois, e divergência é defeito (do projeto ou da doc, ambos entregáveis). Sem consenso, sem TLS, log sem rotação: a seção de limitações vira o contrato do que o projeto não promete — e projeto sem limitações declaradas promete tudo, que é a forma mais comum de não entregar nada.
+
 ## Rubrica (resumo)
 
 | Critério | Evidência |
