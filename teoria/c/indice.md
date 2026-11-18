@@ -109,6 +109,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 32. `32.md` - Projeto pratico de biblioteca/CLI de infraestrutura em C
 - [`32a_kernel_riscv.md`](32a_kernel_riscv.md) - Aula de ponte/projeto: kernel RISC-V em QEMU (boot, PMP, Sv39, traps, syscall, falta sob demanda, escalonador preemptivo, 2 harts) em `kernel/`, com teste automatizado de 7 marcadores
 - [`32b_x86_64_comparativo.md`](32b_x86_64_comparativo.md) - Aula comparativa: Multiboot, modo longo e IDT em x86-64 (`kernel-x86/`), com tabela de correspondências RISC-V x x86-64
+- [`32c_modelo_de_ameacas.md`](32c_modelo_de_ameacas.md) - Aula de ponte/projeto: modelo de ameaças executável dos três projetos (teto, replay, syscall, log sem segredo)
 
 ---
 
