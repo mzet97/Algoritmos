@@ -205,11 +205,109 @@ def verificar(volume: str) -> list[str]:
     return falhas
 
 
+def secao_completa(texto: str) -> str | None:
+    casamento = re.search(
+        r"^## .*(?:[Ee]xemplo [Cc]ompleto|[Pp]rojeto [Cc]ompleto).*$", texto, re.M)
+    if not casamento:
+        return None
+    resto = texto[casamento.start():]
+    fim = re.search(r"\n## ", resto[len(casamento.group(0)):])
+    if not fim:
+        return resto
+    return resto[:len(casamento.group(0)) + fim.start()]
+
+
+ENTRADAS = {"02": "42\n"}
+
+
+def verificar_rust() -> list[str]:
+    """Rust: a fonte unica e a secao de exemplo/projeto completo da aula.
+
+    Aulas 18-32 sao projetos Cargo (servidores, SQLx, gRPC, wgpu, eBPF e os
+    projetos 30-32): a execucao delas vive nos projetos e nas solucoes do
+    gate, nao num rustc de arquivo unico — aqui sao classificadas, nao
+    compiladas. Os trechos fora da secao completa incluem erros intencionais
+    de borrow/ownership, que sao o conteudo das aulas iniciais.
+    """
+    falhas: list[str] = []
+    with tempfile.TemporaryDirectory() as tmp:
+        base = Path(tmp)
+        for numero in range(1, 33):
+            aula = f"{numero:02d}"
+            caminho = RAIZ / "rust" / f"{aula}.md"
+            if not caminho.exists():
+                print(f"rust/{aula}: sem aula numerada")
+                continue
+            if numero >= 18:
+                print(f"rust/{aula}: projeto_cargo (execucao nos projetos/solucoes)")
+                continue
+            secao = secao_completa(caminho.read_text(encoding="utf-8", errors="ignore"))
+            if secao is None:
+                falhas.append(f"rust/{aula}: sem secao de exemplo completo")
+                continue
+            trabalho = base / aula
+            trabalho.mkdir()
+            if aula == "06":
+                marcadores = re.findall(r"`(src/[^`]+)`:?\s*\n+```rust\n(.*?)```",
+                                        secao, re.S)
+                (trabalho / "Cargo.toml").write_text(
+                    '[package]\nname = "calculadora"\nversion = "0.1.0"\nedition = "2024"\n',
+                    encoding="utf-8")
+                for caminho_fonte, codigo in marcadores:
+                    destino = trabalho / caminho_fonte
+                    destino.parent.mkdir(parents=True, exist_ok=True)
+                    destino.write_text(codigo, encoding="utf-8")
+                corrida = subprocess.run(
+                    ["cargo", "run", "--quiet"], cwd=trabalho,
+                    capture_output=True, text=True, timeout=300,
+                    stdin=subprocess.DEVNULL)
+                classe = "executado" if corrida.returncode == 0 else "NAO_COMPILA"
+                if corrida.returncode != 0:
+                    falhas.append(f"rust/06 cargo: {corrida.stderr[:200]}")
+                print(f"rust/{aula}: {classe} (projeto multiarquivo via cargo)")
+                continue
+            blocos = re.findall(r"```rust\n(.*?)```", secao, re.S)
+            com_main = [b for b in blocos if "fn main" in b]
+            if not com_main:
+                falhas.append(f"rust/{aula}: secao completa sem main")
+                continue
+            codigo = com_main[-1]
+            if re.search(r"^use (tokio|axum|serde|sqlx|tonic|wgpu)\b", codigo, re.M):
+                print(f"rust/{aula}: projeto_cargo (crate externa na secao completa)")
+                continue
+            fonte = trabalho / "main.rs"
+            fonte.write_text(codigo, encoding="utf-8")
+            executavel = trabalho / "prog"
+            compilacao = subprocess.run(
+                ["rustc", "--edition", "2024", "-O", "-D", "warnings",
+                 "-o", str(executavel), str(fonte)],
+                capture_output=True, text=True, timeout=300)
+            if compilacao.returncode != 0:
+                falhas.append(
+                    f"rust/{aula} nao compila: {compilacao.stderr[:300]}")
+                print(f"rust/{aula}: NAO_COMPILA")
+                continue
+            try:
+                corrida = subprocess.run(
+                    [str(executavel)], input=ENTRADAS.get(aula, ""),
+                    capture_output=True, text=True, timeout=30, cwd=trabalho)
+                if corrida.returncode == 0:
+                    print(f"rust/{aula}: executado")
+                else:
+                    falhas.append(
+                        f"rust/{aula} exit {corrida.returncode}: {corrida.stderr[:200]}")
+                    print(f"rust/{aula}: exit{corrida.returncode}")
+            except subprocess.TimeoutExpired:
+                falhas.append(f"rust/{aula} timeout")
+                print(f"rust/{aula}: TIMEOUT")
+    return falhas
+
+
 def main() -> int:
-    if len(sys.argv) != 2 or sys.argv[1] not in VOLUMES:
-        print("uso: verificar_fontes_unicas.py c|cpp", file=sys.stderr)
+    if len(sys.argv) != 2 or (sys.argv[1] not in VOLUMES and sys.argv[1] != "rust"):
+        print("uso: verificar_fontes_unicas.py c|cpp|rust", file=sys.stderr)
         return 2
-    falhas = verificar(sys.argv[1])
+    falhas = verificar_rust() if sys.argv[1] == "rust" else verificar(sys.argv[1])
     if falhas:
         print("FALHAS:")
         for falha in falhas:
