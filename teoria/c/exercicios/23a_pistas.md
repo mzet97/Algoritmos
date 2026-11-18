@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23a
 
 1. Siga um `PUT` pelo código: `tratar` → checagem de `id` sob o mutex → `persistir` → aplicar → `encaminhar` → responder. Com o par caído, marque em qual passo o tempo é gasto (timeout de conexão) e o que já está durável quando o cliente recebe `OK`.

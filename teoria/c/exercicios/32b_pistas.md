@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 32b
 
 1. Entrada 0 segue o mesmo molde da entrada 3, trocando o índice e o handler. A diferença está no que a CPU empilha: exceção com código de erro empilha um `uint64` a mais que o `int3`. Para "voltar" de um `div` por zero que não pode reexecutar, o handler precisa avançar o RIP salvo para depois da instrução divisora — ou declarar que não volta e desligar, o que também é uma resposta, se documentada.

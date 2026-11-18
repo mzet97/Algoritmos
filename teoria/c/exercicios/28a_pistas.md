@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 28a
 
 1. Hipótese honesta para soma em streaming: o barramento entrega X GB/s e cada soma lê 8 bytes; o teto da soma paralela é banda dividida, não núcleos multiplicados. Calcule o teto antes de medir.

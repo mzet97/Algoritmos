@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 40
 
 ## 1. Syscall 0x80 de impressao

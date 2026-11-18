@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 16a — Máquina e sistema operacional vistos de Rust seguro
 
 ---

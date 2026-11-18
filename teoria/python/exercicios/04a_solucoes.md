@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 04a
 
 ## 1. Prova do invariante

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 32a
 
 1. A syscall nova mora no mesmo `case 9`: leia `a0` do frame (`f[F_A0]`), imprima pelo `kputc` do modo-M e avance `mepc`. Depois apague o acesso direto das tarefas à UART — elas passam a depender do kernel para falar, que é exatamente a fronteira que um SO existe para criar.

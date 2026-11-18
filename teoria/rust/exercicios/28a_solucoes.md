@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 28a
 
 ## 1. Indice hostil no caminho da trap

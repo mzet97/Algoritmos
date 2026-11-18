@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 08a - Raciocínio discreto e algoritmos em Go
 
 ---

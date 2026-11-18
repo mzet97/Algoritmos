@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 23 - Pistas graduais
 
 1. Nao associe uma chamada de recv a uma mensagem. Teste duas mensagens em uma leitura e uma mensagem em duas leituras.

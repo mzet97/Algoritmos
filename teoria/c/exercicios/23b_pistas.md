@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23b
 
 1. Duplicar a linha cola dois pedidos sem separador: `PUT id1 k1 v1PUT id1 k1 v1`. Conte os tokens antes de rodar e preveja a classe. Se a sua duplicação inserir um espaço no meio, a previsão muda — as duas variantes ensinam algo; registre qual você implementou.

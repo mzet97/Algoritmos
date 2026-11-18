@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 28a
 
 1. Fração paralelizável perto de 1 com N workers: o teto é `1/((1-p)+p/N)` antes da contenção. Calcule para p=0,99 e N=2,4,8 e compare com o medido; a diferença é banda + overhead.

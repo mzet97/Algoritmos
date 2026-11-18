@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 12b
 
 1. Remocao: desca com &mut Link como na insercao; dois filhos copiam o sucessor (minimo da direita) e removem o sucessor. A prova de que o em-ordem nao muda e a mesma da 13b de C.

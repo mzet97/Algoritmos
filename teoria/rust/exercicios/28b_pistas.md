@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 28b
 
 1. A entrada da IDT tem o offset fatiado em tres campos (0-15, 16-31, 32-63) separados por seletor/IST/tipo. O construtor recebe o endereco inteiro e distribui; o teste afirma cada fatia com um endereco de bits conhecidos (0x1122334455667788).

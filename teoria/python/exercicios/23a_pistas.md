@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23a
 
 1. Desenhe a linha do tempo de uma escrita: cliente → A (valida, persiste, aplica, responde) → A encaminha → B (valida, persiste, aplica). Marque onde cada falha possível deixa o sistema e quem repete o quê.

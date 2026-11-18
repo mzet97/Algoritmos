@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 16a
 
 ## 1. Caminho do `read` em `/dev/null`

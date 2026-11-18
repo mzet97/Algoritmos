@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23b (Rust)
 
 1. O panico precisa acontecer com a trava adquirida para envenenar de verdade: coloque-o dentro da secao critica, num PUT com id combinado. A recuperacao pelo replay significa descartar o estado em memoria e reconstruir regs/por_id do log — que ja e a funcao replay desta aula.

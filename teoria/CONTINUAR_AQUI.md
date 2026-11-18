@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Passagem de trabalho: masterclass de sistemas
 
 **Estado em 2026-11-17:** a especificação SDD, a auditoria inicial, os mapas dos cinco livros, o piloto de C e uma prévia local do site existem no workspace. **Nenhum livro foi concluído ou publicado.** O próximo agente deve continuar a implementação, não recomeçar o planejamento.

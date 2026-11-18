@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 13b
 
 1. Mediana como raiz: com vetor ordenado `v[ini..fim)`, escolha `meio = ini + (fim - ini) / 2` como nó e recursa nas duas metades. A altura de cada lado difere de no máximo 1 — some os dois lados para provar o teto logarítmico.

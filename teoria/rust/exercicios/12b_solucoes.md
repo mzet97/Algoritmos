@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 12b
 
 ## 1-4 (resumo comentado)

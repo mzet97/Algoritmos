@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 28a - Benchmark honesto, escala e o preço da contenção
 
 ---

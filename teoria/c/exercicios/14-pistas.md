@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 14 - Pistas graduais
 
 Consulte as pistas depois de tentar os exercícios da aula.

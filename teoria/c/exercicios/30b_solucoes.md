@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 30b
 
 ## 1. Kahan contra quatro acumuladores

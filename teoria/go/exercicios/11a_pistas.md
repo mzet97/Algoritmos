@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 11a
 
 1. Os quatro atos: `go` (criação), envio→recebimento em channel, `Unlock`→`Lock` em `Mutex`, `Add`→`Wait` em `WaitGroup`. Para cada um, escreva o que foi escrito antes e o que passa a ser visível depois.

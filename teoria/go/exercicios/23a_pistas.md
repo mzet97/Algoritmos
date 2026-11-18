@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23a
 
 1. Desenhe duas colunas (primário, réplica) e uma linha do tempo: valide → persiste → aplica → responde → encaminha. Marque onde cada seta pode falhar e quem repete o quê em cada caso.

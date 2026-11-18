@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 11a
 
 ## 1. Quatro atos de happens-before

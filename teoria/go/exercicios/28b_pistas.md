@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 28b
 
 1. Kahan compensa o erro por soma; os 4 acumuladores quebram a cadeia. Erro e tempo contam historias opostas.

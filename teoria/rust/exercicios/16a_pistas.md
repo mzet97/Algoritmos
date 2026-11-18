@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 16a
 
 1. O caminho é: `read` na biblioteca padrão → chamada ao kernel com troca de modo → kernel lê zero bytes do dispositivo nulo → retorno. `/dev/null` nunca bloqueia nem falha aqui: o número mede a travessia, não I/O.

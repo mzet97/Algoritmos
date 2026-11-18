@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23b
 
 1. Desenhe duas colunas (A e B) e uma linha por evento: `PUT op1`, morte de B, `PUT op2`, lixo no log, reinício, reenvio. Em cada célula escreva o conjunto `{k1, k3}` que aquele nó tem. Onde o teste lê `g6`, o que B pode saber?

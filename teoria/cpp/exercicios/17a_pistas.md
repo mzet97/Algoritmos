@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 17a
 
 1. Dentro do handler só vale o que é async-signal-safe: escrever `sig_atomic_t` e retornar. Tudo que o laço precisa saber chega pelo flag; o resto acontece fora do handler.

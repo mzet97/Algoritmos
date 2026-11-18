@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 30a
 
 1. O ingênuo lê `B` por colunas (passo de `n` doubles); o tiled lê faixas `BxB` que ficam residentes. Desenhe quais linhas de cache cada versão toca por iteração do laço interno.

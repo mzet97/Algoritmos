@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 16b
 
 1. Tres locks em ciclo A->B->C->A: a ordem global e qualquer ordem total fixa dos tres.

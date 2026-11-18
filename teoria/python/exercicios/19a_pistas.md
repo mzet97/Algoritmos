@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 19a
 
 1. Contador global de conexoes ativas com Lock; acima do teto, responder OCUPADO e fechar. O cliente excedente observa recusa, nao espera infinita.

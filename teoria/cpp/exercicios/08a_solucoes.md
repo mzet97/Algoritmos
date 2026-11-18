@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 08a
 
 ## 1. Invariante e o `size_t`

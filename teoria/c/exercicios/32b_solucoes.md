@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 32b
 
 ## 1. Divide-error (vetor 0)

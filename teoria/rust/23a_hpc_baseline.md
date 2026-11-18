@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 23a — Baseline correto, multicore honesto e a conta da GPU
 
 ---

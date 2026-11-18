@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 08d
 
 1. runtime.GC() forca a coleta: HeapAlloc cai, HeapSys tende a ficar (o runtime segura as spans). Confira os dois.

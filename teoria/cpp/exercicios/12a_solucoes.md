@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 12a
 
 ## 1. Caminho do `getpid`

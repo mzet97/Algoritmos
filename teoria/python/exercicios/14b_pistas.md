@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 14b
 
 1. NumPy (se houver): o mesmo percurso por colunas sobre ndarray contiguo mostra a razao de hardware sem o imposto do interpretador por elemento.

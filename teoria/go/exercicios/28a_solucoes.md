@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 28a
 
 ## 1. Teto de Amdahl contra medido

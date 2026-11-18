@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 13a
 
 ## 1. Leitura fora dentro da capacidade

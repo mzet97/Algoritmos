@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 33
 
 ## 1. Tarefa nao copiavel

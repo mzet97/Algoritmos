@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23b
 
 1. Inverter o desempate muda o ultimo aplicado no empate de Lamport: preveja o novo k antes de rodar.

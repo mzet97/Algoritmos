@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 23b (Rust)
 
 ## 1. Envenenamento e recuperacao

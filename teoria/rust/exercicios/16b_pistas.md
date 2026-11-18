@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 16b
 
 1. Varra n = 64, 128, ..., 4096 e anote a razao: ela nasce quando a matriz passa do nivel de cache em questao. Compare com os tamanhos de L1/L2/LLC de /sys/devices/system/cpu/cpu0/cache ou lscpu.

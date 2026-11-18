@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 33
 
 1. Copia de frame de tarefa e o tipo de erro que ela esconde: se Tarefa for copiavel, duplicar um TrapFrame salvo e barato e silencioso. Delete o construtor de copia e veja onde o escalonador dependia dela sem dizer.

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 23a — Falhas parciais: dois processos, um log e nenhuma ilusão
 
 ## Objetivo da Aula

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 29a
 
 ## 1. Razão em função de `n`

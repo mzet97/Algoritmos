@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 14 - Soluções comentadas e rubrica
 
 ## Contadores

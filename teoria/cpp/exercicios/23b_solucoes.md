@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 23b
 
 ## 1. Linha do tempo de `op2`

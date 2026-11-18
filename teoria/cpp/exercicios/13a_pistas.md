@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 13a
 
 1. O vetor reserva capacidade maior que o tamanho: ler `v[3]` com `size() == 3` mas `capacity() >= 4` cai em memória alocada e válida para o ASan — é UB lógico sem ser memória inválida. Imprima `size()` e `capacity()` lado a lado para ver por que o sanitizer não é oráculo de contrato.

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 32 (Bônus) — Masterpiece B Avançado: Zero-Copy, INCR e Expiração (TTL)
 
 ## Objetivo do Bônus

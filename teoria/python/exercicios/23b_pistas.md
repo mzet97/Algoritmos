@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23b
 
 1. Carimbe cada PUT da 23a com (lamport, autor, seq) no log: a ordenacao dos logs reais usa a mesma funcao da simulacao.

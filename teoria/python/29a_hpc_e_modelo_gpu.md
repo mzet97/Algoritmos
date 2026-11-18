@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 29a — Multicore, HPC e modelo de GPU sem placa
 
 ## Objetivo da Aula

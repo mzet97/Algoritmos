@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 23a
 
 ## 1. Caminho do `put` replicado

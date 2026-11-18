@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 08b
 
 1. O caminho é: `os.Getpid` → runtime/vDSO ou syscall com troca de modo → kernel lê a `task_struct` → retorno. Desenhe os dois ramos e marque onde cada um economiza.

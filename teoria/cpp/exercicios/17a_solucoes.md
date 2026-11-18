@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 17a
 
 ## 1. O que o handler pode fazer

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 08c
 
 1. Remocao com & e ponteiros: desca guardando o **no pai ou use recursao devolvendo o novo link, como na insercao. Sucessor = minimo da direita.

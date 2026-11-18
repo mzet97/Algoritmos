@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 12a
 
 1. O caminho é: chamada do programa → vDSO (se exportar `getpid`) ou instrução de syscall com troca de modo → kernel → retorno. Desenhe os dois ramos e marque onde cada um economiza.

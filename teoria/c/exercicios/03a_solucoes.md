@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 3A
 
 Leia depois de escrever e testar sua própria solução.

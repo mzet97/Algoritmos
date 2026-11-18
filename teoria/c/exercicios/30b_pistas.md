@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 30b
 
 1. Kahan carrega uma compensação `c` que guarda o que cada soma perdeu no arredondamento e devolve na próxima. Compare o erro dela contra o oráculo em `double` — e cronometre: a compensação é uma cadeia de dependência única, como o somatório escalar.

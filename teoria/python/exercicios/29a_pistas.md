@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 29a
 
 1. Suba `n` e anote razão NumPy/processos em cada degrau. O ponto de virada é onde IPC deixa de dominar: marque-o com ambiente junto.

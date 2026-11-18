@@ -13,9 +13,9 @@ layout: default
 Este arquivo organiza a trilha completa de Go em `d:\TI\git\Algoritmos\teoria\go`, cobrindo:
 
 - prompt-base da trilha;
-- fase principal de `01.md` a `19.md`;
+- fase principal de [`01.md`](01.md) a [`19.md`](19.md);
 - plano de especializacao;
-- fase estendida de `20.md` a `31.md`.
+- fase estendida de [`20.md`](20.md) a [`31.md`](31.md).
 
 Use este indice como ponto de entrada rapido para estudo, revisao e navegacao entre os modulos.
 
@@ -24,7 +24,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 ## Arquivos Base
 
 - `prompt.md`: prompt-base da trilha de Go
-- `19_plano_estudos.md`: plano de estudos da fase avancada
+- [`19_plano_estudos.md`](19_plano_estudos.md): plano de estudos da fase avancada
 
 ---
 
@@ -36,40 +36,40 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 ### Fundamentos da Linguagem
 
-1. `01.md` - Introducao ao Go, instalacao, ferramenta `go`, estrutura de um programa, `package main`, `func main`, `fmt.Println`, variaveis, constantes e tipos basicos
-2. `02.md` - Variaveis, constantes, tipos basicos, inferencia e controle de fluxo
-3. `03.md` - Funcoes, multiplos retornos, escopo e organizacao basica do codigo
-4. `04.md` - Arrays, slices, strings, bytes e runes
-5. `05.md` - Maps e structs
-6. `06.md` - Metodos, interfaces, composicao e embedding
-7. `07.md` - Tratamento de erros, `error`, `panic`, `recover` e `defer`
-8. `08.md` - Packages, modulos, imports e organizacao de projetos
+1. [`01.md`](01.md) - Introducao ao Go, instalacao, ferramenta `go`, estrutura de um programa, `package main`, `func main`, `fmt.Println`, variaveis, constantes e tipos basicos
+2. [`02.md`](02.md) - Variaveis, constantes, tipos basicos, inferencia e controle de fluxo
+3. [`03.md`](03.md) - Funcoes, multiplos retornos, escopo e organizacao basica do codigo
+4. [`04.md`](04.md) - Arrays, slices, strings, bytes e runes
+5. [`05.md`](05.md) - Maps e structs
+6. [`06.md`](06.md) - Metodos, interfaces, composicao e embedding
+7. [`07.md`](07.md) - Tratamento de erros, `error`, `panic`, `recover` e `defer`
+8. [`08.md`](08.md) - Packages, modulos, imports e organizacao de projetos
 - [`08a_raciocinio_e_algoritmos.md`](08a_raciocinio_e_algoritmos.md) - Aula de ponte: invariantes, inducao, busca binaria, BFS, hash e custo antes de ponteiros e memoria
 - [`08b_maquina_memoria_e_so.md`](08b_maquina_memoria_e_so.md) - Aula de ponte: runtime, heap contra RSS, syscall, `/proc` e SO pelo espaco de usuario
 - [`08c_duas_solucoes.md`](08c_duas_solucoes.md) - Aula de ponte (G2): BST e ordenacao, duas solucoes medidas contra a std
 - [`08d_ferramenta_so.md`](08d_ferramenta_so.md) - Aula de ponte (G3): ferramenta que observa goroutines, heap, threads e page faults do proprio processo
-9. `09.md` - Ponteiros, memoria, escape analysis e modelo de alocacao
-10. `10.md` - Concorrencia com goroutines, channels e `select`
+9. [`09.md`](09.md) - Ponteiros, memoria, escape analysis e modelo de alocacao
+10. [`10.md`](10.md) - Concorrencia com goroutines, channels e `select`
 
 ### Engenharia de Software em Go
 
-11. `11.md` - Sincronizacao com `WaitGroup`, `Mutex`, atomics e race detector
+11. [`11.md`](11.md) - Sincronizacao com `WaitGroup`, `Mutex`, atomics e race detector
 - [`11a_modelo_de_memoria.md`](11a_modelo_de_memoria.md) - Aula de ponte: happens-before, data race contra corrida logica e pool limitado com invariante
 - [`11b_cancelamento_e_gomaxprocs.md`](11b_cancelamento_e_gomaxprocs.md) - Aula de ponte (G4): cancelamento cooperativo, shutdown com teto e comparacao GOMAXPROCS sem `-race` na tabela
-12. `12.md` - Generics em Go
-13. `13.md` - Arquivos, I/O, `io`, `bufio`, `os`, `path/filepath` e serializacao
-14. `14.md` - Testes, benchmarks, profiling e ferramentas da toolchain
-15. `15.md` - `context`, cancelamento, timeouts e codigo concorrente robusto
-16. `16.md` - Redes, HTTP, clientes, servidores e backend idiomatico
-17. `17.md` - Performance tuning, `pprof`, alocacoes e uso eficiente de memoria
-18. `18.md` - Integracao com C/C++ via `cgo`, syscalls e proximidade com o sistema
-19. `19.md` - Boas praticas para servicos, CLIs, automacao e sistemas de producao
+12. [`12.md`](12.md) - Generics em Go
+13. [`13.md`](13.md) - Arquivos, I/O, `io`, `bufio`, `os`, `path/filepath` e serializacao
+14. [`14.md`](14.md) - Testes, benchmarks, profiling e ferramentas da toolchain
+15. [`15.md`](15.md) - `context`, cancelamento, timeouts e codigo concorrente robusto
+16. [`16.md`](16.md) - Redes, HTTP, clientes, servidores e backend idiomatico
+17. [`17.md`](17.md) - Performance tuning, `pprof`, alocacoes e uso eficiente de memoria
+18. [`18.md`](18.md) - Integracao com C/C++ via `cgo`, syscalls e proximidade com o sistema
+19. [`19.md`](19.md) - Boas praticas para servicos, CLIs, automacao e sistemas de producao
 
 ---
 
 ## Plano de Especializacao
 
-- `19_plano_estudos.md` organiza a fase avancada em modulos de:
+- [`19_plano_estudos.md`](19_plano_estudos.md) organiza a fase avancada em modulos de:
   - backend de alta performance e servicos de rede
   - observabilidade, confiabilidade e operacao
   - performance, runtime e proximidade com o sistema
@@ -81,35 +81,35 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 ### Modulo 1 - Backend de Alta Performance e Servicos de Rede
 
-20. `20.md` - Servidores HTTP de Producao
+20. [`20.md`](20.md) - Servidores HTTP de Producao
 - [`20b_tls_e_ssrf.md`](20b_tls_e_ssrf.md) - Aula de ponte (G5): TLS com certificado efemero e pin TOFU, token dentro do tunel e guarda anti-SSRF
-21. `21.md` - WebSockets, Streaming e Fan-In/Fan-Out
-22. `22.md` - Banco de Dados, Pools e Transacoes
-23. `23.md` - gRPC e Comunicacao entre Servicos
+21. [`21.md`](21.md) - WebSockets, Streaming e Fan-In/Fan-Out
+22. [`22.md`](22.md) - Banco de Dados, Pools e Transacoes
+23. [`23.md`](23.md) - gRPC e Comunicacao entre Servicos
 - [`23a_protocolos_distribuidos.md`](23a_protocolos_distribuidos.md) - Aula de ponte: framing com teto, replicacao com idempotencia, log duravel e falhas injetadas
 - [`23b_relogios_e_consistencia.md`](23b_relogios_e_consistencia.md) - Aula de ponte (G6): Lamport, vetores, particao bilateral e reconciliacao com perda declarada
 - [`23c_quorum_e_reparo.md`](23c_quorum_e_reparo.md) - Aula de ponte (G6): quorum de escrita/leitura, conflito pelo vetor e reparo na leitura
 
 ### Modulo 2 - Observabilidade, Confiabilidade e Operacao
 
-24. `24.md` - Logs, Metricas, Tracing e `pprof` em Servicos Reais
-25. `25.md` - Resiliencia: Retries, Circuit Breakers, Timeouts e Quotas
-26. `26.md` - Workers, Filas, Schedulers e Jobs Confiaveis
+24. [`24.md`](24.md) - Logs, Metricas, Tracing e `pprof` em Servicos Reais
+25. [`25.md`](25.md) - Resiliencia: Retries, Circuit Breakers, Timeouts e Quotas
+26. [`26.md`](26.md) - Workers, Filas, Schedulers e Jobs Confiaveis
 
 ### Modulo 3 - Performance, Runtime e Proximidade com o Sistema
 
-27. `27.md` - Scheduler do Runtime, Garbage Collector e Latencia
-28. `28.md` - Syscalls, `mmap`, Arquivos Grandes e I/O Avancado
+27. [`27.md`](27.md) - Scheduler do Runtime, Garbage Collector e Latencia
+28. [`28.md`](28.md) - Syscalls, `mmap`, Arquivos Grandes e I/O Avancado
 - [`28a_hpc.md`](28a_hpc.md) - Aula de ponte: benchmark honesto, escala limitada por banda, contenção e conta da viagem para GPU
 - [`28b_vetorizacao_e_numa.md`](28b_vetorizacao_e_numa.md) - Aula de ponte (G7): soma verificada contra float64, o empate com a soma simples e NUMA contado
 - [`28c_multino_simulado.md`](28c_multino_simulado.md) - Aula de ponte (G7): triade em dois processos por TCP com deadline, checksum combinado e multino simulado declarado
 - [`31a_projeto_integrador.md`](31a_projeto_integrador.md) - Projeto integrador (G8): servico + ferramenta + benchmark sob a mesma rubrica
-29. `29.md` - `cgo` Avancado, ABI e Integracao com Bibliotecas Nativas
+29. [`29.md`](29.md) - `cgo` Avancado, ABI e Integracao com Bibliotecas Nativas
 
 ### Modulo 4 - Projetos Praticos
 
-30. `30.md` - Projeto pratico: construindo um reverse proxy / load balancer em Go
-31. `31.md` - Projeto pratico: construindo uma ferramenta de infraestrutura e automacao de producao
+30. [`30.md`](30.md) - Projeto pratico: construindo um reverse proxy / load balancer em Go
+31. [`31.md`](31.md) - Projeto pratico: construindo uma ferramenta de infraestrutura e automacao de producao
 
 ---
 
@@ -119,42 +119,42 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 Se voce quiser seguir a trilha como curso:
 
-1. leia `01.md` a `19.md`, incluindo as aulas de ponte `08a_raciocinio_e_algoritmos.md` e `08b_maquina_memoria_e_so.md` depois de `08.md` e a aula `11a_modelo_de_memoria.md` depois de `11.md`
-2. leia `19_plano_estudos.md`
-3. siga `20.md` a `31.md`
+1. leia [`01.md`](01.md) a [`19.md`](19.md), incluindo as aulas de ponte [`08a_raciocinio_e_algoritmos.md`](08a_raciocinio_e_algoritmos.md) e [`08b_maquina_memoria_e_so.md`](08b_maquina_memoria_e_so.md) depois de [`08.md`](08.md) e a aula [`11a_modelo_de_memoria.md`](11a_modelo_de_memoria.md) depois de [`11.md`](11.md)
+2. leia [`19_plano_estudos.md`](19_plano_estudos.md)
+3. siga [`20.md`](20.md) a [`31.md`](31.md)
 
 ### Caminho por Objetivo
 
 Se o foco for linguagem e base:
 
-- `01.md` a `12.md`
+- [`01.md`](01.md) a [`12.md`](12.md)
 
 Se o foco for backend e servicos:
 
-- `16.md`
-- `19.md`
-- `20.md` a `23.md`
-- `30.md`
+- [`16.md`](16.md)
+- [`19.md`](19.md)
+- [`20.md`](20.md) a [`23.md`](23.md)
+- [`30.md`](30.md)
 
 Se o foco for operacao e confiabilidade:
 
-- `15.md`
-- `24.md` a `26.md`
-- `31.md`
+- [`15.md`](15.md)
+- [`24.md`](24.md) a [`26.md`](26.md)
+- [`31.md`](31.md)
 
 Se o foco for performance, runtime e sistema:
 
-- `17.md`
-- `18.md`
-- `27.md` a `29.md`
+- [`17.md`](17.md)
+- [`18.md`](18.md)
+- [`27.md`](27.md) a [`29.md`](29.md)
 
 Se o foco for concorrencia:
 
-- `10.md`
-- `11.md`
-- `15.md`
-- `21.md`
-- `26.md`
+- [`10.md`](10.md)
+- [`11.md`](11.md)
+- [`15.md`](15.md)
+- [`21.md`](21.md)
+- [`26.md`](26.md)
 
 ---
 

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 28b
 
 ## 1. EntradaIdt como tipo

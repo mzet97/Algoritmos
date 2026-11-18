@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 30a
 
 1. Plote razao (eixo y) contra threads (eixo x) para n = 1200. O achatamento aparece quando somar mais uma thread nao adiciona banda: a matriz inteira atravessa a memoria a cada chamada, e banda e compartilhada.

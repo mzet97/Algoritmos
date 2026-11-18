@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 08b - Máquina, memória e sistema operacional vistos de Go
 
 ---

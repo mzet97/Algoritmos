@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 14a
 
 1. O caminho é: `f.read` → bytecode avaliado → chamada à libc/`os` → syscall `read` → page cache ou disco → cópia para o objeto `bytes` → retorno. Marque onde cada camada pode falhar.

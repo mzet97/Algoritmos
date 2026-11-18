@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 23 - Soluções comentadas e rubrica
 
 ## Parser de linha

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 32a
 
 ## 1. Syscall de saída (a7 = 1)

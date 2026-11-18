@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 03a
 
 1. Para a prova, escreva o MDC do par antes da primeira iteração. Depois substitua `(a,b)` por `(b,a%b)` e use a identidade da seção 3. No fim, descubra o valor de `b`.

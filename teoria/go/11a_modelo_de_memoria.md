@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 11a - Modelo de memória, corridas e concorrência disciplinada
 
 ---

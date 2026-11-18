@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 23a
 
 ## 1. Linha do tempo da escrita com o par caído

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 08a
 
 1. O perigo do `size_t`: `fim - ini` nunca é negativo enquanto `ini <= fim` — a prova precisa mostrar que os dois ramos mantêm `ini <= fim`. Se um ramo fizesse `fim = meio - 1` com `meio == 0`, o sem-sinal transformaria `-1` no maior `size_t` do mundo.

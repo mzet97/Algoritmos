@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 13b
 
 ## 1. Construção balanceada pela mediana

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 30b
 
 1. Sem viagem por chamada, o custo de 100 SAXPYs residentes e latencia x 100 + kernel x 100, sem o termo PCIe. Compare com uma unica viagem inicial amortizada em 100 kernels: o limiar despenca.

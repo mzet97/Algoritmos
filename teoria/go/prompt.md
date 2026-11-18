@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 Como doutor em computacao com foco em alto desempenho, paralelismo, concorrencia, multi-CPU, GPU e sistemas operacionais, me ensine Go do zero ao avancado no mesmo estilo de aula tecnica, progressiva, pratica e rigorosa que estavamos usando em C, C++, Rust e Python.
 
 Quero que voce ensine como um professor altamente tecnico, mas didatico, com foco em formar base solida de engenharia de software e sistemas, e nao apenas ensinar sintaxe.

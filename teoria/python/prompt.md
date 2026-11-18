@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 Como doutor em computação com foco em alto desempenho, paralelismo, concorrência, multi-CPU, GPU e sistemas operacionais, me ensine Python do zero ao avançado no mesmo estilo de aula técnica, progressiva, prática e rigorosa que estávamos usando em C, C++ e Rust.
 
 Quero que você ensine como um professor altamente técnico, mas didático, com foco em formar base sólida de engenharia de software e sistemas, e não apenas ensinar sintaxe.

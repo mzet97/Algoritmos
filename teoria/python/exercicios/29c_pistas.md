@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 29c
 
 1. Cronometre so o pickle dos blocos (dumps/loads) sem computar: esse e o termo de viagem dos processos.

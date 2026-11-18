@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 04b
 
 1. Remocao: tres casos; dois filhos copiam o sucessor (minimo da direita) e removem o sucessor.

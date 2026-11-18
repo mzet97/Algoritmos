@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 23a - Framing, replicação e falhas sob controle
 
 ---

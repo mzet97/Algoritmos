@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23a
 
 1. Fração paralelizável perto de 1 com N threads: teto `1/((1-p)+p/N)` antes da contenção. Calcule para p=0,99 e N=2,4,8 e compare com o medido; a diferença é banda + overhead + turbo.

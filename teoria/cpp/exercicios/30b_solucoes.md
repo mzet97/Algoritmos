@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Solucoes comentadas da aula 30b
 
 ## 1. Dados residentes, 100 kernels

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 31 - Pistas graduais
 
 1. Verifique O_NONBLOCK tanto no listener quanto em cada socket retornado por accept.

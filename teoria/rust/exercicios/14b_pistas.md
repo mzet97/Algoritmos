@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 14b
 
 1. Em x86 (TSO forte), loads nao sao reordenados com loads nem stores com stores, entao o Relaxed costuma funcionar por acidente de hardware. O modelo Rust nao promete: em ARM o mesmo codigo pode ler DADO velho com PRONTO novo. O teste prova comportamento naquela maquina; a prova do programa e a ordenacao escrita.

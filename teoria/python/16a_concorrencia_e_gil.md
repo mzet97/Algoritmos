@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 16a - Concorrência, GIL e paralelismo real em Python
 
 ## Objetivo da Aula

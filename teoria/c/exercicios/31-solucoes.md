@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 31 - Solução comentada e rubrica
 
 [aula31.c](../exemplos/aula31.c) e a implementacao de referencia. O contrato do servidor inclui bind em 127.0.0.1, sockets nao bloqueantes, parser por linha, saida limitada, envio parcial e MSG_NOSIGNAL. A leitura e a escrita fazem no maximo uma chamada de I/O por cliente em cada rodada. EAGAIN deixa o estado intacto para a proxima notificacao.

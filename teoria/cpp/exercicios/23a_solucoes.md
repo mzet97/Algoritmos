@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 23a
 
 ## 1. Caminho do `PING` com leitor lento ao lado

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23c
 
 1. Inverter o desempate muda só quem é o **último** da ordem total. Reaplique mentalmente a fase 3 com `(1, autor=1)` vindo antes de `(1, autor=0)`: quem é aplicado por último agora? A convergência sobrevive porque a regra continua idêntica nos dois nós.

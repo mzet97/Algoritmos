@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 14a
 
 1. As fontes são: `pthread_create`/`pthread_join`, `mutex_lock`/`mutex_unlock`, espera em condvar com o mutex, `pthread_once`. Para cada uma, escreva o que foi escrito antes e o que passa a ser visível depois.

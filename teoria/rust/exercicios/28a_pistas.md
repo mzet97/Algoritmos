@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 28a
 
 1. O indice vindo de registrador entra na indexacao de um array estatico: fora do intervalo, o bounds check chama o panic_handler — que desliga. No caminho da trap, desligar por um indice significa que dado de trap (controlado por quem provocou a trap) escolhe se o kernel vive.

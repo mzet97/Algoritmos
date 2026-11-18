@@ -13,9 +13,9 @@ layout: default
 Este arquivo organiza a trilha completa de C em `d:\TI\git\Algoritmos\teoria\c`, cobrindo:
 
 - prompt-base da trilha;
-- fase principal de `01.md` a `19.md`;
+- fase principal de [`01.md`](01.md) a [`19.md`](19.md);
 - plano de especializacao;
-- fase estendida de `20.md` a `32.md`.
+- fase estendida de [`20.md`](20.md) a [`32.md`](32.md).
 
 Use este indice como ponto de entrada rapido para estudo, revisao e navegacao entre os modulos.
 
@@ -24,7 +24,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 ## Arquivos Base
 
 - `prompt.md`: prompt-base da trilha de C
-- `19_plano_estudos.md`: plano de estudos da fase avancada
+- [`19_plano_estudos.md`](19_plano_estudos.md): plano de estudos da fase avancada
 
 ---
 
@@ -33,40 +33,40 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 ### Fundamentos da Linguagem
 
 1. [`01.md`](01.md) - Introducao a C, compilacao com `gcc` e `clang`, `main`, `printf`, estrutura de um programa e toolchain basica
-2. `02.md` - Tipos basicos, variaveis, constantes, operadores e controle de fluxo
-3. `03.md` - Funcoes, prototipos, escopo, stack frame e organizacao basica do codigo
+2. [`02.md`](02.md) - Tipos basicos, variaveis, constantes, operadores e controle de fluxo
+3. [`03.md`](03.md) - Funcoes, prototipos, escopo, stack frame e organizacao basica do codigo
 - [`03a_raciocinio_algoritmico.md`](03a_raciocinio_algoritmico.md) - Aula de ponte: invariantes, prova de correcao e custo antes de estudar arrays e ponteiros
 4. [`04.md`](04.md) - Arrays, strings em C, ponteiros e aritmetica de ponteiros
-5. `05.md` - `struct`, `union`, `enum` e layout de memoria
-6. `06.md` - Headers, multiplos arquivos, preprocessor, macros e organizacao de projetos
+5. [`05.md`](05.md) - `struct`, `union`, `enum` e layout de memoria
+6. [`06.md`](06.md) - Headers, multiplos arquivos, preprocessor, macros e organizacao de projetos
 7. [`07.md`](07.md) - Gerenciamento manual de memoria com `malloc`, `calloc`, `realloc` e `free`
-8. `08.md` - Entrada e saida com `stdio.h`, arquivos, buffers e erros
-9. `09.md` - Function pointers, callbacks e tabelas de despacho
-10. `10.md` - Undefined behavior, aliasing, alignment, padding e armadilhas classicas
+8. [`08.md`](08.md) - Entrada e saida com `stdio.h`, arquivos, buffers e erros
+9. [`09.md`](09.md) - Function pointers, callbacks e tabelas de despacho
+10. [`10.md`](10.md) - Undefined behavior, aliasing, alignment, padding e armadilhas classicas
 - [`10a_arquitetura_e_memoria_virtual.md`](10a_arquitetura_e_memoria_virtual.md) - Aula de ponte: ISA, processo, memoria virtual, paginas, TLB, cache e mapa de memoria
 
 ### Engenharia de Software Nativo
 
-11. `11.md` - Depuracao com `gdb`, sanitizers e `valgrind`
-12. `12.md` - Bibliotecas estaticas, dinamicas, linkagem e ABI
-13. `13.md` - Estruturas de dados classicas em C
+11. [`11.md`](11.md) - Depuracao com `gdb`, sanitizers e `valgrind`
+12. [`12.md`](12.md) - Bibliotecas estaticas, dinamicas, linkagem e ABI
+13. [`13.md`](13.md) - Estruturas de dados classicas em C
 - [`13a_algoritmos_e_estruturas.md`](13a_algoritmos_e_estruturas.md) - Aula de ponte: busca binaria, hash com sondagem, qsort como oraculo e conta de alocacao verificada
 - [`13b_arvores_e_ordenacao.md`](13b_arvores_e_ordenacao.md) - Aula de ponte: BST com tres casos de remocao, degeneracao medida (altura 1000 vs 24) e mergesort estavel contra qsort
 14. [`14.md`](14.md) - Concorrencia com `pthreads`, mutexes, condvars e atomics
 - [`14a_concorrencia_e_threads.md`](14a_concorrencia_e_threads.md) - Aula de ponte: modelo de memoria C11, data race, ciclo de vida e condvar com predicado
-15. `15.md` - Sockets, rede e programacao de sistemas Unix-like
-16. `16.md` - Syscalls, `mmap`, arquivos grandes e I/O de baixo nivel
+15. [`15.md`](15.md) - Sockets, rede e programacao de sistemas Unix-like
+16. [`16.md`](16.md) - Syscalls, `mmap`, arquivos grandes e I/O de baixo nivel
 - [`16a_processos_e_observacao.md`](16a_processos_e_observacao.md) - Aula de ponte: fork/wait, régua de syscall, `/proc/self/maps`, faltas de página e exec contido
 - [`16b_sistema_de_arquivos.md`](16b_sistema_de_arquivos.md) - Aula de ponte: nome vs inode, publicação atômica tmp+fsync+rename e rasgo detectado por checksum
-17. `17.md` - Performance tuning, cache, profiling e otimizacao real
-18. `18.md` - Interoperabilidade com C++, Rust e outras linguagens
-19. `19.md` - Boas praticas para bibliotecas, CLIs, backend e sistemas de producao em C
+17. [`17.md`](17.md) - Performance tuning, cache, profiling e otimizacao real
+18. [`18.md`](18.md) - Interoperabilidade com C++, Rust e outras linguagens
+19. [`19.md`](19.md) - Boas praticas para bibliotecas, CLIs, backend e sistemas de producao em C
 
 ---
 
 ## Plano de Especializacao
 
-- `19_plano_estudos.md` organiza a fase avancada em modulos de:
+- [`19_plano_estudos.md`](19_plano_estudos.md) organiza a fase avancada em modulos de:
   - rede e IPC
   - heap, allocators e buffers
   - performance profunda e hardware
@@ -78,9 +78,9 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 ### Modulo 1 - Rede, IPC e Servidores
 
-20. `20.md` - `select`, `poll`, `epoll` e multiplexacao de I/O
-21. `21.md` - Modelos de servidor: thread por conexao vs event-driven
-22. `22.md` - IPC com pipes, Unix domain sockets e memoria compartilhada
+20. [`20.md`](20.md) - `select`, `poll`, `epoll` e multiplexacao de I/O
+21. [`21.md`](21.md) - Modelos de servidor: thread por conexao vs event-driven
+22. [`22.md`](22.md) - IPC com pipes, Unix domain sockets e memoria compartilhada
 23. [`23.md`](23.md) - Framing de protocolo, parsing incremental e robustez de entrada
 - [`23a_sistemas_distribuidos.md`](23a_sistemas_distribuidos.md) - Aula de ponte: dois nós chave-valor, log com `fsync`, idempotência por `id`, `SIGKILL`, replay, cauda rasgada e atraso injetado
 - [`23b_fuzzing_e_limites.md`](23b_fuzzing_e_limites.md) - Aula de ponte: fuzzing determinístico (200 mil mutações, semente fixa) do parser da 23a, tetos e alfabeto sob ASan/UBSan
@@ -92,17 +92,17 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 ### Modulo 2 - Heap, Alocacao e Infraestrutura Manual
 
-24. `24.md` - Heap real, fragmentacao e comportamento do allocator
-25. `25.md` - Arenas, pools e estrategias customizadas de alocacao
-26. `26.md` - Strings, buffers e builders eficientes em C
-27. `27.md` - Mini runtime de containers e APIs reutilizaveis
+24. [`24.md`](24.md) - Heap real, fragmentacao e comportamento do allocator
+25. [`25.md`](25.md) - Arenas, pools e estrategias customizadas de alocacao
+26. [`26.md`](26.md) - Strings, buffers e builders eficientes em C
+27. [`27.md`](27.md) - Mini runtime de containers e APIs reutilizaveis
 
 ### Modulo 3 - Performance Profunda e Hardware
 
-28. `28.md` - Cache lines, prefetch, branch prediction e false sharing em profundidade
+28. [`28.md`](28.md) - Cache lines, prefetch, branch prediction e false sharing em profundidade
 - [`28a_benchmark_honesto.md`](28a_benchmark_honesto.md) - Aula de ponte: protocolo de medicao, escala limitada por banda, falso compartilhamento e conta do acelerador
-29. `29.md` - Profiling de CPU e memoria com `perf`, `callgrind` e counters
-30. `30.md` - SIMD, vetorizacao e criterio para otimizar loops criticos
+29. [`29.md`](29.md) - Profiling de CPU e memoria com `perf`, `callgrind` e counters
+30. [`30.md`](30.md) - SIMD, vetorizacao e criterio para otimizar loops criticos
 - [`30a_modelo_gpu.md`](30a_modelo_gpu.md) - Aula de ponte: SIMT, hierarquia de memoria, conta da transferencia e referencia em CPU
 - [`30b_simd_e_afinidade.md`](30b_simd_e_afinidade.md) - Aula de ponte: SIMD verificado contra oraculo em double, dispatch AVX2 em tempo de execucao, afinidade confirmada e NUMA contado
 - [`30c_numa_primeiro_toque.md`](30c_numa_primeiro_toque.md) - Aula de ponte: nós NUMA contados, first-touch vs interleave, banda local e limite multinó declarado
@@ -110,7 +110,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 ### Modulo 4 - Projetos Praticos
 
 31. [`31.md`](31.md) - Projeto pratico de servidor TCP/event-driven em C
-32. `32.md` - Projeto pratico de biblioteca/CLI de infraestrutura em C
+32. [`32.md`](32.md) - Projeto pratico de biblioteca/CLI de infraestrutura em C
 - [`32a_kernel_riscv.md`](32a_kernel_riscv.md) - Aula de ponte/projeto: kernel RISC-V em QEMU (boot, PMP, Sv39, traps, syscall, falta sob demanda, escalonador preemptivo, 2 harts) em `kernel/`, com teste automatizado de 7 marcadores
 - [`32b_x86_64_comparativo.md`](32b_x86_64_comparativo.md) - Aula comparativa: Multiboot, modo longo e IDT em x86-64 (`kernel-x86/`), com tabela de correspondências RISC-V x x86-64
 - [`32c_modelo_de_ameacas.md`](32c_modelo_de_ameacas.md) - Aula de ponte/projeto: modelo de ameaças executável dos três projetos (teto, replay, syscall, log sem segredo)
@@ -124,38 +124,38 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 Se voce quiser seguir a trilha como curso:
 
-1. leia `01.md` a `19.md`, incluindo as pontes `03a_raciocinio_algoritmico.md` (apos `03.md`), `10a_arquitetura_e_memoria_virtual.md` (apos `10.md`), `13a_algoritmos_e_estruturas.md` (apos `13.md`), `14a_concorrencia_e_threads.md` (apos `14.md`) e `16a_processos_e_observacao.md` (apos `16.md`)
-2. leia `19_plano_estudos.md`
-3. siga `20.md` a `32.md`
+1. leia [`01.md`](01.md) a [`19.md`](19.md), incluindo as pontes [`03a_raciocinio_algoritmico.md`](03a_raciocinio_algoritmico.md) (apos [`03.md`](03.md)), [`10a_arquitetura_e_memoria_virtual.md`](10a_arquitetura_e_memoria_virtual.md) (apos [`10.md`](10.md)), [`13a_algoritmos_e_estruturas.md`](13a_algoritmos_e_estruturas.md) (apos [`13.md`](13.md)), [`14a_concorrencia_e_threads.md`](14a_concorrencia_e_threads.md) (apos [`14.md`](14.md)) e [`16a_processos_e_observacao.md`](16a_processos_e_observacao.md) (apos [`16.md`](16.md))
+2. leia [`19_plano_estudos.md`](19_plano_estudos.md)
+3. siga [`20.md`](20.md) a [`32.md`](32.md)
 
 ### Caminho por Objetivo
 
 Se o foco for linguagem e base:
 
-- `01.md` a `12.md`
+- [`01.md`](01.md) a [`12.md`](12.md)
 
 Se o foco for debugging, sistemas e rede:
 
-- `11.md` a `16.md`
+- [`11.md`](11.md) a [`16.md`](16.md)
 
 Se o foco for backend nativo, multiplexacao e protocolos:
 
-- `20.md` a `23.md`
-- `31.md`
+- [`20.md`](20.md) a [`23.md`](23.md)
+- [`31.md`](31.md)
 
 Se o foco for memoria manual, allocators e bibliotecas:
 
-- `07.md`
-- `24.md` a `27.md`
-- `32.md`
+- [`07.md`](07.md)
+- [`24.md`](24.md) a [`27.md`](27.md)
+- [`32.md`](32.md)
 
 Se o foco for performance real:
 
-- `17.md`
-- `28.md`
+- [`17.md`](17.md)
+- [`28.md`](28.md)
 - [`28a_benchmark_honesto.md`](28a_benchmark_honesto.md)
-- `29.md`
-- `30.md`
+- [`29.md`](29.md)
+- [`30.md`](30.md)
 - [`30a_modelo_gpu.md`](30a_modelo_gpu.md)
 
 ---

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 19 - Plano de Estudos de Especializacao em Go
 
 ## Objetivo da Aula

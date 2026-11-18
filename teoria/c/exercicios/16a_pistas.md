@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 16a
 
 1. O caminho é: chamada na libc → (vDSO atende direto *ou* instrução de syscall com troca de modo) → kernel executa → retorno com troca de volta. Desenhe os dois ramos e marque onde cada um economiza.

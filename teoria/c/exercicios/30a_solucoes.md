@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 30a
 
 ## 1. Linhas de cache por iteração

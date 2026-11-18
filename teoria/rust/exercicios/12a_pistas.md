@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 12a
 
 1. Para a prova, escreva a fatia `valores[ini..fim]` antes da primeira iteração. Depois substitua `(ini, fim)` pelos novos limites em cada ramo e use a ordenação para justificar o descarte. No fim, descubra o tamanho da fatia.

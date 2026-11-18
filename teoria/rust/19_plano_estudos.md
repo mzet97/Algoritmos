@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 19 — Roadmap Avançado: Especialização em Sistemas e Alta Performance
 
 ## Objetivo da Aula

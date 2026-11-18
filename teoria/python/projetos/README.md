@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Projetos das aulas 30–32 de Python
 
 Fontes extraídas dos blocos de código das aulas e executadas em ambiente

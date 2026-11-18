@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 14a — Do interpretador ao kernel
 
 ## Objetivo da Aula

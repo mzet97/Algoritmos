@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23c
 
 1. Kahan carrega a compensacao do erro de cada soma; compare erro contra f64 e o tempo contra os 4 acumuladores (a cadeia de Kahan e serial).

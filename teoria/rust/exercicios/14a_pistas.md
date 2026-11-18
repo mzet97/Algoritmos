@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 14a
 
 1. O cliente envia 1 byte por `write`; o servidor acumula em `read_until` até o `\n`. Marque onde cada byte mora entre o envio e a resposta: buffer do SO, `BufReader`, `linha`.

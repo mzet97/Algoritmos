@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 23a
 
 1. Desenhe o caminho de um `PING` do fio até a resposta marcando onde cada chamada pode devolver `EAGAIN` e o que o loop faz em cada caso em vez de travar.

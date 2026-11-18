@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Soluções comentadas da aula 14a
 
 ## 1. Caminho do `PING` fatiado

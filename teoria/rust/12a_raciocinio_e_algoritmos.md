@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Aula 12a — Raciocínio discreto e algoritmos em Rust
 
 ---

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Projetos Cargo das aulas 30–32 de Rust
 
 Fontes extraídas dos blocos de código das aulas e executadas em ambiente

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 29b
 
 1. Modelo de ameacas da 19a: superficie (porta, linhas, teto), abuso (conexoes, linha infinita, flood), limites e o que sobra (loopback confiavel?).

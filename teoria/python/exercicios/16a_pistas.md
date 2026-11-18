@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Pistas da aula 16a
 
 1. `total += 1` lê, soma e escreve em três passos de bytecode. Com 8 threads, duas podem ler o mesmo valor antes de qualquer escrita: uma atualização some. Desenhe o entrelaçamento.
