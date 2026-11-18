@@ -1,0 +1,28 @@
+# Site local da masterclass (previa; publicar no GitHub Pages
+# somente com autorizacao explicita do autor).
+title: Masterclass de Programacao de Sistemas
+description: Cinco livros independentes (C, C++, Rust, Go, Python), do basico a sistemas distribuidos, com exemplos executaveis.
+baseurl: ""
+url: ""
+markdown: kramdown
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      render_with_liquid: false
+exclude:
+  - verificar_*.py
+  - "**/*.elf"
+  - "**/.venv/**"
+  - "**/target/**"
+  - "**/__pycache__/**"
+  - "**/.git/**"
+keep_files: []

@@ -33,7 +33,7 @@ A linha da PMP é a lição da tabela: nem todo mecanismo tem correspondente. Qu
 
 ## 3. Exemplo completo e executável
 
-Fontes em [teoria/c/kernel-x86/](kernel-x86/): `boot.S`, `link.ld`, `Makefile`, `test_kernel_x86.py`.
+Fontes em `teoria/c/kernel-x86/` ([boot.S](kernel-x86/boot.S), `link.ld`, `Makefile`, `test_kernel_x86.py`).
 
 ```bash
 make -C teoria/c/kernel-x86

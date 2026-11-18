@@ -37,7 +37,7 @@ Ambiente e promessas (todas verificadas pelo `test_kernel.py`):
 
 ## 3. Exemplo completo e executável
 
-Fontes em [teoria/c/kernel/](kernel/): `boot.S`, `trap.S`, `kernel.c`, `link.ld`, `Makefile` e o teste `test_kernel.py`.
+Fontes em `teoria/c/kernel/` ([kernel.c](kernel/kernel.c), `boot.S`, `trap.S`, `link.ld`, `Makefile` e o teste `test_kernel.py`).
 
 ```bash
 make -C teoria/c/kernel
