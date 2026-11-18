@@ -83,6 +83,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 23. `23.md` - Comunicacao entre microservicos: gRPC, Protobuf e `tonic`
 - [`23a_hpc_baseline.md`](23a_hpc_baseline.md) - Aula de ponte: baseline honesto, multicore com `scope`, contenção granular e conta da GPU
 - [`23b_sistemas_distribuidos.md`](23b_sistemas_distribuidos.md) - Aula de ponte (R6): dois nós com log e `sync_all`, idempotência por id, kill, cauda rasgada, replay e atraso
+- [`23d_quorum_e_reparo.md`](23d_quorum_e_reparo.md) - Aula de ponte (R6): quorum de escrita/leitura com vetor, conflito declarado e reparo em duas passadas
 - [`23c_vetorizacao.md`](23c_vetorizacao.md) - Aula de ponte (R7): soma com quatro acumuladores contra referencia f64, razao medida e NUMA contado
 
 ### Modulo 2 - Computacao de Alto Desempenho, GPU e SIMD
