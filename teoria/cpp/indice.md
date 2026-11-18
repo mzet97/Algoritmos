@@ -90,6 +90,7 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 23. `23.md` - Servidores modernos em C++ com buffers, protocolo, backpressure e arquitetura orientada a eventos
 - [`23a.md`](23a.md) - Aula de ponte: servidor nao bloqueante com `EAGAIN`, timeout de ociosidade, teto por conexao e teste de adversarios
 - [`23b.md`](23b.md) - Aula de ponte: dois nos replicados com log duravel, idempotencia, `SIGKILL` real e teste de queda/reinicio/atraso
+- [`23c.md`](23c.md) - Aula de ponte: relogios vetoriais, leitura por quorum, token entre nos e consistencia alem do primario-replica
 
 ### Modulo 2 - Memoria, ABI e Infraestrutura de Biblioteca
 
