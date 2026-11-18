@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a aula 30 apresentou SIMD como conceito; a 28a ensinou a não acreditar em speedup sem baseline. Falta juntar as duas: vetor otimizado que ninguém verificou é só um jeito mais rápido de estar errado — e, em ponto flutuante, "errado" nem precisa de bug: basta somar numa ordem diferente. Esta aula fecha a lacuna de C7 (NUMA, afinidade, SIMD com verificação).
 
+**Como ler esta aula (três níveis):** *fundamental* — oráculo em `double`, tolerância derivada, afinidade confirmada pela máscara relida; *intermediário* — por que quatro acumuladores vencem e erram menos, e por que AVX dá 3,31× e não 8×; *aprofundamento* — Kahan, dispersão com 20 repetições, `-ffast-math` e o first-touch de 2 nós (exercícios 1–4).
+
 ## 1. Contrato antes do código
 
 Produto interno de dois vetores de `float` com `n = 10 000 000`:
@@ -89,5 +91,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - fixar afinidade, confirmar pela máscara relida e dizer o que o cpuset muda;
 - contar os nós NUMA e declarar o que não é demonstrável com um nó;
 - compilar com `-Werror`, verificar antes de cronometrar e reportar dispersão.
+
+### Pesos da avaliação
+
+| Critério | Peso |
+|---|---|
+| Verificação numérica (oráculo `double`, tolerância derivada, erro menor com 4 acumuladores) | 30% |
+| Medição honesta (baseline, razões sem prometer largura, dispersão, afinidade confirmada) | 30% |
+| Diagnóstico (prever Kahan/`-ffast-math`/fixação antes de rodar, explicar a diferença) | 25% |
+| Documentação (NUMA contado com limite, comandos e flags registrados) | 15% |
+
+**Referências primárias:** [What Every Computer Scientist Should Know About Floating-Point Arithmetic (Goldberg)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html) para o modelo de erro; *Intel Intrinsics Guide* para AVX/FMA usados com dispatch em tempo de execução; `man sched_setaffinity` para afinidade como contrato com o SO.
 
 **Próxima aula:** 31 — o servidor. Desempenho medido aqui volta como pergunta operacional lá: quanto deste ganho sobrevive a clientes reais?

@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a aula 23a testou o parser com casos escolhidos a dedo: malformado, truncado, longo. Casos escolhidos a dedo provam que você pensou naqueles casos — e só neles. Fuzzing inverte a pergunta: em vez de adivinhar a entrada que quebra, gera-se entrada quebrada em massa e observa-se se o programa sobrevive com comportamento definido. É a diferença entre "testei o erro" e "o erro não me acha primeiro".
 
+**Como ler esta aula (três níveis):** *fundamental* — os quatro limites do parser e o veredito das 200 000 mutações; *intermediário* — a tabela de mutações e a verificação da pós-condição a cada sucesso; *aprofundamento* — casos/segundo sob ASan, orçamento de CI e a fronteira com libFuzzer/AFL (exercício 4).
+
 ## 1. Contrato antes do código
 
 Parser desta aula (`analisar(buf, len, out)`):
@@ -88,5 +90,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - verificar a pós-condição de cada sucesso, não só a ausência de crash;
 - declarar o que o fuzz **não** prova e o que cobertura maior mudaria;
 - compilar com `-Werror` e passar limpo sob ASan/UBSan.
+
+### Pesos da avaliação
+
+| Critério | Peso |
+|---|---|
+| Limites enunciados e verificados antes de qualquer cópia | 30% |
+| Fuzz executado com semente fixa, contagens reproduzidas e pós-condição cobrada | 30% |
+| Diagnóstico (prever efeito de mutação/teto novo antes de rodar) | 25% |
+| Documentação (comandos, modos ASan/não-ASan, o que o fuzz não prova) | 15% |
+
+**Referências primárias:** [libFuzzer](https://llvm.org/docs/LibFuzzer.html) para o formato de fuzzer com cobertura (o alvo desta aula); [AFL++](https://aflplus.plus/) para mutação guiada; [The Fuzzing Book](https://www.fuzzingbook.org/) (Zeller et al.), capítulos de mutação e gramáticas, para a distinção entre casos dirigidos e caos.
 
 **Próxima aula:** 24 — heap real e fragmentação. O parser desta aula não aloca nada por linha; a aula 24 mostra o que acontece com quem aloca.

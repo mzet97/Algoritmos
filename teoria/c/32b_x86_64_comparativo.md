@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a 32a terminou com uma promessa: "o que porta é o modelo, não o assembly". Promessa sem execução é propaganda. Este componente — um único arquivo assembly, sem pretensão de kernel completo — executa a travessia equivalente em x86-64 e marca onde a analogia quebra: aqui não há modo-M dono de tudo, a CPU nasce em modo real/protegido pelas mãos de um loader, e até o formato do binário vira decisão de arquitetura.
 
+**Como ler esta aula (três níveis):** *fundamental* — a tabela da seção 2 e os três marcadores; *intermediário* — a sequência do `boot.S` e a montagem da IDT campo a campo; *aprofundamento* — o detalhe do ELF32, IST/TSS e o boot real de BIOS/UEFI (exercício 4). A travessia se executa no nível fundamental; o porquê de cada campo mora nos outros dois.
+
 ## 1. Contrato antes do código
 
 - **Plataforma:** QEMU `q35`, 64 MiB, `-kernel` com Multiboot1 (o loader entra em modo protegido de 32 bits, paging desligado, `EAX = 0x2BADB002`). Desligamento pelo `isa-debug-exit` (porta `0xF4`, valor `0x10`): o QEMU sai com `(0x10 << 1) | 1 = 33`, que o teste contrata como **sucesso** — documentado porque 33 como "sucesso" sem contexto é indistinguível de erro.
@@ -83,5 +85,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - explicar por que o binário é ELF32 com dados do código de 64 bits na mesma seção;
 - reproduzir os três marcadores pelo teste automatizado em clone limpo;
 - declarar o que falta para um kernel x86 (syscall, APIC/timer, SMP) sem inflar o componente.
+
+### Pesos da avaliação
+
+| Critério | Peso |
+|---|---|
+| Travessia e IDT executadas e explicadas (marcadores + sintomas de cada troca) | 35% |
+| Tabela de correspondências preenchida, incluindo a linha que não porta | 25% |
+| Diagnóstico (prever sintoma antes de trocar ordem/campo, transcrever o observado) | 25% |
+| Documentação (comandos, versões, limitações declaradas) | 15% |
+
+**Referências primárias:** *Intel 64 and IA-32 Architectures SDM*, vol. 3, capítulos de segmentação, paginação e IDT; *AMD64 APM* vol. 2 para a travessia ao modo longo; especificação Multiboot1 para o estado de entrada; [OSDev Wiki](https://wiki.osdev.org/) como mapa de navegação (verificar cada afirmação contra os manuais acima).
 
 **Próxima etapa do livro:** revisão integral das aulas 01–32 contra o padrão das pontes e o gate do volume de C. Com kernel e comparativo executados, C4 e C8 fecham o conteúdo novo; o que resta é revisão, não invenção.

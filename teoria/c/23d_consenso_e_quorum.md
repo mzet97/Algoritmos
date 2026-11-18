@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a 23a terminou com dois nós que convergem; a 23c terminou com dois nós que divergem e reconciliam com perda declarada. Falta a pergunta que um sistema real precisa responder antes de confirmar qualquer coisa ao cliente: *quantos nós precisam concordar para que uma escrita conte?* A resposta desta aula é uma só palavra — **maioria** — e todo o resto é consequência dela.
 
+**Como ler esta aula (três níveis):** *fundamental* — maioria confirma, minoria não confirma, cura descarta o não confirmado; *intermediário* — as quatro fases executadas e o termo do isolado como contador de tentativas; *aprofundamento* — quorum par, membro novo e a prova de segurança que falta (o que o contrato declara fora).
+
 ## 1. Contrato antes do código
 
 Simulação determinística em um processo, três nós, sem rede e sem relógio (o transporte é chamada de função; aqui o objeto é a regra):
@@ -79,6 +81,15 @@ O padrão é o mesmo das pontes irmãs: Go exige quorum nomeado no G6 antes de c
 - [ ] Demonstro a minoria que não elege nem confirma, e digo onde a escrita 222 morreu.
 - [ ] Descrevo o que acontece com o termo do isolado e por que a cura exige eleição nova.
 - [ ] Nomeio três coisas que isto **não** é: heartbeat/timeout, membership change e prova de Raft — e onde cada uma entraria.
+
+### Pesos da avaliação
+
+| Critério | Peso |
+|---|---|
+| Maioria executada (eleição, commit, minoria que não confirma, descarte na cura) | 35% |
+| Interseção de maiorias explicada como o mecanismo que impede confirmação dupla | 25% |
+| Diagnóstico (prever termo/voto/commit antes de cada fase, transcrever o observado) | 25% |
+| Documentação (termo como época, fora do contrato declarado) | 15% |
 
 **Referências primárias:** [In Search of an Understandable Consensus Algorithm (Raft)](https://raft.github.io/raft.pdf) para eleição, termos e commit por maioria; [Paxos Made Simple](https://lamport.azurewebsites.net/pubs/paxos-simple.pdf) para a ideia de quorum como interseção. O [6.824 do MIT](https://pdos.csail.mit.edu/6.824/) orienta o nível dos laboratórios; nada dele foi copiado para esta aula.
 

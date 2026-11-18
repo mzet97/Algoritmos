@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a 23a terminou com uma confissão: se os dois nós escreverem durante uma partição, os logs divergem e a arquitetura não sabe quem vence. Esta aula dá nome e ferramenta a cada parte dessa confissão. Relógio de parede não serve: duas máquinas discordam sobre "agora". Relógios lógicos não dizem que horas são — dizem **o que veio antes do quê**, que é a única pergunta que a ordem de eventos precisa responder.
 
+**Como ler esta aula (três níveis):** *fundamental* — Lamport ordena, vetor detecta, ordem total reconcilia com perda nomeada; *intermediário* — as quatro fases executadas e a regra de desempate como política escrita; *aprofundamento* — terceiro nó, chaves disjuntas e o parágrafo do consenso que falta (exercícios 2–4).
+
 ## 1. Contrato antes do código
 
 Simulação determinística em um processo (o transporte é a 23a; aqui o objeto é a ordem):
@@ -89,5 +91,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - explicar por que qualquer ordem total converge e por que a escolha dela é política, não matemática;
 - declarar a fronteira com consenso sem implementar nenhum pedaço dele;
 - compilar com `-Werror` e passar limpo sob ASan/UBSan.
+
+### Pesos da avaliação
+
+| Critério | Peso |
+|---|---|
+| Relógios mantidos nas quatro operações + veredito aconteceu-antes/concorrência | 30% |
+| Partição reproduzida, reconciliação com descarte nomeado | 30% |
+| Diagnóstico (prever vencedor sob ordem trocada, provar convergência independente da escolha) | 25% |
+| Documentação (fronteira com consenso declarada sem implementar) | 15% |
+
+**Referências primárias:** [Time, Clocks, and the Ordering of Events (Lamport, 1978)](https://lamport.azurewebsites.net/pubs/time-clocks.pdf) para aconteceu-antes e relógios lógicos; [Virtual Time and Global States (Mattern/Fidge)](https://en.wikipedia.org/wiki/Vector_clock) para relógios vetoriais e detecção de concorrência.
 
 **Próxima aula:** 24 — heap real. Ordem de eventos resolvida no papel; a memória onde os logs moram é o próximo problema.

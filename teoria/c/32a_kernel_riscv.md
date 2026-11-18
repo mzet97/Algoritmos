@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** até aqui, "sistema operacional" foi observado de fora: `/proc`, syscalls de um processo, página medida pela 10a. Esta aula atravessa a fronteira: o programa **é** o modo privilegiado. Cada mecanismo que as aulas anteriores mediram pelo lado de fora — tabela de páginas, trap, escalonador — aparece aqui pelo lado de dentro, em ~500 linhas que cabem numa leitura.
 
+**Como ler esta aula (três níveis):** *fundamental* — a ordem boot → PMP → paginação → descida e os sete marcadores; *intermediário* — o caminho da trap (`mscratch`, `TrapFrame`, retomada) e as três respostas possíveis (`mepc`+4, reexecuta, desliga); *aprofundamento* — granularidade de gigapage vs 4 KiB, SMP real e isolamento entre tarefas (exercícios 2–4).
+
 ## 1. Contrato antes do código
 
 Ambiente e promessas (todas verificadas pelo `test_kernel.py`):
@@ -88,5 +90,16 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - demonstrar os sete marcadores com o teste automatizado e explicar a intercalação `A`/`B`;
 - declarar o que o kernel **não** faz: SMP real, isolamento entre tarefas, FS, drivers;
 - reconstruir do zero (`make clean && make && test`) em clone limpo.
+
+### Pesos da avaliação
+
+| Critério | Peso |
+|---|---|
+| Ordem boot → PMP → paginação → descida executada e diagnosticada (causa 1 no `mret`) | 30% |
+| Caminho da trap e as três retomadas, com os sete marcadores explicados | 30% |
+| Diagnóstico (prever sintoma de PMP/`mepc`/TLB antes de quebrar, transcrever o observado) | 25% |
+| Documentação (o que o kernel não faz, declarado sem inflar) | 15% |
+
+**Referências primárias:** *RISC-V Privileged ISA Specification* (modos, `mtvec`, PMP, Sv39, `sfence.vma`); *RISC-V Unprivileged ISA* para o `ecall` e a semântica de retomada; manual do QEMU `virt` (mapa de memória, CLINT, test device) para os endereços contratados.
 
 **Próxima etapa do livro:** comparação x86-64 (mesmo modelo, outra arquitetura) e o gate do volume de C. O kernel é a última peça de C4/C8; o que falta para o gate é a revisão integral das aulas 01–32 contra este padrão.
