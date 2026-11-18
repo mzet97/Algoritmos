@@ -86,6 +86,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 - [`23b_fuzzing_e_limites.md`](23b_fuzzing_e_limites.md) - Aula de ponte: fuzzing determinístico (200 mil mutações, semente fixa) do parser da 23a, tetos e alfabeto sob ASan/UBSan
 - [`23c_relogios_e_particao.md`](23c_relogios_e_particao.md) - Aula de ponte: relógios de Lamport e vetoriais, concorrência detectada, partição bilateral reconciliada com perda declarada
 - [`23d_consenso_e_quorum.md`](23d_consenso_e_quorum.md) - Aula de ponte: eleição por maioria, commit por maioria, minoria que não confirma e cura com termo novo
+- [`23e_rpc_sobre_consenso.md`](23e_rpc_sobre_consenso.md) - Aula de ponte: RPC com `id`, repetição servida do cache e erro memorizado sobre o commit da 23d
 
 ### Modulo 2 - Heap, Alocacao e Infraestrutura Manual
 
