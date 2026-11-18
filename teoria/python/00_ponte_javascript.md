@@ -149,4 +149,11 @@ Go recusa a coerção na compilação; C soma bytes sem perguntar o tipo; Rust t
 
 **Referências primárias:** [Modelo de dados de Python](https://docs.python.org/3/reference/datamodel.html) para nomes/objetos e `==`/`is`; [Comparações em JavaScript (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) para o contraste honesto. Nenhuma promessa sobre outro interpretador além do CPython testado.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Troque `a = [9]` por `a.append(9)` e preveja `b` antes de rodar. Rode e explique a diferença — quando o apelido sente e quando ele nem percebe.
+2. (Diagnóstico) Rode `int("257") is int("257")` e `None is None`: preveja os dois antes de rodar. Explique qual `is` é legítimo e qual pede interning de presente — e por que `257 == 257` continua verdadeiro nos dois mundos.
+3. (Projeto) Sem tocar em `classificar_idade`, preveja a saída para `"-5"`, `"018"`, `"1111"` e `" 21 "`, um motivo por recusa ou aceite. Rode e explique — incluindo por que `int("018")` funciona mas `018` no fonte não compilaria.
+4. (Previsão) Remova o `len(texto) > 3` e chame `classificar_idade("1" * 1000000)`: preveja hang, `MemoryError` ou outra exceção. Rode e explique com a mensagem — quem impõe o limite real e por que o teto da função continua necessário.
+
+Use [pistas graduais](exercicios/00_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/00_solucoes.md) depois de registrar sua própria explicação.
