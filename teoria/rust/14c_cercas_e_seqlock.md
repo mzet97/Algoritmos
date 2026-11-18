@@ -4,6 +4,14 @@ layout: default
 
 # Aula 14c — Cercas e seqlock: ordenação sem operação e leitura otimista (R5)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar cercas de memória e leitura otimista (seqlock), distinguir ordenação sem operação atômica do custo de um lock, e apontar quando a técnica é aplicável ou proibida.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir cerca, seqlock e leitura otimista com retentativa`;
+- **Nível 2 — Aplicar:** `prever leitura inconsistente sem validação de sequência e corrigir`;
+- **Nível 3 — Projetar:** `projetar um caminho de leitura otimista justificando quando o lock pode ser evitado`.
+
 **Competências SDD:** CON, MEM. **Pré-requisitos:** aulas 13–14 e [14b](14b_ordem_e_backpressure.md) (Release/Acquire grudado na operação, backpressure e cancelamento). Toolchain registrada: `rustc` 1.99.1 (stable, sem nightly, sem crates externas).
 
 **Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar 50 mil publicações conferidas par a par via `fence` (sem nenhum `Release`/`Acquire` nas operações) e explicar por que o leitor do seqlock retenta em vez de bloquear — e o que o contador ímpar proíbe.
@@ -70,3 +78,20 @@ C++ escreve a mesma cerca com `std::atomic_thread_fence` na 17a de C++; Go escon
 **Referências primárias:** *The Rust Reference*, capítulo *Atomics and Memory Ordering* (`fence`, `Release`/`Acquire`); o paper do seqlock (Lameter) como origem do protocolo contador-ímpar. Nenhum texto foi copiado — o comportamento acima foi confirmado executando este exemplo.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

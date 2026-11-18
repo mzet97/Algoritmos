@@ -12,6 +12,12 @@ Escrever a pré-condição e a pós-condição de uma função, declarar o invar
 
 Esta aula é a ponte R3 do mapa: quem domina invariantes aqui carrega o raciocínio para concorrência (13), `unsafe` (15) e kernel (R8), onde a invariante violada não dá erro gentil — dá condição de corrida ou falha de isolamento.
 
+Ao final, você deverá: enunciar invariantes de laço, provar correção de um algoritmo iterativo simples por invariante, e distinguir a prova do invariante da rede de segurança da linguagem (Rust, Python ou C).
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir invariante, pré-condição e pós-condição`;
+- **Nível 2 — Aplicar:** `prever a violação de um invariante em um exemplo e corrigir o laço`;
+- **Nível 3 — Projetar:** `projetar um algoritmo com invariante declarado e prova de correção`.
+
 ---
 
 ## 1. Contrato antes do código
@@ -245,3 +251,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 ## 7. Ponte com Python e JavaScript
 
 Python tem `int` arbitrário e `in` linear legível; JavaScript usa `Number` de 64 bits, onde nem todo inteiro grande é exato. A identidade do invariante é a mesma nas três linguagens; o que muda é a rede de segurança: Rust verifica limites em tempo de execução e impõe o empréstimo exclusivo via tipos, Python verifica limites com exceção, C não verifica. A prova do invariante continua obrigatória nos três — a rede só muda o preço do erro.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *Introduction to Algorithms*, Cormen et al. (MIT Press, 4. ed., ISBN 978-0262046305); 2. Steve Klabnik e Carol Nichols, *The Rust Programming Language* (No Starch Press, ISBN 978-1718503106).

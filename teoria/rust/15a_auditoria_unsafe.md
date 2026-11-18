@@ -4,6 +4,14 @@ layout: default
 
 # Aula 15a — Auditoria de `unsafe`: cada bloco com invariante escrita
 
+## Objetivos verificáveis
+
+Ao final, você deverá: auditar cada bloco `unsafe` registrando a invariante assumida, classificar `unsafe` justificável vs. irredutível, e apontar o que a biblioteca padrão observa e não observa.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir invariante de `unsafe` e as categorias de auditoria`;
+- **Nível 2 — Aplicar:** `auditar um bloco apontando hipótese não documentada e corrigir a documentação`;
+- **Nível 3 — Projetar:** `projetar o encapsulamento seguro de um `unsafe` justificando pré-condições`.
+
 **Competências SDD:** MEM e SEC. **Pré-requisitos:** aulas [10](10.md) (lifetimes), [12](12.md) (smart pointers) e [15](15.md) (o `transmute` e o `Vec` do zero). Esta ponte entra antes de qualquer `unsafe` em projeto: quem não auditou quatro blocos pequenos não audita quarenta.
 
 **Objetivo observável:** ao terminar, você deverá escrever, para cada bloco `unsafe`, a invariante que ele assume, o teste que a cobra e o que quebra se ela falhar — e executar os quatro pares desta aula verdes.
@@ -53,6 +61,23 @@ Cada linha cobra uma invariante: vazio/cheio/LIFO testam os blocos 1–3; a cont
 ## 5. Ponte com as demais trilhas
 
 C escreve "quem aloca, libera" no cabeçalho; C++ tranca no handle opaco da 13b; Go cobra o `C.free` de quem alocou em C. Em JavaScript, o análogo é o objeto que detém o `ArrayBuffer` transferido — dono único, mesma invariante, outra sintaxe.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).
 
 ## 6. Checklist do que esta aula garante
 

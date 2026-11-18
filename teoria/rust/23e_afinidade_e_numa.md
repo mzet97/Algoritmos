@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23e — Afinidade, primeiro toque e o laboratório multinó (R7)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar afinidade de CPU e primeiro toque (first-touch) em NUMA, fixar threads em nós, medir o efeito multinó, e distinguir efeito NUMA de contenção.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir afinidade, first-touch e nó NUMA`;
+- **Nível 2 — Aplicar:** `diagnosticar alocação remota sistemática e corrigir com first-touch local`;
+- **Nível 3 — Projetar:** `projetar um experimento multinó justificando fixação e alocação com números`.
+
 **Competências SDD:** HPC, MEM, OS. **Pré-requisitos:** aulas [23a](23a_hpc_baseline.md) (baseline honesto) e [23c](23c_vetorizacao.md) (corretude por tolerância, NUMA contado). Toolchain registrada: `rustc` 1.99.1, `taskset` e `numactl` do sistema. Máquina registrada: 24 núcleos, **um** nó NUMA (`node0`: `0-23`).
 
 **Objetivo observável:** ao terminar, você deverá executar o exemplo com máscara cheia e com `taskset -c 0`, mostrar checksums idênticos nos dois modos de inicialização, ler a afinidade de `/proc/self/status` e explicar por que a razão medida nesta máquina não prova nada sobre NUMA — e o que provaria.
@@ -72,3 +80,20 @@ C faz o primeiro toque na [30c](../c/30c_numa_primeiro_toque.md) com a mesma dec
 **Referências primárias:** manual do `numactl`/`taskset` (afinidade e bind como mecanismo do SO) e política de primeiro toque do kernel Linux (página mora no nó de quem tocou primeiro). Nenhum texto foi copiado — os números acima foram medidos nesta máquina (24 núcleos, 1 nó).
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

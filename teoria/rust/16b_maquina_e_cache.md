@@ -4,6 +4,14 @@ layout: default
 
 # Aula 16b — Máquina vista de Rust: localidade, syscall e página
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar localidade temporal e espacial, prever o efeito do padrão de acesso no tempo, distinguir página de linha de cache, e medir sem atribuir causa microarquitetural sem evidência.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir localidade, linha de cache e página`;
+- **Nível 2 — Aplicar:** `prever qual padrão de acesso é mais rápido e confirmar por medição`;
+- **Nível 3 — Projetar:** `projetar um layout justificando localidade com números medidos`.
+
 **Competências SDD:** ARQ, OS, MEM. **Pré-requisitos:** aulas 15–16, [16a](16a_maquina_e_so.md) (o mesmo território em espaço de usuário) e a aula 10a de C (hierarquia de cache e página). Esta ponte fecha o R4: ISA e ABI continuam nas aulas 15–16; aqui medem-se cache, fronteira de syscall e página a partir de um binário Rust comum.
 
 **Objetivo observável:** medir, no mesmo binário, a soma de uma matriz de 2048×2048 por linhas e por colunas (mesma conta, razões esperadas >10×), o custo de 200 mil leituras de 1 byte de `/dev/zero` contra acessos a memória já mapeada, e ler o tamanho virtual do processo de `/proc/self/statm`.
@@ -50,3 +58,20 @@ A primeira versão mediu razão 0,98× — linhas e colunas "empatadas". O culpa
 Exercícios em [pistas](exercicios/16b_pistas.md) e [soluções](exercicios/16b_solucoes.md): (1) achar o tamanho em que a razão linhas/colunas nasce, varrendo potências de 2; (2) trocar `/dev/zero` por um arquivo real e por um pipe, e ordenar os custos explicando cada termo; (3) medir o custo por chamada de `read` com buffers de 1, 64 e 4096 bytes e mostrar a amortização; (4) ler `/proc/self/maps` e apontar as regiões do próprio binário (texto, heap, pilha, vdso).
 
 **Checklist:** percursos ancorados contra o otimizador; tamanhos escolhidos para o nível de cache declarado; custo de syscall separado em fixo e por byte; nenhum número sem máquina e flags (`-O`) declaradas.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

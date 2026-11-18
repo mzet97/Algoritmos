@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23c — Vetorização em Rust: a cadeia de dependência é o inimigo
 
+## Objetivos verificáveis
+
+Ao final, você deverá: identificar a cadeia de dependência como inimiga da vetorização, reestruturar um laço para expor paralelismo de dados, e medir o ganho contra a linha de base.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir cadeia de dependência e paralelismo de dados`;
+- **Nível 2 — Aplicar:** `diagnosticar laço não vetorizável e corrigir a dependência`;
+- **Nível 3 — Projetar:** `projetar um kernel justificando a reestruturação com speedup medido`.
+
 **Competências SDD:** HPC, GPU, ARQ. **Pré-requisitos:** aulas 17, 23a (baseline de HPC), [23b](23b_sistemas_distribuidos.md) e a aula 30b de C (o mesmo fenômeno com acumuladores, lá medido com AVX e aqui sem intrinsics). Você precisa saber iteradores, `chunks_exact` e por que somar `f32` em ordens diferentes muda o resultado.
 
 **Objetivo observável:** verificar uma soma sequencial e uma soma com quatro acumuladores contra uma referência em `f64` (com tolerâncias derivadas do modelo de erro), medir a razão entre elas e contar os nós NUMA da máquina por `/sys` — declarando o que um nó só não permite concluir, como na 30b de C.
@@ -48,3 +56,20 @@ NUMA: `nos_numa=1` nesta máquina (contagem de `/sys/devices/system/node`), e po
 Exercícios em [pistas](exercicios/23c_pistas.md) e [soluções](exercicios/23c_solucoes.md): (1) soma de Kahan contra os quatro acumuladores em erro e tempo; (2) 2, 4 e 8 acumuladores: onde a razão satura e por quê; (3) o experimento first-touch desenhado para 2 nós, com a frase do que o rotula como não executado aqui; (4) inspecionar o assembly gerado (`--emit asm`) e apontar uma instrução vetorial no laço dos acumuladores, ou explicar a ausência.
 
 **Checklist:** oráculo em `f64` com tolerâncias derivadas; razão medida com repetição; NUMA contado e limite declarado; `-D warnings` limpo; nenhum `unsafe` para o caminho rápido.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

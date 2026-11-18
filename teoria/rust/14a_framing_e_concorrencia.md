@@ -14,6 +14,12 @@ Ao terminar, você deverá explicar por que um `read` nunca corresponde a "uma m
 
 Esta aula é o ponto de partida do módulo R5: `async` não implica paralelismo, e nenhum framework dispensa o entendimento do fluxo de bytes que ele esconde.
 
+Ao final, você deverá: explicar por que TCP é fluxo de bytes (não mensagens), implementar framing com prefixo de tamanho, isolar cliente lento sem travar os demais, e estimar o teto de conexões pelo custo de thread.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir fluxo de bytes, framing, e o custo por conexão thread-bloqueante`;
+- **Nível 2 — Aplicar:** `diagnosticar leitura parcial tratada como mensagem completa e corrigir com framing`;
+- **Nível 3 — Projetar:** `projetar um protocolo com framing justificando limites e isolamento`.
+
 ---
 
 ## 1. TCP entrega bytes, não mensagens
@@ -245,3 +251,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - apontar o que `Mutex`/`Arc`/atômicos garantem e o que não garantem.
 
 **Próxima aula:** `async` e runtime. O raciocínio desta aula sustenta a motivação do assíncrono: o custo por conexão que o `async` tenta derrubar.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

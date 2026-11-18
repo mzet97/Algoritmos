@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23d — Quorum em Rust: a maioria decide, o borrow checker separa
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar quorum de leitura/escrita, prever quando a maioria decide corretamente, separar responsabilidades via borrow checker, e descrever reparo (read-repair) após divergência.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir quorum de leitura/escrita e reparo`;
+- **Nível 2 — Aplicar:** `prever perda de escrita com quorum insuficiente e corrigir os tamanhos`;
+- **Nível 3 — Projetar:** `projetar um armazenamento replicado justificando quoruns e reparo`.
+
 **Competências SDD:** DST, CON. **Pré-requisitos:** aulas 13–14, [23b](23b_sistemas_distribuidos.md) (idempotência e log durável) e leitura da [23c de Go](../go/23c_quorum_e_reparo.md) é recomendada. Esta ponte fecha o R6 na parte de ordem: relógios vetoriais e quorum de escrita/leitura com reparo, em Rust puro sem crates.
 
 **Objetivo observável:** ao terminar, você deverá escrever com quorum (W=2 de 3), ler com quorum declarando conflito em vez de servir o obsoleto, reparar a atrasada — e explicar por que o reparo mora numa segunda passada, apontando o erro de borrow que a primeira tentativa comete.
@@ -63,6 +71,23 @@ A fase 1 (`k=111`) estabelece o normal com quorum pleno: escrita confirmada por 
 ## 5. Ponte com as demais trilhas
 
 C confirma por maioria com termo e eleição; C++ declara conflito no quorum e confirma na 23f; Go repara na leitura com `-race` limpo. Em JavaScript, o análogo são CRDTs e sync offline-first — a réplica isolada desta aula é o cliente sem rede.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320), cap. 5; 2. Steve Klabnik e Carol Nichols, *The Rust Programming Language*. 
 
 ## 6. Checklist do que esta aula garante
 

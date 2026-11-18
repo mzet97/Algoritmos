@@ -18,6 +18,12 @@ Importante: nesta aula, "atômico" significa que a atualização daquela chave a
 Isso **não** significa "lock-free". O `DashMap` usa sincronização interna por fragmentos; ele reduz contenção, mas ainda usa travas.
 
 Use as [pistas](exercicios/32-pistas.md) somente depois de tentar; consulte as [solucoes comentadas](exercicios/32-solucoes.md) apos entregar sua versao.
+Ao final, você deverá: refatorar o banco da Aula 31 para zero-copy com `bytes`, implementar INCR atômico por chave e TTL com limpeza preguiçosa, e distinguir sincronização por fragmentos de execução lock-free.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir zero-copy, operação atômica por chave e limpeza preguiçosa`;
+- **Nível 2 — Aplicar:** `diagnosticar cópia desnecessária no caminho quente e corrigir com `bytes``;
+- **Nível 3 — Projetar:** `refatorar um caminho quente justificando cada eliminação de cópia com medição`.
+
 ---
 
 ## 1. Atualizando as Dependências
@@ -259,6 +265,23 @@ INCR contador
 3.  **`bytes::Bytes`:** Embora neste exemplo simples tenhamos convertido de string, a estrutura base para guardar blobs binários gigantescos e roteá-los sem clonar arrays na memória está pronta.
 
 Este continua sendo um protótipo didático: falta um parser de protocolo que trate leituras parciais, limites de tamanho e entrada malformada antes de considerar uso fora da máquina local.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. Steve Klabnik e Carol Nichols, *The Rust Programming Language* (No Starch Press, 2. ed., ISBN 978-1718503106); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320), caps. 5–6.
 
 ## Checklist de conclusão do bônus
 

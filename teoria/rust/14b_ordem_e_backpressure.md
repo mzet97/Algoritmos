@@ -4,6 +4,14 @@ layout: default
 
 # Aula 14b — Ordem de memória, backpressure e cancelamento em Rust
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar ordem de memória (o que `Mutex`/atômicos garantem e não garantem), implementar backpressure com canal limitado, e tratar cancelamento sem vazar tarefa nem perder dado.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir visibilidade, backpressure e cancelamento cooperativo`;
+- **Nível 2 — Aplicar:** `diagnosticar fila ilimitada que estoura memória e corrigir com canal limitado`;
+- **Nível 3 — Projetar:** `projetar um pipeline com backpressure justificando tamanhos de fila e cancelamento`.
+
 **Competências SDD:** CON, MEM. **Pré-requisitos:** aulas 13–14, [14a](14a_framing_e_concorrencia.md) e 17a de C++ (o mesmo modelo de memória, outra sintaxe). Você precisa saber `std::thread`, `mpsc` e o vocabulário happens-before.
 
 **Objetivo observável:** demonstrar publicação de dados por atômicos com `Release`/`Acquire` (10 mil voltas verificadas), bloquear um produtor num canal limitado de 4 com o consumidor dormindo (backpressure medida em ~300 ms) e parar um worker por cancelamento cooperativo com flag atômica — sem matar a thread.
@@ -51,3 +59,20 @@ A primeira (`mensagem Release/Acquire ok (10000 voltas)`) prova a aresta: 10 mil
 Exercícios em [pistas](exercicios/14b_pistas.md) e [soluções](exercicios/14b_solucoes.md): (1) trocar `Release`/`Acquire` por `Relaxed` e explicar por que o teste continua passando em x86 e o que ele deixaria de provar; (2) medir a vazão do canal com teto 0 (rendezvous), 4 e 1024; (3) fazer o worker parar no meio de um `recv` usando `recv_timeout` como cancelamento; (4) desenhar o grafo happens-before completo das 10 mil voltas, incluindo o `join`.
 
 **Checklist:** cada ordenação com justificativa escrita; backpressure medida, não afirmada; cancelamento sem morte de thread; `-D warnings` limpo e nenhum `sleep` usado como sincronização (só como carga).
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

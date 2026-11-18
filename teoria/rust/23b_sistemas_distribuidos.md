@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23b — Sistemas distribuídos em Rust: o mesmo contrato, outra linguagem
 
+## Objetivos verificáveis
+
+Ao final, você deverá: enunciar o contrato de um sistema distribuído (o que cada nó garante), distinguir falha de processo de partição, e explicar quorum em termos de maioria.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir contrato, falha, partição e quorum`;
+- **Nível 2 — Aplicar:** `diagnosticar decisão sem maioria e corrigir o protocolo`;
+- **Nível 3 — Projetar:** `projetar um protocolo simples justificando o quorum e o comportamento sob partição`.
+
 **Competências SDD:** DST, NET, SEC, CON. **Pré-requisitos:** aulas 13–14, [14a](14a_framing_e_concorrencia.md) (framing e tetos), 20–23 e a leitura da [23a de C](../c/23a_sistemas_distribuidos.md) é recomendada, não exigida. Esta é a ponte R6: entra depois dos fundamentos de rede e antes de qualquer alegação de serviço resiliente.
 
 **Objetivo observável:** ao terminar, você deverá executar dois nós chave-valor Rust (processos reais via `current_exe`) que persistem cada escrita com `sync_all` antes de responder, recusam duplicar efeito em reenvio com o mesmo `id`, e sobrevivem — com comportamento explicado — a duplicata com valor diferente, pedido malformado, `kill` do processo, cauda de log rasgada, reinício com replay e atraso injetado de 400 ms.
@@ -86,3 +94,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - compilar com `-D warnings`, rodar os 10 checks e declarar as lacunas (consenso, partição resolvida, segurança fora de loopback).
 
 **Próxima aula:** 24 — desempenho, onde o `Mutex` grosso desta aula vira hipótese a medir.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320), caps. 8–9; 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)).

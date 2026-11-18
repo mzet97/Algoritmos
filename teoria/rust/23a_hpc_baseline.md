@@ -10,9 +10,11 @@ layout: default
 
 Medir um núcleo numérico em Rust com método — hipótese, baseline verificado, aquecimento, mínimo de repetições, variância, ambiente anotado — e decidir no papel se um acelerador valeria a transferência. Pré-requisitos: aulas 12a a 16. Não precisa de `wgpu`, CUDA, `rust-gpu`, nightly nem placa.
 
-Ao terminar, você deverá comparar laço sequencial, `std::thread::scope` e um atômico compartilhado com a mesma invariante verificada, explicar a curva com Amdahl e banda, e emitir o veredito da GPU a partir da aritmética, não do marketing.
-
-Esta aula é o núcleo executável do módulo R7: referência correta, variante multicore, relatório de variância e modelo de custo com `&[T]` e `f64::EPSILON` onde couber — tudo em CPU estável, sem `nightly`. `wgpu`/CUDA/`rust-gpu` ficam nos laboratórios opcionais.
+Ao final, você deverá: construir linha de base escalar correta, explicar por que `black_box` é necessário, distinguir contenção real de granularidade grossa com números, e emitir veredito com os números (fazer a conta da viagem).
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir linha de base, `black_box` e contenção vs. granularidade`;
+- **Nível 2 — Aplicar:** `diagnosticar benchmark otimizado para fora e corrigir com `black_box``;
+- **Nível 3 — Projetar:** `projetar um experimento com hipótese e veredito numérico`.
 
 ## 1. O protocolo, antes do cronômetro
 
@@ -199,3 +201,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - compilar sem warnings, passar no `clippy` e confrontar cada número com o modelo.
 
 **Próxima aula:** backend de alta performance. O raciocínio desta aula — medir antes de escalar — decide o que paralelizar no serviço.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

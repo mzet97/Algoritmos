@@ -14,6 +14,12 @@ Ao terminar, você deverá criar um processo filho e colher sua saída, medir o 
 
 Esta aula é o módulo R4 do mapa: quem domina a observação aqui carrega o modelo para desempenho (17–18), `unsafe` auditável e o kernel didático (R8), onde cada travessia e cada página passam a ter nome, dono e custo.
 
+Ao final, você deverá: interpretar `/proc/self/maps` e `VmRSS` sem inferir endereços físicos, distinguir medição de tempo de alegação de causa microarquitetural, e apontar o que a `std` observa e não observa.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir mapa de memória, RSS e tempo monotônico`;
+- **Nível 2 — Aplicar:** `diagnosticar conclusão física inválida a partir de endereço virtual e corrigir`;
+- **Nível 3 — Projetar:** `projetar uma medição justificando réguas e limites da observação`.
+
 ---
 
 ## 1. Processo é isolamento com contabilidade
@@ -222,3 +228,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - apontar o que a biblioteca padrão observa e o que ela não observa.
 
 **Próxima aula:** desempenho, profiling e otimização. As réguas desta aula (tempo monotônico, RSS, razão de padrões de acesso) viram método de profiling.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

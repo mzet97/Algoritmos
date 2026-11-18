@@ -4,6 +4,14 @@ layout: default
 
 # Aula 16c — ISA, ABI e layout: o que o hardware promete e o que o `repr` garante (R4)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: distinguir o que a ISA promete do que o `repr` garante, explicar layout e alinhamento, e prever quebra de ABI por mudança de layout.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir ISA, ABI, layout e alinhamento`;
+- **Nível 2 — Aplicar:** `diagnosticar suposição de layout não garantida e corrigir com `repr(C)``;
+- **Nível 3 — Projetar:** `projetar uma struct FFI justificando cada atributo de representação`.
+
 **Competências SDD:** ARQ, MEM, SEC. **Pré-requisitos:** aulas [16a](16a_maquina_e_so.md) (espaço de usuário), [16b](16b_maquina_e_cache.md) (localidade) e [15a](15a_auditoria_unsafe.md) (auditoria de `unsafe`). Toolchain registrada: `rustc` 1.99.1 (stable).
 
 **Objetivo observável:** ao terminar, você deverá executar o exemplo com `rustc --edition 2024 -D warnings`, mostrar os deslocamentos contratuais do `repr(C)`, o roundtrip de endianness e a chamada `extern "C"` por nome e por ponteiro — e explicar qual dessas três provas quebra primeiro num port entre ISAs.
@@ -69,3 +77,20 @@ C declara o mesmo layout com `offsetof` e `_Static_assert` na aula de ABI; C++ a
 **Referências primárias:** *The Rust Reference*, capítulos de *Type Layout* (`repr(C)`) e *Unsafety* (`#[unsafe(no_mangle)]` na edição 2024); SysV ABI do alvo para a convenção `extern "C"`. Nenhum texto foi copiado — os deslocamentos acima foram confirmados executando este exemplo.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).

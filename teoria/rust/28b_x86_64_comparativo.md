@@ -4,6 +4,14 @@ layout: default
 
 # Aula 28b — Comparativo x86-64 da trilha Rust: fechar o R8
 
+## Objetivos verificáveis
+
+Ao final, você deverá: comparar RISC-V e x86-64 nos pontos do R8 (syscalls, paginação, interrupções), prever diferenças de comportamento entre alvos, e fechar o requisito com diff comportamental zero contra C/C++.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir os pontos do R8 e as diferenças de ABI entre os alvos`;
+- **Nível 2 — Aplicar:** `diagnosticar divergência entre alvos e atribuir à causa correta`;
+- **Nível 3 — Projetar:** `projetar o comparativo final justificando equivalência comportamental`.
+
 **Competências SDD:** OS, ARQ. **Pré-requisitos:** aula [28a](28a_kernel_riscv.md) e a leitura da [32b de C](../c/32b_x86_64_comparativo.md). O componente executado é o mesmo (`teoria/rust/kernel-x86/`, rebuild do componente da trilha de C) — a aula é a comparação lida com os olhos de quem acabou de escrever o kernel em Rust.
 
 **Objetivo observável:** executar `KERNEL_X86_OK`, reproduzir a tabela de correspondências da 32b de C de memória, e responder onde o sistema de tipos de Rust ajudaria **neste componente** se ele fosse escrito em Rust (e onde o assembly continuaria assembly).
@@ -40,3 +48,20 @@ Use [pistas graduais](exercicios/28b_pistas.md) somente após uma tentativa. Con
 - A fronteira "componente comparativo" × "kernel x86 completo" declarada sem inflar o entregue.
 
 **Fecho do R8:** kernel RISC-V em Rust executado e comparativo x86 executado. O que resta no livro de Rust é a revisão das aulas originais e os projetos 30–32 executados em ambiente limpo.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. Manual do desenvolvedor Intel 64/IA-32 (SDM, vols. 1–2); 2. *The RISC-V Reader*, Patterson e Waterman; 3. *Operating Systems: Three Easy Pieces* ([pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)).

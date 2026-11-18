@@ -4,6 +4,14 @@ layout: default
 
 # Aula 28a — Kernel RISC-V em Rust `no_std`: o que o `core` compra e o que ele cobra
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar o que `core` compra e cobra em `no_std`, justificar cada `unsafe` com uma frase apontando os irredutíveis, diagnosticar trap de alinhamento/PMP pela causa, e declarar lacunas sem atribuí-las à linguagem.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir `core`, trap, PMP e `unsafe` irredutível`;
+- **Nível 2 — Aplicar:** `diagnosticar causa de trap (ex. causa 12) e corrigir alinhamento/permissão`;
+- **Nível 3 — Projetar:** `projetar um kernel mínimo justificando cada `unsafe` e declarando lacunas`.
+
 **Competências SDD:** OS, MEM, ARQ, SEC, CON. **Pré-requisitos:** aulas 15–16 (ownership e `unsafe`/FFI auditáveis), [16a](16a_maquina_e_so.md), 27–28 e o percurso da [aula 32a de C](../c/32a_kernel_riscv.md) como referência do modelo. Toolchain: `rustc` 1.99 com o target `riscv64gc-unknown-none-elf` (`rustup target add riscv64gc-unknown-none-elf`) e QEMU 10.2.2.
 
 **Objetivo observável:** ao terminar, você deverá compilar o kernel de `teoria/rust/kernel/` só com `core` (sem `std`, sem alocador), inicializá-lo no QEMU com os mesmos sete marcadores das trilhas C/C++ e explicar cada ponto onde o Rust exigiu uma prova ou uma declaração que C não exigia — e o ponto onde ele não ajudou em nada.
@@ -63,3 +71,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - declarar as lacunas (alocador, isolamento, SMP) sem atribuí-las à linguagem.
 
 **Próxima aula:** [28b](28b_x86_64_comparativo.md) — o comparativo x86-64 desta trilha, fechando o R8.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *The RISC-V Reader*, Patterson e Waterman (Strawberry Canyon, ISBN 978-0999060791); 2. Especificação RISC-V privilegiada ([riscv.org](https://riscv.org/specifications/privileged-isa/)); 3. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)).

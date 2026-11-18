@@ -4,6 +4,14 @@ layout: default
 
 # Aula 12b — Árvores e ordenação em Rust: `Box`, invariante e o oráculo da std
 
+## Objetivos verificáveis
+
+Ao final, você deverá: implementar árvore com `Box` explicando ownership dos nós, enunciar o invariante de ordenação, prever o custo de operações, e distinguir o que a implementação garante do que a `std` garante.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir `Box`, invariante de árvore de busca e complexidades de ordenação`;
+- **Nível 2 — Aplicar:** `diagnosticar quebra de invariante em inserção e corrigir`;
+- **Nível 3 — Projetar:** `projetar uma estrutura ordenada justificando invariante e custos`.
+
 **Competências SDD:** MAT, ALG, MEM. **Pré-requisitos:** aulas 09–12 e [12a](12a_raciocinio_e_algoritmos.md) (busca e invariante em vetor). Você precisa saber `Option<Box<T>>`, `match` e empréstimos mutáveis.
 
 **Objetivo observável:** implementar uma BST com `Box` por nó, provar que o percurso em ordem devolve as chaves ordenadas contra `sort_unstable` como oráculo em 300 casos, e medir a degeneração (altura 1 000 ordenada contra ~20 embaralhada) declarando o custo de um `Box` por nó.
@@ -48,3 +56,20 @@ A primeira linha (`propriedade ok: BST em-ordem == sort_unstable+dedup (300 caso
 Exercícios em [12b](exercicios/12b_pistas.md) (pistas) e [soluções](exercicios/12b_solucoes.md): (1) remoção com os três casos e a prova do sucessor; (2) construção balanceada pela mediana a partir do vetor ordenado, com altura medida; (3) reimplementação com arena (`Vec<No>` + índices `Option<usize>`) e contagem de alocações comparada; (4) o contraexemplo mínimo de entrada que degenera a sua BST e a defesa (balanceamento, shuffle de entrada ou outra estrutura) declarada por escrito.
 
 **Checklist:** invariante enunciada e testada contra a std; degeneração medida e explicada; custo `Box` por nó contado contra o vetor; `-D warnings` limpo; limite de recursão declarado.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que compila.
+
+**Para se aprofundar:**
+
+1. *Introduction to Algorithms*, Cormen et al. (MIT Press, 4. ed., ISBN 978-0262046305); 2. Steve Klabnik e Carol Nichols, *The Rust Programming Language* (No Starch Press, ISBN 978-1718503106).
