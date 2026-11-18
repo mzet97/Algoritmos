@@ -30,6 +30,10 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 ## Trilha Principal
 
+### Ponto de partida
+
+0. [`00_ponte_python_javascript.md`](00_ponte_python_javascript.md) - Aula de ponte: o que muda vindo de Python/JavaScript (compilacao, zero, sem coercao, copia de slice, erro como valor)
+
 ### Fundamentos da Linguagem
 
 1. `01.md` - Introducao ao Go, instalacao, ferramenta `go`, estrutura de um programa, `package main`, `func main`, `fmt.Println`, variaveis, constantes e tipos basicos
