@@ -303,11 +303,114 @@ def verificar_rust() -> list[str]:
     return falhas
 
 
+PROJETOS_EXTERNOS_GO = {
+    "21": "gorilla/websocket (executado na solucao com modulo)",
+    "22": "lib/pq + Postgres (solucao executou com SQLite)",
+    "23": "gRPC com codigo gerado (executado na solucao com protoc)",
+}
+PROCESSOS_CONTINUOS_GO = {"26", "27"}
+ARGUMENTOS_GO = {("28", 0): ["grande.log"], ("31", 0): ["-files", "alvo.txt"]}
+
+
+def verificar_go() -> list[str]:
+    """Go: cada bloco com package+main compila como modulo descartavel e roda.
+
+    Trechos sem `package` sao fragmentos; 08 monta o projeto multi-package da
+    aula; servidores sobem em namespace de rede; 26/27 sao processos continuos
+    (timeout com o processo vivo e a classificacao); 21-23 dependem de
+    infraestrutura externa e foram executados nas solucoes do gate.
+    """
+    falhas: list[str] = []
+    with tempfile.TemporaryDirectory() as tmp:
+        base = Path(tmp)
+        for numero in range(1, 32):
+            aula = f"{numero:02d}"
+            caminho = RAIZ / "go" / f"{aula}.md"
+            if not caminho.exists():
+                continue
+            todos = re.findall(r"```go\n(.*?)```",
+                               caminho.read_text(encoding="utf-8", errors="ignore"), re.S)
+            principais = [b for b in todos if "func main()" in b]
+            if aula in PROJETOS_EXTERNOS_GO:
+                print(f"go/{aula}: projeto_externo ({PROJETOS_EXTERNOS_GO[aula]})")
+                continue
+            if not principais:
+                print(f"go/{aula}: sem_main")
+                continue
+            classes: list[str] = []
+            for indice, codigo in enumerate(principais):
+                if not codigo.lstrip().startswith("package "):
+                    classes.append("trecho")
+                    continue
+                trabalho = base / f"{aula}_{indice}"
+                trabalho.mkdir()
+                (trabalho / "grande.log").write_text("linha de log\n" * 100, encoding="utf-8")
+                (trabalho / "dados.bin").write_bytes(b"abcdefgh" * 128)
+                (trabalho / "alvo.txt").write_text("conteudo\n", encoding="utf-8")
+                if aula == "08":
+                    (trabalho / "go.mod").write_text(
+                        "module exemplo.com/curso-go\n\ngo 1.23\n", encoding="utf-8")
+                    (trabalho / "main.go").write_text(codigo, encoding="utf-8")
+                    for bloco in todos:
+                        pacote = re.match(r"package (\w+)", bloco.lstrip())
+                        if pacote and pacote.group(1) != "main":
+                            pasta = trabalho / pacote.group(1)
+                            pasta.mkdir(exist_ok=True)
+                            (pasta / f"{pacote.group(1)}.go").write_text(
+                                bloco, encoding="utf-8")
+                else:
+                    (trabalho / "main.go").write_text(codigo, encoding="utf-8")
+                    subprocess.run(["go", "mod", "init", "x"], cwd=trabalho,
+                                   capture_output=True, timeout=60)
+                    if "golang.org/x/sys" in codigo:
+                        subprocess.run(["go", "get", "golang.org/x/sys@latest"],
+                                       cwd=trabalho, capture_output=True, timeout=300)
+                compilacao = subprocess.run(
+                    ["go", "build", "-race", "-o", "prog", "."],
+                    cwd=trabalho, capture_output=True, text=True, timeout=300)
+                if compilacao.returncode != 0:
+                    classes.append("NAO_COMPILA")
+                    falhas.append(f"go/{aula}[{indice}] nao compila: {compilacao.stderr[:250]}")
+                    continue
+                servidor = "ListenAndServe" in codigo and "httptest" not in codigo
+                args = ARGUMENTOS_GO.get((aula, indice), [])
+                if servidor:
+                    comando = ["unshare", "-rn", str(trabalho / "prog"), *args]
+                else:
+                    comando = [str(trabalho / "prog"), *args]
+                try:
+                    corrida = subprocess.run(
+                        comando, capture_output=True, text=True, timeout=6,
+                        stdin=subprocess.DEVNULL, cwd=trabalho)
+                    if corrida.returncode == 0:
+                        classes.append("executado")
+                    else:
+                        classes.append(f"exit{corrida.returncode}")
+                        falhas.append(
+                            f"go/{aula}[{indice}] exit {corrida.returncode}: "
+                            f"{corrida.stdout[:120]} {corrida.stderr[:120]}")
+                except subprocess.TimeoutExpired:
+                    if servidor:
+                        classes.append("servidor")
+                    elif aula in PROCESSOS_CONTINUOS_GO:
+                        classes.append("processo_continuo")
+                    else:
+                        classes.append("TIMEOUT")
+                        falhas.append(f"go/{aula}[{indice}] timeout inesperado")
+            print(f"go/{aula}: {', '.join(classes)}")
+    return falhas
+
+
 def main() -> int:
-    if len(sys.argv) != 2 or (sys.argv[1] not in VOLUMES and sys.argv[1] != "rust"):
-        print("uso: verificar_fontes_unicas.py c|cpp|rust", file=sys.stderr)
+    if len(sys.argv) != 2 or sys.argv[1] not in ("c", "cpp", "rust", "go"):
+        print("uso: verificar_fontes_unicas.py c|cpp|rust|go", file=sys.stderr)
         return 2
-    falhas = verificar_rust() if sys.argv[1] == "rust" else verificar(sys.argv[1])
+    if sys.argv[1] == "rust":
+        falhas = verificar_rust()
+    elif sys.argv[1] == "go":
+        falhas = verificar_go()
+    else:
+        falhas = verificar(sys.argv[1])
     if falhas:
         print("FALHAS:")
         for falha in falhas:
