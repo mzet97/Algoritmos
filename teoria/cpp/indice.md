@@ -94,6 +94,7 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 - [`23c.md`](23c.md) - Aula de ponte: relogios vetoriais, leitura por quorum, token entre nos e consistencia alem do primario-replica
 - [`23d_limites_globais.md`](23d_limites_globais.md) - Aula de ponte: tetos globais do servidor (conexoes, por IP, bytes por janela) sobre a base da 23a
 - [`23e_fuzzing_sistematico.md`](23e_fuzzing_sistematico.md) - Aula de ponte: fuzzing sistematico do parser de framing com mutador deterministico sob sanitizers
+- [`23f_eleicao_commit_rpc.md`](23f_eleicao_commit_rpc.md) - Aula de ponte: eleicao por maioria, commit por maioria, cura com descarte nomeado e RPC idempotente
 
 ### Modulo 2 - Memoria, ABI e Infraestrutura de Biblioteca
 
