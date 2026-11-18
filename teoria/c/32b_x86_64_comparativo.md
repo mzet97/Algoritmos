@@ -98,3 +98,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** *Intel 64 and IA-32 Architectures SDM*, vol. 3, capítulos de segmentação, paginação e IDT; *AMD64 APM* vol. 2 para a travessia ao modo longo; especificação Multiboot1 para o estado de entrada; [OSDev Wiki](https://wiki.osdev.org/) como mapa de navegação (verificar cada afirmação contra os manuais acima).
 
 **Próxima etapa do livro:** revisão integral das aulas 01–32 contra o padrão das pontes e o gate do volume de C. Com kernel e comparativo executados, C4 e C8 fecham o conteúdo novo; o que resta é revisão, não invenção.
+
+---
+
+### Para se aprofundar
+
+1. *Operating Systems: Three Easy Pieces*, Remzi e Andrea Arpaci-Dusseau ([pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 2. *The RISC-V Reader*, Patterson e Waterman (Strawberry Canyon, ISBN 978-0999060791); 3. Especificacao RISC-V privilegiada ([riscv.org](https://riscv.org/specifications/privileged-isa/)).

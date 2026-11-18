@@ -74,6 +74,12 @@ Logs limitados (16 entradas por nó, com `assert` de teto): a simulação recusa
 
 O padrão é o mesmo das pontes irmãs: Go exige quorum nomeado no G6 antes de chamar qualquer coisa de "consenso"; Python cobra "o que acontece com a escrita do lado minoritário" no PY7 — esta aula é a resposta executável a essa pergunta. Em JavaScript, a eleição aparece em coordenação de abas/workers (só uma aba lidera o sync) e em backends Node com lock distribuído: quem pode confirmar sozinho, e quem precisa de dois carimbos? A pergunta muda de linguagem, não de forma.
 
+---
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).
+
 ## 6. Checklist do que esta aula garante (e do que ela não garante)
 
 - [ ] Explico por que quaisquer duas maiorias se interceptam e por que isso impede duas confirmações conflitantes.

@@ -86,3 +86,9 @@ C cobra o framing com teste de queda real (`SIGKILL`); Rust audita o `unsafe` po
 **Referências primárias:** [libFuzzer](https://llvm.org/docs/LibFuzzer.html) para o formato do alvo (o `main` desta aula vira `LLVMFuzzerTestOneInput` sem mudar o parser); [AFL++](https://aflplus.plus/) para mutação guiada por cobertura. Nenhuma afirmação de cobertura de código nesta aula — classes cobertas, ramos presumidos.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Para se aprofundar
+
+1. W. Richard Stevens, Bill Fenner e Andrew Rudoff, *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555); 2. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 4-5; 3. Bjarne Stroustrup, *A C++ Programming Language* (Addison-Wesley, 4. ed., ISBN 978-0321563842).

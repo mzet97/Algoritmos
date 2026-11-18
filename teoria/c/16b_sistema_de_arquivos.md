@@ -188,6 +188,23 @@ fase3: publicado intacto (27 bytes), tmp descartado
 
 O mesmo trio aparece em toda a masterclass: Go publica config com tmp+rename na trilha de infraestrutura; Python faz checkpoint com fsync na trilha de ETL; Rust persiste o log antes de responder na 23a; C++ ordena durabilidade com `fsync` antes de confirmar commit. Em JavaScript, o análogo é o `localStorage` que só confirma após serializar inteiro — meio JSON gravado é o rasgo desta aula em outra roupa. E o VFS do kernel [32d](32d_vfs_minimo.md) mostra onde o `rename` mora de verdade: resolvedor que troca a ligação nome→inode sem tocar nos bytes — a mesma operação que esta aula usa sem ver.
 
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. *Operating Systems: Three Easy Pieces*, Remzi e Andrea Arpaci-Dusseau (versao gratuita em [pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 2. W. Richard Stevens, *Advanced Programming in the UNIX Environment* (Addison-Wesley, 3. ed., ISBN 978-0321637734); 3. Manual do programador Linux (`man 2 syscall`, `man 2 mmap`).
+
 ## 9. Checklist do que esta aula garante
 
 - [ ] Explico a diferença entre nome, inode e conteúdo — e qual dos três o `rename` move (o nome).

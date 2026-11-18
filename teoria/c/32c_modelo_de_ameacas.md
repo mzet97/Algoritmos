@@ -179,6 +179,23 @@ Limites antes de alocação: nenhum `malloc` acontece antes do tamanho passar pe
 
 O formato — fronteira, abuso, limite, teste — é o mesmo cobrado nos projetos de C++, Rust, Go e Python pela rubrica de projeto (correção, falhas, segurança, medição, comunicação): a [rubrica SDD](../RUBRICA_SDD.md) não pede "segurança", pede abusos nomeados com testes. Em JavaScript, a fronteira é o formulário e a query string: mesmo trio (teto de tamanho, NUL/encoding hostil, replay do duplo clique), mesmos tetos, mesmo replay (o duplo clique que cria dois pedidos — a 23e com roupa de usuário). A ameaça muda de endereço, não de forma. E a 23f mostra o que acontece quando um teto desta tabela falta no servidor real: o global que a 32c declara aqui é medido lá.
 
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Robert Seacord, *Secure Coding in C and C++* (Addison-Wesley, 2. ed., ISBN 978-0321822130); 2. *Operating Systems: Three Easy Pieces* ([pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 3. *C11 standard draft N1570*, Anexo K (funcoes com verificacao de limites).
+
 ## 8. Checklist do que esta aula garante
 
 - [ ] Nomeio as três fronteiras e digo o que cada uma recusa, com o número do limite — e de onde o número veio.

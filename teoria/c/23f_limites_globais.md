@@ -485,3 +485,20 @@ C++ faz o mesmo trio de tetos em simulação na [23d](../cpp/23d_limites_globais
 **Referências primárias:** manual do `poll`/`accept` (dreno até `EAGAIN`, `revents` válido só para fds consultados), `man 7 socket` (comportamento de `close` com dados não lidos: RST), e *UNIX Network Programming* (Stevens) para throttle vs close. Nenhum texto foi copiado — os dois bugs acima foram pegos executando este teste, e a política de throttle nasceu deles.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).

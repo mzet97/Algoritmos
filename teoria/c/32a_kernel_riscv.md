@@ -103,3 +103,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** *RISC-V Privileged ISA Specification* (modos, `mtvec`, PMP, Sv39, `sfence.vma`); *RISC-V Unprivileged ISA* para o `ecall` e a semântica de retomada; manual do QEMU `virt` (mapa de memória, CLINT, test device) para os endereços contratados.
 
 **Próxima etapa do livro:** comparação x86-64 (mesmo modelo, outra arquitetura) e o gate do volume de C. O kernel é a última peça de C4/C8; o que falta para o gate é a revisão integral das aulas 01–32 contra este padrão.
+
+---
+
+### Para se aprofundar
+
+1. *Operating Systems: Three Easy Pieces*, Remzi e Andrea Arpaci-Dusseau ([pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 2. *The RISC-V Reader*, Patterson e Waterman (Strawberry Canyon, ISBN 978-0999060791); 3. Especificacao RISC-V privilegiada ([riscv.org](https://riscv.org/specifications/privileged-isa/)).

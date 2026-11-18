@@ -108,3 +108,9 @@ C cobra teto de linha e conexões na 32c; Go limita corpo e conexões no middlew
 **Referências primárias:** [OWASP Rate Limiting](https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html) para as dimensões de abuso; `man 2 poll` para onde os checks moram no loop. Nenhum teto desta aula substitui autenticação — limite diz *quantos*, identidade diz *quem*.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1*.

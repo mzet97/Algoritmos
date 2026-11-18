@@ -96,3 +96,9 @@ C elege e confirma na 23d e numera o RPC na 23e; Go exige quorum W+R na 23c; Rus
 **Referências primárias:** [Raft](https://raft.github.io/raft.pdf) para eleição, termos e commit; especificação de [Idempotency-Key do Stripe](https://docs.stripe.com/api/idempotent_requests) para o RPC. Nenhum destes textos foi copiado — o exemplo é simulação própria sobre as regras deles.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1*.

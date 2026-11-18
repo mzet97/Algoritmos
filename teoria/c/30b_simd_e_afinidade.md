@@ -104,3 +104,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** [What Every Computer Scientist Should Know About Floating-Point Arithmetic (Goldberg)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html) para o modelo de erro; *Intel Intrinsics Guide* para AVX/FMA usados com dispatch em tempo de execução; `man sched_setaffinity` para afinidade como contrato com o SO.
 
 **Próxima aula:** 31 — o servidor. Desempenho medido aqui volta como pergunta operacional lá: quanto deste ganho sobrevive a clientes reais?
+
+---
+
+### Para se aprofundar
+
+1. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669), caps. 5-6; 2. Agner Fog, manuais de microarquitetura ([agner.org/optimize](https://www.agner.org/optimize/)); 3. John Patterson e John Hennessy, *Computer Organization and Design, RISC-V Edition* (Morgan Kaufmann, ISBN 978-0128203316).

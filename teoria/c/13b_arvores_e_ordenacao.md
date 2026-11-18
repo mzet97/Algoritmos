@@ -100,3 +100,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** *Introduction to Algorithms* (Cormen et al.), capítulos de BST e mergesort, para invariante e estabilidade; `man qsort` para o contrato do oráculo (sem promessa de estabilidade).
 
 **Próxima aula:** 14 — concorrência. A invariante desta aula é sequencial; a próxima pergunta é o que resta dela quando duas threads a tocam ao mesmo tempo.
+
+---
+
+### Para se aprofundar
+
+1. Brian Kernighan e Dennis Ritchie, *C Programming Language* (Prentice Hall, 2. ed., ISBN 978-0131103627); 2. *C11 standard draft N1570* ([open-std.org](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)); 3. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669).

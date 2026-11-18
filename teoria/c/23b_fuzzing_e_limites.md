@@ -103,3 +103,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** [libFuzzer](https://llvm.org/docs/LibFuzzer.html) para o formato de fuzzer com cobertura (o alvo desta aula); [AFL++](https://aflplus.plus/) para mutação guiada; [The Fuzzing Book](https://www.fuzzingbook.org/) (Zeller et al.), capítulos de mutação e gramáticas, para a distinção entre casos dirigidos e caos.
 
 **Próxima aula:** 24 — heap real e fragmentação. O parser desta aula não aloca nada por linha; a aula 24 mostra o que acontece com quem aloca.
+
+---
+
+### Para se aprofundar
+
+1. W. Richard Stevens, Bill Fenner e Andrew Rudoff, *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555); 2. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 4-5; 3. *Beej's Guide to Network Programming* ([beej.us/guide/bgnet](https://beej.us/guide/bgnet/)).

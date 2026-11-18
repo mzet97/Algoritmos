@@ -139,3 +139,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** *Designing Data-Intensive Applications* (Kleppmann), capítulos 5, 8 e 9, para log, replicação e falhas parciais; `man fsync` para a durabilidade prometida.
 
 **Próxima aula:** 24 — heap real e fragmentação. O log desta aula é o primeiro estado que sobrevive ao processo; a aula 24 pergunta o que acontece com a memória que não sobrevive.
+
+---
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).

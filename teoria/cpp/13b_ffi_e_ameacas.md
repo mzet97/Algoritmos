@@ -107,3 +107,9 @@ C documenta quem aloca e quem libera na 18; Rust tranca a fronteira no tipo (`un
 **Referências primárias:** [padrão C++](https://isocpp.org/) § de funções `noexcept` e compatibilidade com C; documentação de [N-API](https://nodejs.org/api/n-api.html) para o mesmo contrato em outro ecossistema. O [6.824 do MIT](https://pdos.csail.mit.edu/6.824/) orienta o nível; nada dele foi copiado.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Para se aprofundar
+
+1. Robert Seacord, *Secure Coding in C and C++* (Addison-Wesley, 2. ed., ISBN 978-0321822130); 2. Documentacao do GDB ([sourceware.org/gdb](https://www.sourceware.org/gdb/documentation/)); 3. Documentacao dos sanitizers do Clang ([clang.llvm.org/docs](https://clang.llvm.org/docs/)).

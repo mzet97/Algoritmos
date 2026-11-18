@@ -105,6 +105,12 @@ As [pistas graduais](exercicios/10a_pistas.md) e [soluções comentadas](exercic
 
 **Rubrica de aprovação:** entregue diagrama, código/versão/comando, observações reais com PID removido se compartilhar o relatório publicamente, interpretação e limites. Aprova quem (a) executa sem avisos, (b) encontra corretamente duas regiões, (c) separa garantias de C das escolhas de SO/CPU, (d) distingue TLB/cache/página e (e) não trata os endereços vistos como prova de endereço físico ou desempenho. Corrija e refaça qualquer item faltante.
 
+---
+
+### Para se aprofundar
+
+1. Brian Kernighan e Dennis Ritchie, *C Programming Language* (Prentice Hall, 2. ed., ISBN 978-0131103627); 2. *C11 standard draft N1570* ([open-std.org](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)); 3. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669).
+
 ## 9. Checklist de domínio
 
 - Consigo explicar ISA, compilador, processo e microarquitetura sem tratá-los como sinônimos.

@@ -141,3 +141,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** *Introduction to Algorithms* (Cormen et al.), Parte I, para invariantes e análise; [N1570, seção 7.2 (`assert`)](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) para o contrato interno.
 
 **Próxima aula:** arrays e ponteiros. O mesmo raciocínio por invariantes ajudará a manter índices dentro dos limites de um buffer.
+
+---
+
+### Para se aprofundar
+
+1. Brian Kernighan e Dennis Ritchie, *C Programming Language* (Prentice Hall, 2. ed., ISBN 978-0131103627); 2. *C11 standard draft N1570* ([open-std.org](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)); 3. *cppreference.com - C* ([en.cppreference.com/w/c](https://en.cppreference.com/w/c)).

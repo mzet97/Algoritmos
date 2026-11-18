@@ -224,3 +224,20 @@ C++ resolve a mesma divergência por cura com termo novo na [23f](../cpp/23f_ele
 **Referências primárias:** o algoritmo de *anti-entropy* com Merkle trees do Dynamo (DeCandia et al., SOSP 2007) como origem do padrão resumo-escopo/versão-direção (aqui, versão em vez de timestamp); especificação da [FNV-1a](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) para a função usada. Nenhum texto foi copiado — a implementação é própria, em um processo, sem rede; a simulação isola a regra como a 23d isola o commit.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).

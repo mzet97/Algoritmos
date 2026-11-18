@@ -168,6 +168,23 @@ A medição ancora antes de cronometrar: o `memset` toca todas as páginas (firs
 
 C++ repete o protocolo com `numactl` e afinidade de threads na 30b (mesmas três linhas, mesma declaração de limite); Rust ancora com thread dedicada por pedaço na 23e (first-touch programático em vez de flag); Go mede contenção granular na 23a e sofre o mesmo efeito sob o runtime (o GC também mora em algum nó — pausa longa pode ser página remota); Python declara o mesmo limite de 1 nó na 29c. Em JavaScript, o análogo é a localidade de `TypedArray` por worker — a viagem existe, só muda de nome (e de unidade: lá se mede em ms de frame, não em GiB/s).
 
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669), caps. 5-6; 2. Agner Fog, manuais de microarquitetura ([agner.org/optimize](https://www.agner.org/optimize/)); 3. John Patterson e John Hennessy, *Computer Organization and Design, RISC-V Edition* (Morgan Kaufmann, ISBN 978-0128203316).
+
 ## 8. Checklist do que esta aula garante
 
 - [ ] Conto os nós da máquina e digo onde li (sysfs, sem presumir).

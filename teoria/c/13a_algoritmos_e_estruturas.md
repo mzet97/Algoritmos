@@ -274,3 +274,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 ## 5. Ponte com Python e JavaScript
 
 Python entrega `bisect`, `sorted` e `dict` prontos; JavaScript entrega `Array.prototype.sort` (cuidado: sem comparador ordena como texto) e `Map`. A identidade do invariante é a mesma nas três linguagens. O que muda: em C, cada garantia custa código explícito — ordenação, capacidade, overflow, liberação. Nas outras, a estrutura pronta cobra o preço escondido (realocações, hash, GC). Saber implementar em C ensina o que o preço esconde.
+
+---
+
+### Para se aprofundar
+
+1. Brian Kernighan e Dennis Ritchie, *C Programming Language* (Prentice Hall, 2. ed., ISBN 978-0131103627); 2. *C11 standard draft N1570* ([open-std.org](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)); 3. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669).

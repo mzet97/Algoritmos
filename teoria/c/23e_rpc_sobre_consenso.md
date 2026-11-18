@@ -185,6 +185,23 @@ Cache com teto (`MAX_PEDIDOS`, `assert` no estouro): em produção, o teto vira 
 
 Go cobra chave de idempotência antes de qualquer retry de escrita (a mesma porta, com HTTP no meio); Python dedup por `(autor, seq)` na reconciliação da 23b (o `id` composto quando há múltiplos autores); Rust traduz `id` em tipo que não se confunde (`Id` novo em vez de `String` solta); C++ memoriza o erro junto com o acerto na 23f (repetição servida do cache, inclusive o desfecho ruim). Em JavaScript, o `id` é o `Idempotency-Key` dos gateways de pagamento: o duplo clique no "pagar" é o retry desta aula com roupa de usuário — e a janela de 24h do gateway é o TTL que esta aula declara como futuro.
 
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).
+
 ## 9. Checklist do que esta aula garante
 
 - [ ] Explico por que timeout não distingue "não executou" de "resposta perdida" — e como o `id` resolve (consulta antes da execução).

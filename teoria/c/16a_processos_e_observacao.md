@@ -210,3 +210,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 ## 5. Ponte com Python e JavaScript
 
 Python: `subprocess.run` colhe códigos de saída; `resource.getrusage` expõe as mesmas faltas; `os.getpid` é a mesma régua. JavaScript (Node): `child_process` com `status`, sem acesso direto a faltas de página. Nos três, a moral é igual: processo é isolamento com contabilidade, e toda travessia ao kernel tem custo mensurável.
+
+---
+
+### Para se aprofundar
+
+1. *Operating Systems: Three Easy Pieces*, Remzi e Andrea Arpaci-Dusseau (versao gratuita em [pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 2. W. Richard Stevens, *Advanced Programming in the UNIX Environment* (Addison-Wesley, 3. ed., ISBN 978-0321637734); 3. Manual do programador Linux (`man 2 syscall`, `man 2 mmap`).

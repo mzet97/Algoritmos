@@ -231,3 +231,20 @@ Leia com o modelo certo: espero speedup modesto na soma (streaming limitado por 
 ## 7. Ponte com as demais trilhas
 
 Python mede o mesmo tradeoff entre threads e processos (aula 16a); Go mede worker pool e race detector (aula 11a); Rust mede localidade sequencial contra salto (aula 16a); C++ mede mutex contra atômico (aula 17a). O protocolo desta aula — hipótese, baseline, aquecimento, repetições, ambiente — vale para todas.
+
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669), caps. 5-6; 2. Agner Fog, manuais de microarquitetura ([agner.org/optimize](https://www.agner.org/optimize/)); 3. John Patterson e John Hennessy, *Computer Organization and Design, RISC-V Edition* (Morgan Kaufmann, ISBN 978-0128203316).

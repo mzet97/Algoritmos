@@ -198,3 +198,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** [N1570, seção 5.1.2.4 (execuções multithread) e 7.26 (atomics)](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf); `man pthreads` para criação, junção e sincronização.
 
 **Próxima aula:** sockets e programação de sistemas Unix-like. O raciocínio desta aula sustenta servidores: cada conexão precisa de dono, ciclo de vida e invariante.
+
+---
+
+### Para se aprofundar
+
+1. David Butenhof, *Programming with POSIX Threads* (Addison-Wesley, ISBN 978-0134436984); 2. *C11 standard draft N1570*, cap. 7.26 (atomics); 3. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669), cap. 12.

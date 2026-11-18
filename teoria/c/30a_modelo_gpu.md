@@ -239,3 +239,20 @@ O ingênuo percorre `B` por colunas com passo de `n` doubles: cada acesso paga u
 ## 7. Ponte com as demais trilhas
 
 Python mediria o mesmo tradeoff entre NumPy e laço puro (aula 29a quando existir); Go, entre baseline e multicore (G7); Rust, escalar contra multicore antes de qualquer `wgpu` (R7). O modelo — grade, bloco, transferência, granularidade — é o mesmo em todas; só a placa muda.
+
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669), caps. 5-6; 2. Agner Fog, manuais de microarquitetura ([agner.org/optimize](https://www.agner.org/optimize/)); 3. John Patterson e John Hennessy, *Computer Organization and Design, RISC-V Edition* (Morgan Kaufmann, ISBN 978-0128203316).

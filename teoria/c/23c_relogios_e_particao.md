@@ -104,3 +104,9 @@ Você concluiu a aula se consegue, sem olhar a solução:
 **Referências primárias:** [Time, Clocks, and the Ordering of Events (Lamport, 1978)](https://lamport.azurewebsites.net/pubs/time-clocks.pdf) para aconteceu-antes e relógios lógicos; [Virtual Time and Global States (Mattern/Fidge)](https://en.wikipedia.org/wiki/Vector_clock) para relógios vetoriais e detecção de concorrência.
 
 **Próxima aula:** 24 — heap real. Ordem de eventos resolvida no papel; a memória onde os logs moram é o próximo problema.
+
+---
+
+### Para se aprofundar
+
+1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).

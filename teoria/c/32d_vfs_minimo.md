@@ -343,3 +343,20 @@ C++ faz a ROM didática por id na [38](../cpp/38.md) (sem caminho, sem diretóri
 **Referências primárias:** o conceito de VFS (camada que separa resolvedor de suporte, presente em todo Unix didático — o resolvedor aqui é próprio, a separação é a lição) e o contrato `open(2)`/`read(2)` do POSIX (`O_DIRECTORY`, EOF parcial, `EBADF`) como especificação de comportamento. Nenhum texto foi copiado — o resolvedor foi confirmado executando este estágio no QEMU com um hart.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
+| Analise de compilacao e ferramentas | 25% |
+| Funcionamento (compila sem avisos e roda) | 20% |
+| Documentacao (comandos, versao, saidas) | 15% |
+
+A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
+
+### Para se aprofundar
+
+1. *Operating Systems: Three Easy Pieces*, Remzi e Andrea Arpaci-Dusseau ([pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 2. *The RISC-V Reader*, Patterson e Waterman (Strawberry Canyon, ISBN 978-0999060791); 3. Especificacao RISC-V privilegiada ([riscv.org](https://riscv.org/specifications/privileged-isa/)).

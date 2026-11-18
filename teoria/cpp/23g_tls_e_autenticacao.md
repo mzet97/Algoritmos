@@ -104,3 +104,9 @@ C cifra o análogo na [23e](../c/23e_rpc_sobre_consenso.md) sem TLS (numerar e c
 **Referências primárias:** [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446.html) para o handshake que o OpenSSL executa aqui; documentação do OpenSSL (`SSL_CTX_new`, `X509_digest`) para a API usada. Nenhum texto foi copiado — o exemplo é implementação própria sobre essas interfaces.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Para se aprofundar
+
+1. Eric Rescorla, *SSL and TLS* (Addison-Wesley, ISBN 978-0201615982); 2. OWASP Authentication Cheat Sheet ([cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)); 3. Documentacao do OpenSSL ([openssl.org/docs](https://www.openssl.org/docs/)).
