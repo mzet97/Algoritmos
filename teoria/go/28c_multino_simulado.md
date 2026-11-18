@@ -67,7 +67,14 @@ Rust mede a mesma tríade com `taskset` na [23e](../rust/23e_afinidade_e_numa.md
 
 **Referências primárias:** documentação do pacote `net` (deadlines como contrato, não cortesia) e do `os/exec` (o binário como seu próprio trabalhador). Nenhum texto foi copiado — os números acima foram medidos nesta máquina.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Troque só no trabalhador `gera(c, 3.0)` por `gera(c, 3.5)` (coordenador intacto): preveja se o checksum combinado converge. Rode e explique com os dois números — o que o checksum prova, a conta ou o transporte.
+2. (Diagnóstico) Troque no `OK` o `%.17g` por `%.6g`: preveja o veredito. Rode e explique por que o protocolo exige round-trip de `float64` — quantos dígitos `%.6g` entrega e por que a soma acusa.
+3. (Projeto) Faça o trabalhador responder `ERRO induzido` em vez de `OK`: preveja a mensagem do coordenador e qual fase do protocolo acusa (accept, envio da fatia ou leitura da resposta). Rode e explique por que o deadline de 60 s não precisou estourar.
+4. (Previsão) Rode sem `-race` (`go run teoria/go/exemplos/28c_multino.go`): preveja se o checksum muda e se a razão muda. Rode e explique — com os dois pares de números — por que correção se verifica com `-race` e tabela sem.
+
+Use [pistas graduais](exercicios/28c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/28c_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

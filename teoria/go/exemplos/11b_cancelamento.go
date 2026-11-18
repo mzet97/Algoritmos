@@ -35,6 +35,10 @@ func poolCancelavel(ctx context.Context, trabalhos []int, workers int, concluido
 					if !ok {
 						return
 					}
+					// Custo simulado (~50us): sem ele, o feeder descarrega
+					// os 2000 antes do vigia (1ms) notar os 500 — e o
+					// cancelamento "no meio" vira sorte, nao disciplina.
+					time.Sleep(50 * time.Microsecond)
 					_ = j * j
 					concluidos.Add(1)
 				}

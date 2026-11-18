@@ -69,7 +69,14 @@ Rust faz o mesmo com flag atômica e `scope` na [14b](../rust/14b_ordem_e_backpr
 
 **Referências primárias:** documentação do pacote `context` (cancelamento cooperativo) e do *Go Memory Model* (o que `close` + `range` e `WaitGroup` sincronizam). Nenhum texto foi copiado — o comportamento acima foi executado com `go run -race`.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Troque o contexto por `context.Background()` (sem `WithCancel`, sem goroutine vigia): preveja `parados`. Rode e explique por que dá 2000 e o `panic` ("cancelamento nao obedeceu") — pool cooperativo sem sinal não para sozinho.
+2. (Diagnóstico) Remova o `case <-ctx.Done()` do worker E o `close(jobs)`: preveja — termina? Rode com `timeout 25` e explique o hang (workers presos em `<-jobs`, `wg.Wait` para sempre, nenhuma linha impressa): sem `close` e sem `Done`, ninguém solta ninguém.
+3. (Projeto) Troque o vigia por `context.WithTimeout` de 50 ms (trabalho com `Sleep` de 1 ms por job, sem `cancela()` explícito): prove que para sozinho (`parados` entre 1 e 1999 — observado ~379; ajuste a faixa do exemplo, feita para jobs rápidos). Explique: prazo é cancelamento sem vigia.
+4. (Previsão) Compare os dois tempos de `GOMAXPROCS` impressos: qual é menor e por quê? (soma CPU-bound → N vence). Explique por que a comparação exige binário sem `-race` — e o que o `-race` mede além do programa.
+
+Use [pistas graduais](exercicios/11b_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/11b_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

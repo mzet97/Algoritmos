@@ -100,7 +100,7 @@ func main() {
 Execução (`go vet` + `go run -race`):
 
 ```bash
-go vet ./... && go run -race 00_ponte.go
+go vet teoria/go/exemplos/00_ponte.go && go run -race teoria/go/exemplos/00_ponte.go
 ```
 
 Saída esperada (determinística):
@@ -158,4 +158,13 @@ C recusa menos na compilação e cobra mais no sanitizer; Rust recusa mais (owne
 
 **Referências primárias:** [Especificação de Go](https://go.dev/ref/spec) para valor zero e conversões; [Tour of Go](https://go.dev/tour/welcome/1) como prática guiada. Nenhuma comparação com Python/JS nesta aula é juízo de valor — é mapa de reflexos.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+(O exemplo executável desta aula vive em `exemplos/00_ponte.go` — extraído do corpo da aula e verificado com `go vet` + `go run -race`. Rode-o antes de prever.)
+
+1. (Previsão) `var s []int; s[0] = 1`: compila? Roda? Preveja e rode os dois fatos separados — `s == nil` (true), `len(s)` (0) e o índice (panic `index out of range`). Explique: nil não é vazio alocado, é ausência de array; índice em len 0 sempre panic, com ou sem array.
+2. (Diagnóstico) `strconv.Atoi(" 42")` (com espaço): passa ou erra? Rode e explique por que `Atoi` não apara espaço — conversão explícita cobra o formato exato, e "quase número" é erro, não 42.
+3. (Projeto) Escreva `media(vals []int) (float64, error)` que recusa slice vazio (divisão por zero disfarçada): teste vazio (erro), um elemento e vários. Explique por que o erro volta como valor — quem chama decide, na hora, como na `dividir` do exemplo.
+4. (Previsão) `var m map[string]int`: leitura `m["a"]` dá panic ou zero? E escrita `m["a"] = 1`? Preveja os dois, rode e explique a assimetria (ler nil é seguro e devolve o zero; escrever panic) — e o que isso cobra na inicialização (`make` antes do primeiro `=`).
+
+Use [pistas graduais](exercicios/00_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/00_solucoes.md) depois de registrar sua própria explicação.

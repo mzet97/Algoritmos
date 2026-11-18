@@ -164,7 +164,7 @@ func main() {
 Execução (`go vet` + `go run -race`, como nas demais pontes):
 
 ```bash
-go vet ./... && go run -race 23c_quorum.go
+go vet teoria/go/exemplos/23c_quorum.go && go run -race teoria/go/exemplos/23c_quorum.go
 ```
 
 Saída esperada (determinística):
@@ -211,7 +211,16 @@ C confirma por maioria na 23d e lê pelo `id` na 23e; C++ declara conflito no qu
 
 1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124), caps. sobre monitoramento e SLOs.
 
-## 6. Checklist do que esta aula garante
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Remova o `case e.relogio == melhor.relogio:` do `ler` e rode: preveja em qual fase o programa quebra. Rode e explique por que a fase 3 declara `Conflito` falso — qual escrita anterior igualou os dois relógios comparados, e em que `case` a igualdade cai sem o teste explícito.
+2. (Previsão) Na fase 3, antes de religar a réplica 0, faça um `ler` com o conjunto {1, 2} (a réplica 1 foi curada na fase 2, a 2 está obsoleta em `111`): preveja valor, `ok` e `conflito`. Rode e explique por que `111` nunca volta — qual réplica pertenceu à maioria de escrita e o que o reparo faz com a obsoleta.
+3. (Projeto) Escreva o teste da concorrência real: isole a réplica 0 e escreva `A` (o retorno será falso — sem maioria — mas o valor fica, pois o modelo não faz rollback), isole a réplica 1 e escreva `B`, reúna as três e leia. Prove que `ler` retorna `conflito=true`. Explique a diferença entre este conflito e o da fase 3 do exercício 1, usando os dois pares de relógios.
+4. (Diagnóstico) Leia a chave inexistente `"ausente"` com o código original: preveja `ok` e `conflito` antes de rodar. Rode e explique por que ausência não é valor — quantas respostas carregam a chave e o que o quorum decide.
+
+Use [pistas graduais](exercicios/23c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23c_solucoes.md) depois de registrar sua própria explicação.
+
+## 7. Checklist do que esta aula garante
 
 - [ ] Explico por que W+R > N impede a leitura obsoleta, com a interseção desenhada.
 - [ ] Demonstro escrita e leitura recusadas na minoria, com o quorum contado.

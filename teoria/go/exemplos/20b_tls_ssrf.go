@@ -86,7 +86,7 @@ func bloqueado(u *url.URL) string {
 		return "host vazio"
 	}
 	if ip := net.ParseIP(host); ip != nil {
-		if ip.IsLoopback() || ip.IsPrivate() || ip.IsLinkLocalUnicast() || ip.IsLinkLocalMulticast() {
+		if ip.IsLoopback() || ip.IsPrivate() || ip.IsLinkLocalUnicast() || ip.IsLinkLocalMulticast() || ip.IsUnspecified() {
 			return "IP literal privado/reservado"
 		}
 		if ip.Equal(net.ParseIP("169.254.169.254")) {
@@ -210,6 +210,8 @@ func main() {
 		"http://10.0.0.7/admin",
 		"file:///etc/passwd",
 		"http://localhost@127.0.0.1/",
+		"http://0.0.0.0/",
+		"http://[::ffff:127.0.0.1]/",
 	} {
 		if _, corpo := buscaSegura(cli, alvo); !strings.HasPrefix(corpo, "SSRF bloqueado") {
 			panic("SSRF passou: " + alvo + " -> " + corpo)
