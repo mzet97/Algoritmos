@@ -27,6 +27,10 @@ go vet teoria/go/exemplos/20b_tls_ssrf.go && go run -race teoria/go/exemplos/20b
 # 20b ok: TLS com pin TOFU + token, SSRF recusado antes do byte
 ```
 
+### Leitura guiada: três portas, cinco muros
+
+As três primeiras linhas são as portas: certo passa, errado nega, ausente nega — e "ausente nega igual a errado" é a negação única que fecha o oráculo de formato (a mesma decisão da 23g de C++). As cinco seguintes são os muros: cada `ssrf bloqueado` é uma conexão que nunca existiu — o guarda recusou antes do primeiro byte, e "antes do byte" é o que separa guarda de filtro (filtro vê resposta e decide; guarda impede o pedido). A ordem das linhas é o argumento: primeiro as portas (quem pode entrar), depois os muros (para onde não se sai) — autenticação de entrada e validação de saída, as duas pontas da confiança, no mesmo teste. E o veredito nomeia os dois mecanismos (pin TOFU + token, SSRF recusado) porque a aula quita duas dívidas de uma vez: o TLS adiado por quatro aulas e o SSRF que ninguém tinha cobrado.
+
 Fora do contrato: CA verificada (o pin TOFU modela primeiro contato; produção exige cadeia), autenticação mútua, revogação, DNS com validação DNSSEC (o guarda resolve e checa **todos** os IPs — rebinding entre checagem e conexão segue declarado como limite).
 
 ## 2. Onde cada decisão mora
@@ -36,6 +40,10 @@ Fora do contrato: CA verificada (o pin TOFU modela primeiro contato; produção 
 **O pin decide, o `InsecureSkipVerify` obedece.** `VerifyPeerCertificate` compara o SHA-256 do certificado apresentado com o pin e só aceita igualdade. `InsecureSkipVerify: true` sem o callback seria vulnerabilidade; com o callback, é "a CA sou eu, e eu verifico exatamente isto". A distinção importa: desligar verificação e verificar por conta própria são operações opostas, embora usem o mesmo campo.
 
 **O guarda recusa antes de conectar.** Esquema fora de http/https, userinfo embutido (`localhost@127.0.0.1` — o `@` transforma "localhost" em credencial e o host real no IP), IP literal privado/reservado/metadata, nome que resolve para privado: tudo volta `SSRF bloqueado` sem `Get` nenhum. Redirect nunca é seguido (`CheckRedirect` retorna erro): redirect é o SSRF contando com a segunda chance — e a segunda chance não existe aqui. O limite declarado: entre o `LookupIP` e o `Dial`, o DNS pode mudar (rebinding); fechar isso exige resolver-e-conectar no mesmo passo, trabalho futuro listado no checklist.
+
+### Anatomia dos cinco bloqueios (cada um ensina um truque)
+
+Os cinco alvos não são cinco exemplos do mesmo erro — são cinco classes: `169.254.169.254` é o metadata da nuvem (o alvo clássico: credencial por HTTP, sem autenticação, ao alcance de qualquer fetch); `127.0.0.1` é o loopback (o servidor atacando a si mesmo — admin local sem senha, porque "só localhost acessa"); `10.0.0.7` é a rede privada (pivô para dentro: do SSRF para a intranet, onde vivem dashboards sem auth); `file:///etc/passwd` é a troca de esquema (o fetch que vira leitura de arquivo — o guarda de URL que só entende http é guarda pela metade); `localhost@127.0.0.1` é o userinfo (o parser vê "localhost", o dial vê "127.0.0.1" — mesma string, dois hosts, e o guarda tem de decidir pelo que o dial vê). A regra "público ou negado" cobre as cinco sem enumerá-las: cada bloqueio é instância, não item de lista — e é por isso que lista mínima perde (erro nº 3): lista cobre instâncias conhecidas, regra cobre classes.
 
 ## 3. Erros comuns e implicações defensivas
 

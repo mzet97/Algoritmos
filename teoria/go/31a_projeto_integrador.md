@@ -27,6 +27,10 @@ layout: default
 | Reprodutibilidade | `regress.sh` verde em clone limpo + README executável |
 | Defesa | escolhas justificadas contra alternativas (consenso, fila ilimitada, threads sem teto) |
 
+## Como as três peças se observam (o que a integração prova)
+
+O serviço (23a/23b) sob carga do benchmark (28a/28b) observado pela ferramenta (08d): cada peça que o livro verificou isolada agora tem de conviver. A ferramenta apontada para o serviço mostra goroutines subindo com a carga (escalonador do runtime absorvendo), threads do SO paradas (multiplexação segurando), faltas menores crescendo no warm-up (páginas materializadas) e `HeapAlloc` acompanhando o log em memória — e cada número do relatório final precisa dessa amarração, porque "número sem interpretação não pontua". O roteiro de falhas é o segundo eixo da integração: atraso e queda com `kill` exercitam o deadline da 25 e o replay da 23a; duplicação exercita a idempotência; partição simulada exercita a regra de descarte da 23b — cada falha com esperado escrito antes e observado depois, e divergência é defeito (do projeto ou da doc, ambos entregáveis). A defesa, por fim, é o terceiro entregável avaliado: justificar por escrito cada escolha contra a alternativa (por que sem consenso? por que fila limitada? por que threads com teto?) usando a evidência das peças — integração sem defesa é montagem; com defesa, é engenharia.
+
 ## Exercícios, pistas e solução
 
 O projeto é o exercício; [pistas](exercicios/31a_pistas.md) organizam a montagem e a [solução comentada](exercicios/31a_solucoes.md) discute decisões-modelo e armadilhas de defesa. Não há atalho de código novo: as peças já existem e foram verificadas aula a aula — o trabalho avaliado é integração, roteiro e defesa.

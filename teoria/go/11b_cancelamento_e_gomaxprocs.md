@@ -34,12 +34,18 @@ go vet teoria/go/exemplos/11b_cancelamento.go && go run -race teoria/go/exemplos
 
 **GOMAXPROCS compara, `-race` valida.** A mesma soma com 1 e 24: igualdade de resultado é `assert`, tempos são medida sem `-race` (o detector serializa e aloca, e comparar tempo instrumentado com não instrumentado é a fraude que a 28a proíbe). E a contagem de goroutines antes/depois fecha a aula: pool que termina sem vazar é o invariante que o `NumGoroutine` confere.
 
+### Leitura guiada: faixa, estouro, contagem, comparação
+
+`cancelamento ok: NNNN concluidos de 2000` é o assert de faixa em ação: qualquer NNNN entre 500 e 2000 prova que o contexto fechou no meio e os dois lados obedeceram — e a linha não diz o número "certo" porque número certo não existe (o escalonador decide). `shutdown ok` prova o caminho de falha testado: teto de 1ns estourou, foi reportado, ninguém pendurou — shutdown que só foi visto funcionando é esperança, e a aula remove a esperança testando o estouro. `vazamento ok: 1 antes, 1 depois` é o invariante de higiene: goroutine que nasce no pool morre no pool, e a main sozinha antes e depois prova isso sem rastrear nenhuma goroutine pelo nome. As duas linhas de GOMAXPROCS provam a mesma soma em dois mundos (1 e 24) com tempos de binário limpo — igualdade no `assert`, tempos na medida, e a nota do contrato ("tempo sob -race é ordem de grandeza") impede que alguém cite os ~1ms/~0.4s desta página como tabela: são ilustração do formato, não resultado.
+
 ## 3. Erros comuns e implicações defensivas
 
 1. **Tempo sob `-race` na tabela:** o detector muda o custo de cada acesso; speedup medido com `-race` não é speedup. Correção com `-race`, tabela sem.
 2. **Cancelamento só no produtor:** workers presos em `jobs <- t` sem `select` no `Done` ignoram o cancelamento até a fila esvaziar. Freio tem de estar nos dois lados do canal.
 3. **Shutdown sem teto:** `wg.Wait()` puro num pool travado pendura o processo inteiro. Todo `Wait` de desligamento precisa de alternativa com prazo — e a alternativa precisa ser testada (aqui, com 1ns).
 4. **Afirmar o ponto de parada:** testar `concluidos == 500` seria flaky por construção — o cancelamento é assíncrono e o número exato depende do escalonador. Faixa se afirma, ponto se observa.
+5. **Contar goroutines pelo nome:** rastrear "as do pool" individualmente é frágil e desnecessário — o invariante é aritmético (1 antes, 1 depois), não nominal. Higiene se prova por contagem, não por identidade.
+6. **Testar shutdown só no caminho feliz:** teto que nunca estourou no teste é teto presumido — e presumido falha no primeiro pool travado de verdade. O 1ns força o estouro em todo run; caminho de falha sem execução é esperança com nome de teste.
 
 ## 4. Ponte com as demais trilhas
 

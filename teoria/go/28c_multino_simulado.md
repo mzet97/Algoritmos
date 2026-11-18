@@ -32,12 +32,18 @@ go vet teoria/go/exemplos/28c_multino.go && go run -race teoria/go/exemplos/28c_
 
 **Dado derivado, não movido:** as duas metades geram `b` e `c` da mesma fórmula; só `ini/fim` viajam na ida e `checksum + nanos` na volta. Em multinó real com dado particionado de verdade, o custo de mover a partição entraria na conta da viagem (28a) — aqui o protocolo isola o custo de coordenação do custo de transporte, e declara a isolação.
 
+### Leitura guiada: por que a razão < 1 é o resultado certo
+
+`referencia local: ~0.5 GB/s` é a âncora serial sob `-race` — ordem de grandeza publicada, não tabela. `duas metades remotas: pior em ~50ms` parece contradição (duas metades em paralelo piores que a referência?) até lembrar que a referência é serial de 64 MiB e cada metade processa 32 MiB em paralelo: o wall-clock cai, mas a soma dos tempos sobe — paralelismo real, transporte simulado. `razao remoto/local: ~0.5x` mede coordenação + paralelismo sobre loopback, não multinó: publicá-la como "multinó perde" seria a fraude que o contrato proíbe ("medida, não veredito"). O veredito (`checksum combinado igual a referencia`) é o que atravessa processo: a mesma tríade, metade calculada do outro lado de um socket, checksum idêntico — prova que o protocolo transporta trabalho corretamente, que é tudo que um nó só pode provar. Quem cita 0.5x sem "loopback, 1 nó, referência serial" está citando outro experimento.
+
 ## 3. Erros comuns e implicações defensivas
 
 1. **Comparar tempo com `-race`:** o detector serializa e aloca; referência local sob `-race` contra metades sob `-race` ainda compara certo (ambos instrumentados), mas tabela contra binário limpo é fraude. Correção com `-race`, tabela sem.
 2. **Mover o dado para "ser realista":** enviar 32 MiB pelo loopback mede o loopback com precisão e o multinó com zero. Realismo de transporte se mede com `numactl`/RDMA de verdade (futuro), não com socket local gordo.
 3. **Sem deadline "porque é localhost":** teste que pendura no localhost pendura pior na rede. Deadline curto e erro nomeado por fase desde o primeiro dia.
 4. **Chamar de "medição multinó":** um nó, um loopback, duas metades em paralelo. O que se mediu: coordenação + paralelismo. O que falta para multinó: latência real, partição real, falha parcial real (a 23b mostra como injetar as duas últimas).
+5. **Somar tempos em vez de medir wall-clock:** duas metades de ~50ms cada não são "100ms de multinó" — são 50ms de parede com 2× de recurso. Speedup se mede em relógio de parede contra a referência serial; soma de tempos parciais é contabilidade, não desempenho.
+6. **Derivar o dado dos dois lados sem confrontar a semente:** se cada metade gera `b`/`c` de fórmula "igual" mas com constante divergente, os checksums diferem e o erro parece de protocolo. O checksum combinado só prova o transporte se a derivação é idêntica — e idêntica se prova confrontando a referência local primeiro (a ordem das linhas da saída não é acaso).
 
 ## 4. Ponte com as demais trilhas
 
