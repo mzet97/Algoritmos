@@ -54,6 +54,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 - [`14a_framing_e_concorrencia.md`](14a_framing_e_concorrencia.md) - Aula de ponte: framing TCP, limites, timeouts e concorrencia com `std`
 - [`14b_ordem_e_backpressure.md`](14b_ordem_e_backpressure.md) - Aula de ponte (R5): Release/Acquire medido, canal limitado com backpressure e cancelamento cooperativo
 15. `15.md` - Unsafe Rust
+- [`15a_auditoria_unsafe.md`](15a_auditoria_unsafe.md) - Aula de ponte: auditoria de `unsafe` por invariante escrita, com teste por bloco
 16. `16.md` - FFI com C/C++
 - [`16a_maquina_e_so.md`](16a_maquina_e_so.md) - Aula de ponte: processos, syscalls, `/proc`, RSS e localidade em Rust seguro
 - [`16b_maquina_e_cache.md`](16b_maquina_e_cache.md) - Aula de ponte (R4): localidade linhas/colunas medida, custo de syscall e pagina via /proc
