@@ -128,6 +128,7 @@ fi
 
 run "transversal/consistencia" python3 teoria/verificar_consistencia.py
 run "fontes-unicas/c" python3 teoria/verificar_fontes_unicas.py c
+run "fontes-unicas/cpp" python3 teoria/verificar_fontes_unicas.py cpp
 
 echo "----------------------------------------"
 echo "regress: $PASS passaram, $FAIL falharam"
