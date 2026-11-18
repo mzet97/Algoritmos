@@ -76,7 +76,14 @@ C declara o mesmo layout com `offsetof` e `_Static_assert` na aula de ABI; C++ a
 
 **Referências primárias:** *The Rust Reference*, capítulos de *Type Layout* (`repr(C)`) e *Unsafety* (`#[unsafe(no_mangle)]` na edição 2024); SysV ABI do alvo para a convenção `extern "C"`. Nenhum texto foi copiado — os deslocamentos acima foram confirmados executando este exemplo.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Troque `repr(C)` por `repr(Rust)`: preveja os offsets. Rode e explique o que o compilador fez (moveu `etiqueta` para o offset 12) — e por que "passou com repr(C)" era contrato e "quebrou com repr(Rust)" é liberdade documentada, não bug.
+2. (Diagnóstico) Troque `read_unaligned` por `read`: preveja — passa ou falha no x86-64? Rode e explique por que o verde aqui vale zero (`read` exige alinhamento por contrato; a ISA tolera, outras não, e o Miri acusaria): UB que funciona é o pior UB, porque o teste mente.
+3. (Projeto) Adicione `sinal: u16` após `comprimento`: preveja tam/alinh/offsets ANTES de rodar (u8, u32, u16, u64 → ?). Rode e confira (0, 4, 8, 16; tam 24, alin 8). Explique cada padding — e o que aconteceria com `repr(Rust)` (nada prometido, tudo pode mudar).
+4. (Previsão) Chame `soma_c(u32::MAX, 1)`: preveja — pânico, wrap ou lixo? Rode e explique por que a fronteira usa `wrapping_add` (C não tem aritmética verificada por padrão; o contrato da fronteira diz o que acontece no estouro, em vez de deixar o otimizador decidir).
+
+Use [pistas graduais](exercicios/16c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/16c_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

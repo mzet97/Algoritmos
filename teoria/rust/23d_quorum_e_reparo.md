@@ -99,4 +99,11 @@ C confirma por maioria com termo e eleição; C++ declara conflito no quorum e c
 
 **Referências primárias:** [Dynamo (Amazon)](https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store) para W/R/N e reparo de leitura; [Raft](https://raft.github.io/raft.pdf) para o que quorum sem eleição não entrega.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+1. (Previsão) Suba `QUORUM` para 3 e isole a réplica 2 na fase 2: preveja o retorno de `escrever`. Rode e explique por que "todos" trava a escrita na primeira queda — eco do teorema em Rust, agora com `bool` em vez de `assert` de C.
+2. (Diagnóstico) Apague o `continue` de mesma versão no `ler` (trate relógio igual como candidato): preveja as fases 1–3 (passam — os relógios ainda diferem) e adicione uma 4ª leitura após o reparo total. Rode e explique o FALSO CONFLITO em réplicas idênticas: sem o `==`, igualdade vira "nem domina" dos dois lados.
+3. (Projeto) Produza concorrência real: "A" coordenada pelo nó 0 só na réplica 0, "B" pelo nó 1 só na réplica 1 (mate as demais em cada escrita, depois revive todas). Leia por quorum e mostre `Conflito` com [1,0,0]/A vs [0,1,0]/B. Explique por que nenhum domina — e o que o reparo faria aqui (nada: conflito não tem "melhor").
+4. (Previsão) Leia a chave `"ausente"` (nunca escrita): preveja — `Limpa`, `Conflito` ou `SemQuorum`? Rode e explique: respostas vazia, `0 < QUORUM` — ausência é falta de quorum, não valor; e é por isso que o `ler` distingue "ninguém tem" de "discordam".
+
+Use [pistas graduais](exercicios/23d_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23d_solucoes.md) depois de registrar sua própria explicação.

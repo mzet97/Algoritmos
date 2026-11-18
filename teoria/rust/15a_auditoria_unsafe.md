@@ -89,4 +89,11 @@ C escreve "quem aloca, libera" no cabeçalho; C++ tranca no handle opaco da 13b;
 
 **Referências primárias:** [Rustonomicon](https://doc.rust-lang.org/nomicon/) para o modelo de `unsafe`; [`MaybeUninit`](https://doc.rust-lang.org/std/mem/union.MaybeUninit.html) para as garantias exatas de cada método usado. Nenhuma afirmação sobre Miri nesta aula — ferramenta ausente é lacuna, não detalhe.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+1. (Previsão) No `pop`, leia `dados[tamanho]` sem decrementar antes: preveja — silêncio ou pânico? Rode e explique os dois destinos (cheia: índice 2 em len 2, pânico; parcial: lê lixo dentro dos limites, UB silencioso) — e por que o pânico observado é sorte, não segurança.
+2. (Diagnóstico) No `push`, apague a checagem de `cheia`: preveja o 3º `push` numa pilha de 2. Rode e explique — o pânico de índice é o backstop *safe* (verificação de limites); o `unsafe` de verdade (a inicialização) nem chegou a rodar. Checagem é contrato, não truque.
+3. (Projeto) Adicione `espiar(&self) -> Option<&T>` com `assume_init_ref`: escreva a invariante (só empresta, não move nem invalida), teste vazia/cheia/sem-remover. Rode e explique por que `&T` exige o mesmo cuidado que mover — referência pendurada em `pop`+`push` seria o próximo UB.
+4. (Previsão) No `Drop`, descarte `0..N` em vez de `0..tamanho`: preveja a contagem de `Drop`s. Rode e explique o 5 no lugar do 2 — descartar não-inicializado executa `Drop` em lixo, e lixo com `Drop` é double-free em potencial.
+
+Use [pistas graduais](exercicios/15a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/15a_solucoes.md) depois de registrar sua própria explicação.

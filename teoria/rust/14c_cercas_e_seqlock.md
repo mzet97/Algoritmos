@@ -77,7 +77,14 @@ C++ escreve a mesma cerca com `std::atomic_thread_fence` na 17a de C++; Go escon
 
 **Referências primárias:** *The Rust Reference*, capítulo *Atomics and Memory Ordering* (`fence`, `Release`/`Acquire`); o paper do seqlock (Lameter) como origem do protocolo contador-ímpar. Nenhum texto foi copiado — o comportamento acima foi confirmado executando este exemplo.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Apague o `fence(Release)` da publicação (mantenha o `Acquire` no consumo): preveja — o `assert` de par quebra no x86-64? Rode e explique por que "passou aqui" não prova nada (TSO do x86 salva; ARM não salvaria) — e por que o teste verde numa máquina só é metade da evidência.
+2. (Diagnóstico) Apague a checagem de ímpar no `le` (leia mesmo com `seq` ímpar): preveja — continua passando? Rode 3×, compare as retentativas (~1M com a checagem, ~4k sem) e explique quem cobre o que (`antes % 2` retenta toda concorrência; `antes != depois` pega a rasgada) — e qual buraco teórico resta nas duas versões (ciclo completo par→par entre as duas leituras).
+3. (Projeto) Separe as causas de retry em dois contadores (`impar` vs `mudou`): rode e mostre os dois números. Explique a proporção (~360k ímpares, ~50 mudanças): a checagem de ímpar retenta escrita em curso mesmo quando o dado sairia intacto — otimismo tem preço, e o preço é mensurável.
+4. (Previsão) Troque o sinal `PRONTO` (`Relaxed` + cercas) por `Release`/`Acquire` grudados no `store`/`load`: preveja — continua passando? Rode e explique quando a cerca separada vale a pena (ordenar dado não-atômico sem operação que carregue dado) e quando o ordenamento grudado basta.
+
+Use [pistas graduais](exercicios/14c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/14c_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

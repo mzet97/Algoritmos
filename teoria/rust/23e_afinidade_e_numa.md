@@ -79,7 +79,14 @@ C faz o primeiro toque na [30c](../c/30c_numa_primeiro_toque.md) com a mesma dec
 
 **Referências primárias:** manual do `numactl`/`taskset` (afinidade e bind como mecanismo do SO) e política de primeiro toque do kernel Linux (página mora no nó de quem tocou primeiro). Nenhum texto foi copiado — os números acima foram medidos nesta máquina (24 núcleos, 1 nó).
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 6. Exercícios obrigatórios
+
+1. (Previsão) Rode preso a 1 núcleo (`taskset -c 0`): preveja a razão e os GB/s. Rode e explique (8 threads num núcleo = contenção; toque cai para ~6 GB/s) — e o que a linha `Cpus_allowed_list: 0` prova (afinidade observada, não prometida pelo programa).
+2. (Diagnóstico) Apague o `assert_eq!` dos checksums e troque `S` num dos modos: o relatório "passaria"? Explique por que checksum igual é a condição que separa "mede NUMA" de "mede bug" — sem ela, razão é número sobre areia.
+3. (Projeto) Compare `N_THREADS = 1` vs `8` no modo toque: meça o speedup e explique por que não é 8× (banda de memória, não CPU: 6 → 21 GB/s). Rode e mostre que kernel memory-bound escala com banda, e que thread a mais sem banda é fila.
+4. (Previsão) Inverta a ordem (tardio primeiro, toque depois): preveja — a razão 0,79× se mantém? Rode e explique a mudança para ~1,0×: quem roda primeiro paga as faltas de página do vetor `a` (~2 ms para 16k páginas); a "vantagem" era viés de ordem + ruído. Conclusão honesta: sem 2 nós, não há veredito — e o experimento prova exatamente isso.
+
+Use [pistas graduais](exercicios/23e_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23e_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 
