@@ -13,6 +13,7 @@ Importante: nesta aula, "atômico" significa que a atualização daquela chave a
 
 Isso **não** significa "lock-free". O `DashMap` usa sincronização interna por fragmentos; ele reduz contenção, mas ainda usa travas.
 
+Use as [pistas](exercicios/32-pistas.md) somente depois de tentar; consulte as [solucoes comentadas](exercicios/32-solucoes.md) apos entregar sua versao.
 ---
 
 ## 1. Atualizando as Dependências
