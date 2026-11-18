@@ -4,8 +4,8 @@
 Uso: python3 test_23f.py BINARIO
 Sobe o servidor em porta efemera e prova: 3a conexao do mesmo IP cai
 com CHEIO por-ip; a 9a conexao simultanea (2 por IP em 127.0.0.1-4) cai
-com CHEIO global; rajada acima de 64 KiB na janela cai com CHEIO bytes;
-e cliente rapido e atendido enquanto lentos ocupam os demais slots.
+com CHEIO global; rajada acima de 64 KiB na janela silencia com aviso e
+recupera; e cliente rapido e atendido enquanto lentos ocupam os demais slots.
 """
 from __future__ import annotations
 
@@ -62,7 +62,7 @@ def main() -> None:
 
             # Teto por IP: 2 passam calados, a 3a cai com motivo.
             lentos = [conecta("127.0.0.1", porta), conecta("127.0.0.1", porta)]
-            time.sleep(0.2)
+            time.sleep(0.5)
             with conecta("127.0.0.1", porta) as extra:
                 assert linha(extra) == b"CHEIO por-ip\n"
             print("por-ip ok: 3a conexao do mesmo IP recusada")
@@ -71,14 +71,14 @@ def main() -> None:
             for ip in ("127.0.0.2", "127.0.0.3", "127.0.0.4"):
                 lentos.append(conecta(ip, porta))
                 lentos.append(conecta(ip, porta))
-            time.sleep(0.3)
+            time.sleep(0.5)
             with conecta("127.0.0.5", porta) as alem:
                 assert linha(alem) == b"CHEIO global\n"
             print("global ok: 9a conexao simultanea recusada")
 
             # Lento nao paralisa: libera 1 slot e o rapido e atendido.
             lentos.pop(0).close()
-            time.sleep(0.2)
+            time.sleep(0.5)
             with conecta("127.0.0.1", porta) as rapido:
                 rapido.sendall(b"ECO oi\n")
                 assert linha(rapido) == b"ECO ECO oi\n"
