@@ -60,6 +60,7 @@ para I/O nao bloqueante faz parte da etapa de aprofundamento.
 - [`12a.md`](12a.md) - Aula de ponte: ISA, ABI, modo usuario/kernel, syscalls, `/proc` e faltas de pagina
 13. `13.md` - Depuracao com `gdb`, sanitizers e `valgrind`
 - [`13a.md`](13a.md) - Aula de ponte: overflow, use-after-free e double-free reproduzidos sob ASan, com `at()`, `unique_ptr`, conta verificada e copia com teto
+- [`13b_ffi_e_ameacas.md`](13b_ffi_e_ameacas.md) - Aula de ponte: fronteira `extern "C"` com `noexcept`, dono unico opaco, abuso virando codigo e modelo de ameacas
 14. `14.md` - Concorrencia com `std::thread`, mutexes, condvars, atomics e memory model
 15. `15.md` - Alocadores, layout, cache, profiling e otimizacao real
 16. `16.md` - `filesystem`, streams, parsing e CLIs em C++
