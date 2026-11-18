@@ -4,6 +4,14 @@ layout: default
 
 # Aula 08c — Duas soluções em Go: BST, ordenação e a análise confrontada
 
+## Objetivos verificáveis
+
+Ao final, você deverá: implementar BST e ordenação confrontando as análises, enunciar invariantes, e distinguir o que cada solução garante.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir invariante de BST e complexidades de ordenação`;
+- **Nível 2 — Aplicar:** `diagnosticar quebra de invariante e corrigir`;
+- **Nível 3 — Projetar:** `projetar a comparação justificando critérios e vencedor por cenário`.
+
 **Competências SDD:** MAT, ALG. **Pré-requisitos:** [08a](08a_raciocinio_e_algoritmos.md) (busca, invariante, BFS e hash) e 04–05. Esta ponte amplia o G2: duas estratégias para o mesmo problema, correção argumentada e análise confrontada com medição.
 
 **Objetivo observável:** implementar uma BST com inserção recursiva e percurso em ordem, provar o em-ordem contra `sort.Ints` como oráculo em 300 casos, medir a degeneração (altura 1 000 ordenada, ~21 embaralhada) e comparar a ordenação da std com a inserção quadrática em dois tamanhos.
@@ -33,3 +41,20 @@ go run -race teoria/go/exemplos/08c_algoritmos.go
 **Exercícios:** [pistas](exercicios/08c_pistas.md) e [soluções](exercicios/08c_solucoes.md): (1) remoção com três casos; (2) construção balanceada pela mediana e altura provada; (3) busca binária iterativa sobre o vetor ordenado com invariante escrita, confrontada com `sort.Search`; (4) prever, antes de medir, em que tamanho a inserção perde para a std na sua máquina e conferir.
 
 **Checklist:** invariante e terminação escritas; oráculo independente em centenas de casos; degeneração medida; análise prevista antes da medição e confrontada depois; `go vet` limpo e `-race` sem relatório.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Alan Donovan e Brian Kernighan, *The Go Programming Language* (Addison-Wesley, ISBN 978-0134190440); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Referência de pacotes em [pkg.go.dev](https://pkg.go.dev/).

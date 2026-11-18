@@ -10,9 +10,11 @@ layout: default
 
 Medir um programa paralelo em Go com método — hipótese, baseline correto, aquecimento, mínimo de repetições, variância, ambiente anotado — e explicar speedup e seus limites com a lei de Amdahl e o custo da contenção. Pré-requisitos: aulas 08a, 08b, 11a, 14 e 17. Não precisa de cluster, GPU, MPI nem contadores de hardware.
 
-Ao terminar, você deverá distinguir ganho de paralelismo de ganho de medição errada, demonstrar falso compartilhamento com e sem preenchimento, e decidir no papel se um acelerador valeria a transferência.
-
-Esta aula é o núcleo executável do módulo G7: referência correta, variante multicore, relatório de variância e modelo de custo GPU — tudo em CPU comum. Placa real e multinó ficam no laboratório opcional.
+Ao final, você deverá: construir benchmark honesto com linha de base, medir escala multicore, distinguir contenção real de granularidade, e emitir veredito numérico.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir linha de base, speedup e contenção`;
+- **Nível 2 — Aplicar:** `diagnosticar benchmark inválido e corrigir a metodologia`;
+- **Nível 3 — Projetar:** `projetar um experimento justificando hipótese e veredito numérico`.
 
 ## 1. O protocolo, antes do cronômetro
 
@@ -215,3 +217,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - rodar `go vet` limpo e, sob `-race`, confirmar ausência de data race.
 
 **Próxima aula:** `cgo` avançado e ABI. O raciocínio desta aula — medir antes de atravessar fronteiras — decide se chamar C vale a pena.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Computer Organization and Design: The Hardware/Software Interface, RISC-V Edition*, Patterson e Hennessy (Morgan Kaufmann, ISBN 978-0128203316); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Manual do programador Linux (`man 2 mmap`, `man 2 syscall`).

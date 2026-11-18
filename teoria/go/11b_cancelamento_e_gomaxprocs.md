@@ -4,6 +4,14 @@ layout: default
 
 # Aula 11b — Cancelamento, shutdown forçado e GOMAXPROCS (G4)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: implementar cancelamento cooperativo e shutdown forçado, explicar o efeito de `GOMAXPROCS`, e prever o comportamento sob cancelamento no meio de uma operação.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir cancelamento, shutdown e `GOMAXPROCS``;
+- **Nível 2 — Aplicar:** `diagnosticar shutdown que trava e corrigir com contexto/timeout`;
+- **Nível 3 — Projetar:** `projetar encerramento gracioso justificando prazos e forçamento`.
+
 **Competências SDD:** CON, MEM. **Pré-requisitos:** aulas 10–11 e [11a](11a_modelo_de_memoria.md) (pool limitado, deadlock por projeto, `-race`). Toolchain registrada: Go 1.26.8 (`go vet`, `go run -race`).
 
 **Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o pool parando no meio por `context`, o teto de dreno estourando sem pendurar e a mesma soma com `GOMAXPROCS=1` e `=N` — e explicar por que os tempos sob `-race` não entram na tabela.
@@ -62,3 +70,20 @@ Rust faz o mesmo com flag atômica e `scope` na [14b](../rust/14b_ordem_e_backpr
 **Referências primárias:** documentação do pacote `context` (cancelamento cooperativo) e do *Go Memory Model* (o que `close` + `range` e `WaitGroup` sincronizam). Nenhum texto foi copiado — o comportamento acima foi executado com `go run -race`.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Concurrency in Go*, Katherine Cox-Buday (O'Reilly, ISBN 978-1491941195); 2. Documentação do modelo de memória em [go.dev/ref/mem](https://go.dev/ref/mem); 3. Alan Donovan e Brian Kernighan, *The Go Programming Language*, caps. 8–9.

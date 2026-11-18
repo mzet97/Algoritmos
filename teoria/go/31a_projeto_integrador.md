@@ -4,6 +4,14 @@ layout: default
 
 # Aula 31a — Projeto integrador de Go: serviço, ferramenta e benchmark sob a mesma rubrica
 
+## Objetivos verificáveis
+
+Ao final, você deverá: integrar serviço, ferramenta e benchmark sob a mesma rubrica, confrontar resultados entre frentes, e declarar o que foi provado.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir a rubrica integradora e seus critérios`;
+- **Nível 2 — Aplicar:** `diagnosticar divergência entre frentes e atribuir a causa`;
+- **Nível 3 — Projetar:** `projetar a integração justificando cobertura e evidências`.
+
 **Competências SDD:** FND–SEC (G8). **Pré-requisitos:** o livro até a 31, com as pontes [23a](23a_protocolos_distribuidos.md), [23b](23b_relogios_e_consistencia.md), [08d](08d_ferramenta_so.md) e [28a](28a_hpc.md)/[28b](28b_vetorizacao_e_numa.md) executadas.
 
 **Objetivo observável:** montar, a partir das peças do livro, um repositório reproduzível com os três entregáveis do G8 funcionando juntos: (1) o serviço distribuído de dois nós da 23a com a política de consistência da 23b documentada; (2) a ferramenta de observação da 08d apontada para o serviço em execução; (3) um benchmark da 28a/28b sobre a carga do serviço. A defesa é escrita, usando a rubrica.
@@ -36,3 +44,20 @@ O serviço (23a/23b) sob carga do benchmark (28a/28b) observado pela ferramenta 
 O projeto é o exercício; [pistas](exercicios/31a_pistas.md) organizam a montagem e a [solução comentada](exercicios/31a_solucoes.md) discute decisões-modelo e armadilhas de defesa. Não há atalho de código novo: as peças já existem e foram verificadas aula a aula — o trabalho avaliado é integração, roteiro e defesa.
 
 **Checklist de submissão:** os três entregáveis rodando juntos; roteiro de falhas com esperado × observado; relatório de observação interpretado; modelo de ameaças de uma página; limitações declaradas; clone limpo verde.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124).

@@ -10,9 +10,11 @@ layout: default
 
 Construir um serviço replicado de pares chave-valor com enquadramento binário, idempotência por chave de operação e log durável — e quebrá-lo de propósito com atraso, duplicação, truncamento, queda e reinício. Pré-requisitos: aulas 08b a 22. Não precisa de consenso, quorum, TLS nem orquestrador.
 
-Ao terminar, você deverá explicar por que TCP não tem mensagem, implementar framing com teto, provar idempotência por reenvio e demonstrar recuperação por replay de log — e dizer exatamente o que continua sem garantia.
-
-Esta aula cobre de uma vez os módulos G5 e G6 na parte executável: o mapa previa duas pontes (23a de framing, 23b de distribuídos); como framing sem serviço é teoria e serviço sem framing é sorte, elas nascem juntas aqui. O que falta para G5/G6 depois dela está listado na seção 8.
+Ao final, você deverá: implementar framing com prefixo de tamanho, replicar com confirmação, tratar falhas sob controle, e estimar limites.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir framing, réplica, confirmação e falha controlada`;
+- **Nível 2 — Aplicar:** `diagnosticar leitura parcial e corrigir com framing`;
+- **Nível 3 — Projetar:** `projetar o protocolo justificando framing, réplicas e limites`.
 
 ## 1. TCP é fluxo de bytes: enquadre com tamanho, não com esperança
 
@@ -289,3 +291,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - executar o exemplo com `go vet` limpo e confrontar cada `ok:` com o contrato.
 
 **Próxima aula:** observabilidade e operação. O raciocínio desta aula — log, retry com ID, degradação explícita — é o que há para observar quando o distribuído falha às 3h da manhã.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124), caps. sobre monitoramento e SLOs.

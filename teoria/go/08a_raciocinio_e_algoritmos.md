@@ -12,6 +12,12 @@ Escrever a pré-condição e a pós-condição de uma função, declarar o invar
 
 Esta aula é o módulo G2 do mapa: quem domina invariantes aqui carrega o raciocínio para concorrência (10–11), testes e profiling (14, 17) e protocolos (16 em diante), onde a invariante violada não dá erro gentil — dá corrida, vazamento de goroutine ou cliente travado.
 
+Ao final, você deverá: enunciar invariantes de laço, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir invariante, pré-condição e pós-condição`;
+- **Nível 2 — Aplicar:** `prever a violação de um invariante e corrigir o laço`;
+- **Nível 3 — Projetar:** `projetar um algoritmo com invariante declarado e prova`.
+
 ---
 
 ## 1. Contrato antes do código
@@ -274,3 +280,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 ## 7. Ponte com Python e JavaScript
 
 Python tem `int` arbitrário e `in` legível; JavaScript usa `Number` de 64 bits e `Array.prototype.sort` sem comparador ordena como texto. Go usa `int` com largura de plataforma e `sort.Ints` numérico. A identidade do invariante é a mesma nas três linguagens; o que muda é a rede de segurança (pânico indexado em Go e Python, `undefined` silencioso em JS) e o preço do erro.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Alan Donovan e Brian Kernighan, *The Go Programming Language* (Addison-Wesley, ISBN 978-0134190440); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Referência de pacotes em [pkg.go.dev](https://pkg.go.dev/).

@@ -4,6 +4,14 @@ layout: default
 
 # Aula 08d — Ferramenta de observação do SO em Go
 
+## Objetivos verificáveis
+
+Ao final, você deverá: construir uma ferramenta de observação do SO em Go, interpretar a saída sem extrapolar, e confrontar cada número com o modelo.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir as fontes de observação (`/proc`, syscalls) e seus limites`;
+- **Nível 2 — Aplicar:** `diagnosticar leitura mal interpretada e corrigir`;
+- **Nível 3 — Projetar:** `projetar a ferramenta justificando cada métrica`.
+
 **Competências SDD:** ARQ, MEM, OS. **Pré-requisitos:** [08b](08b_maquina_memoria_e_so.md) (processos, `/proc`, RSS e custo), 09 e 13. Esta ponte entrega a **ferramenta** que o G3 pedia: um binário Go que observa o próprio processo e liga cada número ao caminho programa → runtime → kernel → hardware.
 
 **Objetivo observável:** executar a ferramenta e interpretar: goroutines paradas e com 32 trabalhadores, `GOMAXPROCS`, threads do SO por `/proc/self/task`, faltas de página menores crescendo ao tocar 32 MiB novos (e as maiores paradas), `HeapAlloc`/`HeapSys`/`NumGC` do runtime.
@@ -29,3 +37,20 @@ Cada linha da saída atravessa quatro camadas — programa, runtime, kernel, har
 **Exercícios:** [pistas](exercicios/08d_pistas.md) e [soluções](exercicios/08d_solucoes.md): (1) forçar um ciclo de GC (`runtime.GC()`) e mostrar `HeapSys` antes/depois, explicando o que não muda; (2) trocar o toque de páginas por leitura de um arquivo temporário de 32 MiB e mostrar qual contador se move; (3) contar threads com 0, 32 e 320 trabalhadores dormindo e explicar a curva; (4) apontar o que a ferramenta não vê (páginas compartilhadas, cache de página do arquivo) e por que PSS/RSS do `/proc/<pid>/smaps` contaria outra história.
 
 **Checklist:** cada número ligado ao caminho até o hardware; menor ≠ maior sem hesitar; limitação de plataforma declarada; `go vet` e `-race` limpos.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Alan Donovan e Brian Kernighan, *The Go Programming Language* (Addison-Wesley, ISBN 978-0134190440); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Referência de pacotes em [pkg.go.dev](https://pkg.go.dev/).

@@ -10,10 +10,11 @@ layout: default
 
 Explicar o caminho de um programa Go entre código-fonte, runtime, chamadas de sistema e hardware — e investigar cada camada com ferramentas do espaço de usuário, sem sair da biblioteca padrão. Pré-requisitos: aulas 01 a 08a. Não precisa saber escape analysis, `cgo`, concorrência nem benchmarks formais.
 
-Ao terminar, você deverá medir CPUs e `GOMAXPROCS`, ler estatísticas de heap e GC do runtime, cronometrar uma syscall, inspecionar o mapa de memória do próprio processo no Linux e explicar por que os mesmos números mudam entre máquinas e SOs.
-
-Esta aula é o módulo G3 do mapa: quem domina a observação aqui carrega o modelo para escape analysis (09), arquivos e I/O (13), `pprof` (17) e `cgo` (18), onde cada travessia ao kernel e cada alocação que foge para o heap passam a ter nome e custo.
-
+Ao final, você deverá: interpretar uso de memória e tempo sem inferir causas microarquiteturais, distinguir medição de alegação, e apontar o que o runtime observa.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir RSS, tempo monotônico e o papel do runtime`;
+- **Nível 2 — Aplicar:** `diagnosticar conclusão inválida a partir de medição e corrigir`;
+- **Nível 3 — Projetar:** `projetar uma medição justificando réguas e limites`.
 ---
 
 ## 1. O runtime é um SO em miniatura
@@ -193,3 +194,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - executar o exemplo com `go vet` limpo e confrontar cada número com o modelo.
 
 **Próxima aula:** ponteiros, memória e escape analysis. As réguas desta aula (heap, páginas, travessias) dizem para onde cada alocação foge.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Alan Donovan e Brian Kernighan, *The Go Programming Language* (Addison-Wesley, ISBN 978-0134190440); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Referência de pacotes em [pkg.go.dev](https://pkg.go.dev/).

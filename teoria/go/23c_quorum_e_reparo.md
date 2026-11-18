@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23c — Quorum de escrita e leitura com reparo: a maioria decide, o atraso obedece
 
+## Objetivos verificáveis
+
+Ao final, você deverá: dimensionar quoruns de leitura/escrita, executar reparo após divergência, e prever perda com quorum insuficiente.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir quorum de leitura/escrita e reparo`;
+- **Nível 2 — Aplicar:** `prever perda com quorum insuficiente e corrigir tamanhos`;
+- **Nível 3 — Projetar:** `projetar replicação justificando quoruns e reparo`.
+
 **Competências SDD:** DST e SEC. **Pré-requisitos:** aulas [23a](23a_protocolos_distribuidos.md) (framing, idempotência, log) e [23b](23b_relogios_e_consistencia.md) (Lamport, vetores, perda declarada). Esta ponte fecha o que a 23b declarou em aberto: reconciliar sem quorum é convergir sem garantia; aqui a escrita exige a maioria antes de existir para o cliente.
 
 **Objetivo observável:** ao terminar, você deverá escrever com quorum (W=2 de 3), ler com quorum (R=2 de 3), detectar a escrita concorrente pelo vetor e reparar a réplica atrasada — apontando onde cada decisão mora no código.
@@ -185,6 +193,23 @@ Mapas por réplica, sem compartilhamento entre goroutines neste exemplo (coorden
 ## 5. Ponte com as demais trilhas
 
 C confirma por maioria na 23d e lê pelo `id` na 23e; C++ declara conflito no quorum da 23c; Rust audita o dono de cada byte que cruza fronteira. Em JavaScript, quorum mora em bibliotecas de sync offline-first (duas fontes, uma verdade) — a mesma interseção, sem servidor.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124), caps. sobre monitoramento e SLOs.
 
 ## 6. Checklist do que esta aula garante
 

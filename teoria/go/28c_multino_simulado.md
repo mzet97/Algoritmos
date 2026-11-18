@@ -4,6 +4,14 @@ layout: default
 
 # Aula 28c — Multinó simulado: a tríade em dois processos (G7)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: simular multinó em dois processos aplicando a tríade (framing, quorum, relógios), confrontar os resultados, e declarar limites da simulação.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir a tríade e os limites de uma simulação local`;
+- **Nível 2 — Aplicar:** `diagnosticar divergência entre processos e atribuir à causa`;
+- **Nível 3 — Projetar:** `projetar a simulação justificando o que ela prova e o que não prova`.
+
 **Competências SDD:** HPC, DST, NET. **Pré-requisitos:** aulas [28a](28a_hpc.md) (baseline, banda, conta da viagem), [28b](28b_vetorizacao_e_numa.md) (NUMA contado, multinó declarado como simulado) e [23a](23a_protocolos_distribuidos.md) (framing, deadline, falha). Toolchain registrada: Go 1.26.8 (`go vet`, `-race` para correção). Máquina registrada: 24 núcleos, um nó NUMA.
 
 **Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o checksum combinado igual à referência local, apontar no código onde o deadline limita cada fase do protocolo — e explicar por que a razão medida aqui não prova nada sobre multinó real.
@@ -60,3 +68,20 @@ Rust mede a mesma tríade com `taskset` na [23e](../rust/23e_afinidade_e_numa.md
 **Referências primárias:** documentação do pacote `net` (deadlines como contrato, não cortesia) e do `os/exec` (o binário como seu próprio trabalhador). Nenhum texto foi copiado — os números acima foram medidos nesta máquina.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124).

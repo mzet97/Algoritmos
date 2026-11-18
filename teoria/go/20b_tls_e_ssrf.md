@@ -4,6 +4,14 @@ layout: default
 
 # Aula 20b — TLS com certificado efêmero e guarda anti-SSRF (G5)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: configurar TLS com certificado efêmero, validar entradas para impedir SSRF, e explicar o que o TLS garante (e não garante).
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir TLS, certificado, SSRF e allowlist`;
+- **Nível 2 — Aplicar:** `diagnosticar fetch de URL interna não validada e corrigir com allowlist`;
+- **Nível 3 — Projetar:** `projetar um cliente HTTP seguro justificando validação e TLS`.
+
 **Competências SDD:** NET, SEC. **Pré-requisitos:** aulas 16 (HTTP idiomático), 20 (servidores) e [23a](23a_protocolos_distribuidos.md) (framing, idempotência, falhas injetadas — sem TLS, declarado). Toolchain registrada: Go 1.26.8, só biblioteca padrão (`crypto/tls`, `crypto/x509`, `net/http`).
 
 **Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o token certo passando e o errado negado dentro do TLS, listar os cinco alvos SSRF recusados antes de qualquer byte viajar — e explicar por que o exemplo usa pinagem TOFU em vez de CA.
@@ -68,3 +76,20 @@ C++ faz o mesmo par túnel+crachá na [23g](../cpp/23g_tls_e_autenticacao.md) (O
 **Referências primárias:** [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446.html) para o handshake que `crypto/tls` executa; documentação dos pacotes `crypto/x509` e `net/http` para a API usada. Nenhum texto foi copiado — o exemplo é implementação própria sobre essas interfaces.
 
 *Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124), caps. sobre monitoramento e SLOs.

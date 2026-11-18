@@ -10,10 +10,11 @@ layout: default
 
 Explicar quando uma escrita feita por uma goroutine passa a ser visível para outra — e construir um worker pool limitado que preserva invariantes sob cancelamento e carga. Pré-requisitos: aulas 08b a 11. Não precisa saber `context` em detalhe, rede, `cgo` nem benchmarks formais.
 
-Ao terminar, você deverá distinguir data race de corrida lógica, aplicar happens-before com channels, `Mutex` e `WaitGroup`, evitar deadlock por projeto (não por sorte) e validar tudo com o race detector.
-
-Esta aula é o módulo G4 do mapa: quem domina invariantes sob concorrência aqui carrega o raciocínio para protocolos (G5), sistemas distribuídos (G6) e medição honesta (G7), onde cada invariante violada vira cliente travado ou dado corrompido.
-
+Ao final, você deverá: enunciar as garantias do modelo de memória Go (happens-before via sincronização), prever visibilidade entre goroutines, e disciplinar compartilhamento.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir happens-before e os pontos de sincronização do modelo`;
+- **Nível 2 — Aplicar:** `diagnosticar visibilidade não garantida e corrigir com sincronização`;
+- **Nível 3 — Projetar:** `projetar compartilhamento disciplinado justificando cada garantia usada`.
 ---
 
 ## 1. Visibilidade não é imediata: happens-before
@@ -207,3 +208,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - apontar o que o `-race` garante e o que ele não garante.
 
 **Próxima aula:** generics. O raciocínio desta aula sustenta coleções concorrentes: o que a estrutura garante sob acesso simultâneo.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Concurrency in Go*, Katherine Cox-Buday (O'Reilly, ISBN 978-1491941195); 2. Documentação do modelo de memória em [go.dev/ref/mem](https://go.dev/ref/mem); 3. Alan Donovan e Brian Kernighan, *The Go Programming Language*, caps. 8–9.

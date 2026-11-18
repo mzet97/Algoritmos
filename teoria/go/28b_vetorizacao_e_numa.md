@@ -4,6 +4,14 @@ layout: default
 
 # Aula 28b — Vetorização e NUMA em Go: o empate também é resultado
 
+## Objetivos verificáveis
+
+Ao final, você deverá: explicar por que Go não expõe SIMD diretamente (assembly/intrínsecos), medir localidade e efeito NUMA, e aceitar o empate como resultado quando a medição manda.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir SIMD, NUMA e first-touch`;
+- **Nível 2 — Aplicar:** `diagnosticar conclusão sem medição e corrigir com experimento`;
+- **Nível 3 — Projetar:** `projetar um experimento justificando o veredito, inclusive o empate`.
+
 **Competências SDD:** HPC, GPU, ARQ. **Pré-requisitos:** [28a](28a_hpc.md) (baseline, escala e conta da viagem) e G3–G6. Esta ponte completa o G7 sobre a base da 28a.
 
 **Objetivo observável:** verificar a soma sequencial e a soma com quatro acumuladores contra uma referência `float64` (tolerâncias do modelo de erro), medir as duas nesta máquina, contar os nós NUMA por `/sys` e declarar o multinó como simulado enquanto houver um nó só.
@@ -29,3 +37,20 @@ Um empate publicado com método carrega três informações: (a) a técnica foi 
 **Exercícios:** [pistas](exercicios/28b_pistas.md) e [soluções](exercicios/28b_solucoes.md): (1) Kahan contra quatro acumuladores em erro e tempo; (2) repetir com `-race` e quantificar o que o detector faz com cada lado; (3) desenhar o experimento first-touch para 2 nós com a frase que o rotula como não executado aqui; (4) testar uma soma com laço manual por índices (sem `range`) e ver se o compilador muda de ideia.
 
 **Checklist:** oráculo `float64` e tolerâncias derivadas; empate publicado sem maquiagem; ambiente de cada número declarado; NUMA contado com limite; `go vet` limpo.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Computer Organization and Design: The Hardware/Software Interface, RISC-V Edition*, Patterson e Hennessy (Morgan Kaufmann, ISBN 978-0128203316); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Manual do programador Linux (`man 2 mmap`, `man 2 syscall`).

@@ -4,6 +4,14 @@ layout: default
 
 # Aula 00 — Ponte de partida: o que Python e JavaScript te ensinaram (e o que muda aqui)
 
+## Objetivos verificáveis
+
+Ao final, você deverá: mapear o que Python e JavaScript ensinaram (tipagem dinâmica, GC, closures) para o que muda em Go (tipagem estática, compilação, goroutines), e prever quais hábitos dinâmicos geram erros em Go.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir tipagem estática vs. dinâmica e compilação vs. interpretação`;
+- **Nível 2 — Aplicar:** `prever o erro de um hábito dinâmico transplantado para Go e corrigir`;
+- **Nível 3 — Projetar:** `projetar seu plano de transição justificando o que reaproveitar e o que desaprender`.
+
 **Competências SDD:** FND. **Pré-requisitos:** saber variáveis, condicionais, laços e funções em Python ou JavaScript. Nada de compiladores, tipos estáticos ou terminais é pressuposto sem explicação.
 
 **Objetivo observável:** ao terminar, você deverá dizer, para cada hábito trazido de Python/JS, o que continua valendo em Go e o que quebra — e compilar um programa que demonstra as três quebras clássicas sem nenhuma falhar.
@@ -122,6 +130,23 @@ O programa que somaria `"1" + 1` não está aqui de propósito: ele não compila
 ## 5. Ponte com as demais trilhas
 
 C recusa menos na compilação e cobra mais no sanitizer; Rust recusa mais (ownership) e cobra com invariantes; Python adia quase tudo para a execução — por isso valida na fronteira. Em JavaScript, `undefined` é um valor que viaja; em Go, a viagem é recusada na origem. A pergunta é sempre a mesma: *quando* o erro aparece — e quem paga por ele.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Alan Donovan e Brian Kernighan, *The Go Programming Language* (Addison-Wesley, ISBN 978-0134190440); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Referência de pacotes em [pkg.go.dev](https://pkg.go.dev/).
 
 ## 6. Checklist do que esta aula garante
 

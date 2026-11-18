@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23b — Relógios, ordem causal e consistência declarada em Go
 
+## Objetivos verificáveis
+
+Ao final, você deverá: distinguir relógio físico de relógio lógico, ordenar eventos por causalidade, declarar o nível de consistência, e prever anomalia de leitura.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir relógio lógico, causalidade e níveis de consistência`;
+- **Nível 2 — Aplicar:** `prever anomalia sob consistência fraca e corrigir o nível`;
+- **Nível 3 — Projetar:** `projetar o modelo de consistência justificando trade-offs`.
+
 **Competências SDD:** DST, SEC, MAT. **Pré-requisitos:** [23a](23a_protocolos_distribuidos.md) (dois nós com persistência e idempotência) e 22–26. Esta ponte completa o G6 no ponto que a 23a declarou aberto: relógios/ordem e a política de consistência quando os dois lados escrevem.
 
 **Objetivo observável:** ordenar eventos com Lamport, detectar concorrência com relógios vetoriais, reproduzir a partição bilateral (`k=111` contra `k=222`), reconciliar por anti-entropia com ordem total publicada `(lamport, autor, seq)` convergindo os dois nós — e nomear a escrita descartada.
@@ -29,3 +37,20 @@ O relógio de Lamport dá ordem total `(lamport, autor, seq)` — qualquer dois 
 **Exercícios:** [pistas](exercicios/23b_pistas.md) e [soluções](exercicios/23b_solucoes.md): (1) inverter o desempate e prever o novo vencedor; (2) terceiro nó isolado e anti-entropia par-a-par; (3) chaves diferentes na partição (nada se descarta — prove pela regra de aplicação); (4) especificar, sem implementar, eleição + quorum + destino do lado minoritário.
 
 **Checklist:** Lamport e vetor mantidos nas quatro operações; concorrência decidida pelos vetores; descarte nomeado na reconciliação; fronteira com consenso declarada; `go vet`/`-race` limpos.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124), caps. sobre monitoramento e SLOs.
