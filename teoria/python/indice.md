@@ -30,6 +30,10 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 
 ## Trilha Principal
 
+### Ponto de partida
+
+0. [`00_ponte_javascript.md`](00_ponte_javascript.md) - Aula de ponte: o que muda vindo de JavaScript (coercao, `==` vs `is`, referencia, refcount, entrada com teto)
+
 ### Fundamentos da Linguagem
 
 1. `01.md` - Introducao ao Python, interpretador, estrutura de um programa, `print()`, variaveis, tipos basicos e execucao de scripts
