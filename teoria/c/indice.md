@@ -57,6 +57,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 15. `15.md` - Sockets, rede e programacao de sistemas Unix-like
 16. `16.md` - Syscalls, `mmap`, arquivos grandes e I/O de baixo nivel
 - [`16a_processos_e_observacao.md`](16a_processos_e_observacao.md) - Aula de ponte: fork/wait, régua de syscall, `/proc/self/maps`, faltas de página e exec contido
+- [`16b_sistema_de_arquivos.md`](16b_sistema_de_arquivos.md) - Aula de ponte: nome vs inode, publicação atômica tmp+fsync+rename e rasgo detectado por checksum
 17. `17.md` - Performance tuning, cache, profiling e otimizacao real
 18. `18.md` - Interoperabilidade com C++, Rust e outras linguagens
 19. `19.md` - Boas praticas para bibliotecas, CLIs, backend e sistemas de producao em C
