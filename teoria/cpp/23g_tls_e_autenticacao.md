@@ -10,6 +10,8 @@ layout: default
 
 **Motivação:** a 23c autenticou com token em texto puro: quem vê o fio, rouba o crachá. Criptografar o transporte sem autenticar a aplicação é o erro simétrico: túnel perfeito, passageiro errado. Esta aula fecha os dois lados sobre a base da 23d — TLS de verdade (handshake OpenSSL, certificado, `SSL_read`/`SSL_write`) com o token da 23c viajando dentro dele. E declara o que o exemplo NÃO resolve: sem CA, a confiança no servidor nasce no primeiro contato.
 
+**Como ler esta aula (tres niveis):** *fundamental* -- pin TOFU e as duas negacoes; *intermediario* -- handshake e o modelo de ameaca em tres clausulas; *aprofundamento* -- mTLS e sessao resumida (fora do contrato).
+
 ## 1. Contrato antes do código
 
 - Servidor em `127.0.0.1` com porta efêmera (sem disputa de porta na máquina) e certificado autofirmado **efêmero** gerado em memória via API OpenSSL: nada é lido de disco, nada sobrevive ao processo, nada é confiável fora dele.
@@ -76,6 +78,18 @@ A saída tem três linhas e conta dois experimentos: o token certo atravessa o t
 ## 5. Ponte com as demais trilhas
 
 C cifra o análogo na [23e](../c/23e_rpc_sobre_consenso.md) sem TLS (numerar e confirmar em texto puro); Go exige quorum com token na 23c sem túnel; Rust audita a fronteira na 15a sem transportá-la. Em JavaScript, o análogo é `https://` + `Authorization: Bearer` — mesma divisão (transporte cifra, cabeçalho autentica), outra pilha. O padrão "túnel + crachá + negação única" vale nas quatro.
+
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| TLS com pin executado + token certo passa, errado nega | 35% |
+| Modelo de ameaca enunciado nas tres clausulas | 25% |
+| Diagnostico (prever deadlock pin-antes-do-accept) | 25% |
+| Documentacao (comandos, saidas) | 15% |
+
+**Referencias primarias:** [OpenSSL docs](https://www.openssl.org/docs/); [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446).
 
 ## 6. Critério de aprovação e checklist
 

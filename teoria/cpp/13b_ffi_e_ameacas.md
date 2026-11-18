@@ -10,6 +10,8 @@ Ao terminar, você deverá dizer, para cada valor que cruza a fronteira, quem va
 
 Esta aula é o aprofundamento do módulo CPP-5: a 13a removeu as falhas de dentro; esta fecha a porta de fora. O que falta depois dela: TLS/mTLS (certificado, não token) e o kernel das aulas 33–40, onde a fronteira vira syscall.
 
+**Como ler esta aula (tres niveis):** *fundamental* -- fronteira, abuso recusado com codigo; *intermediario* -- a tabela fronteira/abuso/limite/teste; *aprofundamento* -- handle, excecao e o pendurado declarado.
+
 ## 1. Contrato antes do código
 
 - **Exceção não atravessa:** toda função da fronteira é `noexcept`; `try/catch(...)` interno converte tudo em código (`bad_alloc` vira `-3`). Desenrolar pilha através de C é comportamento indefinido — não "funciona na prática", é proibido pelo padrão.
@@ -81,6 +83,18 @@ Cada linha da saída é uma recusa com código, não um "ok": a primeira agrupa 
 ## 6. Ponte com as demais trilhas
 
 C documenta quem aloca e quem libera na 18; Rust tranca a fronteira no tipo (`unsafe` só dentro do wrapper, erro tipado fora); Go cobra o `C.free` de quem alocou em C; Python isola a extensão atrás de objeto que detém a referência. Em JavaScript, a fronteira é o binding nativo (N-API/wasm): a mesma regra — exceção não atravessa, dono é único, abuso vira código.
+
+
+### Pesos da avaliacao
+
+| Criterio | Peso |
+|---|---|
+| Fronteira executada com recusas e codigos | 30% |
+| Tabela fronteira/abuso/limite/teste preenchida | 25% |
+| Diagnostico (prever recusa antes de chamar) | 25% |
+| Documentacao (codigo, saidas) | 15% |
+
+**Referencias primarias:** [cppreference, linguagem externa](https://en.cppreference.com/w/cpp/language/language_linkage).
 
 ## 7. Critério de aprovação e checklist
 
