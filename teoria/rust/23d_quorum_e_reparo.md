@@ -46,6 +46,10 @@ fase3 pos-cura: k=222, atrasada reparada na leitura
 23d ok: escrita exige maioria, leitura encontra, reparo converge
 ```
 
+### Leitura guiada: por que a atrasada só converge na leitura
+
+A fase 1 (`k=111`) estabelece o normal com quorum pleno: escrita confirmada por 2 acks, leitura encontrando. A fase 2 recusa os dois lados na minoria — e recusar a leitura é tão importante quanto recusar a escrita: servir o obsoleto com cara de verdade seria a mentira que o `Conflito` existe para evitar. A fase 3 contém a frase que é o título desta subseção: a atrasada é reparada *na leitura*, não na cura — a cura só devolve conectividade; quem carrega a verdade para a réplica atrasada é a próxima leitura com quorum, que encontra a vencedora e a escreve de volta. Sem leitura posterior, a atrasada continuaria obsoleta para sempre sem que nenhum `assert` reclamasse: convergência por leitura é preguiçosa por construção, e teste que termina na cura sem ler depois prova conectividade, não convergência. O veredito fecha o quarteto: maioria escreve, quorum lê, leitura repara, enum obriga o chamador a encarar o conflito.
+
 ## 4. Erros comuns e implicações defensivas
 
 1. **Reparar durante a coleta:** em Rust não compila; em outra linguagem, decide com dado em movimento. A segunda passada não é cerimonial.
@@ -53,6 +57,8 @@ fase3 pos-cura: k=222, atrasada reparada na leitura
 3. **Confirmar com W=1:** a escrita mora onde a leitura não olha. Rapidez comprada com verdade alheia.
 4. **Tratar `Conflito` como erro genérico:** conflito pede reconciliação (regra publicada), não retry — repetir a leitura devolve o mesmo conflito.
 5. **Chamar isto de consenso:** sem eleição, o coordenador fixo é ponto único. Quorum aqui, commit com líder na [23d de C](../c/23d_consenso_e_quorum.md).
+6. **Terminar o teste na cura:** conectividade de volta não é convergência — sem a leitura posterior, a atrasada segue obsoleta e o teste mente por omissão. A cura se prova lendo depois, nunca anunciando antes.
+7. **Servir o obsoleto "enquanto repara":** leitura que encontra vencedora e devolve a perdedora "provisoriamente" entrega dado que o próprio sistema já declarou morto. Sem dominância, a resposta é `Conflito` — e conflito se reconcilia com regra publicada, não com retry (que devolve o mesmo conflito).
 
 ## 5. Ponte com as demais trilhas
 

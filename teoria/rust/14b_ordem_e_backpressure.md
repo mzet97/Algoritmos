@@ -29,12 +29,22 @@ As três garantias, uma a uma:
 2. **Backpressure:** `sync_channel(4)` é a fila com teto. Com o consumidor dormindo 300 ms, o quinto `send` bloqueia até haver espaço: fila limitada transforma produtor rápido em produtor no ritmo do consumidor, que é o comportamento que protege memória. Canal ilimitado (`channel`) trocaria esse bloqueio por crescimento de fila até o OOM — a aula mede o bloqueio para ele ser uma escolha, não um susto.
 3. **Cancelamento cooperativo:** o worker consulta `PARAR` a cada volta e sai sozinho; ninguém "mata" thread em Rust (não existe API segura para isso, de propósito). Quem precisa parar no meio de um bloqueio usa timeout de canal ou I/O com prazo — cancelamento é protocolo, não sinal.
 
+### O grafo happens-before das 10 mil voltas (desenhado por extenso)
+
+Cada volta tem quatro nós: `grava DADO` → `store PRONTO(Release)` → `load PRONTO(Acquire)` → `lê DADO`. A aresta do meio (Release → Acquire) é a única que cruza threads — e é ela que carrega as outras duas: sem ela, `grava` e `lê` são eventos soltos em threads distintas, sem ordem, e o programa tem data race por definição do modelo (dois acessos, um escrita, sem happens-between). O `join` no fim adiciona a aresta final: tudo que o worker fez precede o retorno do `join` — sem ele, a main poderia ler `DADO` depois das 10 mil voltas e ainda assim correr, porque término de thread sem `join` não publica nada. Trocar o par por `Relaxed` apaga a aresta do meio mantendo os nós: o programa executa igual em x86 (TSO segura as aparências) e o teste passa — e é exatamente esse o perigo que a motivação denuncia: teste verde sobre grafo quebrado. O exercício 4 manda desenhar o grafo completo incluindo o `join`; quem desenha vê que a prova tem 10 001 arestas inter-thread, não "umas sincronizações".
+
+### Leitura guiada: três linhas, três mecanismos
+
+A primeira (`mensagem Release/Acquire ok (10000 voltas)`) prova a aresta: 10 mil publicações, cada uma lida íntegra do outro lado do par — e o número de voltas importa porque corrida intermitente se esconde em poucas amostras. A segunda (`backpressure: 5o envio esperou 300ms`) prova o teto com o relógio: o quinto `send` esperou exatamente o sono do consumidor — nem menos (teto furado), nem para sempre (deadlock). O `300ms` é medida, não veredito; o veredito é "esperou". A terceira (`cancelamento cooperativo ok (3.3M voltas ate ver a flag)`) prova o protocolo com latência declarada: o worker viu a flag depois de 3,3 milhões de voltas — parar "rápido" não é requisito, parar sozinho é. Três linhas, três provas, três instrumentos distintos (assert de dado, relógio, contagem de voltas).
+
 ## Erros comuns
 
 1. **`SeqCst` em tudo por medo:** funciona e ensina nada; cada `Relaxed`/`Release`/`Acquire` deste arquivo tem uma frase de justificativa, e é ela que se revisa.
 2. **Spin sem `spin_loop`:** girar em `load` puro queima pipeline e pode ser otimizado para um laço infinito pelo compilador em outras linguagens; `std::hint::spin_loop` é a pausa arquitetural e a âncora contra a otimização.
 3. **Canal ilimitado "para não travar":** o travamento vira acúmulo. Backpressure é o sistema dizendo a verdade sobre velocidades diferentes.
 4. **Esperar que `Drop` do canal cancele o worker:** fechar o canal acorda quem espera **no canal**; quem computa nem fica sabendo. Flag consultada ou mensagem de parada: um dos dois, explícito.
+5. **Ler `DADO` depois do `join` sem par Release/Acquire:** o `join` publica tudo que o worker fez — mas só o que o worker fez antes de terminar. Leitura escrita DEPOIS do join (ou sem join) não está coberta por aresta nenhuma; `join` não é cerca universal, é aresta de término.
+6. **Medir backpressure com consumidor acordado:** com o consumidor drenando, o quinto `send` nunca bloqueia e a aula "prova" que teto não segura. O sono de 300 ms é o instrumento: sem carga que exceda o teto, teto não é testado.
 
 ## Exercícios, pistas e solução
 

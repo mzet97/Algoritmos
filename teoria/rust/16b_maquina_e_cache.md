@@ -26,7 +26,15 @@ Três leituras. **Localidade:** por linhas, cada linha de cache de 64 bytes rend
 
 **Syscall:** 200 mil `read` de 1 byte levam ~79 ms (~400 ns por travessia com cópia); 200 mil acessos à memória, ~71 µs. A razão de três ordens de grandeza é o preço da fronteira usuário/kernel por operação pequena — a razão pela qual `read` de 1 byte em laço é um antipadrão que nenhuma linguagem conserta.
 
+### O otimizador como adversário do benchmark (anatomia do 0,98×)
+
+A primeira versão mediu razão 0,98× — linhas e colunas "empatadas". O culpado não era o cache: era o LLVM percebendo que a soma por colunas de inteiros (associativa, sem efeito observável intermediário) podia ser reordenada para o percurso por linhas. O benchmark media um programa que o compilador reescreveu para outro programa — e o número 0,98× era verdadeiro para o programa reescrito e falso para a pergunta. O `black_box` por coluna quebra a prova do otimizador: cada coluna lida vira efeito observável opaco, e reordenar deixaria de preservar semântica. Três regras gerais saem do episódio: (a) benchmark sem âncora contra reescrita mede o otimizador; (b) a âncora tem de estar no lugar que o otimizador exploraria (por coluna, não no total final — ancorar só o total ainda permite reordenar o meio); (c) descobrir a reescrita é diagnóstico, não fracasso — o 0,98× com explicação vale mais que 15× sem, porque o 15× sem âncora poderia ser outro 0,98× disfarçado.
+
 **Página:** `/proc/self/statm` expõe o tamanho virtual em páginas do próprio processo: o SO continua sendo uma fonte de verdade consultável, agora de dentro de um programa Rust sem `unsafe` e sem crates.
+
+### Leitura guiada: três linhas, três fronteiras do hardware
+
+`linhas=1.48ms colunas=22.2ms razao=15.03x` é a hierarquia de cache em um número: mesmo dado (2048×2048), mesma conta, 15× de diferença só pelo percurso — e a razão carrega a âncora invisível (o `black_box` que impediu o 0,98×). `200k reads de 1 byte=79ms vs 200k acessos a memoria=71us` é a fronteira usuário/kernel: 1119× para fazer "a mesma coisa" quando a coisa atravessa o kernel a cada byte — o antipadrão do `read` de 1 byte quantificado, não adjetivado. A terceira é o veredito sobre o método, não sobre o número: localidade provada, fronteira precificada, página consultada. E o `/proc/self/statm` que o texto menciona sem mostrar número ensina por contraste: nem toda evidência é número publicado — tamanho virtual é contexto para interpretar os outros dois, e contexto se lê, não se afirma.
 
 ## Erros comuns
 
@@ -34,6 +42,8 @@ Três leituras. **Localidade:** por linhas, cada linha de cache de 64 bytes rend
 2. **Matriz pequena demais:** com a matriz cabendo no LLC, linhas e colunas empatam e a aula "prova" que localidade não importa. O tamanho se escolhe para estourar o cache que se quer medir.
 3. **Comparar syscall com função:** a comparação honesta é contra acesso à memória já mapeada — é ela que mostra que o custo é a fronteira, não a linguagem.
 4. **Generalizar a razão:** 15× e 1119× são desta máquina e destes tamanhos. O que viaja é o método; o número fica com o ambiente registrado.
+5. **Ancorar só o total:** `black_box` no resultado final ainda permite ao otimizador reordenar o meio do percurso. A âncora mora onde a reescrita aconteceria — por coluna, a cada passo — ou não ancora nada.
+6. **Ler statm como veredito:** tamanho virtual sem contexto (quanto é mapeado? residente? compartilhado?) vira número solto. Fonte do SO se consulta para interpretar medida, não para substituir medida.
 
 ## Exercícios, pistas e solução
 

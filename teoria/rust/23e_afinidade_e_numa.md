@@ -30,11 +30,19 @@ taskset -c 0 ./afim23e
 
 (Os GB/s variam com a máquina e a carga — o `assert` é sobre o checksum; todo o resto é medida publicada, não veredito.)
 
+### Leitura guiada: as duas execuções lado a lado
+
+Máscara cheia: `Cpus_allowed_list: 0-23` ancora o experimento (8 threads livres em 24 núcleos), `razao=0.86x` diz "modos indistinguíveis" — e indistinguível É o resultado esperado com um nó, não falha do experimento. Com `taskset -c 0`: a âncora vira `0` (todo mundo num núcleo), o primeiro-toque cai para 6.10 GB/s e a razão para 0.32x — queda de inicialização paralela espremida num núcleo, não de memória. As duas execuções terminam com o mesmo veredito (`checksum igual`, `1 no = laboratorio multino declarado`) porque o veredito cobra o que as duas provam (corretude + declaração de máquina), não o que só o multinó provaria (razão remoto/local). O contraste entre 0.86x e 0.32x ensina a distinção central: mesmo número (razão), causas opostas (ruído vs. oversubscription) — e só a âncora (`Cpus_allowed_list`) diz qual é qual.
+
 ## 1. O que o experimento mostra (e o que ele não mostra)
 
 **Mostra:** os dois modos calculam igual (checksum exato, não tolerância — tríade é exata em `f32` aqui porque os operandos são representáveis e a ordem é a mesma). A afinidade é lida do processo, não presumida: `Cpus_allowed_list` prova onde o SO deixou rodar. E prender 8 threads num núcleo só derruba a banda do modo paralelo de inicialização (0.32x) — contenção de CPU, não de memória, e o número diz qual.
 
 **Não mostra:** efeito NUMA. Com um nó só, primeiro toque e tardio moram no mesmo lugar — razão 0.86x é ruído, e publicá-la como "ganho/perda de NUMA" seria fraude. A aula declara a máquina (`nos_numa=1` impresso pelo programa) para que nenhum leitor cite esses números fora dela.
+
+### Primeiro toque, por extenso: falta, zero, residência
+
+O Linux aloca página virtual no `malloc` (aqui: no `Vec` de 64 MiB) e página física na primeira escrita — a falta que zera e mapeia. "Quem toca primeiro decide o nó" porque a falta executa no contexto de quem escreveu: o manipulador escolhe o nó local da CPU faultante (política padrão), instala a PTE e conta a página para aquele nó. Três consequências: (a) inicializar na main prende as 64 MiB no nó da main, mesmo que 8 threads calculem depois — e é por isso que o modo tardio paraleliza o cálculo mas serializa a residência; (b) paralelizar a inicialização espalha as faltas (e as páginas) pelas CPUs que tocam — em 2 nós, cada metade mora perto de quem a calculará; (c) tocar de novo não move: residência é decidida na falta, e migração exige `migratepages` explícito — ler de outro nó não "traz" a página para perto, só paga a distância toda vez. Mesmo nesta máquina de um nó, (a) e (c) são visíveis em princípio: o tardio paga 8 threads calculando sobre páginas que uma thread faultou — sem distância NUMA, mas com a mesma estrutura de quem-tocou-onde que o multinó cobraria em GB/s.
 
 ## 2. O laboratório multinó: protocolo, não fingimento
 
@@ -46,6 +54,8 @@ O que provaria NUMA: a mesma tríade em máquina de 2+ nós, com `numactl --cpun
 2. **Inicializar na main e chamar de "paralelo":** o modo tardio paraleliza o cálculo mas serializa a inicialização — e no NUMA real, a página mora onde foi tocada primeiro. Paralelizar o cálculo sem paralelizar o toque é otimizar a metade errada.
 3. **`assert` em tempo:** razão com desigualdade (`t_4 < t_seq` da 23c) só vale quando o efeito é robusto à carga. Aqui o efeito esperado é zero — afirmar desigualdade seria transformar ruído em teste. Tempo se publica, checksum se afirma.
 4. **Confundir contenção de CPU com localidade:** os 0.32x do `taskset -c 0` são 8 threads num núcleo, não memória remota. Diagnóstico errado (comprar NUMA) para sintoma certo (oversubscription) custa hardware à toa.
+5. **Achar que ler de outro nó "traz" a página:** residência decide-se na falta; leitura remota paga a distância toda vez, sem migração implícita. Localidade se constrói no primeiro toque (ou com migração explícita), nunca na releitura — otimizar o loop de leitura sem tocar a inicialização é polir o termômetro.
+6. **Publicar razão sem a âncora:** 0.86x e 0.32x são o mesmo tipo de número com causas opostas — sem `Cpus_allowed_list` e `nos_numa`, o leitor não distingue ruído de oversubscription de NUMA. Número de banda sem máscara e sem topologia é ruído com formatação.
 
 ## 4. Ponte com as demais trilhas
 

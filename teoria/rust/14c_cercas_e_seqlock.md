@@ -30,11 +30,19 @@ O produtor escreve `[i, i*7]` num `Mutex` (o dado não é atômico), executa `fe
 
 Três consequências que a 14b não mostrava: (a) a cerca ordena **tudo** que a precede/sucede, não um endereço — publicar dois `u64` com uma cerca é o caso de uso; (b) o sinal pode ser `Relaxed` porque ele não carrega dado, só posição; (c) em x86-64 a cerca `Release`/`Acquire` compila para quase nada (o TSO já ordena), e é por isso que o teste passa folgado aqui — a aula roda igual em ARM/RISC-V fracos, onde a cerca vira instrução de verdade.
 
+### O litmus de cada cerca removida (o que cada uma proíbe)
+
+Faça o exercício mental de remover uma peça por vez e dizer qual execução proibida volta a ser possível: sem o `fence(Release)` do produtor, as duas escritas no par podem ficar visíveis depois do sinal — o consumidor vê `pronto`, lê o par e pega `[i, lixo]`; sem o `fence(Acquire)` do consumidor, a leitura do par pode subir para antes da leitura do sinal — o consumidor lê dado velho com sinal novo. Sem nenhuma cerca, as duas reordenações compõem: qualquer combinação de velho/novo em cada posição. E trocar os `Relaxed` por `Release`/`Acquire` nas operações continuaria correto — mas pagaria ordenação por endereço onde bastava ordenação por cerca, e esconderia a lição: o sinal não carrega dado, então não precisa carregar ordenação. A forma mínima que continua correta é a forma que ensina: `Relaxed` nas pontas, cerca no meio, e cada peça com um litmus que justifica sua existência.
+
 ## 2. O seqlock: leitor otimista, escritor sem espera
 
 O escritor incrementa o contador para ímpar (`Release`), escreve, incrementa para par (`Release`). O leitor lê o contador (`Acquire`); se ímpar, retenta; lê o dado; relê o contador — se mudou, retenta. O contador ímpar proíbe leitura: não existe "ler durante escrita e torcer". O par diferente proíbe uso: não existe "li metade velha, metade nova".
 
 O preço aparece no número de retentativas (centenas de milhares para 50 mil leituras nesta máquina): o leitor gira enquanto o escritor escreve. Seqlock serve quando escrita é rara e leitura é quente — config lida por milhares de threads, atualizada uma vez por minuto. Com escrita frequente, o leitor morre de fome girando: aí é `RwLock` (aula 13) ou versão com espera, não otimismo.
+
+### Leitura guiada: três linhas, dois protocolos
+
+A primeira linha (`cercas ok: 50000 publicacoes conferidas par a par`) prova publicação ordenada sem operação ordenada: cada um dos 50 mil pares `[i, i*7]` foi lido íntegro do outro lado das cercas — um único `[i, lixo]` teria quebrado o `assert` e a linha não sairia. A segunda (`seqlock ok: 50000 valores consistentes, N retentativas`) prova o leitor otimista: 50 mil valores íntegros, e o `N` conta quantas vezes o protocolo descartou leitura a meio — retentativa aqui é trabalho do protocolo funcionando, não contenção falhando; `N == 0` com escrita concorrente real seria o suspeito (leitor que nunca retenta provavelmente nunca concorreu). A terceira fecha o par: cerca publica, contador ordena, leitor nunca trava escritor. E o parêntese do contrato ("o número de retentativas varia") separa veredito de medida: o `assert` cobra consistência exata, o `N` informa contenção — teste que exige `N` exato quebraria na próxima máquina sem que nada estivesse errado.
 
 ## 3. Erros comuns e implicações defensivas
 
@@ -42,6 +50,8 @@ O preço aparece no número de retentativas (centenas de milhares para 50 mil le
 2. **Ler com contador ímpar "só para ver":** o valor lido durante escrita é Frankenstein (metade velha). O ramo `if antes % 2 == 1` não é otimização, é correção.
 3. **Esquecer a segunda leitura do contador:** ler, checar ímpar, usar — sem reler depois — aceita escrita que começou depois da primeira leitura. As duas leituras são o par; uma só é metade do protocolo.
 4. **Seqlock com escrita frequente:** otimismo sem espera vira espera sem progresso para o leitor. Medir retentativas (o exemplo imprime) é o termômetro: retentativa perto de zero com escrita constante é suspeita, não saúde — provavelmente o leitor nem está concorrendo.
+5. **`SeqCst` "por segurança":** trocar tudo por `SeqCst` funciona e ensina nada — a ordem total esconde qual par realmente precisa se ver. Comece pelo mais fraco que o protocolo exige (`Relaxed` + cercas aqui) e suba só quando o litmus provar necessidade; força máxima por padrão é confissão de que não se sabe o que cada peça ordena.
+6. **Exigir `N` de retentativas exato no teste:** contenção depende de escalonador, carga e máquina — `assert` em `N` é teste da máquina, não do protocolo. O exemplo acerta ao cobrar consistência exata e só informar `N`: veredito no que é determinístico, medida no que não é.
 
 ## 4. Ponte com as demais trilhas
 
@@ -53,6 +63,8 @@ C++ escreve a mesma cerca com `std::atomic_thread_fence` na 17a de C++; Go escon
 - [ ] Digo o que quebra se qualquer uma das cercas sair (data race no par).
 - [ ] Descrevo os dois momentos em que o leitor do seqlock retenta — e por que cada um existe.
 - [ ] Justifico quando seqlock vence `RwLock` (escrita rara, leitura quente) e quando perde (escrita frequente).
+- [ ] Executo o litmus de cada cerca removida e digo qual execução proibida volta.
+- [ ] Explico por que o teste cobra consistência exata mas só informa `N`.
 - [ ] Nomeio o que falta: `SeqCst` e ordem total (laboratório futuro com litmus declarado, fora do `stable` honesto desta aula).
 
 **Referências primárias:** *The Rust Reference*, capítulo *Atomics and Memory Ordering* (`fence`, `Release`/`Acquire`); o paper do seqlock (Lameter) como origem do protocolo contador-ímpar. Nenhum texto foi copiado — o comportamento acima foi confirmado executando este exemplo.

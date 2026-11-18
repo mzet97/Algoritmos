@@ -26,12 +26,22 @@ rustc --edition 2024 -O -D warnings teoria/rust/exemplos/12b_estruturas.rs -o /t
 
 O custo de memória é a leitura de sistemas: um `Box` por nó são 1 000 alocações para 1 000 chaves, contra um único vetor contíguo que `sort_unstable` ordena em ~0,9 ms (100 mil elementos) sem alocar por elemento. Em Rust, a forma segura de árvore continua sendo a forma cara de memória — `Vec` com índices (arena) é o exercício 3, e é como árvores de produção costumam nascer nesta linguagem.
 
+### Por que o oráculo prova (e o que ele não prova)
+
+O teste compara percurso em-ordem contra `sort_unstable` + `dedup` do mesmo multiconjunto em 300 casos — e a força está nos três qualificadores: *mesmo multiconjunto* (a prova é sobre o conteúdo inserido, não sobre sequência imaginada), *300 casos com duplicatas* (duplicata recusada com `false` é ramo próprio, e ramo não testado é ramo presumido) e *oráculo independente* (a std não compartilha código com a BST; bug replicado nos dois lados passaria — por isso o oráculo é a std, revisada por milhares, e não uma segunda implementação própria). O que o oráculo não prova: altura (medida à parte, em 1 000 chaves) e custo (contado à parte, um `Box` por nó). Corretude, forma e custo são três afirmações com três instrumentos — e a aula as mantém separadas porque instrumento único para três perguntas responde nenhuma direito. A indução na invariante (esquerda < nó < direita ⟹ em-ordem crescente) é o argumento; os 300 casos são a execução do argumento — prova sem execução é revisão, execução sem prova é sorte.
+
+### Leitura guiada: três linhas, três instrumentos
+
+A primeira linha (`propriedade ok: BST em-ordem == sort_unstable+dedup (300 casos)`) é a corretude: 300 multiconjuntos com duplicatas, três tamanhos de zero a 59, zero divergência. A segunda (`altura ordenada=1000 embaralhada=20`) é a forma: o mesmo código, duas entradas, dois regimes — e o contraste ordenada/embaralhada prova que a degeneração é propriedade da entrada, não do código. A terceira fecha com o trio que a aula cobra: invariante provada, forma medida, custo declarado. Repare que a altura vem como dois números, não um: `1000` sozinho alarmaria sem referência; `20` ao lado diz o que a mesma árvore faz com entrada honesta — medida sem controle é susto, com controle é diagnóstico.
+
 ## Erros comuns
 
 1. **Lutar com o borrow checker na inserção iterativa:** descer com `&mut Link` e reatribuir no `None` é o padrão; tentar guardar ponteiro para o pai reproduz C com atrito. A árvore de ownership quer recursão ou navegação por referência mutável ao elo, não ao nó.
 2. **`sort` quando bastava `sort_unstable`:** sem registros com ordem original a preservar, a estabilidade é custo sem comprador; com registros, é o contrário (08a de C++).
 3. **Achar que `Drop` recursivo é grátis:** destruir a lista degenerada de 1 000 nós é recursão de 1 000 quadros na destruição também. Altura é limite operacional nas duas pontas.
 4. **Medir sem `-O`:** rustc sem otimização mede o modo debug; o nível vai escrito junto do número.
+5. **Oráculo escrito pela mesma mão:** segunda implementação própria como "oráculo" replica o bug de interpretação nos dois lados. Oráculo precisa de independência (a std) ou o teste prova consistência, não corretude.
+6. **Casos sem duplicata:** se nenhum caso tem chave repetida, o ramo `false` nunca executa — e a invariante "duplicata não entra" fica presumida. Ramo de recusa exige caso que tenta entrar.
 
 ## Exercícios, pistas e solução
 

@@ -31,11 +31,19 @@ rustc --edition 2024 -O -D warnings teoria/rust/exemplos/16c_isa_abi.rs -o isa16
 
 **Layout contratado.** `repr(C)` promete ordem, deslocamentos e tamanho: `offset_of!` mais `size_of`/`align_of` transformam a promessa em `assert`. O `repr(Rust)` padrão não promete nada disso — e é por isso que o `TrapFrame` do kernel (aula 28a) é `repr(C)`: o assembly lê campo por deslocamento, e deslocamento só existe com ordem contratada. O `read_unaligned` mostra a outra ponta: hardware real entrega bytes desalinhados, e a API segura existe para não invocar UB ao lê-los.
 
+### Lendo `tam=16 alin=8 offs=(0,4,8)` como contrato executável
+
+Desmonte a linha: três campos (`u32`, `u32`, `u64` — 4+4+8 = 16 bytes de dado) ocupam 16 bytes totais porque o `u64` exige alinhamento 8 e cai no deslocamento 8 sem padding (4+4 = 8, múltiplo de 8 por sorte do layout, não por acaso do exemplo); `alin=8` é o máximo dos alinhamentos; `tam=16` é múltiplo de 8, então arrays do struct não quebram o alinhamento do elemento seguinte. Cada número tem um bug que ele proíbe: `offs` proíbe reordenação silenciosa (o `repr(Rust)` reordenaria os `u32` para junto do `u64` e mudaria o 8); `alin` proíbe leitura direta desalinhada (o assembly que lê o campo 2 no deslocamento 8 assume endereço múltiplo de 8); `tam` proíbe cauda sem padding (array com `tam` não-múltiplo desalinharia o segundo elemento). O `assert` cobra os três porque a fronteira (assembly, FFI, disco) lê os três — promessa que ninguém lê é comentário, e comentário não segura layout.
+
 **ABI atravessada.** `extern "C" fn` com `#[unsafe(no_mangle)]` (a edição 2024 exige declarar que o nome é contrato manual — o mesmo recibo que a 28a pagou) é chamada pelo nome e por ponteiro de função. É a mesma convenção que o `trap.S` usa para chamar `trap_handler`: quem atravessa, atravessa igual em kernel e em espaço de usuário.
 
 ## 2. O que quebra no port (e a ordem em que quebra)
 
 Primeiro o layout: `repr(C)` continua válido, mas tamanhos de tipos C (`long`, ponteiro) mudam — o `assert` de `size_of == 16` sobrevive em LP64 e morre onde `long` é 32 bits. Depois a endianness: o roundtrip `to_ne_bytes`/`from_ne_bytes` sobrevive sempre (ele é nativo por definição), mas qualquer byte gravado em disco por outra máquina deixa de ler igual — persistência exige `to_le/to_be` explícitos, nunca `ne`. Por último a ABI: o nome continua, mas a convenção de chamada (`extern "C"` em RISC-V vs x86-64) muda como argumentos viajam em registradores — e é por isso que o kernel relinka por alvo em vez de fingir portabilidade.
+
+### Leitura guiada: seis linhas, três fronteiras
+
+`arch=x86_64` ancora o relatório: tudo abaixo vale nesta ISA, e portar sem renomear a âncora é comparar incomparáveis (erro nº 4). A linha do layout é o contrato executável da subseção acima — cada número um `assert`, cada `assert` um bug proibido. As duas linhas de endianness distinguem memória de persistência: `read_unaligned` prova leitura segura de bytes alheios (o `0x04030201` atravessou deslocamento arbitrário sem UB), `to_ne_bytes` prova roundtrip no próprio processo — e nenhuma das duas prova leitura de disco alheio, que exigiria `le`/`be` explícitos. A linha `extern C ok` prova a travessia duas vezes (nome e ponteiro, `40+2=42`): por nome cobra o `no_mangle`; por ponteiro cobra a convenção de chamada com endereço indireto — duas formas de atravessar, dois `assert`s, porque nome certo com convenção errada chama o lugar certo do jeito errado.
 
 ## 3. Erros comuns e implicações defensivas
 
@@ -43,6 +51,8 @@ Primeiro o layout: `repr(C)` continua válido, mas tamanhos de tipos C (`long`, 
 2. **Persistir com `to_ne_bytes`:** arquivo escrito numa máquina little-endian lê errado numa big-endian. Formato em disco usa endianness fixa declarada; `ne` é só para memória do próprio processo.
 3. **`#[no_mangle]` sem `unsafe(...)`:** na edição 2024, não compila — e a mensagem ensina o ponto: exportar nome é ato inseguro porque cria contrato invisível ao borrow checker.
 4. **Medir desempenho sem nomear a ISA:** benchmark emulado comparado com nativo não é comparação, é ficção. A primeira linha da saída (`arch=`) existe para o relatório citar.
+5. **Testar a travessia só por nome:** `no_mangle` certo com convenção errada compila, linka e corrompe a pilha na chamada — o teste por ponteiro existe porque endereço indireto é outro caminho pelo mesmo contrato. Cobrir um e presumir o outro é cobrir metade da fronteira.
+6. **Confundir roundtrip nativo com formato:** `to_ne_bytes` lido na mesma máquina sempre funciona — e é por isso que ele não prova nada sobre disco ou rede. Formato se testa com máquina de endianness oposta ou com bytes gravados à mão; roundtrip próprio é teste de API, não de interoperabilidade.
 
 ## 4. Ponte com as demais trilhas
 
