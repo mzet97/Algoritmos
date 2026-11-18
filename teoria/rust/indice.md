@@ -53,11 +53,13 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 14. `14.md` - Async e runtime fundamentals
 - [`14a_framing_e_concorrencia.md`](14a_framing_e_concorrencia.md) - Aula de ponte: framing TCP, limites, timeouts e concorrencia com `std`
 - [`14b_ordem_e_backpressure.md`](14b_ordem_e_backpressure.md) - Aula de ponte (R5): Release/Acquire medido, canal limitado com backpressure e cancelamento cooperativo
+- [`14c_cercas_e_seqlock.md`](14c_cercas_e_seqlock.md) - Aula de ponte (R5): fence publica par sem operacao ordenada, seqlock com leitor otimista e retentativa
 15. `15.md` - Unsafe Rust
 - [`15a_auditoria_unsafe.md`](15a_auditoria_unsafe.md) - Aula de ponte: auditoria de `unsafe` por invariante escrita, com teste por bloco
 16. `16.md` - FFI com C/C++
 - [`16a_maquina_e_so.md`](16a_maquina_e_so.md) - Aula de ponte: processos, syscalls, `/proc`, RSS e localidade em Rust seguro
 - [`16b_maquina_e_cache.md`](16b_maquina_e_cache.md) - Aula de ponte (R4): localidade linhas/colunas medida, custo de syscall e pagina via /proc
+- [`16c_isa_e_abi.md`](16c_isa_e_abi.md) - Aula de ponte (R4): ISA nomeada, layout `repr(C)` contratado, `extern "C"` por nome e ponteiro
 17. `17.md` - Performance tuning e profiling
 18. `18.md` - Boas praticas para sistemas de alto desempenho e codigo de producao
 
@@ -85,6 +87,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 - [`23b_sistemas_distribuidos.md`](23b_sistemas_distribuidos.md) - Aula de ponte (R6): dois nós com log e `sync_all`, idempotência por id, kill, cauda rasgada, replay e atraso
 - [`23d_quorum_e_reparo.md`](23d_quorum_e_reparo.md) - Aula de ponte (R6): quorum de escrita/leitura com vetor, conflito declarado e reparo em duas passadas
 - [`23c_vetorizacao.md`](23c_vetorizacao.md) - Aula de ponte (R7): soma com quatro acumuladores contra referencia f64, razao medida e NUMA contado
+- [`23e_afinidade_e_numa.md`](23e_afinidade_e_numa.md) - Aula de ponte (R7): triade com primeiro toque vs tardio, afinidade por `taskset` e laboratorio multino declarado
 
 ### Modulo 2 - Computacao de Alto Desempenho, GPU e SIMD
 

@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+# Aula 16c — ISA, ABI e layout: o que o hardware promete e o que o `repr` garante (R4)
+
+**Competências SDD:** ARQ, MEM, SEC. **Pré-requisitos:** aulas [16a](16a_maquina_e_so.md) (espaço de usuário), [16b](16b_maquina_e_cache.md) (localidade) e [15a](15a_auditoria_unsafe.md) (auditoria de `unsafe`). Toolchain registrada: `rustc` 1.99.1 (stable).
+
+**Objetivo observável:** ao terminar, você deverá executar o exemplo com `rustc --edition 2024 -D warnings`, mostrar os deslocamentos contratuais do `repr(C)`, o roundtrip de endianness e a chamada `extern "C"` por nome e por ponteiro — e explicar qual dessas três provas quebra primeiro num port entre ISAs.
+
+**Motivação:** o R4 pedia ISA, ABI e cache sobre a base da 16a; a 16b mediu cache. Faltavam as outras duas letras: que instruções e registradores existem (ISA) e como os dois lados da fronteira concordam sobre tamanho, ordem e chamada (ABI). Esta aula fixa as três promessas em código que falha em compilação ou em `assert` quando a promessa é falsa — não em prosa.
+
+## Contrato e exemplo
+
+O [arquivo-fonte](exemplos/16c_isa_abi.rs) contém o programa completo (sem dependências externas):
+
+```bash
+rustc --edition 2024 -O -D warnings teoria/rust/exemplos/16c_isa_abi.rs -o isa16c
+./isa16c
+# arch=x86_64
+# layout repr(C): tam=16 alin=8 offs=(0,4,8)
+# read_unaligned ok: 0x04030201
+# endianness nativa ok: 0x01020304
+# extern C ok: soma_c(40,2)=42 por nome e por ponteiro
+# 16c ok: ISA nomeada, layout contratado, ABI atravessada
+```
+
+## 1. Três promessas, três provas
+
+**ISA nomeada.** `std::env::consts::ARCH` diz onde o binário está rodando, e o `assert!` lista as ISAs que este livro cobre (x86_64, aarch64, riscv64). Parece trivial até o dia em que o binário roda emulado: a ISA do processo não é a ISA do silício, e experimento de desempenho que ignora isso mede o emulador.
+
+**Layout contratado.** `repr(C)` promete ordem, deslocamentos e tamanho: `offset_of!` mais `size_of`/`align_of` transformam a promessa em `assert`. O `repr(Rust)` padrão não promete nada disso — e é por isso que o `TrapFrame` do kernel (aula 28a) é `repr(C)`: o assembly lê campo por deslocamento, e deslocamento só existe com ordem contratada. O `read_unaligned` mostra a outra ponta: hardware real entrega bytes desalinhados, e a API segura existe para não invocar UB ao lê-los.
+
+**ABI atravessada.** `extern "C" fn` com `#[unsafe(no_mangle)]` (a edição 2024 exige declarar que o nome é contrato manual — o mesmo recibo que a 28a pagou) é chamada pelo nome e por ponteiro de função. É a mesma convenção que o `trap.S` usa para chamar `trap_handler`: quem atravessa, atravessa igual em kernel e em espaço de usuário.
+
+## 2. O que quebra no port (e a ordem em que quebra)
+
+Primeiro o layout: `repr(C)` continua válido, mas tamanhos de tipos C (`long`, ponteiro) mudam — o `assert` de `size_of == 16` sobrevive em LP64 e morre onde `long` é 32 bits. Depois a endianness: o roundtrip `to_ne_bytes`/`from_ne_bytes` sobrevive sempre (ele é nativo por definição), mas qualquer byte gravado em disco por outra máquina deixa de ler igual — persistência exige `to_le/to_be` explícitos, nunca `ne`. Por último a ABI: o nome continua, mas a convenção de chamada (`extern "C"` em RISC-V vs x86-64) muda como argumentos viajam em registradores — e é por isso que o kernel relinka por alvo em vez de fingir portabilidade.
+
+## 3. Erros comuns e implicações defensivas
+
+1. **Confiar no layout de `repr(Rust)`:** o compilador pode reordenar para economizar padding; código que lê campo por deslocamento num `repr(Rust)` é UB que hoje funciona. Fronteira com assembly ou FFI exige `repr(C)` — sem exceção, sem "só desta vez".
+2. **Persistir com `to_ne_bytes`:** arquivo escrito numa máquina little-endian lê errado numa big-endian. Formato em disco usa endianness fixa declarada; `ne` é só para memória do próprio processo.
+3. **`#[no_mangle]` sem `unsafe(...)`:** na edição 2024, não compila — e a mensagem ensina o ponto: exportar nome é ato inseguro porque cria contrato invisível ao borrow checker.
+4. **Medir desempenho sem nomear a ISA:** benchmark emulado comparado com nativo não é comparação, é ficção. A primeira linha da saída (`arch=`) existe para o relatório citar.
+
+## 4. Ponte com as demais trilhas
+
+C declara o mesmo layout com `offsetof` e `_Static_assert` na aula de ABI; C++ atravessa a mesma fronteira com `extern "C"` e `noexcept` na [13b](../cpp/13b_ffi_e_ameacas.md); Go esconde a ABI atrás do `cgo` (com custo documentado). Em Rust, o `repr(C)` é o idioma comum das três fronteiras — kernel, FFI e formato binário. A 28a mostra o preço dele onde dói mais (tabela Sv39); esta aula mostra o contrato onde dói menos.
+
+## 5. Critério de aprovação e checklist
+
+- [ ] Rodo o exemplo e aponto os três `assert` que virariam erro em port errado.
+- [ ] Explico por que o `TrapFrame` do kernel precisa de `repr(C)`.
+- [ ] Digo o que `read_unaligned` evita (UB de acesso desalinhado) e quando usá-lo.
+- [ ] Descrevo o que quebra primeiro num port x86_64 → riscv64 (layout, depois ABI).
+- [ ] Nomeio o que falta: interrupção e escalonamento em espaço de usuário (R4 segue com o kernel da 28a).
+
+**Referências primárias:** *The Rust Reference*, capítulos de *Type Layout* (`repr(C)`) e *Unsafety* (`#[unsafe(no_mangle)]` na edição 2024); SysV ABI do alvo para a convenção `extern "C"`. Nenhum texto foi copiado — os deslocamentos acima foram confirmados executando este exemplo.
+
+*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
