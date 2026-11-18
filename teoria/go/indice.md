@@ -82,6 +82,7 @@ Use este indice como ponto de entrada rapido para estudo, revisao e navegacao en
 23. `23.md` - gRPC e Comunicacao entre Servicos
 - [`23a_protocolos_distribuidos.md`](23a_protocolos_distribuidos.md) - Aula de ponte: framing com teto, replicacao com idempotencia, log duravel e falhas injetadas
 - [`23b_relogios_e_consistencia.md`](23b_relogios_e_consistencia.md) - Aula de ponte (G6): Lamport, vetores, particao bilateral e reconciliacao com perda declarada
+- [`23c_quorum_e_reparo.md`](23c_quorum_e_reparo.md) - Aula de ponte (G6): quorum de escrita/leitura, conflito pelo vetor e reparo na leitura
 
 ### Modulo 2 - Observabilidade, Confiabilidade e Operacao
 
