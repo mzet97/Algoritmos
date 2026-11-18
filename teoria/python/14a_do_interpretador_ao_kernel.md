@@ -8,7 +8,11 @@ layout: default
 
 Explicar o caminho de uma operação Python entre código-fonte, bytecode, implementação CPython, bibliotecas nativas, sistema operacional e hardware — e investigar cada camada com ferramentas do espaço de usuário. Pré-requisitos: aulas 01 a 14. Não precisa saber C, Assembly, QEMU nem kernel.
 
-Ao terminar, você deverá desenhar o caminho Python → bytecode → runtime → syscall → hardware para uma leitura de arquivo, distinguir RSS de `tracemalloc`, medir uma syscall a partir do Python e explicar por que o mesmo programa observa números diferentes em máquinas diferentes.
+Ao final, você deverá: traçar o caminho do bytecode ao kernel (interpretador, syscalls), distinguir tempo de CPU de I/O, e apontar o que Python observa.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir bytecode, syscall e as camadas até o kernel`;
+- **Nível 2 — Aplicar:** `diagnosticar atribuição errada de custo e corrigir com medição`;
+- **Nível 3 — Projetar:** `projetar uma investigação justificando cada camada`.
 
 ## 1. Linguagem, implementação e máquina são três contratos
 
@@ -186,3 +190,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - executar o exemplo e confrontar cada número com o modelo.
 
 **Próxima aula:** concorrência com `threading` e `multiprocessing`. O raciocínio desta aula sustenta a escolha: o GIL, o I/O e o custo de IPC decidem entre threads e processos.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *High Performance Python*, Gorelick e Ozsvald (O'Reilly, ISBN 978-1492055020); 2. Documentação de `threading`/`asyncio` em [docs.python.org/3/library](https://docs.python.org/3/library/); 3. Luciano Ramalho, *Python Fluente*, caps. sobre concorrência.

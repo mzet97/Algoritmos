@@ -4,6 +4,14 @@ layout: default
 
 # Aula 33 — Projeto integrador de Python: plataforma de experimentos distribuídos
 
+## Objetivos verificáveis
+
+Ao final, você deverá: integrar plataforma de experimentos distribuídos sob a mesma rubrica, confrontar frentes, e declarar o que foi provado.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir a rubrica integradora`;
+- **Nível 2 — Aplicar:** `diagnosticar divergência e atribuir causa`;
+- **Nível 3 — Projetar:** `projetar a integração justificando evidências`.
+
 **Competências SDD:** todas (PY10). **Pré-requisitos:** PY1–PY9, com as pontes [19a](19a_protocolos_tcp.md), [23a](23a_sistemas_distribuidos.md)/[23b](23b_relogios_e_particao.md), [29b](29b_seguranca_defensiva.md) e [29c](29c_localidade_e_amdahl.md) executadas.
 
 **Objetivo observável:** entregar uma plataforma local e reproduzível que junta as peças do livro: (1) o serviço replicado de dois nós da 23a com a política de consistência da 23b escrita em uma frase e demonstrada; (2) uma CLI de observação do SO (processos filhos, RSS por `/proc`, tempo e estado/erro, na linha da 14a) apontada para o serviço; (3) uma carga numérica da 29c com baseline e Amdahl; (4) injeção de falhas (atraso, duplicação, queda com kill, reinício) com esperado × observado.
@@ -36,3 +44,20 @@ O serviço (23a/23b) sob carga numérica (29c) observado pela CLI (14a) com falh
 O projeto é o exercício: [pistas](exercicios/33_pistas.md) ordenam a montagem (serviço → CLI → carga → falhas → defesa) e a [solução comentada](exercicios/33_solucoes.md) discute decisões-modelo, incluindo onde `tracemalloc` engana e por que o relatório usa `/proc`.
 
 **Checklist de submissão:** as quatro peças rodando juntas; consistência em uma frase conferindo com a demonstração; abusos recusados; observação interpretada; limitações declaradas; clone limpo verde.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação do FastAPI ([fastapi.tiangolo.com](https://fastapi.tiangolo.com/)); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124).

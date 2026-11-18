@@ -4,6 +4,14 @@ layout: default
 
 # Aula 16b — Deadlock reproduzido e backpressure em Python
 
+## Objetivos verificáveis
+
+Ao final, você deverá: reproduzir deadlock, aplicar backpressure com fila limitada, e prever esgotamento sem limite.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir deadlock, backpressure e fila limitada`;
+- **Nível 2 — Aplicar:** `diagnosticar deadlock reproduzido e corrigir ordem/limite`;
+- **Nível 3 — Projetar:** `projetar pipeline com backpressure justificando limites`.
+
 **Competências SDD:** CON, MEM, SEC. **Pré-requisitos:** [16a](16a_concorrencia_e_gil.md) (corrida demonstrada, `Lock`, threads/processos/asyncio medidos) e 15–16. Esta ponte completa o PY5: deadlock, backpressure e isolamento de processo sobre a base da 16a.
 
 **Objetivo observável:** reproduzir um deadlock por ordem oposta de aquisição com detecção por timeout (threads travadas observadas vivas, sem matar o processo de teste), corrigir com ordem global de aquisição e medir o backpressure de uma `queue.Queue(maxsize=4)` com consumidor dormindo.
@@ -33,3 +41,20 @@ Quatro condições sustentam um deadlock (posse-e-espera, exclusão, sem preemp�
 **Exercícios:** [pistas](exercicios/16b_pistas.md) e [soluções](exercicios/16b_solucoes.md): (1) deadlock de três locks em ciclo, com a ordem global que o quebra; (2) `acquire(timeout=...)` com recuo: mostrar que ele mascara em vez de corrigir, contando quantas vezes o timeout dispara; (3) produtor rápido e consumidor lento com fila ilimitada: medir RSS crescendo e comparar com a limitada; (4) o mesmo trabalho com processos (`multiprocessing`) e a discussão do que o isolamento compra quando um worker trava.
 
 **Checklist:** deadlock coreografado e detectado por timeout; correção estrutural (ordem), não sintomática; backpressure medida com teto declarado; nenhum `sleep` como sincronização (só como carga e coreografia).
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *High Performance Python*, Gorelick e Ozsvald (O'Reilly, ISBN 978-1492055020); 2. Documentação de `threading`/`asyncio` em [docs.python.org/3/library](https://docs.python.org/3/library/); 3. Luciano Ramalho, *Python Fluente*, caps. sobre concorrência.

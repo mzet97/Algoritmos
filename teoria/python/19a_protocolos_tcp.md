@@ -4,6 +4,14 @@ layout: default
 
 # Aula 19a — Protocolos TCP em Python puro: framing antes de framework
 
+## Objetivos verificáveis
+
+Ao final, você deverá: implementar framing antes de framework, tratar leitura parcial, e confrontar cada byte com o protocolo.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir framing, leitura parcial e protocolo`;
+- **Nível 2 — Aplicar:** `diagnosticar mensagem parcial e corrigir com framing`;
+- **Nível 3 — Projetar:** `projetar protocolo justificando framing e limites`.
+
 **Competências SDD:** NET, CON, SEC. **Pré-requisitos:** 13 (I/O) e [16b](16b_deadlock_e_backpressure.md). Esta é a ponte do PY6: socket, framing e entrada hostil com a biblioteca padrão, **antes** de qualquer FastAPI das aulas 20+.
 
 **Objetivo observável:** executar um servidor de linhas com teto de 1 024 bytes e demonstrar os cinco casos do contrato de framing: comando fragmentado em dois envios, dois comandos coalescidos num envio, comando malformado e UTF-8 inválido (ERRO sem matar o servidor), linha longa (só a conexão infratora fecha) e cliente lento sem bloquear os demais.
@@ -30,3 +38,20 @@ A saída inteira cabe numa frase (`fragmentado, coalescido, malformado, longo e 
 **Exercícios:** [pistas](exercicios/19a_pistas.md) e [soluções](exercicios/19a_solucoes.md): (1) teto de conexões simultâneas com contador e recusa educada; (2) deadline por conexão (cliente que conecta e nunca manda nada); (3) o mesmo protocolo com framing binário de comprimento (4 bytes) e a comparação de onde cada um quebra; (4) o modelo de ameaças de uma página deste servidor fora de loopback.
 
 **Checklist:** buffer por conexão com sobra reaproveitada; teto antes de decodificação completa; erro fecha a conexão, nunca o processo; os cinco casos verdes; nenhuma abstração de framework escondendo o socket.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação do FastAPI ([fastapi.tiangolo.com](https://fastapi.tiangolo.com/)); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124).

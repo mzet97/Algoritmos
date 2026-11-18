@@ -4,6 +4,14 @@ layout: default
 
 # Aula 23b — Relógios e partição bilateral em Python
 
+## Objetivos verificáveis
+
+Ao final, você deverá: distinguir relógios físico/lógico, ordenar por causalidade, simular partição bilateral, e prever anomalia.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir relógio lógico, causalidade e partição`;
+- **Nível 2 — Aplicar:** `prever anomalia sob partição e corrigir o modelo`;
+- **Nível 3 — Projetar:** `projetar consistência justificando trade-offs`.
+
 **Competências SDD:** DST, NET, CON. **Pré-requisitos:** [23a](23a_sistemas_distribuidos.md) (IDs, log com fsync, dedup, kill -9, replay) e [19a](19a_protocolos_tcp.md). Esta ponte completa o PY7: relógios/ordem e consistência declarada sobre a base da 23a.
 
 **Objetivo observável:** ordenar eventos por Lamport, detectar concorrência por vetores, reproduzir a partição bilateral (`k=111` × `k=222`) e reconciliar por anti-entropia com ordem total publicada, nomeando o descarte — na quarta linguagem em que este teorema aparece (C 23c, Go 23b, Rust 23b análogo), porque reconhecer o padrão é a competência.
@@ -32,3 +40,20 @@ A primeira linha documenta o conflito detectado (dois valores, vetores incompar�
 **Exercícios:** [pistas](exercicios/23b_pistas.md) e [soluções](exercicios/23b_solucoes.md): (1) transportar os relógios para dentro do serviço da 23a (carimbar cada PUT) e mostrar um log real ordenado; (2) terceiro nó isolado; (3) chaves distintas sem descarte; (4) o parágrafo de consenso que falta (eleição, quorum, minoritário).
 
 **Checklist:** os três mecanismos separados e nomeados; descarte impresso; simulação rotulada como simulação; política de consistência escrita em uma frase.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação do FastAPI ([fastapi.tiangolo.com](https://fastapi.tiangolo.com/)); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124).

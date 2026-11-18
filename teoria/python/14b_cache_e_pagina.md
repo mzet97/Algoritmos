@@ -4,6 +4,14 @@ layout: default
 
 # Aula 14b — Cache e página vistos de Python: duas representações, duas físicas
 
+## Objetivos verificáveis
+
+Ao final, você deverá: distinguir duas representações e duas físicas (cache/página), prever efeito de layout no tempo, e medir sem alegar causa sem evidência.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir linha de cache, página e layout`;
+- **Nível 2 — Aplicar:** `prever padrão mais rápido e confirmar por medição`;
+- **Nível 3 — Projetar:** `projetar layout justificando com números`.
+
 **Competências SDD:** ARQ, MEM, OS. **Pré-requisitos:** [14a](14a_do_interpretador_ao_kernel.md) (bytecode, RSS contra `tracemalloc`, syscalls) e 13/17. Esta ponte completa o PY4: hierarquia de cache e página medidas de dentro de um programa Python.
 
 **Objetivo observável:** medir a mesma soma por linhas e por colunas em duas representações — lista de listas e `array('l')` plano —, ler o tamanho de página do SO (`SC_PAGE_SIZE`) e o pico de RSS (`ru_maxrss`), e explicar por que as razões diferem entre as representações.
@@ -33,3 +41,20 @@ A igualdade das somas vem antes de qualquer cronômetro (contrato): medir repres
 **Exercícios:** [pistas](exercicios/14b_pistas.md) e [soluções](exercicios/14b_solucoes.md): (1) repetir com NumPy (se disponível) e mostrar a razão "de hardware" reaparecendo; (2) varrer tamanhos e achar onde a razão da lista de listas nasce; (3) medir RSS atual por `/proc/self/status` (VmRSS) contra o pico do `ru_maxrss` e explicar a diferença; (4) desenhar o caminho Python → objeto → memória para um único `m[i][j]`.
 
 **Checklist:** igualdade conferida antes de medir; as duas representações interpretadas separadamente; pico ≠ atual sem hesitar; página lida do SO, não decorada.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *High Performance Python*, Gorelick e Ozsvald (O'Reilly, ISBN 978-1492055020); 2. Documentação de `threading`/`asyncio` em [docs.python.org/3/library](https://docs.python.org/3/library/); 3. Luciano Ramalho, *Python Fluente*, caps. sobre concorrência.

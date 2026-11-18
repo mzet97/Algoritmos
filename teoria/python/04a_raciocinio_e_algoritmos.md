@@ -4,6 +4,14 @@ layout: default
 
 # Aula 04a — Raciocínio discreto e algoritmos em Python
 
+## Objetivos verificáveis
+
+Ao final, você deverá: enunciar invariantes, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir invariante, pré/pós-condição`;
+- **Nível 2 — Aplicar:** `prever violação de invariante e corrigir`;
+- **Nível 3 — Projetar:** `projetar algoritmo com invariante e prova`.
+
 **Competências SDD:** MAT, ALG e SEC. **Pré-requisitos:** aulas 01 a 04; saber criar listas, dicionários e conjuntos, escrever funções e laços, e executar um script. Não é preciso conhecer classes, decoradores ou bibliotecas externas.
 
 **Objetivo observável:** ao terminar, você deverá escrever a pré-condição e a pós-condição de uma função, declarar o invariante de um laço, argumentar terminação por uma grandeza que diminui, provar um caso recursivo por indução e confrontar uma previsão assintótica com uma medição. Tudo com a biblioteca padrão, sem instalar nada.
@@ -226,3 +234,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - distinguir teste por exemplo de teste de propriedade reproduzível.
 
 **Próxima aula:** dicionários e conjuntos em profundidade. O raciocínio por invariantes desta aula sustenta o uso seguro de `visitados` em qualquer travessia de grafo.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Luciano Ramalho, *Python Fluente* (Novatec/O'Reilly, ISBN 978-1492056355); 2. Documentação oficial em [docs.python.org/3](https://docs.python.org/3/); 3. *Tutorial oficial* em [docs.python.org/3/tutorial](https://docs.python.org/3/tutorial/).

@@ -4,6 +4,14 @@ layout: default
 
 # Aula 00 — Ponte de partida: o que muda vindo de JavaScript
 
+## Objetivos verificáveis
+
+Ao final, você deverá: mapear o que JavaScript ensinou (closures, assincronia, tipagem dinâmica) para o que muda em Python (indentação, GIL, protocolos), e prever quais hábitos JS geram erros em Python.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir as diferenças de modelo entre as linguagens`;
+- **Nível 2 — Aplicar:** `prever o erro de um hábito JS em Python e corrigir`;
+- **Nível 3 — Projetar:** `projetar sua transição justificando o que reaproveitar`.
+
 **Competências SDD:** FND, MEM, SEC. **Pré-requisitos:** saber variáveis, condicionais, laços e funções em Python ou JavaScript. Nada de interpretadores, tipagem ou contagem de referências é pressuposto sem explicação.
 
 **Objetivo observável:** ao terminar, você deverá dizer, para cada hábito trazido de JavaScript, o que continua valendo em Python e o que quebra — e executar um programa que demonstra as quatro quebras sem nenhuma falhar.
@@ -113,6 +121,23 @@ Note o que o exemplo *não* faz: não conta referências para decidir nada. `sys
 ## 5. Ponte com as demais trilhas
 
 Go recusa a coerção na compilação; C soma bytes sem perguntar o tipo; Rust tranca a conversão no `parse` com `Result`. Em JavaScript, a coerção é regra da linguagem; em Python, é exceção levantada. A pergunta é sempre a mesma: *quem decide o que `"1" + 1` significa* — e quando você fica sabendo.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Luciano Ramalho, *Python Fluente* (Novatec/O'Reilly, ISBN 978-1492056355); 2. Documentação oficial em [docs.python.org/3](https://docs.python.org/3/); 3. *Tutorial oficial* em [docs.python.org/3/tutorial](https://docs.python.org/3/tutorial/).
 
 ## 6. Checklist do que esta aula garante
 

@@ -4,6 +4,14 @@ layout: default
 
 # Aula 29b — Segurança defensiva em Python: a fronteira é o programa
 
+## Objetivos verificáveis
+
+Ao final, você deverá: tratar a fronteira como programa (validar entradas, segredos, subprocessos), e auditar um script apontando injeções.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir injeção, segredo e superfície de ataque de um script`;
+- **Nível 2 — Aplicar:** `diagnosticar comando shell com interpolação e corrigir`;
+- **Nível 3 — Projetar:** `projetar automação segura justificando cada validação`.
+
 **Competências SDD:** SEC, NET, MEM, OS. **Pré-requisitos:** 08, 13, 20–26 e [19a](19a_protocolos_tcp.md). Esta é a ponte do PY9: revisão de ameaças e falhas operacionais integrando o que as aulas introduziram disperso.
 
 **Objetivo observável:** demonstrar dois riscos clássicos de Python com a correção executável ao lado: `pickle` de entrada não confiável (o veneno é gerado e **não** desserializado; a fronteira é JSON com esquema e tetos) e injeção de comando via `subprocess` (corrigida com lista de argumentos, sem shell, padrão validado).
@@ -33,3 +41,20 @@ O exemplo gera os 73 bytes hostis e os mostra como código — ler o `__reduce__
 **Exercícios:** [pistas](exercicios/29b_pistas.md) e [soluções](exercicios/29b_solucoes.md): (1) modelo de ameaças de uma página do servidor da 19a (superfície, abuso, limite, resíduo); (2) trocar a validação manual por um esquema com tipos e tamanhos declarados uma única vez, e mostrar um abuso novo que ele pega; (3) auditar um `subprocess` com `shell=True` de uma aula anterior e reescrever sem shell; (4) limites de recurso do serviço da 19a: conexões, tempo e memória por cliente, com o teste de abuso correspondente.
 
 **Checklist:** fronteira única com esquema e tetos; nenhum `pickle`/`eval`/`shell=True` no caminho de entrada; abuso testado e recusado; risco residual escrito.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. OWASP Top 10 ([owasp.org/Top10](https://owasp.org/Top10)); 2. Documentação de `subprocess`/`secrets` em [docs.python.org/3/library](https://docs.python.org/3/library/).

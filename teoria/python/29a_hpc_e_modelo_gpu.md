@@ -8,9 +8,11 @@ layout: default
 
 Medir onde o paralelismo ajuda Python, onde atrapalha e quando uma GPU valeria a pena — tudo com CPU comum, referência escalar verificada e a conta da transferência explícita. Pré-requisitos: aulas 14a, 16a, 17, 18 e 29. Não precisa de placa GPU, CUDA, MPI nem cluster.
 
-Ao terminar, você deverá comparar referência escalar, NumPy, threads e processos na mesma carga com o mesmo resultado, explicar cada diferença pelo GIL, pelo IPC ou pela vetorização — e decidir no papel se um acelerador pagaria a viagem.
-
-Esta aula é o núcleo obrigatório do módulo PY8: referência em CPU executável, modelo de execução, transferência host↔dispositivo, granularidade e critério de ganho. Placa física mora no laboratório opcional.
+Ao final, você deverá: explicar multicore real (processos), modelar GPU sem placa (hierarquia de memória, paralelismo massivo), e decidir no papel se acelerador vale a transferência.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir SM, coalescência e hierarquia de memória GPU`;
+- **Nível 2 — Aplicar:** `diagnosticar estimativa otimista e corrigir com a conta da viagem`;
+- **Nível 3 — Projetar:** `projetar avaliação justificando veredito numérico`.
 
 ## 1. O mapa do paralelismo em Python
 
@@ -176,3 +178,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - apontar o que o experimento prova e o que continua sem hardware para provar.
 
 **Próxima aula:** backend didático. O raciocínio desta aula sustenta a escolha de onde cada milissegundo mora antes de escalar o serviço.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Python for Data Analysis*, Wes McKinney (O'Reilly, ISBN 978-1098104030); 2. Documentação do NumPy ([numpy.org/doc](https://numpy.org/doc/)); 3. *High Performance Python*, Gorelick e Ozsvald (O'Reilly, ISBN 978-1492055020).

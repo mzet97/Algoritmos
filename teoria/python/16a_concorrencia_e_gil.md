@@ -8,7 +8,11 @@ layout: default
 
 Distinguir o que `threading`, `multiprocessing` e `asyncio` garantem — e o que não garantem. Pré-requisitos: aulas 14a, 15 e 16. Não precisa saber C, Rust, rede nem `cgo`.
 
-Ao terminar, você deverá demonstrar uma condição de corrida com threads, corrigi-la com `Lock` e provar a correção, medir quando threads ajudam (I/O) e quando atrapalham (CPU), comparar com processos e `asyncio`, e aplicar timeout e cancelamento sem deixar órfãos.
+Ao final, você deverá: explicar o GIL e quando há paralelismo real, comparar threads/processos/`async`, e medir para decidir.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir GIL e paralelismo real vs. concorrência`;
+- **Nível 2 — Aplicar:** `diagnosticar escolha errada de modelo e corrigir com medição`;
+- **Nível 3 — Projetar:** `projetar modelo de concorrência justificando com números`.
 
 ## 1. O GIL, sem mito e sem desculpa
 
@@ -227,3 +231,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - apontar o que cada ferramenta garante e o que ela não garante.
 
 **Próxima aula:** performance tuning e profiling. As réguas desta aula (tempo monotônico, ambiente anotado, dois tamanhos) viram método de benchmark.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *High Performance Python*, Gorelick e Ozsvald (O'Reilly, ISBN 978-1492055020); 2. Documentação de `threading`/`asyncio` em [docs.python.org/3/library](https://docs.python.org/3/library/); 3. Luciano Ramalho, *Python Fluente*, caps. sobre concorrência.

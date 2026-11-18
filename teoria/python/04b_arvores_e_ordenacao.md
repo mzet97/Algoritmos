@@ -4,6 +4,14 @@ layout: default
 
 # Aula 04b — Árvores e ordenação em Python: o preço de um nó-objeto
 
+## Objetivos verificáveis
+
+Ao final, você deverá: implementar árvore explicando o custo do nó-objeto, enunciar invariante de ordenação, e comparar com a `std`.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir nó, invariante e complexidades`;
+- **Nível 2 — Aplicar:** `diagnosticar quebra de invariante e corrigir`;
+- **Nível 3 — Projetar:** `projetar estrutura ordenada justificando invariante e custos`.
+
 **Competências SDD:** MAT, ALG, MEM. **Pré-requisitos:** [04a](04a_raciocinio_e_algoritmos.md) (invariantes, busca, BFS, hash) e 04. Esta ponte completa o PY2 sobre a base da 04a.
 
 **Objetivo observável:** implementar uma BST em Python puro, provar o percurso em ordem contra `sorted(set(...))` em 300 casos, medir a degeneração (altura 300 ordenada contra ~20 embaralhada) e explicar por que `sorted` vence qualquer árvore manual nesta linguagem.
@@ -32,3 +40,20 @@ Conte o custo de um nó: objeto (`__slots__` com três campos) + o `int` da chav
 **Exercícios:** [pistas](exercicios/04b_pistas.md) e [soluções](exercicios/04b_solucoes.md): (1) remoção com três casos; (2) mediana sobre vetor ordenado com altura medida; (3) medir memória por nó (`sys.getsizeof` com e sem `__slots__`) para 10 mil nós; (4) reescrever a busca com `bisect` sobre lista ordenada e declarar quando a lista vence a árvore.
 
 **Checklist:** invariante testada contra oráculo; degeneração medida nas duas ordens; custo por nó contado; conclusão de produção escrita (std primeiro); `-m py_compile` limpo via regress.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. Luciano Ramalho, *Python Fluente* (Novatec/O'Reilly, ISBN 978-1492056355); 2. Documentação oficial em [docs.python.org/3](https://docs.python.org/3/); 3. *Tutorial oficial* em [docs.python.org/3/tutorial](https://docs.python.org/3/tutorial/).

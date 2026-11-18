@@ -8,7 +8,11 @@ layout: default
 
 Construir dois processos que trocam mensagens com IDs, registram tudo em log durável e sobrevivem a atraso, duplicação, queda e reinício — e explicar exatamente o que *não* foi garantido. Pré-requisitos: aulas 13, 14a, 16a, 20 a 23. Não precisa saber consenso, relógios vetoriais, Kubernetes nem nuvem.
 
-Ao terminar, você deverá demonstrar: repetição sem efeito duplicado (idempotência), recuperação por replay de log, operação degradada com o par caído e atraso limitado sem travar o cliente.
+Ao final, você deverá: executar dois processos com um log, explicar falhas parciais sem ilusão, e declarar o que foi provado.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir falha parcial, log e quorum simples`;
+- **Nível 2 — Aplicar:** `diagnosticar suposição de atomicidade e corrigir`;
+- **Nível 3 — Projetar:** `projetar experimento distribuído justificando limites`.
 
 ## 1. A rede mente, atrasa e repete
 
@@ -78,3 +82,20 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - executar o exemplo e confrontar cada asserção com o contrato, não com a sorte.
 
 **Próxima aula:** projeto didático de backend. O raciocínio desta aula sustenta serviços que sobrevivem à segunda-feira: log, retry com ID e degradação explícita.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico de erros (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320); 2. Documentação do FastAPI ([fastapi.tiangolo.com](https://fastapi.tiangolo.com/)); 3. *Site Reliability Engineering* (Google, O'Reilly, ISBN 978-1491929124).

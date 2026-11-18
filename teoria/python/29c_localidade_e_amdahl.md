@@ -4,6 +4,14 @@ layout: default
 
 # Aula 29c — Localidade, processos e Amdahl: o teto antes do entusiasmo
 
+## Objetivos verificáveis
+
+Ao final, você deverá: aplicar Amdahl antes do entusiasmo, medir localidade com processos, e declarar o teto do speedup.
+Mediremos com níveis de proficiência:
+- **Nível 1 — Recordar:** `definir lei de Amdahl, fração serial e localidade`;
+- **Nível 2 — Aplicar:** `diagnosticar speedup prometido sem fração serial e corrigir`;
+- **Nível 3 — Projetar:** `projetar experimento justificando o teto medido`.
+
 **Competências SDD:** HPC, GPU, ARQ, MEM. **Pré-requisitos:** [29a](29a_hpc_e_modelo_gpu.md) (baseline escalar, NumPy, threads/processos e conta da viagem) e [14b](14b_cache_e_pagina.md). Esta ponte completa o PY8 sobre a base da 29a.
 
 **Objetivo observável:** conferir a referência sequencial antes de paralelizar, medir o speedup real com `multiprocessing.Pool` (limitado a 8 processos), calcular os tetos de Amdahl para três frações paralelizáveis e demonstrar o caso em que o pool perde por três ordens de grandeza (trabalho microscópico).
@@ -33,3 +41,20 @@ Três termos explicam o número, e a aula os separa porque cada um manda em um r
 **Exercícios:** [pistas](exercicios/29c_pistas.md) e [soluções](exercicios/29c_solucoes.md): (1) medir o tempo só de serialização dos blocos e subtrair do "tempo paralelo"; (2) trocar processos por threads na mesma carga e explicar o resultado pelo GIL e pela natureza da carga (CPU em Python puro); (3) achar o tamanho mínimo em que o pool empata; (4) recalcular Amdahl incluindo um termo fixo de coordenação medido.
 
 **Checklist:** referência conferida antes; speedup com ambiente e processos declarados; teto de Amdahl calculado, não citado; o caso que perde medido; serialização contabilizada.
+
+---
+
+### Como esta aula será avaliada
+
+| Critério | Peso |
+| -------- | ---: |
+| Conceitos e vocabulário (nível 1) | 20% |
+| Previsão de comportamento e diagnóstico (nível 2) | 40% |
+| Projeto e justificativa de decisões (nível 3) | 30% |
+| Registro de comandos, saídas e interpretação | 10% |
+
+**Aprovação:** nota mínima 7,0; pelo menos 60% dos pontos devem vir de previsão e diagnóstico (níveis 2 e 3), não apenas de código que executa.
+
+**Para se aprofundar:**
+
+1. *Python for Data Analysis*, Wes McKinney (O'Reilly, ISBN 978-1098104030); 2. Documentação do NumPy ([numpy.org/doc](https://numpy.org/doc/)); 3. *High Performance Python*, Gorelick e Ozsvald (O'Reilly, ISBN 978-1492055020).
