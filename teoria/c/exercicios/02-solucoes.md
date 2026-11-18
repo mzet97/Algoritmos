@@ -92,4 +92,52 @@ Converter depois nao recupera a fracao: `(double)(7 / 2)` vale `3.0`, porque a d
 
 5. Em C, condicoes testam escalares: `0` e falso e qualquer valor diferente de zero e verdadeiro. E assim para inteiros, ponto flutuante (`0.0` e falso) e ponteiros (`NULL` e falso). Por isso `if (n)` e `if (n != 0)` sao equivalentes para `int n` — e por isso comparacoes explicitas costumam deixar a intencao mais clara.
 
+6. Diagnosticos: (a) imprime `Verdadeiro` e `x` passa a valer 5 — atribuicao, nao comparacao; o aviso e `suggest parentheses around assignment used as truth value [-Wparentheses]`; (b) imprime `0`: `a` e convertido para `unsigned int` antes da comparacao (`-1` vira 4294967295) pela regra das conversoes aritmeticas usuais; o aviso sem o pragma e `comparison of integer expressions of different signedness [-Wsign-compare]`; (c) imprime `0`: `0.1 + 0.2` vale `0.30000000000000004` em binario, e `==` apos aritmetica de ponto flutuante compara o erro junto — igualdade de flutuante se testa por faixa, nunca por bit.
+
+7. Calculadora (esqueleto com os pontos cobrados):
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int opcao;
+    double a, b;
+    for (;;) {
+        printf("1 somar 2 subtrair 3 multiplicar 4 dividir 0 sair\n");
+        if (scanf("%d", &opcao) != 1)
+            return 1;
+        if (opcao == 0)
+            break;
+        if (scanf("%lf %lf", &a, &b) != 2)
+            return 1;
+        switch (opcao) {
+        case 1:
+            printf("%.2f\n", a + b);
+            break;
+        case 2:
+            printf("%.2f\n", a - b);
+            break;
+        case 3:
+            printf("%.2f\n", a * b);
+            break;
+        case 4:
+            if (b != 0.0 && (a / b == a / b))
+                printf("%.2f\n", a / b);
+            else
+                printf("divisao invalida\n");
+            break;
+        default:
+            printf("opcao invalida\n");
+            break;
+        }
+    }
+    return 0;
+}
+```
+
+A guarda `b != 0.0 &&` usa curto-circuito: com `b == 0`, o segundo operando nem e avaliado. Note que `a / b == a / b` e falso quando o resultado e NaN (`0.0 / 0.0`) — a comparacao com ela mesma detecta o indefinido sem tocar em `errno`.
+
+8. Laboratorio: experimento 1 entrega arquitetura + compilador + tabela `sizeof`/limites com a conclusao padrao-vs-plataforma; experimento 2 entrega previsao escrita antes de cada run, aviso transcrito onde houver (`-Wformat`, `-Wsign-compare`, `-Wparentheses`) e a regra que cada um ensina; experimento 3 entrega os dois programas com a mesma saida, a invariante (`npares` conta pares de `[0,i)`) e a condicao de parada (`i` alcanca `N` sem pular o incremento) escritas.
+
 **Autoverificacao:** programas compilam sem avisos com `-Wall -Wextra`, igualdade entre os dois numeros cai no ramo proprio e `-3` e classificado como impar.
