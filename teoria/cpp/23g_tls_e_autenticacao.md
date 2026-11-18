@@ -103,7 +103,14 @@ C cifra o análogo na [23e](../c/23e_rpc_sobre_consenso.md) sem TLS (numerar e c
 
 **Referências primárias:** [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446.html) para o handshake que o OpenSSL executa aqui; documentação do OpenSSL (`SSL_CTX_new`, `X509_digest`) para a API usada. Nenhum texto foi copiado — o exemplo é implementação própria sobre essas interfaces.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+1. (Previsão) Troque 1 bit do pin antes da 2ª volta (`pin_ruim[0] ^= 1`): preveja — negação limpa ou `assert`? Rode e explique: o pin detecta troca de identidade (cláusula b do TOFU) — e por que a comparação é igualdade total, não "parecido".
+2. (Diagnóstico) Envie o segredo sem o prefixo (`"s3nha-da-23c\n"` cru): preveja `OK` ou `NEGADO`. Rode e explique por que o formato (`TOKEN ` + segredo) é o contrato — segredo sozinho, fora do formato, é linha qualquer.
+3. (Projeto) Implemente throttle de autenticação: após 3 `NEGADO`s, a conexão seguinte recebe `BLOQUEADO` sem nem avaliar o token (teste: certo, 3 erradas, certo → `BLOQUEADO`). Cuidado com a armadilha: recusar sem ler o pedido gera RST e o cliente nunca lê o motivo — drena antes de recusar (a lição da 23f, agora sob TLS).
+4. (Previsão) Apague a comparação do pin (`(void)pin`): preveja — o cliente com pin `"qualquer-um"` passa? Rode e explique o que o TLS garante sozinho (cifra, forward secrecy) e o que ele não garante sem o pin (identidade: túnel anônimo aceita MITM com outro certificado).
+
+Use [pistas graduais](exercicios/23g_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23g_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

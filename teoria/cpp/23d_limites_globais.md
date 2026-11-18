@@ -107,7 +107,14 @@ C cobra teto de linha e conexões na 32c; Go limita corpo e conexões no middlew
 
 **Referências primárias:** [OWASP Rate Limiting](https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html) para as dimensões de abuso; `man 2 poll` para onde os checks moram no loop. Nenhum teto desta aula substitui autenticação — limite diz *quantos*, identidade diz *quem*.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 8. Exercícios obrigatórios
+
+1. (Previsão) Chame `liberar("fantasma")` num orçamento vazio: preveja o valor de `abertas`. Rode e explique a guarda que falta — e qual abuso real ela representa (FIN duplicado, timeout que libera duas vezes).
+2. (Diagnóstico) Consuma 900 KiB e depois `consumir_entrada(SIZE_MAX)`: preveja — recusado ou aceito? Rode e explique o wrap-around (`bytes_janela + n` estoura e volta pequeno). Corrija com `n > max_bytes_entrada - bytes_janela` e prove que o gigante cai.
+3. (Projeto) Adicione um quarto teto: admissões novas por IP por janela (`max_novas_por_ip`, contador zerado em `nova_janela`), com default igual a `max_por_ip` para não mudar o comportamento antigo. Teste com o teto em 2: 2 entram, a 3ª cai mesmo com vagas; janela nova reabre. Explique o que ele pega que os três existentes não pegam (reconexão em rajada).
+4. (Previsão) Peça `consumir_entrada(2 MiB)` de uma vez em janela nova: recusado para sempre? Explique por que pedido maior que o teto nunca passa — e o que o protocolo precisa para cargas grandes (chunking negociado, não pedido gigante).
+
+Use [pistas graduais](exercicios/23d_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23d_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

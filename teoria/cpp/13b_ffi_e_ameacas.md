@@ -110,6 +110,17 @@ C documenta quem aloca e quem libera na 18; Rust tranca a fronteira no tipo (`un
 
 ---
 
+## 8. Exercícios obrigatórios
+
+1. (Previsão) Crie com `armazem_criar(0)` e guarde 25 bytes: preveja — `0` ou `-1`? Rode e explique o default (`teto == 0 ? 1024`) — e o risco de um default silencioso numa fronteira que cobra teto.
+2. (Diagnóstico) Apague a guarda `h == nullptr` de `armazem_ler` e passe `nullptr`: preveja o sintoma antes de rodar. Rode (sem sanitizer) e explique por que a fronteira checa o que o C++ "garantiria" — nulo atravessa FFI sem cerimônia.
+3. (Projeto) Adicione `armazem_tamanho` à fronteira (devolve quantos itens, `-1` em handle nulo, `noexcept` + `try/catch` como as demais). Teste os três casos: vazio, com itens, nulo.
+4. (Previsão) Destrua o armazém e use o handle *sem* zerar (apague `h = nullptr`): preveja o que o ASan relata. Rode com sanitizer, transcreva a primeira linha do relatório e explique por que a fronteira recusa nulo mas não rastreia destruição — e de quem é o dever de zerar.
+
+Use [pistas graduais](exercicios/13b_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/13b_solucoes.md) depois de registrar sua própria explicação.
+
+---
+
 ### Para se aprofundar
 
 1. Robert Seacord, *Secure Coding in C and C++* (Addison-Wesley, 2. ed., ISBN 978-0321822130); 2. Documentacao do GDB ([sourceware.org/gdb](https://www.sourceware.org/gdb/documentation/)); 3. Documentacao dos sanitizers do Clang ([clang.llvm.org/docs](https://clang.llvm.org/docs/)).

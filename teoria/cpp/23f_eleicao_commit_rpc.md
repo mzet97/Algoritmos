@@ -95,7 +95,14 @@ C elege e confirma na 23d e numera o RPC na 23e; Go exige quorum W+R na 23c; Rus
 
 **Referências primárias:** [Raft](https://raft.github.io/raft.pdf) para eleição, termos e commit; especificação de [Idempotency-Key do Stripe](https://docs.stripe.com/api/idempotent_requests) para o RPC. Nenhum destes textos foi copiado — o exemplo é simulação própria sobre as regras deles.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+1. (Previsão) Empurre `"op-fantasma"` direto no `log` do líder (sem `replicar`): preveja `log.size()` e `commit`. Rode e explique por que presença no log não é confirmação — e qual invariante o `commit` protege.
+2. (Diagnóstico) Baixe `QUORUM` para 1 e eleja na minoria `{2}`: ela elege? A escrita solitária confirma? Rode e explique por que "qualquer um" confirma a solidão — e o que a cura faria com duas confirmações conflitantes.
+3. (Projeto) Ponha teto no cache RPC (2 ids, despeja o mais antigo): reenvie `req-1` após `req-3` expulsá-lo e prove que reexecuta (`execucoes` anda). Explique o preço do teto: idempotência com memória limitada dura até o despejo.
+4. (Previsão) Replique incluindo o morto (`vivo = false`) na lista: ele é pulado? O commit avança sem ele? Rode e explique com o `log` de N2 após a fase 3 — desatualizado até a cura — e por que morto não vota nem confirma, mas volta a seguir.
+
+Use [pistas graduais](exercicios/23f_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23f_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 

@@ -85,7 +85,14 @@ C cobra o framing com teste de queda real (`SIGKILL`); Rust audita o `unsafe` po
 
 **Referências primárias:** [libFuzzer](https://llvm.org/docs/LibFuzzer.html) para o formato do alvo (o `main` desta aula vira `LLVMFuzzerTestOneInput` sem mudar o parser); [AFL++](https://aflplus.plus/) para mutação guiada por cobertura. Nenhuma afirmação de cobertura de código nesta aula — classes cobertas, ramos presumidos.
 
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*
+## 7. Exercícios obrigatórios
+
+1. (Previsão) Troque a semente (`estado` inicial) e rode: preveja — as contagens mudam, mas as 3 classes continuam cobertas? Rode com 2 sementes e explique o que é determinístico (sequência por semente) e o que é cobertura (mutador fechado em 6 peças).
+2. (Diagnóstico) Apague a checagem de NUL embutido: preveja qual `assert` cai. Rode sob sanitizer e explique por que a invariante que morde (`linha sem NUL`) mora no teste, não no parser — e onde o NUL faria estrago depois (todo `c_str` dali em diante).
+3. (Projeto) Prenda o off-by-one do teto: construa a linha de 4095 + `\n` (máxima válida) e a de 4096 + `\n` (mínima inválida) e prove `Ok`/`Erro` lado a lado. Explique a condição `i + 1 > LINHA_MAX`: o teto conta o `\n` junto — e linha "de 4096" com newline já é 4097.
+4. (Previsão) Dobre `ITERACOES` para 400 mil: preveja tempo (linear?) e se alguma classe nova aparece. Rode e explique por que mais iteração do mesmo mutador não é mais cobertura — espaço saturado pede peça nova, não mais sorteio.
+
+Use [pistas graduais](exercicios/23e_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23e_solucoes.md) depois de registrar sua própria explicação.
 
 ---
 
