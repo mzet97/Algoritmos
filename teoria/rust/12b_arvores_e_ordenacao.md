@@ -4,6 +4,8 @@ layout: default
 
 # Aula 12b — Árvores e ordenação em Rust: `Box`, invariante e o oráculo da std
 
+Uma BST em Rust é a mesma invariante da trilha de C com um juiz novo: o `Box` tem dono único e o `Drop` libera sozinho. Provar o percurso em ordem contra a biblioteca padrão, em centenas de casos, é o padrão de honestidade deste livro.
+
 ## Nesta aula
 
 Você vai aprender a implementar árvore com `Box` explicando ownership dos nós, enunciar o invariante de ordenação, prever o custo de operações, e distinguir o que a implementação garante do que a `std` garante.

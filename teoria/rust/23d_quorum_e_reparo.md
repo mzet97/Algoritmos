@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23d — Quorum em Rust: a maioria decide, o borrow checker separa
 
+Quorum em Rust: a maioria decide e o borrow checker separa quem pode escrever de quem só pode ler. Consistência distribuída com o compilador como segundo revisor de protocolo.
+
 ## Nesta aula
 
 Você vai aprender a explicar quorum de leitura/escrita, prever quando a maioria decide corretamente, separar responsabilidades via borrow checker, e descrever reparo (read-repair) após divergência.

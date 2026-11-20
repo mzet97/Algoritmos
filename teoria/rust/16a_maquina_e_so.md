@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16a — Máquina e sistema operacional vistos de Rust seguro
 
+De Rust seguro, o sistema operacional aparece como syscalls, processos e limites observáveis. Entender a máquina sem escrever `unsafe` é o que permite diagnosticar o sistema onde seu programa vai viver.
+
 ---
 
 ## Nesta aula

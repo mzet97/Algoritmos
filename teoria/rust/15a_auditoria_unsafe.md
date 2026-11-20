@@ -4,6 +4,8 @@ layout: default
 
 # Aula 15a — Auditoria de `unsafe`: cada bloco com invariante escrita
 
+`unsafe` sem invariante escrita é só esperança com sintaxe perigosa. Auditar cada bloco — o que ele assume, quem garante, o que quebra se a suposição falhar — é a prática que torna Rust de sistemas confiável.
+
 ## Nesta aula
 
 Você vai aprender a auditar cada bloco `unsafe` registrando a invariante assumida, classificar `unsafe` justificável vs. irredutível, e apontar o que a biblioteca padrão observa e não observa.

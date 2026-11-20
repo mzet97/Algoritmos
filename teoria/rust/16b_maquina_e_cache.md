@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16b — Máquina vista de Rust: localidade, syscall e página
 
+Localidade, página e syscall decidem o desempenho real de código 'limpo'. A máquina vista de Rust: medir onde o tempo vai em vez de adivinhar pelo formato do loop.
+
 ## Nesta aula
 
 Você vai aprender a explicar localidade temporal e espacial, prever o efeito do padrão de acesso no tempo, distinguir página de linha de cache, e medir sem atribuir causa microarquitetural sem evidência.

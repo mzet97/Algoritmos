@@ -4,6 +4,8 @@ layout: default
 
 # Aula 14a — TCP é fluxo de bytes: framing, concorrência e limites
 
+TCP entrega fluxo de bytes, não mensagens — de novo, agora em Rust, onde o borrow checker fiscaliza cada buffer. Framing, limites e concorrência com a rede real batendo na porta.
+
 ---
 
 ## Nesta aula

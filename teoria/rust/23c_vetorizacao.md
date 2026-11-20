@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23c — Vetorização em Rust: a cadeia de dependência é o inimigo
 
+Vetorizar em Rust é convencer o compilador de que o loop pode andar de quatro em quatro — e o inimigo é a cadeia de dependência que você mesmo escreveu. Medir a cadeia antes de culpar o hardware.
+
 ## Nesta aula
 
 Você vai aprender a identificar a cadeia de dependência como inimiga da vetorização, reestruturar um laço para expor paralelismo de dados, e medir o ganho contra a linha de base.

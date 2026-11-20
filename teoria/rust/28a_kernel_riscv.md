@@ -4,6 +4,8 @@ layout: default
 
 # Aula 28a — Kernel RISC-V em Rust `no_std`: o que o `core` compra e o que ele cobra
 
+Um kernel RISC-V em Rust `no_std` mostra o que o `core` compra — tipos, iteradores, segurança — e o que ele cobra: cada byte de runtime é seu. Sistemas operacionais com borrow checker dentro.
+
 ## Nesta aula
 
 Você vai aprender a explicar o que `core` compra e cobra em `no_std`, justificar cada `unsafe` com uma frase apontando os irredutíveis, diagnosticar trap de alinhamento/PMP pela causa, e declarar lacunas sem atribuí-las à linguagem.

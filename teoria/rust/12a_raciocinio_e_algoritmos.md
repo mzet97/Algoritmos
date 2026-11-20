@@ -4,6 +4,8 @@ layout: default
 
 # Aula 12a — Raciocínio discreto e algoritmos em Rust
 
+Antes de otimizar, prove. Invariante, indução e complexidade em Rust: a ponte de raciocínio que transforma 'passou nos testes' em 'sei por que está certo, e quanto custa quando a entrada cresce'.
+
 ---
 
 ## Nesta aula

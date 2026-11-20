@@ -4,6 +4,8 @@ layout: default
 
 # Aula 14b — Ordem de memória, backpressure e cancelamento em Rust
 
+Ordem de memória decide o que cada thread enxerga; backpressure decide quem espera quando o sistema satura. As duas conversas que sistemas concorrentes sérios têm antes de qualquer otimização.
+
 ## Nesta aula
 
 Você vai aprender a explicar ordem de memória (o que `Mutex`/atômicos garantem e não garantem), implementar backpressure com canal limitado, e tratar cancelamento sem vazar tarefa nem perder dado.

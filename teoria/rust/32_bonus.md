@@ -4,6 +4,8 @@ layout: default
 
 # Aula 32 (Bônus) — Masterpiece B Avançado: Zero-Copy, INCR e Expiração (TTL)
 
+Zero-copy, INCR atômico e TTL: o acabamento que separa um brinquedo concorrente de um serviço. O bônus aprofunda a obra-prima B onde desempenho e corretude disputam cada microssegundo.
+
 ## Objetivo do Bônus
 Você pediu para seguir adiante, então aqui está o **Desafio Final** resolvido!
 Como a trilha oficial acabou na Aula 31, esta aula bônus traz a **solução dos exercícios obrigatórios** do nosso Banco de Dados em Memória (Estilo Redis).

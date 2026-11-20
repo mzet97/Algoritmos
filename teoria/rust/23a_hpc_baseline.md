@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23a — Baseline correto, multicore honesto e a conta da GPU
 
+Baseline correto antes de paralelismo bonito: multicore honesto, com a conta da GPU feita antes de qualquer promessa. HPC começa com um número em que você pode confiar.
+
 ---
 
 ## Nesta aula

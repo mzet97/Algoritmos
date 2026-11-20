@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16c — ISA, ABI e layout: o que o hardware promete e o que o `repr` garante (R4)
 
+ISA diz o que a máquina promete; `repr` diz o que seu tipo garante. ABI e layout são o contrato entre os dois — e onde interoperabilidade e embarcados cobram precisão absoluta.
+
 ## Nesta aula
 
 Você vai aprender a distinguir o que a ISA promete do que o `repr` garante, explicar layout e alinhamento, e prever quebra de ABI por mudança de layout.

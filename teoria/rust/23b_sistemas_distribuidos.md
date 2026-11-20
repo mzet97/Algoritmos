@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23b — Sistemas distribuídos em Rust: o mesmo contrato, outra linguagem
 
+O mesmo contrato distribuído da trilha de C — framing, falha parcial, repetição — reescrito onde o borrow checker separa dono de emprestado. Outra linguagem, as mesmas leis da rede.
+
 ## Nesta aula
 
 Você vai aprender a enunciar o contrato de um sistema distribuído (o que cada nó garante), distinguir falha de processo de partição, e explicar quorum em termos de maioria.

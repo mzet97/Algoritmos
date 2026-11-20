@@ -4,6 +4,8 @@ layout: default
 
 # Aula 14c — Cercas e seqlock: ordenação sem operação e leitura otimista (R5)
 
+Seqlock e cercas são ordenação no limite: ler otimisticamente, validar depois, sem travar quem escreve. Técnicas de kernel explicadas com o rigor que o compilador de Rust exige de volta.
+
 ## Nesta aula
 
 Você vai aprender a explicar cercas de memória e leitura otimista (seqlock), distinguir ordenação sem operação atômica do custo de um lock, e apontar quando a técnica é aplicável ou proibida.

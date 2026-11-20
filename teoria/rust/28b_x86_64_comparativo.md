@@ -4,6 +4,8 @@ layout: default
 
 # Aula 28b — Comparativo x86-64 da trilha Rust: fechar o R8
 
+O mesmo kernel em x86-64 revela o que era modelo e o que era RISC-V. Fechar a comparação é aprender portabilidade no próprio código, não em slide.
+
 ## Nesta aula
 
 Você vai aprender a comparar RISC-V e x86-64 nos pontos do R8 (syscalls, paginação, interrupções), prever diferenças de comportamento entre alvos, e fechar o requisito com diff comportamental zero contra C/C++.

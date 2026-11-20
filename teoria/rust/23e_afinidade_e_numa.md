@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23e — Afinidade, primeiro toque e o laboratório multinó (R7)
 
+Afinidade e primeiro toque decidem em qual NUMA seus dados nascem — e dados nascidos longe custam para sempre. O laboratório multinó torna esse custo visível, um acesso por vez.
+
 ## Nesta aula
 
 Você vai aprender a explicar afinidade de CPU e primeiro toque (first-touch) em NUMA, fixar threads em nós, medir o efeito multinó, e distinguir efeito NUMA de contenção.
