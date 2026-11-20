@@ -31,4 +31,17 @@ for (const v of VOLUMES) {
   }
 }
 console.log(`teoria_build: ${copiados} arquivos .md copiados`);
-if (copiados === 0) throw new Error("nenhum .md encontrado em ../teoria");
+if (copiados === 0) {
+  // Deploy via upload: ../teoria não existe, mas teoria_build veio no pacote.
+  const herdados = [];
+  for (const v of VOLUMES) {
+    const dir = path.join(DESTINO, v);
+    if (!(await existe(dir))) continue;
+    herdados.push(...(await fs.readdir(dir)).filter((f) => f.endsWith(".md")));
+  }
+  if (herdados.length > 0) {
+    console.log(`teoria_build: reaproveitando ${herdados.length} arquivos do pacote`);
+    process.exit(0);
+  }
+  throw new Error("nenhum .md encontrado em ../teoria nem em teoria_build");
+}
