@@ -10,8 +10,6 @@ Ao terminar, você deverá dizer, para cada abuso (enchente de conexões, rajada
 
 Esta aula é o módulo CPP-7 na parte de limites: a 23a endureceu a conexão; esta endurece o servidor. O que falta depois dela: TLS/autenticação (certificado, não token) e fuzzing sistemático do parser.
 
-**Como ler esta aula (tres niveis):** *fundamental* -- tres tetos e a tabela de onde cada check mora; *intermediario* -- o mapa check/ponto do loop; *aprofundamento* -- teto sem timeout e a 23a que o cobra.
-
 ## 1. Onde o teto por conexão não alcança
 
 Trinta e dois clientes, cada um dentro do seu teto de 64 KiB de saída, somam 2 MiB de pressão — e nenhum teto individual reclama. O orçamento global existe porque recurso é compartilhado: soma de comportamentos legítimos também derruba. Três tetos, três abusos:
@@ -86,14 +84,6 @@ As três primeiras linhas cobrem as três dimensões (quantidade, origem, volume
 C cobra teto de linha e conexões na 32c; Go limita corpo e conexões no middleware da aula 20; Python corta corpo com `MaxBytesReader`. Em JavaScript, o análogo é o rate limit do gateway — mesma soma, mesma recusa, outro nome.
 
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Tetos executados + mapa check/ponto preenchido | 35% |
-| Timeout declarado como falta (nao fingido) | 25% |
-| Diagnostico (prever recusa por teto antes de rodar) | 25% |
-| Documentacao (comandos, saidas) | 15% |
 
 **Referencias primarias:** `man poll`, `man accept` para dreno e contagem; *UNIX Network Programming* (Stevens).
 

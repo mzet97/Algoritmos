@@ -10,8 +10,6 @@ Ao terminar, você deverá eleger e depor líderes, apontar onde o commit aconte
 
 Esta aula fecha o módulo CPP-8 na parte de escrita: a 23c protegeu a leitura com quorum; esta confirma a escrita com maioria e nomeia o RPC idempotente que a serve. O que falta depois dela: TLS (laboratório opcional) e o kernel das aulas 33–40.
 
-**Como ler esta aula (tres niveis):** *fundamental* -- maioria confirma, minoria nao confirma; *intermediario* -- as quatro fases e o termo; *aprofundamento* -- heartbeat e o Raft que isto nao e.
-
 ## 1. Contrato antes do código
 
 - **Eleição:** candidato vota em si, pede voto uma vez por termo; eleitor vota só em candidato pelo menos tão atualizado (tamanho do log como relógio). Maioria (2 de 3) elege; minoria de 1 nunca elege — um voto não é quorum.
@@ -74,14 +72,6 @@ Cada fase prova uma propriedade diferente, e a ordem é a demonstração: fase 1
 C elege e confirma na 23d e numera o RPC na 23e; Go exige quorum W+R na 23c; Rust audita o dono de cada byte que cruza fronteira. Em JavaScript, o análogo é o `Idempotency-Key` com confirmação — mesma tabela, outro transporte.
 
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Eleicao + commit executados com fases explicadas | 35% |
-| Idempotencia do RPC com erro memorizado | 25% |
-| Diagnostico (prever termo/voto/commit antes de cada fase) | 25% |
-| Documentacao (comandos, saidas) | 15% |
 
 **Referencias primarias:** [Raft](https://raft.github.io/raft.pdf) para o que falta (heartbeat, persistencia).
 

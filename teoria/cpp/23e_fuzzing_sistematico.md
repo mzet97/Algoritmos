@@ -10,8 +10,6 @@ Ao terminar, você deverá dizer o que o corpus cobre, o que cada invariante pro
 
 Esta aula é o módulo CPP-7 na parte de fuzzing: a 23a endureceu o servidor, a 23d orçou o servidor, esta interroga o parser. O que falta depois dela: TLS/autenticação (certificado, não token).
 
-**Como ler esta aula (tres niveis):** *fundamental* -- corpus, mutacoes e as contagens reproduzidas; *intermediario* -- o que os numeros dizem sobre o mutador; *aprofundamento* -- libFuzzer/AFL como fronteira.
-
 ## 1. Contrato antes do código
 
 - **Alvo:** `parse_frame` puro — sem socket, sem estado. Fuzzar o loop inteiro mistura protocolo com I/O; fuzzar o parser isola a decisão.
@@ -64,14 +62,6 @@ Um erro real foi pego pelo `-Werror` no caminho: variável de contagem escrita e
 C cobra o framing com teste de queda real (`SIGKILL`); Rust audita o `unsafe` por invariante; Go exercita o parser com tabela; Python valida entrada com teto antes de `int()`. Em JavaScript, o análogo é fuzzar o parser de query/URL com sementes — o NUL embutido desta aula mora lá também.
 
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Fuzz executado com semente fixa e contagens reproduzidas | 35% |
-| Pos-condicao cobrada a cada sucesso | 25% |
-| Diagnostico (prever efeito de mutacao/teto novo) | 25% |
-| Documentacao (comandos, modos, o que nao prova) | 15% |
 
 **Referencias primarias:** [libFuzzer](https://llvm.org/docs/LibFuzzer.html); [AFL++](https://aflplus.plus/); [The Fuzzing Book](https://www.fuzzingbook.org/).
 

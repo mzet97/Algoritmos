@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23g - TLS com autenticação por token: o túnel não basta, o crachá decide
 
-**Competências SDD:** SEC, RED, CON. **Pré-requisitos:** aulas [23a](23a.md) (framing e timeouts), [23c](23c.md) (token entre nós) e [23d](23d_limites_globais.md) (tetos globais). Biblioteca registrada: OpenSSL 3.5.9 (`-lssl -lcrypto`).
+Você vai ao terminar, você deverá executar o exemplo com `g++` e `clang++` (e sob ASan/UBSan), mostrar o token certo passando e o errado negado dentro do mesmo túnel TLS e explicar por que o exemplo usa pinagem de primeiro contato (TOFU) em vez de CA — e o que muda para produção.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo com `g++` e `clang++` (e sob ASan/UBSan), mostrar o token certo passando e o errado negado dentro do mesmo túnel TLS e explicar por que o exemplo usa pinagem de primeiro contato (TOFU) em vez de CA — e o que muda para produção.
-
-**Motivação:** a 23c autenticou com token em texto puro: quem vê o fio, rouba o crachá. Criptografar o transporte sem autenticar a aplicação é o erro simétrico: túnel perfeito, passageiro errado. Esta aula fecha os dois lados sobre a base da 23d — TLS de verdade (handshake OpenSSL, certificado, `SSL_read`/`SSL_write`) com o token da 23c viajando dentro dele. E declara o que o exemplo NÃO resolve: sem CA, a confiança no servidor nasce no primeiro contato.
-
-**Como ler esta aula (tres niveis):** *fundamental* -- pin TOFU e as duas negacoes; *intermediario* -- handshake e o modelo de ameaca em tres clausulas; *aprofundamento* -- mTLS e sessao resumida (fora do contrato).
+a 23c autenticou com token em texto puro: quem vê o fio, rouba o crachá. Criptografar o transporte sem autenticar a aplicação é o erro simétrico: túnel perfeito, passageiro errado. Esta aula fecha os dois lados sobre a base da 23d — TLS de verdade (handshake OpenSSL, certificado, `SSL_read`/`SSL_write`) com o token da 23c viajando dentro dele. E declara o que o exemplo NÃO resolve: sem CA, a confiança no servidor nasce no primeiro contato.
 
 ## 1. Contrato antes do código
 
@@ -80,14 +76,6 @@ A saída tem três linhas e conta dois experimentos: o token certo atravessa o t
 C cifra o análogo na [23e](../c/23e_rpc_sobre_consenso.md) sem TLS (numerar e confirmar em texto puro); Go exige quorum com token na 23c sem túnel; Rust audita a fronteira na 15a sem transportá-la. Em JavaScript, o análogo é `https://` + `Authorization: Bearer` — mesma divisão (transporte cifra, cabeçalho autentica), outra pilha. O padrão "túnel + crachá + negação única" vale nas quatro.
 
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| TLS com pin executado + token certo passa, errado nega | 35% |
-| Modelo de ameaca enunciado nas tres clausulas | 25% |
-| Diagnostico (prever deadlock pin-antes-do-accept) | 25% |
-| Documentacao (comandos, saidas) | 15% |
 
 **Referencias primarias:** [OpenSSL docs](https://www.openssl.org/docs/); [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446).
 
