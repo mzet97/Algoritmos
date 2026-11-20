@@ -4,6 +4,8 @@ layout: default
 
 # Aula 08d — Ferramenta de observação do SO em Go
 
+Uma ferramenta que observa o sistema operacional — processos, goroutines, memória — escrita na linguagem do próprio serviço. Quem constrói o instrumento entende o que ele mede; quem só lê o painel, não.
+
 ## Nesta aula
 
 Você vai aprender a construir uma ferramenta de observação do SO em Go, interpretar a saída sem extrapolar, e confrontar cada número com o modelo.

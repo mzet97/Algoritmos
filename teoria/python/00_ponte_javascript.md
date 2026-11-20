@@ -4,6 +4,8 @@ layout: default
 
 # Aula 00 — Ponte de partida: o que muda vindo de JavaScript
 
+Você já programa em JavaScript; Python vai parecer familiar na superfície e estranho em tudo que importa: indentação é sintaxe, nome aponta para objeto, e nada se declara com tipo. Esta ponte traduz o que você sabe antes da primeira aula de verdade.
+
 ## Nesta aula
 
 Você vai aprender a mapear o que JavaScript ensinou (closures, assincronia, tipagem dinâmica) para o que muda em Python (indentação, GIL, protocolos), e prever quais hábitos JS geram erros em Python.

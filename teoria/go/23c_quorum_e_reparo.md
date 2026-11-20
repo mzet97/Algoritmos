@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23c — Quorum de escrita e leitura com reparo: a maioria decide, o atraso obedece
 
+W+R > N é uma desigualdade com consequência: leitura enxerga a escrita mais recente, ou o quorum falhou. Maioria decide, atraso obedece, reparo fecha a conta — com os números na mesa.
+
 ## Nesta aula
 
 Você vai aprender a dimensionar quoruns de leitura/escrita, executar reparo após divergência, e prever perda com quorum insuficiente.

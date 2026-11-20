@@ -4,6 +4,8 @@ layout: default
 
 # Aula 28a - Benchmark honesto, escala e o preço da contenção
 
+Benchmark honesto mede com variância declarada e escala conhecida — e às vezes conclui que paralelizar empatou. Em HPC, o empate também é resultado, desde que medido de verdade.
+
 ---
 
 ## Nesta aula

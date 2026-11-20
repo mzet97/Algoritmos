@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23b — Relógios e partição bilateral em Python
 
+Sem relógio comum, 'antes' e 'depois' entre máquinas viram opinião. Relógios lógicos e partição bilateral dão o vocabulário para prometer consistência sem fingir simultaneidade.
+
 ## Nesta aula
 
 Você vai aprender a distinguir relógios físico/lógico, ordenar por causalidade, simular partição bilateral, e prever anomalia.

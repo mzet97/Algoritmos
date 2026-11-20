@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16a - Concorrência, GIL e paralelismo real em Python
 
+A GIL é o elefante em toda conversa de paralelismo em Python: uma trava global que serializa threads de CPU e libera as de I/O. Concorrência real aqui é arquitetura ao redor dessa trava, não negação dela.
+
 ## Nesta aula
 
 Distinguir o que `threading`, `multiprocessing` e `asyncio` garantem — e o que não garantem. Pré-requisitos: aulas 14a, 15 e 16. Não precisa saber C, Rust, rede nem `cgo`.

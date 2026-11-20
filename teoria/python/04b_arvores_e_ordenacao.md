@@ -4,6 +4,8 @@ layout: default
 
 # Aula 04b — Árvores e ordenação em Python: o preço de um nó-objeto
 
+Uma árvore em Python paga um objeto por nó — com cabeçalho, referências e coletor junto. Medir esse preço contra a alternativa é aprender que estrutura de dados também é decisão de memória.
+
 ## Nesta aula
 
 Você vai aprender a implementar árvore explicando o custo do nó-objeto, enunciar invariante de ordenação, e comparar com a `std`.

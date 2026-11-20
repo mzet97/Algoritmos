@@ -4,6 +4,8 @@ layout: default
 
 # Aula 29b — Segurança defensiva em Python: a fronteira é o programa
 
+Em Python, a fronteira de segurança é o próprio programa: entrada que vira código, desserialização que executa, dependência que ninguém auditou. Segurança defensiva com testes de abuso, não com esperança.
+
 ## Nesta aula
 
 Você vai aprender a tratar a fronteira como programa (validar entradas, segredos, subprocessos), e auditar um script apontando injeções.

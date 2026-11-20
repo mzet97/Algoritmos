@@ -4,6 +4,8 @@ layout: default
 
 # Aula 08b - Máquina, memória e sistema operacional vistos de Go
 
+De Go, a máquina aparece como runtime, escalonador e syscalls observáveis. Entender memória e sistema operacional dessa janela é o que permite diagnosticar o serviço em vez de adivinhar.
+
 ---
 
 ## Nesta aula

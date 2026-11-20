@@ -4,6 +4,8 @@ layout: default
 
 # Aula 00 — Ponte de partida: o que Python e JavaScript te ensinaram (e o que muda aqui)
 
+Você já programa em Python ou JavaScript; aqui quase tudo muda de nome e algumas coisas mudam de alma. Esta ponte traduz o que você sabe para o modelo de Go — compilado, tipado, sem desculpas — antes da primeira aula de verdade.
+
 ## Nesta aula
 
 Você vai aprender a mapear o que Python e JavaScript ensinaram (tipagem dinâmica, GC, closures) para o que muda em Go (tipagem estática, compilação, goroutines), e prever quais hábitos dinâmicos geram erros em Go.

@@ -4,6 +4,8 @@ layout: default
 
 # Aula 11a - Modelo de memória, corridas e concorrência disciplinada
 
+Corrida de dados em Go não avisa em produção; avisa no race detector, se você rodar. Modelo de memória e concorrência disciplinada são a diferença entre 'funciona' e 'está correto'.
+
 ---
 
 ## Nesta aula

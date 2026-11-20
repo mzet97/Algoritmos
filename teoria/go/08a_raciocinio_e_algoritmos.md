@@ -4,6 +4,8 @@ layout: default
 
 # Aula 08a - Raciocínio discreto e algoritmos em Go
 
+Antes de otimizar, prove. Invariante, complexidade e medição em Go: a ponte de raciocínio que separa código que passa nos testes de código que você sabe por que está certo.
+
 ---
 
 ## Nesta aula

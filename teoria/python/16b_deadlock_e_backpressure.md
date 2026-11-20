@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16b — Deadlock reproduzido e backpressure em Python
 
+Deadlock reproduzido de propósito vale mais que dez definições: duas travas, duas ordens, um programa congelado. Backpressure é a outra metade — quem produz mais rápido do que consome constrói uma fila infinita.
+
 ## Nesta aula
 
 Você vai aprender a reproduzir deadlock, aplicar backpressure com fila limitada, e prever esgotamento sem limite.

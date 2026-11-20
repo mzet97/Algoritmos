@@ -4,6 +4,8 @@ layout: default
 
 # Aula 08c — Duas soluções em Go: BST, ordenação e a análise confrontada
 
+O mesmo problema, duas soluções, e a análise confrontada com a medição. BST e ordenação em Go viram laboratório de honestidade: a teoria prevê, o benchmark decide quem estava certo.
+
 ## Nesta aula
 
 Você vai aprender a implementar BST e ordenação confrontando as análises, enunciar invariantes, e distinguir o que cada solução garante.

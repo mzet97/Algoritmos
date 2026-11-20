@@ -4,6 +4,8 @@ layout: default
 
 # Aula 14b — Cache e página vistos de Python: duas representações, duas físicas
 
+Cache e página não são abstrações de outro livro: decidem por que seu loop em Python varia de tempo entre execuções. Duas representações, duas físicas, um programa só para medir as duas.
+
 ## Nesta aula
 
 Você vai aprender a distinguir duas representações e duas físicas (cache/página), prever efeito de layout no tempo, e medir sem alegar causa sem evidência.

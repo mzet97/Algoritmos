@@ -4,6 +4,8 @@ layout: default
 
 # Aula 29c — Localidade, processos e Amdahl: o teto antes do entusiasmo
 
+Localidade decide o custo antes do paralelismo prometer o ganho, e Amdahl fixa o teto do que paralelizar pode entregar. O teto medido antes do entusiasmo é a lição inteira desta ponte.
+
 ## Nesta aula
 
 Você vai aprender a aplicar Amdahl antes do entusiasmo, medir localidade com processos, e declarar o teto do speedup.

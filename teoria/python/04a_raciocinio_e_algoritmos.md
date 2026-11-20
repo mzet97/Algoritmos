@@ -4,6 +4,8 @@ layout: default
 
 # Aula 04a — Raciocínio discreto e algoritmos em Python
 
+Antes de otimizar, prove. Invariante e complexidade em Python têm uma camada extra: cada operação esconde o custo do objeto por baixo. Raciocínio discreto com a física da linguagem incluída.
+
 ## Nesta aula
 
 Você vai aprender a enunciar invariantes, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.

@@ -4,6 +4,8 @@ layout: default
 
 # Aula 29a — Multicore, HPC e modelo de GPU sem placa
 
+Multicore e GPU sem placa: o modelo de execução, a conta da transferência e o limiar honesto para acelerar. Amdahl manda no teto; esta aula mede o teto antes do entusiasmo.
+
 ## Nesta aula
 
 Medir onde o paralelismo ajuda Python, onde atrapalha e quando uma GPU valeria a pena — tudo com CPU comum, referência escalar verificada e a conta da transferência explícita. Pré-requisitos: aulas 14a, 16a, 17, 18 e 29. Não precisa de placa GPU, CUDA, MPI nem cluster.

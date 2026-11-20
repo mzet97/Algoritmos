@@ -4,6 +4,8 @@ layout: default
 
 # Aula 20b — TLS com certificado efêmero e guarda anti-SSRF (G5)
 
+TLS protege o canal; a guarda anti-SSRF protege o servidor de si mesmo quando ele busca URLs que o usuário mandou. Certificado efêmero para o laboratório, fronteira de confiança para a vida real.
+
 ## Nesta aula
 
 Você vai aprender a configurar TLS com certificado efêmero, validar entradas para impedir SSRF, e explicar o que o TLS garante (e não garante).

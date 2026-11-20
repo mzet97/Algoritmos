@@ -4,6 +4,8 @@ layout: default
 
 # Aula 28b — Vetorização e NUMA em Go: o empate também é resultado
 
+Vetorização e NUMA decidem onde seus dados moram e quantos por vez a CPU processa. Em Go, o teto aparece cedo e se mede sem romantismo: layout primeiro, entusiasmo depois.
+
 ## Nesta aula
 
 Você vai aprender a explicar por que Go não expõe SIMD diretamente (assembly/intrínsecos), medir localidade e efeito NUMA, e aceitar o empate como resultado quando a medição manda.

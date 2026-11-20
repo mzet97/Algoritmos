@@ -4,6 +4,8 @@ layout: default
 
 # Aula 33 — Projeto integrador de Python: plataforma de experimentos distribuídos
 
+Serviço, observabilidade, concorrência e distribuição funcionando juntos sobre a mesma plataforma: o projeto integrador é a defesa de que as peças do livro compõem um sistema, não uma coleção de exemplos.
+
 ## Nesta aula
 
 Você vai aprender a integrar plataforma de experimentos distribuídos sob os mesmos critérios, confrontar frentes, e declarar o que foi provado.

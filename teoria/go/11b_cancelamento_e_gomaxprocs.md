@@ -4,6 +4,8 @@ layout: default
 
 # Aula 11b — Cancelamento, shutdown forçado e GOMAXPROCS (G4)
 
+Cancelar uma goroutine não é matá-la: é convencê-la a parar. Contexto, shutdown e `GOMAXPROCS` decidem se seu serviço desliga limpo ou vaza goroutines até o processo morrer junto.
+
 ## Nesta aula
 
 Você vai aprender a implementar cancelamento cooperativo e shutdown forçado, explicar o efeito de `GOMAXPROCS`, e prever o comportamento sob cancelamento no meio de uma operação.

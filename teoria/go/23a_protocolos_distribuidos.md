@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23a - Framing, replicação e falhas sob controle
 
+Replicar é fácil até um nó cair no meio de uma escrita. Framing, replicação e falhas sob controle, com o erro injetado de propósito: sistemas distribuídos começam quando a queda vira teste.
+
 ---
 
 ## Nesta aula

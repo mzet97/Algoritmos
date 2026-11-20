@@ -4,6 +4,8 @@ layout: default
 
 # Aula 28c — Multinó simulado: a tríade em dois processos (G7)
 
+Dois processos trocando mensagens simulam o multinó que você não tem no laboratório. A tríade serviço-ferramenta-benchmark funcionando junta é o ensaio geral do projeto final.
+
 ## Nesta aula
 
 Você vai aprender a simular multinó em dois processos aplicando a tríade (framing, quorum, relógios), confrontar os resultados, e declarar limites da simulação.

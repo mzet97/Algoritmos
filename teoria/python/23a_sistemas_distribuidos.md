@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23a — Falhas parciais: dois processos, um log e nenhuma ilusão
 
+Dois processos, um log e nenhuma ilusão de tempo comum: falhas parciais são o estado normal de sistemas distribuídos. Python como bancada para provar atraso, queda e repetição sem infraestrutura cara.
+
 ## Nesta aula
 
 Construir dois processos que trocam mensagens com IDs, registram tudo em log durável e sobrevivem a atraso, duplicação, queda e reinício — e explicar exatamente o que *não* foi garantido. Pré-requisitos: aulas 13, 14a, 16a, 20 a 23. Não precisa saber consenso, relógios vetoriais, Kubernetes nem nuvem.

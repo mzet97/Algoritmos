@@ -4,6 +4,8 @@ layout: default
 
 # Aula 14a — Do interpretador ao kernel
 
+Entre o seu script e o kernel existe um interpretador inteiro compilando para bytecode e executando numa máquina virtual. Descer essa escada — do `print` à syscall — é entender o que 'interpretado' realmente significa.
+
 ## Nesta aula
 
 Explicar o caminho de uma operação Python entre código-fonte, bytecode, implementação CPython, bibliotecas nativas, sistema operacional e hardware — e investigar cada camada com ferramentas do espaço de usuário. Pré-requisitos: aulas 01 a 14. Não precisa saber C, Assembly, QEMU nem kernel.

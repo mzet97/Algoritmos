@@ -4,6 +4,8 @@ layout: default
 
 # Aula 31a — Projeto integrador de Go: serviço, ferramenta e benchmark sob os mesmos critérios
 
+Serviço, ferramenta de observação e benchmark funcionando juntos, sob os mesmos critérios: o projeto integrador é a defesa de que as peças do livro compõem um sistema, não uma coleção de exemplos.
+
 ## Nesta aula
 
 Você vai aprender a integrar serviço, ferramenta e benchmark sob os mesmos critérios, confrontar resultados entre frentes, e declarar o que foi provado.

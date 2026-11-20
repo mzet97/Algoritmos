@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23b — Relógios, ordem causal e consistência declarada em Go
 
+Sem relógio comum, 'antes' e 'depois' viram opinião. Relógios, ordem causal e consistência declarada são o vocabulário mínimo para prometer qualquer coisa entre máquinas.
+
 ## Nesta aula
 
 Você vai aprender a distinguir relógio físico de relógio lógico, ordenar eventos por causalidade, declarar o nível de consistência, e prever anomalia de leitura.

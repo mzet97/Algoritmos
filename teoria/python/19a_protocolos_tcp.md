@@ -4,6 +4,8 @@ layout: default
 
 # Aula 19a — Protocolos TCP em Python puro: framing antes de framework
 
+Framework esconde o socket; esta aula proíbe o atalho. Protocolo TCP em Python puro — framing, leitura parcial, cliente lento — para você saber o que qualquer biblioteca faz no seu lugar.
+
 ## Nesta aula
 
 Você vai aprender a implementar framing antes de framework, tratar leitura parcial, e confrontar cada byte com o protocolo.
