@@ -61,7 +61,7 @@ Os sete alvos não são sete exemplos do mesmo erro — são sete classes: `169.
 
 C++ faz o mesmo par túnel+crachá na [23g](../cpp/23g_tls_e_autenticacao.md) (OpenSSL, mesmo TOFU, mesma negação única); C declara TLS como futuro na 23e; Rust audita a fronteira sem transportá-la na 15a. Em JavaScript, o análogo é `https://` + `Authorization: Bearer` no cliente e validação de URL de webhook no servidor — mesma divisão (transporte cifra, cabeçalho autentica, destino se valida). O padrão "túnel + crachá + negação única + guarda de saída" vale nas quatro trilhas.
 
-## 5. Critério de aprovação e checklist
+## 5. Ao final, você consegue
 
 - [ ] Rodo o exemplo e aponto onde o handshake termina e o token começa.
 - [ ] Explico o TOFU deste exemplo e o que uma CA mudaria (e onde no código).

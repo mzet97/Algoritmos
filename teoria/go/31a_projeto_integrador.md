@@ -2,13 +2,13 @@
 layout: default
 ---
 
-# Aula 31a — Projeto integrador de Go: serviço, ferramenta e benchmark sob a mesma rubrica
+# Aula 31a — Projeto integrador de Go: serviço, ferramenta e benchmark sob os mesmos critérios
 
 ## Nesta aula
 
-Você vai aprender a integrar serviço, ferramenta e benchmark sob a mesma rubrica, confrontar resultados entre frentes, e declarar o que foi provado.
+Você vai aprender a integrar serviço, ferramenta e benchmark sob os mesmos critérios, confrontar resultados entre frentes, e declarar o que foi provado.
 
-Você vai montar, a partir das peças do livro, um repositório reproduzível com os três entregáveis do G8 funcionando juntos: (1) o serviço distribuído de dois nós da 23a com a política de consistência da 23b documentada; (2) a ferramenta de observação da 08d apontada para o serviço em execução; (3) um benchmark da 28a/28b sobre a carga do serviço. A defesa é escrita, usando a rubrica.
+Você vai montar, a partir das peças do livro, um repositório reproduzível com os três entregáveis do G8 funcionando juntos: (1) o serviço distribuído de dois nós da 23a com a política de consistência da 23b documentada; (2) a ferramenta de observação da 08d apontada para o serviço em execução; (3) um benchmark da 28a/28b sobre a carga do serviço. A defesa é escrita, usando esses critérios.
 
 ## Contrato de entrega
 
@@ -18,7 +18,7 @@ Você vai montar, a partir das peças do livro, um repositório reproduzível co
 - **Modelo de ameaças (uma página):** superfície (portas, protocolo, limites de linha/conexão/tempo), quem pode abusar do quê em loopback e fora dele, e o risco residual aceito. Sem TLS/autenticação, a frase "apenas loopback" precisa estar no README, não só na defesa.
 - **Limites de produção declarados:** o que este serviço **não** é (sem consenso, sem eleição, sem persistência além do log, sem segurança de rede) — a lista de lacunas da 23a/23b vira a seção de limitações, sem maquiagem.
 
-## Rubrica de aprovação (resumo)
+## Como o projeto é avaliado
 
 | Critério | Evidência mínima |
 |---|---|

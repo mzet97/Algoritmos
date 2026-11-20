@@ -53,7 +53,7 @@ go vet teoria/go/exemplos/11b_cancelamento.go && go run -race teoria/go/exemplos
 
 Rust faz o mesmo com flag atômica e `scope` na [14b](../rust/14b_ordem_e_backpressure.md) (sem `context`, com `join` estruturado); C++ cancela com atômico + `jthread` na 17a; Python cancela com `Event`/`cancel` no 16b. O padrão "sinal nos dois lados, teto no desligamento, contagem de vivos no fim" é o mesmo nas quatro — muda a sintaxe do sinal. E a disciplina de GOMAXPROCS é a versão Go da comparação 1-núcleo vs máquina cheia que a 28c repete entre processos.
 
-## 5. Critério de aprovação e checklist
+## 5. Ao final, você consegue
 
 - [ ] Rodo o exemplo e explico por que o número de concluídos varia (e por que a faixa é o assert).
 - [ ] Mostro o teto estourando e digo onde estaria o `Wait` infinito sem ele.

@@ -202,7 +202,7 @@ C mede o mesmo com pthreads e `perf` (aulas 28a/30a); Python compara NumPy, thre
 
 Use [pistas graduais](exercicios/28a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/28a_solucoes.md) depois de registrar sua própria explicação.
 
-## 9. Critério de aprovação e checklist
+## 9. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

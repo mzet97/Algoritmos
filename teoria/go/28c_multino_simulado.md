@@ -51,7 +51,7 @@ go vet teoria/go/exemplos/28c_multino.go && go run -race teoria/go/exemplos/28c_
 
 Rust mede a mesma tríade com `taskset` na [23e](../rust/23e_afinidade_e_numa.md) (um processo, afinidade externa); C conta o nó na 30c; C++ modela transferência sem placa na 30b. O par "checksum afirma, tempo publica, máquina acompanha o número" é o mesmo nas quatro — aqui com um ingrediente a mais: o checksum atravessa processo, então prova protocolo além de conta. Em Python, o análogo honesto é `multiprocessing` com a mesma derivação de dado — e a mesma declaração de nó único.
 
-## 5. Critério de aprovação e checklist
+## 5. Ao final, você consegue
 
 - [ ] Rodo o exemplo e mostro o checksum combinado igual à referência (e digo por que é igualdade, não tolerância).
 - [ ] Aponto os três deadlines e o erro que cada um produz.

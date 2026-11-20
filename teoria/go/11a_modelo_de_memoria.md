@@ -192,7 +192,7 @@ Python (`threading`) sofre do GIL para CPU-bound e exige `Lock` para o mesmo con
 
 Use [pistas graduais](exercicios/11a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/11a_solucoes.md) depois de registrar sua própria explicação.
 
-## 9. Critério de aprovação e checklist
+## 9. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 
