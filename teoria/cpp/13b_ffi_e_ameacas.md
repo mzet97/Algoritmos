@@ -4,7 +4,7 @@ layout: default
 
 # Aula 13b - Fronteira FFI e ameaças formais: exceção não atravessa, dono é único
 
-**Objetivo:** expor uma API C++ como `extern "C"` sem vazar exceção, dono nem invariante — e escrever o modelo de ameaças dos projetos nativos no formato que a rubrica cobra: fronteira, abuso, limite, teste. Pré-requisitos: aulas 04–08 (RAII e ownership), 11 (sanitizers) e 13a (as três falhas clássicas e suas correções). Sem QEMU e sem GPU.
+**Objetivo:** expor uma API C++ como `extern "C"` sem vazar exceção, dono nem invariante — e escrever o modelo de ameaças dos projetos nativos no formato que a avaliação dos projetos cobra: fronteira, abuso, limite, teste. Pré-requisitos: aulas 04–08 (RAII e ownership), 11 (sanitizers) e 13a (as três falhas clássicas e suas correções). Sem QEMU e sem GPU.
 
 Ao terminar, você deverá dizer, para cada valor que cruza a fronteira, quem valida, quem é dono e o que acontece no abuso — apontando a linha que recusa.
 
@@ -86,7 +86,7 @@ C documenta quem aloca e quem libera na 18; Rust tranca a fronteira no tipo (`un
 
 **Referencias primarias:** [cppreference, linguagem externa](https://en.cppreference.com/w/cpp/language/language_linkage).
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 - [ ] Marco cada função exportada com `noexcept` e digo para onde vai cada exceção possível.
 - [ ] Aponto o dono de cada byte que cruza a fronteira, na ida e na volta.

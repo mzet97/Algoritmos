@@ -65,7 +65,7 @@ C cobra o framing com teste de queda real (`SIGKILL`); Rust audita o `unsafe` po
 
 **Referencias primarias:** [libFuzzer](https://llvm.org/docs/LibFuzzer.html); [AFL++](https://aflplus.plus/); [The Fuzzing Book](https://www.fuzzingbook.org/).
 
-## 6. Critério de aprovação e checklist
+## 6. Ao final, você consegue
 
 - [ ] Digo o que cada peça do corpus ensina e qual classe ela visita.
 - [ ] Aponto as três invariantes e a entrada que quebraria cada uma.

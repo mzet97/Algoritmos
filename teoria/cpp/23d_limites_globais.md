@@ -87,7 +87,7 @@ C cobra teto de linha e conexões na 32c; Go limita corpo e conexões no middlew
 
 **Referencias primarias:** `man poll`, `man accept` para dreno e contagem; *UNIX Network Programming* (Stevens).
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 - [ ] Aponto os três tetos e o abuso que cada um recusa, com o número.
 - [ ] Mostro onde cada check entraria no loop da 23a (admissão, consumo, liberação).

@@ -75,7 +75,7 @@ C elege e confirma na 23d e numera o RPC na 23e; Go exige quorum W+R na 23c; Rus
 
 **Referencias primarias:** [Raft](https://raft.github.io/raft.pdf) para o que falta (heartbeat, persistencia).
 
-## 6. Critério de aprovação e checklist
+## 6. Ao final, você consegue
 
 - [ ] Elejo e deponho líderes explicando cada voto, termo e recusa.
 - [ ] Aponto onde o commit anda e onde ele para — com o número de acks.

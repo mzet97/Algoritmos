@@ -79,7 +79,7 @@ C cifra o análogo na [23e](../c/23e_rpc_sobre_consenso.md) sem TLS (numerar e c
 
 **Referencias primarias:** [OpenSSL docs](https://www.openssl.org/docs/); [RFC 8446 (TLS 1.3)](https://www.rfc-editor.org/rfc/rfc8446).
 
-## 6. Critério de aprovação e checklist
+## 6. Ao final, você consegue
 
 - [ ] Rodo com `g++` e `clang++` e aponto onde o handshake termina e o token começa.
 - [ ] Explico o TOFU deste exemplo e o que uma CA mudaria (e onde no código).
