@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23d - Limites globais: o servidor inteiro cabe num orçamento
 
+Cada conexão consome memória, tempo e fila; sem orçamento global, o servidor inteiro é um vazamento lento. Limites globais são a diferença entre degradar e cair.
+
 **Objetivo:** impor os tetos do servidor — conexões simultâneas, bytes por janela, conexões por IP — sobre a base da [23a](23a.md), que já tem os tetos por conexão. Pré-requisitos: aulas 23, 23a e 23b. Linux ou WSL2. Sem QEMU e sem GPU.
 
 Ao terminar, você deverá dizer, para cada abuso (enchente de conexões, rajada de bytes, lentas que ocupam tudo), qual teto o recusa — e onde o check mora no loop.

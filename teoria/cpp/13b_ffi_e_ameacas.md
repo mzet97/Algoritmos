@@ -4,6 +4,8 @@ layout: default
 
 # Aula 13b - Fronteira FFI e ameaças formais: exceção não atravessa, dono é único
 
+Na fronteira com C, exceção não atravessa, dono não se duplica e invariante não vaza. FFI é onde C++ encontra o mundo sem rede de proteção; o modelo de ameaças desta aula é o preço de cruzar essa fronteira com segurança.
+
 **Objetivo:** expor uma API C++ como `extern "C"` sem vazar exceção, dono nem invariante — e escrever o modelo de ameaças dos projetos nativos no formato que a avaliação dos projetos cobra: fronteira, abuso, limite, teste. Pré-requisitos: aulas 04–08 (RAII e ownership), 11 (sanitizers) e 13a (as três falhas clássicas e suas correções). Sem QEMU e sem GPU.
 
 Ao terminar, você deverá dizer, para cada valor que cruza a fronteira, quem valida, quem é dono e o que acontece no abuso — apontando a linha que recusa.

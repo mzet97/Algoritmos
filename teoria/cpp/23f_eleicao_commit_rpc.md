@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23f - Eleição, commit e RPC idempotente: a escrita que conta
 
+Eleição, commit e RPC idempotente são o coração de qualquer sistema que não pode perder uma escrita. A escrita que conta é a que sobrevive à queda do líder no meio do caminho — esta aula constrói exatamente esse caminho.
+
 **Objetivo:** eleger um líder por maioria, confirmar comandos só na maioria, descartar a escrita solitária na cura e servir repetições do cache — sobre a base das aulas 23b (idempotência) e 23c (vetor e quorum na leitura). Pré-requisitos: aulas 23, 23a–23e. Linux ou WSL2. Sem QEMU e sem GPU.
 
 Ao terminar, você deverá eleger e depor líderes, apontar onde o commit acontece e explicar por que a repetição nunca reexecuta — inclusive quando a primeira resposta foi erro.

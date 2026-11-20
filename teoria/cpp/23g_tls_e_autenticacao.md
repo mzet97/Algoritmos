@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23g - TLS com autenticação por token: o túnel não basta, o crachá decide
 
+TLS criptografa o túnel; quem decide é o crachá. Autenticação por token sobre o canal seguro fecha a pergunta que a criptografia não responde: não 'está cifrado?', mas 'quem está do outro lado?'.
+
 Você vai ao terminar, você deverá executar o exemplo com `g++` e `clang++` (e sob ASan/UBSan), mostrar o token certo passando e o errado negado dentro do mesmo túnel TLS e explicar por que o exemplo usa pinagem de primeiro contato (TOFU) em vez de CA — e o que muda para produção.
 
 a 23c autenticou com token em texto puro: quem vê o fio, rouba o crachá. Criptografar o transporte sem autenticar a aplicação é o erro simétrico: túnel perfeito, passageiro errado. Esta aula fecha os dois lados sobre a base da 23d — TLS de verdade (handshake OpenSSL, certificado, `SSL_read`/`SSL_write`) com o token da 23c viajando dentro dele. E declara o que o exemplo NÃO resolve: sem CA, a confiança no servidor nasce no primeiro contato.

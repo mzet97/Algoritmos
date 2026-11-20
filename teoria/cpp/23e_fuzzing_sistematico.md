@@ -4,6 +4,8 @@ layout: default
 
 # Aula 23e - Fuzzing sistemático: o parser sob mutação determinística
 
+Um parser correto nos testes pode ser um parser morto na primeira mutação inteligente. Fuzzing sistemático coloca seu código sob ataque determinístico e reproduzível — antes que a entrada real faça o mesmo sem semente fixa.
+
 **Objetivo:** fuzzar o parser de framing da 23a (linha com teto, NUL rejeitado, resto incompleto) com um mutador de semente fixa: 200 mil entradas reproduzíveis, invariantes cobradas a cada uma, memória sob ASan/UBSan. Pré-requisitos: aulas 13a (sanitizers), 23a (o protocolo) e 23d (os tetos). Linux ou WSL2. Sem QEMU e sem GPU.
 
 Ao terminar, você deverá dizer o que o corpus cobre, o que cada invariante proíbe e por que a mesma semente sempre dá o mesmo veredito — e onde o libFuzzer entraria se o toolchain o tivesse.
