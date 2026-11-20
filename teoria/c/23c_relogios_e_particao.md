@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23c — Relógios lógicos, causalidade e a partição que não se finge resolver
 
-**Competências SDD:** DST, SEC e MAT. **Pré-requisitos:** aulas 14a, [23a](23a_sistemas_distribuidos.md) e [23b](23b_fuzzing_e_limites.md). Você precisa saber o que a 23a garantiu (log, `fsync`, idempotência) e, sobretudo, o que ela declarou não garantir: partição com escrita bilateral, ordem total e consenso.
+Você vai ao terminar, você deverá ordenar eventos com relógio de Lamport, detectar concorrência (nem um nem outro aconteceu-antes) com relógios vetoriais, reproduzir uma partição com escrita bilateral divergente, e reconciliá-la por anti-entropia com ordem total declarada — nomeando a escrita descartada, em vez de escondê-la.
 
-**Objetivo observável:** ao terminar, você deverá ordenar eventos com relógio de Lamport, detectar concorrência (nem um nem outro aconteceu-antes) com relógios vetoriais, reproduzir uma partição com escrita bilateral divergente, e reconciliá-la por anti-entropia com ordem total declarada — nomeando a escrita descartada, em vez de escondê-la.
-
-**Motivação:** a 23a terminou com uma confissão: se os dois nós escreverem durante uma partição, os logs divergem e a arquitetura não sabe quem vence. Esta aula dá nome e ferramenta a cada parte dessa confissão. Relógio de parede não serve: duas máquinas discordam sobre "agora". Relógios lógicos não dizem que horas são — dizem **o que veio antes do quê**, que é a única pergunta que a ordem de eventos precisa responder.
-
-**Como ler esta aula (três níveis):** *fundamental* — Lamport ordena, vetor detecta, ordem total reconcilia com perda nomeada; *intermediário* — as quatro fases executadas e a regra de desempate como política escrita; *aprofundamento* — terceiro nó, chaves disjuntas e o parágrafo do consenso que falta (exercícios 2–4).
+a 23a terminou com uma confissão: se os dois nós escreverem durante uma partição, os logs divergem e a arquitetura não sabe quem vence. Esta aula dá nome e ferramenta a cada parte dessa confissão. Relógio de parede não serve: duas máquinas discordam sobre "agora". Relógios lógicos não dizem que horas são — dizem **o que veio antes do quê**, que é a única pergunta que a ordem de eventos precisa responder.
 
 ## 1. Contrato antes do código
 
@@ -92,14 +88,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - declarar a fronteira com consenso sem implementar nenhum pedaço dele;
 - compilar com `-Werror` e passar limpo sob ASan/UBSan.
 
-### Pesos da avaliação
-
-| Critério | Peso |
-|---|---|
-| Relógios mantidos nas quatro operações + veredito aconteceu-antes/concorrência | 30% |
-| Partição reproduzida, reconciliação com descarte nomeado | 30% |
-| Diagnóstico (prever vencedor sob ordem trocada, provar convergência independente da escolha) | 25% |
-| Documentação (fronteira com consenso declarada sem implementar) | 15% |
 
 **Referências primárias:** [Time, Clocks, and the Ordering of Events (Lamport, 1978)](https://lamport.azurewebsites.net/pubs/time-clocks.pdf) para aconteceu-antes e relógios lógicos; [Virtual Time and Global States (Mattern/Fidge)](https://en.wikipedia.org/wiki/Vector_clock) para relógios vetoriais e detecção de concorrência.
 

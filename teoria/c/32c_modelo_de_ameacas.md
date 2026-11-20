@@ -4,13 +4,9 @@ layout: default
 
 # Aula 32c — Modelo de ameaças dos três projetos: o que cada fronteira recusa
 
-**Competências SDD:** SEC, NET, DST e OS. **Pré-requisitos:** aulas [31](31.md) (servidor), [23a](23a_sistemas_distribuidos.md) (distribuído) e [32a](32a_kernel_riscv.md) (kernel). Sem elas, esta aula é uma lista de medos; com elas, é o contrato que faltava aos projetos — com números, não adjetivos.
+Você vai ao terminar, você deverá nomear a fronteira de confiança de cada projeto, listar sua superfície de ataque, executar a tabela de abusos — cada abuso recusado em código, com o limite que o recusou — e escrever a linha de abuso que falta para um quarto projeto hipotético (formato: ator, entrada, limite, teste).
 
-**Objetivo observável:** ao terminar, você deverá nomear a fronteira de confiança de cada projeto, listar sua superfície de ataque, executar a tabela de abusos — cada abuso recusado em código, com o limite que o recusou — e escrever a linha de abuso que falta para um quarto projeto hipotético (formato: ator, entrada, limite, teste).
-
-**Motivação:** os três projetos funcionam no caminho feliz. O caminho feliz é onde o atacante não está. Esta aula coloca o atacante na sala: o cliente que manda 1 MiB onde cabem 1024 bytes, o par que repete a escrita de ontem, o programa de usuário que passa `NULL` como ponteiro na syscall. Cada um recebe a mesma resposta: *recusa nomeada, com limite publicado, testada em código*.
-
-**Como ler esta aula (três níveis):** *fundamental* — a tabela fronteira/abuso/limite/teste; *intermediário* — o par válido+negação que prende o off-by-one; *aprofundamento* — o que o modelo não cobre e qual curso cobriria.
+os três projetos funcionam no caminho feliz. O caminho feliz é onde o atacante não está. Esta aula coloca o atacante na sala: o cliente que manda 1 MiB onde cabem 1024 bytes, o par que repete a escrita de ontem, o programa de usuário que passa `NULL` como ponteiro na syscall. Cada um recebe a mesma resposta: *recusa nomeada, com limite publicado, testada em código*.
 
 ## 1. Contrato antes do código
 
@@ -181,14 +177,6 @@ O formato — fronteira, abuso, limite, teste — é o mesmo cobrado nos projeto
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 
@@ -196,7 +184,7 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 1. Robert Seacord, *Secure Coding in C and C++* (Addison-Wesley, 2. ed., ISBN 978-0321822130); 2. *Operating Systems: Three Easy Pieces* ([pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 3. *C11 standard draft N1570*, Anexo K (funcoes com verificacao de limites).
 
-## 8. Checklist do que esta aula garante
+## 8. Ao final, você consegue
 
 - [ ] Nomeio as três fronteiras e digo o que cada uma recusa, com o número do limite — e de onde o número veio.
 - [ ] Executo a tabela de abusos e aponto onde cada recusa mora no código do projeto real (não no exemplo: no `aula31.c`, na 23a, no `trap_handler`).

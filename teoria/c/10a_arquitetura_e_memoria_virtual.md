@@ -4,13 +4,9 @@ layout: default
 
 # Aula 10a — Da linguagem C ao espaço de endereços de um processo
 
-**Competências SDD:** ARQ, MEM e SEC. **Pré-requisitos:** aulas 01, 04, 07 e 10; saber compilar C, distinguir array de ponteiro e explicar tempo de vida automático e alocado. Não é preciso conhecer assembly.
+Em Python ou JavaScript, `v[i]` parece acessar diretamente um elemento. Em C, `v[i]` também é uma expressão da linguagem — mas compreender desempenho, isolamento e falhas de memória exige perguntar quais instruções foram geradas e o que o sistema operacional e a CPU fazem com o endereço usado. Esta aula desenha esse caminho: da expressão C até a CPU, distinguindo endereço virtual de físico, cache de TLB e falha de página de acesso inválido. É a mesma ponte de que você vai precisar para estudar syscalls, kernels, concorrência e HPC.
 
-**Objetivo observável:** ao terminar, você deverá desenhar o caminho de um acesso a memória desde uma expressão C até a CPU; distinguir endereço virtual de físico, cache de TLB e falha de página de acesso inválido; executar o experimento desta aula e interpretar um mapa de memória sem inferir endereços físicos.
-
-**Motivação:** em Python ou JavaScript, `v[i]` parece acessar diretamente um elemento. Em C, `v[i]` também é uma expressão da linguagem, mas compreender desempenho, isolamento e falhas de memória exige perguntar quais instruções foram geradas e o que o sistema operacional e a CPU fazem com o endereço usado. A mesma ponte será necessária para estudar syscalls, kernels, concorrência e HPC.
-
-**Como ler esta aula (três níveis):** *fundamental* — o caminho expressão→CPU, virtual vs físico; *intermediário* — cache/TLB/falta de página, leitura de `maps`; *aprofundamento* — quem implementa isso é o kernel (32a); aqui se observa, não se constrói.
+Você precisa já saber compilar um programa em C, distinguir array de ponteiro e explicar tempo de vida automático e alocado (aulas [01](01.md), [04](04.md), [07](07.md) e [10](10.md)). Não é preciso conhecer assembly. Quem implementa tradução de endereços é o kernel (aula [32a](32a_kernel_riscv.md)); aqui você observa o mecanismo, ainda não o constrói.
 
 ## 1. Quatro contratos diferentes
 
@@ -93,17 +89,17 @@ Permissões de mapeamento ajudam o sistema a impedir leitura, escrita ou execuç
 
 Este programa imprime endereços deliberadamente para estudo. Em serviço real, evite registrar ponteiros em logs ou respostas a clientes: eles expõem detalhes internos e não são necessários para a maioria dos diagnósticos. Execute o laboratório apenas com um processo seu; não tente ler `/proc` de processos de terceiros. O experimento não mostra páginas físicas, TLB, conteúdo de caches, política de substituição, NUMA nem causalidade de desempenho.
 
-## 8. Exercícios e avaliação
+## 8. Para praticar
 
-1. **ARQ/MEM:** desenhe as quatro camadas da seção 1 para a expressão `bloco[0] = 1`; diga o que C garante e o que depende da plataforma.
-2. **ARQ:** execute o programa, salve o comando e a versão do compilador, registre o PID, o tamanho de página e a faixa/permissões de pelo menos dois endereços em `/proc/PID/maps`. Explique por que esses endereços não são endereços físicos.
-3. **ARQ:** repita a execução três vezes. Compare os endereços sem afirmar que diferença, igualdade ou ordem entre eles prova uma política específica de ASLR ou de alocação.
-4. **ARQ/HPC:** explique separadamente o que uma falta na TLB, uma falta no cache de dados e uma falha de página solicitam ao sistema. Proponha um experimento futuro que meça localidade sem alegar que este programa já a mediu.
-5. **SEC/MEM:** identifique duas informações que não devem ser copiadas dos logs do experimento para um serviço público e duas verificações necessárias antes de usar um tamanho recebido pela rede em `malloc`.
+1. Desenhe as quatro camadas da seção 1 para a expressão `bloco[0] = 1`; diga o que C garante e o que depende da plataforma.
+2. Execute o programa, salve o comando e a versão do compilador, registre o PID, o tamanho de página e a faixa/permissões de pelo menos dois endereços em `/proc/PID/maps`. Explique por que esses endereços não são endereços físicos.
+3. Repita a execução três vezes. Compare os endereços sem afirmar que diferença, igualdade ou ordem entre eles prova uma política específica de ASLR ou de alocação.
+4. Explique separadamente o que uma falta na TLB, uma falta no cache de dados e uma falha de página solicitam ao sistema. Proponha um experimento futuro que meça localidade sem alegar que este programa já a mediu.
+5. Identifique duas informações que não devem ser copiadas dos logs do experimento para um serviço público e duas verificações necessárias antes de usar um tamanho recebido pela rede em `malloc`.
+
+Entregue diagrama, código, versão, comando, observações reais (com o PID removido se for compartilhar o relatório publicamente), interpretação e limites. Você fez bem quando executa sem avisos, encontra corretamente duas regiões, separa garantias de C das escolhas de SO/CPU, distingue TLB/cache/página e não trata os endereços vistos como prova de endereço físico ou de desempenho. Corrija e refaça qualquer item faltante.
 
 As [pistas graduais](exercicios/10a_pistas.md) e [soluções comentadas](exercicios/10a_solucoes.md) estão separadas do enunciado.
-
-**Rubrica de aprovação:** entregue diagrama, código/versão/comando, observações reais com PID removido se compartilhar o relatório publicamente, interpretação e limites. Aprova quem (a) executa sem avisos, (b) encontra corretamente duas regiões, (c) separa garantias de C das escolhas de SO/CPU, (d) distingue TLB/cache/página e (e) não trata os endereços vistos como prova de endereço físico ou desempenho. Corrija e refaça qualquer item faltante.
 
 ---
 
@@ -111,24 +107,15 @@ As [pistas graduais](exercicios/10a_pistas.md) e [soluções comentadas](exercic
 
 1. Brian Kernighan e Dennis Ritchie, *C Programming Language* (Prentice Hall, 2. ed., ISBN 978-0131103627); 2. *C11 standard draft N1570* ([open-std.org](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)); 3. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669).
 
-## 9. Checklist de domínio
+## 9. Ao final, você consegue
 
-- Consigo explicar ISA, compilador, processo e microarquitetura sem tratá-los como sinônimos.
-- Consigo diferenciar endereço virtual, quadro físico, tabela de páginas e TLB.
-- Consigo dizer por que cache de dados, TLB e page cache guardam coisas diferentes.
-- Consigo relacionar duração estática, automática e alocada aos modelos práticos sem chamar o modelo de garantia da linguagem.
-- Consigo ler `/proc/PID/maps` e reconhecer o que ele **não** mostra.
-- Consigo formular uma hipótese de localidade e planejar medi-la sem inventar uma observação.
+- Explico ISA, compilador, processo e microarquitetura sem tratá-los como sinônimos.
+- Diferencio endereço virtual, quadro físico, tabela de páginas e TLB.
+- Digo por que cache de dados, TLB e page cache guardam coisas diferentes.
+- Relaciono duração estática, automática e alocada aos modelos práticos sem chamar o modelo de garantia da linguagem.
+- Leio `/proc/PID/maps` e reconheço o que ele **não** mostra.
+- Formulo uma hipótese de localidade e planejo medi-la sem inventar uma observação.
 
-### Pesos da avaliacao
-
-| Critério | Peso |
-|---|---|
-| Caminho do acesso desenhado camada a camada | 35% |
-| Experimento executado + `maps` lido sem inferir endereço físico | 25% |
-| Diagnóstico (hipótese de localidade antes de medir) | 25% |
-| Documentação (comandos, saídas, desenho) | 15% |
-
-**Referências primárias:** *Computer Systems: A Programmer's Perspective* (Bryant & O'Hallaron), capítulo 9, para memória virtual; `man proc` para o formato de `maps`.
+**Para se aprofundar:** *Computer Systems: A Programmer's Perspective* (Bryant & O'Hallaron), capítulo 9, para memória virtual; `man proc` para o formato de `maps`.
 
 **Próxima aula:** [11 — depuração](11.md), usando símbolos, pilha de chamadas e instrumentação para investigar programas reais.

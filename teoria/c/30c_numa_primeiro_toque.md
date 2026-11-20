@@ -4,13 +4,9 @@ layout: default
 
 # Aula 30c — NUMA: onde a memória mora, medida com honestidade
 
-**Competências SDD:** HPC, ARQ e OS. **Pré-requisitos:** aulas [28a](28a_benchmark_honesto.md) (protocolo de medição) e [30b](30b_simd_e_afinidade.md) (SIMD, afinidade, 1 nó contado aqui). Esta aula fecha o que a 30b declarou em aberto: o multinó — ou melhor, declara com precisão o que fecha e o que fica como protocolo.
+Você vai ao terminar, você deverá contar os nós NUMA da máquina, explicar first-touch e interleave com o mecanismo de ancoragem de páginas, medir a banda local — e declarar quando a comparação entre nós **não** foi feita, em vez de fingi-la. E deverá dizer, para um programa com acesso imprevisível, por que first-touch piora e interleave salva (e vice-versa para acesso partível).
 
-**Objetivo observável:** ao terminar, você deverá contar os nós NUMA da máquina, explicar first-touch e interleave com o mecanismo de ancoragem de páginas, medir a banda local — e declarar quando a comparação entre nós **não** foi feita, em vez de fingi-la. E deverá dizer, para um programa com acesso imprevisível, por que first-touch piora e interleave salva (e vice-versa para acesso partível).
-
-**Motivação:** em máquina multinó, "memória" não é um lugar só: cada página mora num nó, e o núcleo que a toca de longe paga a viagem a cada cache line. Programa que ignora isso mede bem no laptop e sangra no servidor — 2× de banda perdida sem uma linha de código errada. Esta aula ensina a regra de moradia antes que o servidor cobre a aula: quem ancora, onde ancora, e como provar.
-
-**Como ler esta aula (três níveis):** *fundamental* — quem toca primeiro decide o nó; *intermediário* — banda local medida e o passo de 64; *aprofundamento* — o protocolo multinó escrito sem placa para executar.
+em máquina multinó, "memória" não é um lugar só: cada página mora num nó, e o núcleo que a toca de longe paga a viagem a cada cache line. Programa que ignora isso mede bem no laptop e sangra no servidor — 2× de banda perdida sem uma linha de código errada. Esta aula ensina a regra de moradia antes que o servidor cobre a aula: quem ancora, onde ancora, e como provar.
 
 ## 1. Contrato antes do código
 
@@ -170,14 +166,6 @@ C++ repete o protocolo com `numactl` e afinidade de threads na 30b (mesmas três
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 
@@ -185,7 +173,7 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 1. Randall Bryant e David O'Hallaron, *Computer Systems: A Programmer's Perspective* (Pearson, 3. ed., ISBN 978-0134092669), caps. 5-6; 2. Agner Fog, manuais de microarquitetura ([agner.org/optimize](https://www.agner.org/optimize/)); 3. John Patterson e John Hennessy, *Computer Organization and Design, RISC-V Edition* (Morgan Kaufmann, ISBN 978-0128203316).
 
-## 8. Checklist do que esta aula garante
+## 8. Ao final, você consegue
 
 - [ ] Conto os nós da máquina e digo onde li (sysfs, sem presumir).
 - [ ] Explico first-touch com o mecanismo de falta de página (quem falta primeiro, ancora) e aponto o `memset` que ancora.

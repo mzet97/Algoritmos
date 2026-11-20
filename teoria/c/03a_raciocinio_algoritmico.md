@@ -10,8 +10,6 @@ Depois desta aula, você deverá conseguir escrever a pré-condição e a pós-c
 
 Se você vem de Python ou JavaScript, já escreveu laços. O passo novo é **explicar por que eles sempre entregam o resultado prometido**. Essa explicação continua válida quando o programa muda de linguagem, compilador ou computador.
 
-**Como ler esta aula (três níveis):** *fundamental* — pré/pós-condição e invariante do MDC; *intermediário* — término por grandeza que diminui, `O(...)` vs medição; *aprofundamento* — `assert` vs validação de entrada externa (exercícios).
-
 ## 1. Um contrato antes do código
 
 Considere uma função que calcula o máximo divisor comum, ou **MDC**, de dois inteiros não negativos.
@@ -129,14 +127,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - distinguir análise `O(...)` de uma medição em segundos;
 - explicar a diferença entre teste, `assert` e validação de entrada externa.
 
-### Pesos da avaliacao
-
-| Critério | Peso |
-|---|---|
-| Contrato escrito (pré/pós) + invariante enunciada | 30% |
-| Término provado + custo estimado sem confundir com medição | 30% |
-| Diagnóstico (prever invariante quebrada, explicar `assert` vs validação) | 25% |
-| Documentação (exemplo compilado, análise escrita) | 15% |
 
 **Referências primárias:** *Introduction to Algorithms* (Cormen et al.), Parte I, para invariantes e análise; [N1570, seção 7.2 (`assert`)](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) para o contrato interno.
 

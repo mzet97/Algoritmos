@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23a — Falhas parciais em C: dois nós, um log e nenhuma ilusão
 
-**Competências SDD:** DST, NET, SEC e CON. **Pré-requisitos:** aulas 14 e [14a](14a_concorrencia_e_threads.md) (threads, mutex, modelo de memória), 15 (sockets), 20 (multiplexação) e [23](23.md) (framing e parsing robusto). Você precisa saber `fork`, `socket`/`accept`, threads e compilar com warnings. Não precisa saber consenso, relógios vetoriais nem nuvem.
+Você vai ao terminar, você deverá executar dois nós chave-valor em C que trocam `PUT`/`GET` por linhas em loopback, persistem cada escrita em log com `fsync` antes de responder, recusam duplicar efeito em reenvio com o mesmo `id` e sobrevivem — com comportamento explicado — a duplicação, entrada malformada, linha truncada, queda com `SIGKILL`, cauda de log rasgada, reinício com replay e atraso injetado de 400 ms.
 
-**Objetivo observável:** ao terminar, você deverá executar dois nós chave-valor em C que trocam `PUT`/`GET` por linhas em loopback, persistem cada escrita em log com `fsync` antes de responder, recusam duplicar efeito em reenvio com o mesmo `id` e sobrevivem — com comportamento explicado — a duplicação, entrada malformada, linha truncada, queda com `SIGKILL`, cauda de log rasgada, reinício com replay e atraso injetado de 400 ms.
-
-**Motivação:** a aula 23 ensinou a enquadrar bytes; a aula 31 mostrará um servidor TCP completo. Falta a pergunta que separa servidor que funciona de sistema distribuído defensável: *o que acontece quando a outra ponta cai, atrasa ou recebe duas vezes a mesma operação?* Em um processo só, chamar a função duas vezes é erro de quem chama. Entre processos, a rede repete por você — retry é o comportamento normal, não o abuso.
-
-**Como ler esta aula (três níveis):** *fundamental* — PUT/GET com log, `fsync` e idempotência; *intermediário* — o roteiro de falhas (duplicata, rasgo, `SIGKILL`, atraso); *aprofundamento* — o que o projeto não garante e onde 23c/23d entram.
+a aula 23 ensinou a enquadrar bytes; a aula 31 mostrará um servidor TCP completo. Falta a pergunta que separa servidor que funciona de sistema distribuído defensável: *o que acontece quando a outra ponta cai, atrasa ou recebe duas vezes a mesma operação?* Em um processo só, chamar a função duas vezes é erro de quem chama. Entre processos, a rede repete por você — retry é o comportamento normal, não o abuso.
 
 ## 1. Contrato antes do código
 
@@ -127,14 +123,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - declarar o que o projeto **não** garante: partição com escrita bilateral, ordem total, failover automático, segurança fora de loopback;
 - compilar com `-Werror`, executar os 17 checks e confrontar cada `ok` com o contrato, não com a sorte.
 
-### Pesos da avaliacao
-
-| Critério | Peso |
-|---|---|
-| Protocolo executado com os 17 checks confrontados com o contrato | 40% |
-| Falhas do roteiro reproduzidas e explicadas sem atalho | 25% |
-| Diagnóstico (prever comportamento sob falha antes de injetar) | 20% |
-| Documentação (roteiro, saídas, limites declarados) | 15% |
 
 **Referências primárias:** *Designing Data-Intensive Applications* (Kleppmann), capítulos 5, 8 e 9, para log, replicação e falhas parciais; `man fsync` para a durabilidade prometida.
 

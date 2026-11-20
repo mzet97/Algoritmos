@@ -4,13 +4,9 @@ layout: default
 
 # Aula 32a — Kernel didático RISC-V: boot, paginação, traps, syscall e escalonamento
 
-**Competências SDD:** OS, ARQ, MEM, CON e SEC. **Pré-requisitos:** aulas 10a (arquitetura e memória virtual), 11, 12, 15, 16a e o [piloto de C](MAPA_SDD.md). Você precisa saber ler assembly RISC-V básico, montar uma tabela de páginas Sv39 no papel e compilar com o cross-compiler da Fase 1 (`riscv64-linux-gnu-gcc`, QEMU 10.2.2 registrados no [CONTINUAR_AQUI](../CONTINUAR_AQUI.md)).
+Você vai ao terminar, você deverá inicializar o kernel em `teoria/c/kernel/` no QEMU (`-machine virt -bios none -smp 2`), e demonstrar na serial, com marcadores verificados por teste automatizado: boot, segundo hart, interrupção de timer, syscall por `ecall`, falta de página sob demanda com reexecução da instrução e escalonamento preemptivo entre duas tarefas em modo-S.
 
-**Objetivo observável:** ao terminar, você deverá inicializar o kernel em `teoria/c/kernel/` no QEMU (`-machine virt -bios none -smp 2`), e demonstrar na serial, com marcadores verificados por teste automatizado: boot, segundo hart, interrupção de timer, syscall por `ecall`, falta de página sob demanda com reexecução da instrução e escalonamento preemptivo entre duas tarefas em modo-S.
-
-**Motivação:** até aqui, "sistema operacional" foi observado de fora: `/proc`, syscalls de um processo, página medida pela 10a. Esta aula atravessa a fronteira: o programa **é** o modo privilegiado. Cada mecanismo que as aulas anteriores mediram pelo lado de fora — tabela de páginas, trap, escalonador — aparece aqui pelo lado de dentro, em ~500 linhas que cabem numa leitura.
-
-**Como ler esta aula (três níveis):** *fundamental* — a ordem boot → PMP → paginação → descida e os sete marcadores; *intermediário* — o caminho da trap (`mscratch`, `TrapFrame`, retomada) e as três respostas possíveis (`mepc`+4, reexecuta, desliga); *aprofundamento* — granularidade de gigapage vs 4 KiB, SMP real e isolamento entre tarefas (exercícios 2–4).
+até aqui, "sistema operacional" foi observado de fora: `/proc`, syscalls de um processo, página medida pela 10a. Esta aula atravessa a fronteira: o programa **é** o modo privilegiado. Cada mecanismo que as aulas anteriores mediram pelo lado de fora — tabela de páginas, trap, escalonador — aparece aqui pelo lado de dentro, em ~500 linhas que cabem numa leitura.
 
 ## 1. Contrato antes do código
 
@@ -91,14 +87,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - declarar o que o kernel **não** faz: SMP real, isolamento entre tarefas, FS, drivers;
 - reconstruir do zero (`make clean && make && test`) em clone limpo.
 
-### Pesos da avaliação
-
-| Critério | Peso |
-|---|---|
-| Ordem boot → PMP → paginação → descida executada e diagnosticada (causa 1 no `mret`) | 30% |
-| Caminho da trap e as três retomadas, com os sete marcadores explicados | 30% |
-| Diagnóstico (prever sintoma de PMP/`mepc`/TLB antes de quebrar, transcrever o observado) | 25% |
-| Documentação (o que o kernel não faz, declarado sem inflar) | 15% |
 
 **Referências primárias:** *RISC-V Privileged ISA Specification* (modos, `mtvec`, PMP, Sv39, `sfence.vma`); *RISC-V Unprivileged ISA* para o `ecall` e a semântica de retomada; manual do QEMU `virt` (mapa de memória, CLINT, test device) para os endereços contratados.
 

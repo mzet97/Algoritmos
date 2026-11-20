@@ -4,13 +4,9 @@ layout: default
 
 # Aula 13a — Busca, ordenação, hash e o custo da abstração
 
-**Competências SDD:** MAT, ALG e SEC. **Pré-requisitos:** aulas 01 a 13, incluindo a [aula 3A](03a_raciocinio_algoritmico.md). Você precisa saber arrays, ponteiros, `malloc`/`free`, `struct` e compilar com warnings. Não precisa saber threads, rede ou Assembly.
+Você vai ao terminar, você deverá implementar busca binária com invariante declarado, uma tabela hash de endereçamento aberto que recusa crescer além da capacidade contratada, e um teste de propriedade determinístico que confronta sua ordenação com `qsort`. Tudo com `size_t` verificado, sem overflow silencioso na conta de alocação.
 
-**Objetivo observável:** ao terminar, você deverá implementar busca binária com invariante declarado, uma tabela hash de endereçamento aberto que recusa crescer além da capacidade contratada, e um teste de propriedade determinístico que confronta sua ordenação com `qsort`. Tudo com `size_t` verificado, sem overflow silencioso na conta de alocação.
-
-**Motivação:** a aula 13 mostrou pilha, fila, lista e tabela simples. Falta a pergunta que separa estrutura que funciona de estrutura que se pode defender: *qual é o invariante que cada operação preserva, quanto custa quando a entrada cresce, e o que acontece quando a conta de memória estoura?* O `malloc(nmemb * size)` da aula 07 já avisou: multiplicar tamanhos sem verificar é convidar o overflow. Esta aula fecha o módulo C3.
-
-**Como ler esta aula (três níveis):** *fundamental* — busca binária com invariante, hash que recusa crescer; *intermediário* — `size_t` verificado e `qsort` como oráculo; *aprofundamento* — fator de carga, redimensionamento e prova de correção (exercícios).
+a aula 13 mostrou pilha, fila, lista e tabela simples. Falta a pergunta que separa estrutura que funciona de estrutura que se pode defender: *qual é o invariante que cada operação preserva, quanto custa quando a entrada cresce, e o que acontece quando a conta de memória estoura?* O `malloc(nmemb * size)` da aula 07 já avisou: multiplicar tamanhos sem verificar é convidar o overflow. Esta aula fecha o módulo C3.
 
 ## 1. Contrato antes do código
 
@@ -258,14 +254,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - explicar por que o teste de propriedade usa `qsort` como oráculo e LCG com semente fixa;
 - apontar onde a conta de alocação pode estourar e como o código se protege.
 
-### Pesos da avaliacao
-
-| Critério | Peso |
-|---|---|
-| Busca com invariante + hash que recusa crescer, executados | 35% |
-| Overflow da conta de alocação prevenido com `size_t` verificado | 25% |
-| Diagnóstico (prever invariante quebrada, explicar divergência do oráculo) | 25% |
-| Documentação (contrato, comandos, saídas) | 15% |
 
 **Referências primárias:** *Introduction to Algorithms* (Cormen et al.), capítulos de busca, hash e ordenação; [N1570, seção 7.22.3](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf) para a conta de alocação.
 

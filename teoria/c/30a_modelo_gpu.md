@@ -4,15 +4,11 @@ layout: default
 
 # Aula 30a — Modelo de execução em GPU, sem placa: SIMT, hierarquia e a conta da transferência
 
-**Competências SDD:** HPC e GPU. **Pré-requisitos:** aulas 17, 28, 28a e 30. Você precisa saber medir com baseline verificado, o que é localidade e como ler um speedup sem se iludir. Não precisa de placa GPU, CUDA, driver proprietário nem cluster.
+Você vai ao terminar, você deverá explicar o modelo de execução SIMT (grade, bloco, thread), a hierarquia de memória do acelerador e por que a transferência host↔dispositivo decide sozinha se vale a pena — e demonstrar cada ideia com um análogo executável em CPU comum.
 
-**Objetivo observável:** ao terminar, você deverá explicar o modelo de execução SIMT (grade, bloco, thread), a hierarquia de memória do acelerador e por que a transferência host↔dispositivo decide sozinha se vale a pena — e demonstrar cada ideia com um análogo executável em CPU comum.
-
-**Motivação:** GPU sem placa parece contradição, mas o contrato editorial exige exatamente isso no núcleo obrigatório: modelo de execução, transferências, hierarquia de memória, granularidade e critério de ganho — com implementação de referência em CPU. A placa física fica para o laboratório opcional; quem entende o modelo na CPU chega ao laboratório sabendo o que medir.
+GPU sem placa parece contradição, mas o contrato editorial exige exatamente isso no núcleo obrigatório: modelo de execução, transferências, hierarquia de memória, granularidade e critério de ganho — com implementação de referência em CPU. A placa física fica para o laboratório opcional; quem entende o modelo na CPU chega ao laboratório sabendo o que medir.
 
 **Limite explícito:** nada aqui executa em GPU. Números de GPU citados como motivação são ordem de grandeza pública, não promessa para nenhum modelo. O que é medido neste livro roda em CPU e está marcado como tal.
-
-**Como ler esta aula (três níveis):** *fundamental* — SIMT, hierarquia e a conta da transferência; *intermediário* — granularidade e o análogo em CPU; *aprofundamento* — laboratório opcional com placa (fora do núcleo).
 
 ## 1. O modelo: grade, bloco, thread
 
@@ -242,14 +238,6 @@ Python mediria o mesmo tradeoff entre NumPy e laço puro (aula 29a quando existi
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 

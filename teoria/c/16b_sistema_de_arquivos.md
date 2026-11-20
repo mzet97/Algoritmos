@@ -4,13 +4,9 @@ layout: default
 
 # Aula 16b — Sistema de arquivos: nome, inode e o crash no meio
 
-**Competências SDD:** ARQ, OS e SEC. **Pré-requisitos:** aulas [08](08.md) (I/O e buffers), [16](16.md) (syscalls, `mmap`) e [16a](16a_processos_e_observacao.md) (processos e observação). O kernel [32a](32a_kernel_riscv.md) mostra o outro lado (falta sob demanda, syscall); esta aula mostra o lado que todo programa encontra primeiro: o arquivo que sobrevive — ou não — à queda de energia.
+Você vai ao terminar, você deverá publicar um arquivo de forma atômica (tmp + `fsync` + `rename`), detectar uma escrita rasgada por checksum, explicar o que o diretório garante (nome → inode) e o que ele não garante (conteúdo pela metade) — e dizer, para cada uma das três reordenações possíveis da sequência, qual leitor ou qual crash ela expõe.
 
-**Objetivo observável:** ao terminar, você deverá publicar um arquivo de forma atômica (tmp + `fsync` + `rename`), detectar uma escrita rasgada por checksum, explicar o que o diretório garante (nome → inode) e o que ele não garante (conteúdo pela metade) — e dizer, para cada uma das três reordenações possíveis da sequência, qual leitor ou qual crash ela expõe.
-
-**Motivação:** quase todo bug de durabilidade tem a mesma forma: o programa escreveu "quase tudo" e caiu. Sem disciplina, o leitor seguinte encontra meio arquivo e confia nele. Esta aula estabelece a disciplina mínima: publique de uma vez, desconfie de tudo que não foi publicado, e prove a integridade antes de confiar.
-
-**Como ler esta aula (três níveis):** *fundamental* — ordem de escrita e rasgo detectado; *intermediário* — `write` parcial e o loop; *aprofundamento* — `fsync` de diretório, journal e o VFS da 32d.
+quase todo bug de durabilidade tem a mesma forma: o programa escreveu "quase tudo" e caiu. Sem disciplina, o leitor seguinte encontra meio arquivo e confia nele. Esta aula estabelece a disciplina mínima: publique de uma vez, desconfie de tudo que não foi publicado, e prove a integridade antes de confiar.
 
 ## 1. Contrato antes do código
 
@@ -190,14 +186,6 @@ O mesmo trio aparece em toda a masterclass: Go publica config com tmp+rename na 
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 
@@ -205,7 +193,7 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 1. *Operating Systems: Three Easy Pieces*, Remzi e Andrea Arpaci-Dusseau (versao gratuita em [pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)); 2. W. Richard Stevens, *Advanced Programming in the UNIX Environment* (Addison-Wesley, 3. ed., ISBN 978-0321637734); 3. Manual do programador Linux (`man 2 syscall`, `man 2 mmap`).
 
-## 9. Checklist do que esta aula garante
+## 9. Ao final, você consegue
 
 - [ ] Explico a diferença entre nome, inode e conteúdo — e qual dos três o `rename` move (o nome).
 - [ ] Reproduzo a publicação atômica e digo onde o `fsync` mora na ordem e por quê (antes do `rename`: conteúdo no disco antes do nome mudar).

@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23g — Anti-entropia por resumos: sincronizar pelo que mudou (C6)
 
-**Competências SDD:** DST, SEC. **Pré-requisitos:** aulas [23c](23c_relogios_e_particao.md) (vetores, concorrência detectada, anti-entropia com ordem total) e [23d](23d_consenso_e_quorum.md) (versão vence por termo). O consenso decidiu o que vale; o resumo decide o que precisa viajar para todos saberem.
+Você vai ao terminar, você deverá executar o exemplo, mostrar os três cenários (0, 1 e 3 faixas) com o número exato de entradas movidas, explicar por que a versão decide a direção da cópia — e dizer em que caso o resumo mente (colisão), com a probabilidade e a correção.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar os três cenários (0, 1 e 3 faixas) com o número exato de entradas movidas, explicar por que a versão decide a direção da cópia — e dizer em que caso o resumo mente (colisão), com a probabilidade e a correção.
-
-**Motivação:** a 23c sincroniza mandando os logs inteiros: funciona, mas o custo é proporcional ao tamanho da loja, não ao tamanho da divergência. Quando dois nós passam 99% do tempo iguais, mandar 100% para conferir 1% é desperdício — e em enlace caro (satélite, inter-região, bateria), o desperdício impede a sincronização frequente. O resultado é o pior dos mundos: nós que divergem porque sincronizar custa caro, e sincronizar custa caro porque mandam tudo. Esta aula quebra o ciclo: 8 resumos FNV-1a (um por faixa de 8 chaves) decidem o que viaja; faixa igual nem entra no fio. A versão por entrada decide a direção; o resumo decide o escopo.
-
-**Como ler esta aula (três níveis):** *fundamental* — resumo que evita viajar dado igual; *intermediário* — grão da faixa e `memcpy` sem padding; *aprofundamento* — Merkle hierárquico e tumbas (fora do contrato).
+a 23c sincroniza mandando os logs inteiros: funciona, mas o custo é proporcional ao tamanho da loja, não ao tamanho da divergência. Quando dois nós passam 99% do tempo iguais, mandar 100% para conferir 1% é desperdício — e em enlace caro (satélite, inter-região, bateria), o desperdício impede a sincronização frequente. O resultado é o pior dos mundos: nós que divergem porque sincronizar custa caro, e sincronizar custa caro porque mandam tudo. Esta aula quebra o ciclo: 8 resumos FNV-1a (um por faixa de 8 chaves) decidem o que viaja; faixa igual nem entra no fio. A versão por entrada decide a direção; o resumo decide o escopo.
 
 ## 1. Contrato antes do código
 
@@ -234,14 +230,6 @@ Use [pistas graduais](exercicios/23g_pistas.md) somente após uma tentativa. Con
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 

@@ -4,13 +4,9 @@ layout: default
 
 # Aula 13b — Árvores binárias de busca e ordenação estável
 
-**Competências SDD:** MAT, ALG e SEC. **Pré-requisitos:** aulas 01 a 13, [3a](03a_raciocinio_algoritmico.md) e [13a](13a_algoritmos_e_estruturas.md). Você precisa saber ponteiros, `malloc`/`free`, recursão e a invariante de busca binária da 13a.
+Você vai ao terminar, você deverá implementar uma árvore binária de busca (BST) com inserção, busca e os três casos de remoção; provar que o percurso em ordem entrega as chaves ordenadas; medir a degeneração da árvore quando a entrada já vem ordenada; e implementar um mergesort estável confrontado com `qsort` como oráculo em 500 casos determinísticos.
 
-**Objetivo observável:** ao terminar, você deverá implementar uma árvore binária de busca (BST) com inserção, busca e os três casos de remoção; provar que o percurso em ordem entrega as chaves ordenadas; medir a degeneração da árvore quando a entrada já vem ordenada; e implementar um mergesort estável confrontado com `qsort` como oráculo em 500 casos determinísticos.
-
-**Motivação:** a 13a fechou com busca binária sobre vetor ordenado: rápido para buscar, caro para inserir no meio. A BST promete busca e inserção no mesmo caminho — *se* a forma da árvore colaborar. Esta aula é sobre a distância entre a promessa (`O(log n)`) e o contrato real (`O(altura)`, e a altura depende da ordem de chegada). É a ponte que faltava no módulo C3 entre "estrutura que funciona" e "estrutura cujo custo você consegue defender".
-
-**Como ler esta aula (três níveis):** *fundamental* — invariante, em-ordem ordenado, os três casos de remoção; *intermediário* — degeneração medida (1000 vs 24), mergesort estável contra `qsort`; *aprofundamento* — balanceamento, remoção iterativa e contagem de alocações (exercícios 1–4).
+a 13a fechou com busca binária sobre vetor ordenado: rápido para buscar, caro para inserir no meio. A BST promete busca e inserção no mesmo caminho — *se* a forma da árvore colaborar. Esta aula é sobre a distância entre a promessa (`O(log n)`) e o contrato real (`O(altura)`, e a altura depende da ordem de chegada). É a ponte que faltava no módulo C3 entre "estrutura que funciona" e "estrutura cujo custo você consegue defender".
 
 ## 1. Contrato antes do código
 
@@ -88,14 +84,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - compilar com `-Werror`, passar no oráculo `qsort` e nos sanitizers;
 - explicar o preço de memória da BST (um `malloc` por nó) contra o do mergesort (um buffer).
 
-### Pesos da avaliação
-
-| Critério | Peso |
-|---|---|
-| Invariante + prova do em-ordem + três remoções executadas | 30% |
-| Degeneração medida e explicada (ordenada vs embaralhada, `O(altura)`) | 30% |
-| Diagnóstico (prever altura/estabilidade antes de rodar, explicar a divergência) | 25% |
-| Documentação (comparador sem subtração, limite de recursão declarado) | 15% |
 
 **Referências primárias:** *Introduction to Algorithms* (Cormen et al.), capítulos de BST e mergesort, para invariante e estabilidade; `man qsort` para o contrato do oráculo (sem promessa de estabilidade).
 

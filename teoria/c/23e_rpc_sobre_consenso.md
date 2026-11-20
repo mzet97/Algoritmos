@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23e — RPC: o pedido tem nome, a resposta tem memória
 
-**Competências SDD:** DST, NET e SEC. **Pré-requisitos:** aulas [23a](23a_sistemas_distribuidos.md) (transporte e `fsync`), [23c](23c_relogios_e_particao.md) (ordem e conflito) e [23d](23d_consenso_e_quorum.md) (o que vale). O consenso decidiu *o que* conta; esta aula decide *como o cliente vê*: chamar duas vezes não pode executar duas vezes.
+Você vai ao terminar, você deverá numerar cada pedido com `id`, servir repetição sem reexecutar (inclusive o erro), rejeitar pedido sem `id` — explicar por que retry sem `id` é duplicação com passos extras — e dizer exatamente onde o contador `execucoes` pararia se o cache fosse consultado depois de executar em vez de antes.
 
-**Objetivo observável:** ao terminar, você deverá numerar cada pedido com `id`, servir repetição sem reexecutar (inclusive o erro), rejeitar pedido sem `id` — explicar por que retry sem `id` é duplicação com passos extras — e dizer exatamente onde o contador `execucoes` pararia se o cache fosse consultado depois de executar em vez de antes.
-
-**Motivação:** redes repetem. Timeout não diz se o servidor executou e a resposta se perdeu, ou se o pedido nunca chegou. Sem `id`, o cliente que tenta de novo aposta: pode estar pedindo pela primeira ou pela segunda vez sem saber. Com `id`, a aposta some: repetir é pedir a resposta gravada. E a aposta some para os dois desfechos — acerto e erro — porque o cliente repete o erro tanto quanto repete o acerto.
-
-**Como ler esta aula (três níveis):** *fundamental* — `id` que transforma retry em reenvio seguro; *intermediário* — erro memorizado e teto do cache; *aprofundamento* — nonce autenticado e a fronteira com consenso (23d).
+redes repetem. Timeout não diz se o servidor executou e a resposta se perdeu, ou se o pedido nunca chegou. Sem `id`, o cliente que tenta de novo aposta: pode estar pedindo pela primeira ou pela segunda vez sem saber. Com `id`, a aposta some: repetir é pedir a resposta gravada. E a aposta some para os dois desfechos — acerto e erro — porque o cliente repete o erro tanto quanto repete o acerto.
 
 ## 1. Contrato antes do código
 
@@ -187,14 +183,6 @@ Go cobra chave de idempotência antes de qualquer retry de escrita (a mesma port
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 
@@ -202,7 +190,7 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 
 1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).
 
-## 9. Checklist do que esta aula garante
+## 9. Ao final, você consegue
 
 - [ ] Explico por que timeout não distingue "não executou" de "resposta perdida" — e como o `id` resolve (consulta antes da execução).
 - [ ] Demonstro repetição servida do cache com o contador de execuções parado, e digo onde ele pararia se a ordem invertesse.

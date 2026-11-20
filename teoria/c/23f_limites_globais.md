@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23f — Limites globais medidos: quando o teto é do servidor, não da conexão (C5)
 
-**Competências SDD:** NET, SEC, CON. **Pré-requisitos:** aulas [23b](23b_fuzzing_e_limites.md) (teto do parser), [31](31.md) (servidor `poll` com teste Python) e [23d](23d_consenso_e_quorum.md) (decisão por contagem, não por intenção). A 23b pôs teto no parser; a 31 pôs o servidor de pé; esta aula põe teto no *servidor*.
+Você vai ao terminar, você deverá rodar o teste, apontar qual `assert` prova cada teto (por IP, global, linha, bytes), explicar por que o excesso de bytes silencia em vez de fechar (RST), por que a recusa em `accept` fecha com FIN limpo — e contar os dois bugs reais que o teste pegou antes de qualquer execução de bancada (o `revents` lixo e o RST da rajada).
 
-**Objetivo observável:** ao terminar, você deverá rodar o teste, apontar qual `assert` prova cada teto (por IP, global, linha, bytes), explicar por que o excesso de bytes silencia em vez de fechar (RST), por que a recusa em `accept` fecha com FIN limpo — e contar os dois bugs reais que o teste pegou antes de qualquer execução de bancada (o `revents` lixo e o RST da rajada).
-
-**Motivação:** teto por conexão protege a conexão; ataque real abre N conexões. Sem teto global, 8 clientes lentos — cada um dentro de todos os tetos por conexão — esgotam o servidor que passou em todos os testes unitários. Esta aula entrega os três tetos sobre a base da 23b e da 31, com o teste provando que cliente lento não paralisa os demais, que a rajada é avisada, silenciada e depois recuperada — e que recusar no lugar errado quebra o protocolo antes do atacante chegar.
-
-**Como ler esta aula (três níveis):** *fundamental* — três tetos e a janela que reabre; *intermediário* — dreno, aliases e o sexto abuso que falta; *aprofundamento* — taxa por conexão e TLS (31).
+teto por conexão protege a conexão; ataque real abre N conexões. Sem teto global, 8 clientes lentos — cada um dentro de todos os tetos por conexão — esgotam o servidor que passou em todos os testes unitários. Esta aula entrega os três tetos sobre a base da 23b e da 31, com o teste provando que cliente lento não paralisa os demais, que a rajada é avisada, silenciada e depois recuperada — e que recusar no lugar errado quebra o protocolo antes do atacante chegar.
 
 ## 1. Contrato antes do código
 
@@ -495,14 +491,6 @@ Use [pistas graduais](exercicios/23f_pistas.md) somente após uma tentativa. Con
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 

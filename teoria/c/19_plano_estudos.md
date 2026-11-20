@@ -4,7 +4,7 @@ layout: default
 
 # Aula 19 - Plano de Estudos de Especializacao em C
 
-## Objetivo da Aula
+## Nesta aula
 
 Depois de concluirmos a trilha principal de C das Aulas 1 a 19, este documento organiza a proxima fase do estudo: sair da base da linguagem e entrar em dominios mais profundos de engenharia nativa, sistemas, rede e software de infraestrutura.
 

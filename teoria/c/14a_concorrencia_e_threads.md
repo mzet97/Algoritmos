@@ -4,13 +4,9 @@ layout: default
 
 # Aula 14a — Concorrência em C: threads, memória e ciclo de vida
 
-**Competências SDD:** CON, MEM e SEC. **Pré-requisitos:** aulas 07, 13a e 14. Você precisa saber `malloc`/`free`, invariantes e compilar com warnings. Não precisa saber rede, `mmap` avançado nem Assembly.
+Você vai ao terminar, você deverá distinguir data race de corrida lógica no modelo de memória do C11, preservar uma invariante compartilhada com `pthread_mutex_t`, coordenar duas threads com variável de condição e explicar por que o argumento de uma thread precisa sobreviver à thread que o criou.
 
-**Objetivo observável:** ao terminar, você deverá distinguir data race de corrida lógica no modelo de memória do C11, preservar uma invariante compartilhada com `pthread_mutex_t`, coordenar duas threads com variável de condição e explicar por que o argumento de uma thread precisa sobreviver à thread que o criou.
-
-**Motivação:** a aula 14 apresentou pthreads; esta aula responde o que o padrão *garante*. Em C, ao contrário de Go ou Java, data race não é "comportamento indefinido pelo modelo com diagnóstico garantido" — é comportamento indefinido ponto final: o compilador pode assumir que isso nunca acontece e otimizar em cima. A prova de correção vem antes do teste, e o teste vem com sanitizers.
-
-**Como ler esta aula (três níveis):** *fundamental* — data race vs corrida lógica, mutex que preserva invariante; *intermediário* — condvar e ciclo de vida do argumento da thread; *aprofundamento* — `<stdatomic.h>` e o modelo de memória (aula 14 retoma).
+a aula 14 apresentou pthreads; esta aula responde o que o padrão *garante*. Em C, ao contrário de Go ou Java, data race não é "comportamento indefinido pelo modelo com diagnóstico garantido" — é comportamento indefinido ponto final: o compilador pode assumir que isso nunca acontece e otimizar em cima. A prova de correção vem antes do teste, e o teste vem com sanitizers.
 
 ## 1. O modelo de memória em uma frase
 
@@ -186,14 +182,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - produzir um WARNING do TSan sob demanda onde ele funcionar;
 - apontar o que o teste prova e o que só o argumento prova.
 
-### Pesos da avaliacao
-
-| Critério | Peso |
-|---|---|
-| Race demonstrada e eliminada com invariante preservada | 35% |
-| Condvar + ciclo de vida do argumento explicados | 25% |
-| Diagnóstico (prever race antes do sanitizer, classificar o relatório) | 25% |
-| Documentação (comandos, saídas, invariante escrita) | 15% |
 
 **Referências primárias:** [N1570, seção 5.1.2.4 (execuções multithread) e 7.26 (atomics)](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf); `man pthreads` para criação, junção e sincronização.
 

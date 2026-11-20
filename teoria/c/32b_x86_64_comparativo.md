@@ -4,13 +4,9 @@ layout: default
 
 # Aula 32b — O mesmo modelo em x86-64: Multiboot, modo longo e IDT
 
-**Competências SDD:** OS, ARQ e SEC. **Pré-requisitos:** aula [32a](32a_kernel_riscv.md) concluída e verificada no QEMU. Você precisa ter presente o modelo da 32a (frame de trap, tabela de páginas, syscall, escalonador) para comparar mecanismo a mecanismo — esta aula não repete o kernel inteiro, executa a **transição** na outra arquitetura.
+Você vai ao terminar, você deverá inicializar o componente de `teoria/c/kernel-x86/` pelo loader Multiboot do QEMU, atravessar protegido → paginação de 4 níveis → PAE/LME → modo longo, instalar uma IDT com handler de `int3`, imprimir os três marcadores na serial e desligar pelo `isa-debug-exit` — e explicar, com a tabela da seção 2, o que é modelo portável e o que era nome RISC-V para ele.
 
-**Objetivo observável:** ao terminar, você deverá inicializar o componente de `teoria/c/kernel-x86/` pelo loader Multiboot do QEMU, atravessar protegido → paginação de 4 níveis → PAE/LME → modo longo, instalar uma IDT com handler de `int3`, imprimir os três marcadores na serial e desligar pelo `isa-debug-exit` — e explicar, com a tabela da seção 2, o que é modelo portável e o que era nome RISC-V para ele.
-
-**Motivação:** a 32a terminou com uma promessa: "o que porta é o modelo, não o assembly". Promessa sem execução é propaganda. Este componente — um único arquivo assembly, sem pretensão de kernel completo — executa a travessia equivalente em x86-64 e marca onde a analogia quebra: aqui não há modo-M dono de tudo, a CPU nasce em modo real/protegido pelas mãos de um loader, e até o formato do binário vira decisão de arquitetura.
-
-**Como ler esta aula (três níveis):** *fundamental* — a tabela da seção 2 e os três marcadores; *intermediário* — a sequência do `boot.S` e a montagem da IDT campo a campo; *aprofundamento* — o detalhe do ELF32, IST/TSS e o boot real de BIOS/UEFI (exercício 4). A travessia se executa no nível fundamental; o porquê de cada campo mora nos outros dois.
+a 32a terminou com uma promessa: "o que porta é o modelo, não o assembly". Promessa sem execução é propaganda. Este componente — um único arquivo assembly, sem pretensão de kernel completo — executa a travessia equivalente em x86-64 e marca onde a analogia quebra: aqui não há modo-M dono de tudo, a CPU nasce em modo real/protegido pelas mãos de um loader, e até o formato do binário vira decisão de arquitetura.
 
 ## 1. Contrato antes do código
 
@@ -86,14 +82,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - reproduzir os três marcadores pelo teste automatizado em clone limpo;
 - declarar o que falta para um kernel x86 (syscall, APIC/timer, SMP) sem inflar o componente.
 
-### Pesos da avaliação
-
-| Critério | Peso |
-|---|---|
-| Travessia e IDT executadas e explicadas (marcadores + sintomas de cada troca) | 35% |
-| Tabela de correspondências preenchida, incluindo a linha que não porta | 25% |
-| Diagnóstico (prever sintoma antes de trocar ordem/campo, transcrever o observado) | 25% |
-| Documentação (comandos, versões, limitações declaradas) | 15% |
 
 **Referências primárias:** *Intel 64 and IA-32 Architectures SDM*, vol. 3, capítulos de segmentação, paginação e IDT; *AMD64 APM* vol. 2 para a travessia ao modo longo; especificação Multiboot1 para o estado de entrada; [OSDev Wiki](https://wiki.osdev.org/) como mapa de navegação (verificar cada afirmação contra os manuais acima).
 

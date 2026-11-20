@@ -4,13 +4,9 @@ layout: default
 
 # Aula 23d — Eleição, quorum e o commit que a minoria não faz
 
-**Competências SDD:** DST, SEC e MAT. **Pré-requisitos:** aulas [23a](23a_sistemas_distribuidos.md) e [23c](23c_relogios_e_particao.md). Você precisa saber o que aquelas aulas garantiram (log com `fsync`, idempotência, relógios lógicos, reconciliação com perda declarada) e o que elas declararam não garantir: impedir a perda. Esta aula impede uma classe de perda — a confirmação falsa — sem prometer o consenso completo.
+Você vai ao terminar, você deverá eleger um líder com maioria de votos, confirmar um comando só quando ele estiver na maioria, demonstrar que um nó isolado não elege nem confirma nada, e curar a partição com um termo novo que descarta a escrita não confirmada — nomeando o descarte.
 
-**Objetivo observável:** ao terminar, você deverá eleger um líder com maioria de votos, confirmar um comando só quando ele estiver na maioria, demonstrar que um nó isolado não elege nem confirma nada, e curar a partição com um termo novo que descarta a escrita não confirmada — nomeando o descarte.
-
-**Motivação:** a 23a terminou com dois nós que convergem; a 23c terminou com dois nós que divergem e reconciliam com perda declarada. Falta a pergunta que um sistema real precisa responder antes de confirmar qualquer coisa ao cliente: *quantos nós precisam concordar para que uma escrita conte?* A resposta desta aula é uma só palavra — **maioria** — e todo o resto é consequência dela.
-
-**Como ler esta aula (três níveis):** *fundamental* — maioria confirma, minoria não confirma, cura descarta o não confirmado; *intermediário* — as quatro fases executadas e o termo do isolado como contador de tentativas; *aprofundamento* — quorum par, membro novo e a prova de segurança que falta (o que o contrato declara fora).
+a 23a terminou com dois nós que convergem; a 23c terminou com dois nós que divergem e reconciliam com perda declarada. Falta a pergunta que um sistema real precisa responder antes de confirmar qualquer coisa ao cliente: *quantos nós precisam concordar para que uma escrita conte?* A resposta desta aula é uma só palavra — **maioria** — e todo o resto é consequência dela.
 
 ## 1. Contrato antes do código
 
@@ -80,7 +76,7 @@ O padrão é o mesmo das pontes irmãs: Go exige quorum nomeado no G6 antes de c
 
 1. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly, ISBN 978-1449373320), caps. 8-9; 2. *Raft paper* (Ongaro e Ousterhout, [raft.github.io](https://raft.github.io/)); 3. W. Richard Stevens et al., *UNIX Network Programming, vol. 1* (Addison-Wesley, 3. ed., ISBN 978-0131411555).
 
-## 6. Checklist do que esta aula garante (e do que ela não garante)
+## 6. Ao final, você consegue (e do que ela não garante)
 
 - [ ] Explico por que quaisquer duas maiorias se interceptam e por que isso impede duas confirmações conflitantes.
 - [ ] Reproduzo a sequência: eleição → replicação → commit por maioria, apontando onde cada `assert` mora.
@@ -88,14 +84,6 @@ O padrão é o mesmo das pontes irmãs: Go exige quorum nomeado no G6 antes de c
 - [ ] Descrevo o que acontece com o termo do isolado e por que a cura exige eleição nova.
 - [ ] Nomeio três coisas que isto **não** é: heartbeat/timeout, membership change e prova de Raft — e onde cada uma entraria.
 
-### Pesos da avaliação
-
-| Critério | Peso |
-|---|---|
-| Maioria executada (eleição, commit, minoria que não confirma, descarte na cura) | 35% |
-| Interseção de maiorias explicada como o mecanismo que impede confirmação dupla | 25% |
-| Diagnóstico (prever termo/voto/commit antes de cada fase, transcrever o observado) | 25% |
-| Documentação (termo como época, fora do contrato declarado) | 15% |
 
 **Referências primárias:** [In Search of an Understandable Consensus Algorithm (Raft)](https://raft.github.io/raft.pdf) para eleição, termos e commit por maioria; [Paxos Made Simple](https://lamport.azurewebsites.net/pubs/paxos-simple.pdf) para a ideia de quorum como interseção. O [6.824 do MIT](https://pdos.csail.mit.edu/6.824/) orienta o nível dos laboratórios; nada dele foi copiado para esta aula.
 

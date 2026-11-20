@@ -4,13 +4,9 @@ layout: default
 
 # Aula 30b — SIMD verificado, afinidade e NUMA sem propaganda
 
-**Competências SDD:** HPC, GPU e ARQ. **Pré-requisitos:** aulas 17, 28, [28a](28a_benchmark_honesto.md), 30 e [30a](30a_modelo_gpu.md). Você precisa saber o protocolo de medição da 28a (baseline correto, repetição, variância) e ler C com ponteiros.
+Você vai ao terminar, você deverá verificar três implementações de produto interno (escalar, quatro acumuladores, AVX+FMA) contra um oráculo em `double`, medir as razões de tempo entre elas, fixar uma thread numa CPU com `sched_setaffinity` e confirmar pela máscara relida, e contar os nós NUMA da máquina — declarando o que uma máquina de um nó só não permite concluir.
 
-**Objetivo observável:** ao terminar, você deverá verificar três implementações de produto interno (escalar, quatro acumuladores, AVX+FMA) contra um oráculo em `double`, medir as razões de tempo entre elas, fixar uma thread numa CPU com `sched_setaffinity` e confirmar pela máscara relida, e contar os nós NUMA da máquina — declarando o que uma máquina de um nó só não permite concluir.
-
-**Motivação:** a aula 30 apresentou SIMD como conceito; a 28a ensinou a não acreditar em speedup sem baseline. Falta juntar as duas: vetor otimizado que ninguém verificou é só um jeito mais rápido de estar errado — e, em ponto flutuante, "errado" nem precisa de bug: basta somar numa ordem diferente. Esta aula fecha a lacuna de C7 (NUMA, afinidade, SIMD com verificação).
-
-**Como ler esta aula (três níveis):** *fundamental* — oráculo em `double`, tolerância derivada, afinidade confirmada pela máscara relida; *intermediário* — por que quatro acumuladores vencem e erram menos, e por que AVX dá 3,31× e não 8×; *aprofundamento* — Kahan, dispersão com 20 repetições, `-ffast-math` e o first-touch de 2 nós (exercícios 1–4).
+a aula 30 apresentou SIMD como conceito; a 28a ensinou a não acreditar em speedup sem baseline. Falta juntar as duas: vetor otimizado que ninguém verificou é só um jeito mais rápido de estar errado — e, em ponto flutuante, "errado" nem precisa de bug: basta somar numa ordem diferente. Esta aula fecha a lacuna de C7 (NUMA, afinidade, SIMD com verificação).
 
 ## 1. Contrato antes do código
 
@@ -92,14 +88,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - contar os nós NUMA e declarar o que não é demonstrável com um nó;
 - compilar com `-Werror`, verificar antes de cronometrar e reportar dispersão.
 
-### Pesos da avaliação
-
-| Critério | Peso |
-|---|---|
-| Verificação numérica (oráculo `double`, tolerância derivada, erro menor com 4 acumuladores) | 30% |
-| Medição honesta (baseline, razões sem prometer largura, dispersão, afinidade confirmada) | 30% |
-| Diagnóstico (prever Kahan/`-ffast-math`/fixação antes de rodar, explicar a diferença) | 25% |
-| Documentação (NUMA contado com limite, comandos e flags registrados) | 15% |
 
 **Referências primárias:** [What Every Computer Scientist Should Know About Floating-Point Arithmetic (Goldberg)](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html) para o modelo de erro; *Intel Intrinsics Guide* para AVX/FMA usados com dispatch em tempo de execução; `man sched_setaffinity` para afinidade como contrato com o SO.
 

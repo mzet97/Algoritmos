@@ -4,13 +4,9 @@ layout: default
 
 # Aula 28a — Benchmark honesto: escala, falso compartilhamento e o modelo de custo
 
-**Competências SDD:** HPC, GPU e SEC. **Pré-requisitos:** aulas 14a, 17 e 28. Você precisa saber threads, invariantes, `clock_gettime` e o que é uma linha de cache. Não precisa saber SIMD, MPI, GPU nem Assembly.
+Você vai ao terminar, você deverá medir uma soma particionada em 1 contra N threads com correção verificada antes do cronômetro, demonstrar falso compartilhamento com e sem preenchimento, e decidir no papel se um acelerador hipotético compensa — com a conta de transferência explícita.
 
-**Objetivo observável:** ao terminar, você deverá medir uma soma particionada em 1 contra N threads com correção verificada antes do cronômetro, demonstrar falso compartilhamento com e sem preenchimento, e decidir no papel se um acelerador hipotético compensa — com a conta de transferência explícita.
-
-**Motivação:** benchmarks mentirosos são fáceis: medir código errado, cronometrar uma vez, ignorar a variância, esconder o ambiente e declarar vitória. Esta aula define o protocolo honesto — hipótese, baseline correto, aquecimento, repetições, dispersão, ambiente — e o aplica a dois fenômenos reais: escala limitada por banda e falso compartilhamento.
-
-**Como ler esta aula (três níveis):** *fundamental* — protocolo honesto e os dois fenômenos medidos; *intermediário* — dispersão, ambiente e a conta da transferência; *aprofundamento* — o acelerador hipotético decidido no papel.
+benchmarks mentirosos são fáceis: medir código errado, cronometrar uma vez, ignorar a variância, esconder o ambiente e declarar vitória. Esta aula define o protocolo honesto — hipótese, baseline correto, aquecimento, repetições, dispersão, ambiente — e o aplica a dois fenômenos reais: escala limitada por banda e falso compartilhamento.
 
 ## 1. O protocolo, antes do cronômetro
 
@@ -234,14 +230,6 @@ Python mede o mesmo tradeoff entre threads e processos (aula 16a); Go mede worke
 
 ---
 
-### Pesos da avaliacao
-
-| Criterio | Peso |
-|---|---|
-| Compreensao conceitual (previsao, diagnostico, explicacao) | 40% |
-| Analise de compilacao e ferramentas | 25% |
-| Funcionamento (compila sem avisos e roda) | 20% |
-| Documentacao (comandos, versao, saidas) | 15% |
 
 A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar que voce entendeu o porque.
 

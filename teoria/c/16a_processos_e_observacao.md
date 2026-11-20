@@ -4,15 +4,11 @@ layout: default
 
 # Aula 16a — Processos, syscalls e observação do sistema operacional
 
-**Competências SDD:** ARQ, OS e SEC. **Pré-requisitos:** aulas 10a, 11, 12 e 16. Você precisa saber compilar C, o que é endereço virtual, o que é uma syscall e como abrir/ler arquivos. Não precisa saber Assembly, QEMU nem kernel.
+Você vai ao terminar, você deverá criar um processo filho e colher seu código de saída, medir o custo de uma syscall simples, ler o mapa de memória do próprio processo em `/proc/self/maps` e explicar faltas de página menores e maiores com `getrusage`. Tudo no espaço de usuário, em Linux ou WSL.
 
-**Objetivo observável:** ao terminar, você deverá criar um processo filho e colher seu código de saída, medir o custo de uma syscall simples, ler o mapa de memória do próprio processo em `/proc/self/maps` e explicar faltas de página menores e maiores com `getrusage`. Tudo no espaço de usuário, em Linux ou WSL.
-
-**Motivação:** os programas até aqui rodaram *dentro* de um processo sem examiná-lo de fora. Sistemas operacionais isolam processos, traduzem endereços e cobram cada travessia usuário→kernel. Esta aula torna esses mecanismos observáveis com ferramentas do próprio espaço de usuário. O laboratório de kernel em QEMU (etapa seguinte do módulo C4) implementa esses mecanismos; aqui você aprende a medi-los antes de implementá-los.
+os programas até aqui rodaram *dentro* de um processo sem examiná-lo de fora. Sistemas operacionais isolam processos, traduzem endereços e cobram cada travessia usuário→kernel. Esta aula torna esses mecanismos observáveis com ferramentas do próprio espaço de usuário. O laboratório de kernel em QEMU (etapa seguinte do módulo C4) implementa esses mecanismos; aqui você aprende a medi-los antes de implementá-los.
 
 **Limite explícito:** nada aqui prova como o kernel implementa nada — só que chamá-lo custa, que processos são isolados e que memória é mapeada por páginas. Afirmações sobre o interior do kernel ficam para o laboratório emulado.
-
-**Como ler esta aula (três níveis):** *fundamental* — `fork`/`waitpid`, syscall custa; *intermediário* — `/proc/self/maps`, faltas menores e maiores; *aprofundamento* — o kernel que implementa isso mora no QEMU (C4), aqui só se mede.
 
 ## 1. Processo é isolamento com contabilidade
 
@@ -194,14 +190,6 @@ Você concluiu a aula se consegue, sem olhar a solução:
 - explicar por que o filho usa `_exit` e o que o passo 5 contém;
 - executar o exemplo e confrontar cada número com o modelo, não com o chute.
 
-### Pesos da avaliacao
-
-| Critério | Peso |
-|---|---|
-| Processo filho criado e colhido com código explicado | 30% |
-| Custo de syscall + faltas medidos com ferramenta do espaço de usuário | 30% |
-| Diagnóstico (prever custo antes de medir, ler `maps` sem inferir físico) | 25% |
-| Documentação (comandos, saídas, ambiente) | 15% |
 
 **Referências primárias:** *The Linux Programming Interface* (Kerrisk), capítulos 24–25, para processos; `man fork`, `man waitpid`, `man getrusage` para os contratos.
 
