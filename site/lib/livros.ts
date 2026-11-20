@@ -1,4 +1,4 @@
-import { promises as fs } from "node:fs";
+import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
 
 export const VOLUMES = ["c", "cpp", "rust", "go", "python"] as const;
@@ -12,7 +12,14 @@ export const VOLUME_TITULO: Record<Volume, string> = {
   python: "Python",
 };
 
-const TEORIA = path.resolve(process.cwd(), "..", "teoria");
+function resolverTeoria(): string {
+  const vizinho = path.resolve(process.cwd(), "..", "teoria");
+  const embutido = path.resolve(process.cwd(), "teoria_build");
+  if (process.env.TEORIA_DIR) return process.env.TEORIA_DIR;
+  return existsSync(vizinho) ? vizinho : embutido;
+}
+
+const TEORIA = resolverTeoria();
 
 // Arquivos de apoio editorial, não aulas: fora do site.
 const EXCLUIDOS = new Set(["prompt.md", "MAPA_SDD.md", "indice.md"]);

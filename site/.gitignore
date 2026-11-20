@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# aulas embutidas no build (gerado por npm run prebuild)
+teoria_build/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
