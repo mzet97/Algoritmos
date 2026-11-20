@@ -4,6 +4,8 @@ layout: default
 
 # Aula 3A — Invariantes, prova de correção e custo de algoritmos
 
+Antes de otimizar, prove. Um algoritmo sem invariante é uma esperança com sintaxe. Esta ponte ensina a dizer, antes do código, o que deve permanecer verdade a cada iteração — a habilidade que separa quem testa até passar de quem sabe por que passa.
+
 ## Objetivo e pré-requisitos
 
 Depois desta aula, você deverá conseguir escrever a pré-condição e a pós-condição de uma função, justificar que um laço termina, encontrar uma propriedade que permanece verdadeira em cada iteração e estimar tempo e memória sem confundir medição com prova. Você precisa das [aulas 1 a 3](indice.md): variáveis, `while`, funções e operações inteiras. Ainda não precisa saber ponteiros ou alocação dinâmica.

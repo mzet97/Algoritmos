@@ -48,6 +48,12 @@ Limits per submission: 5s CPU, 10s wall; memory default 128 MB (address space),
 4 GB for Go. Without `JUDGE0_URL` (and without `ALLOW_LOCAL_EXEC=1`) the API
 returns 503.
 
+Production currently reads `JUDGE0_URL` from a Cloudflare quick tunnel
+(`cloudflared tunnel --url http://localhost:2358`) pointing at the host Judge0.
+Quick-tunnel URLs are ephemeral: when the tunnel restarts, update the env
+(`vercel env add JUDGE0_URL production`) and push to redeploy. For a permanent
+setup, replace it with a stable public Judge0 endpoint.
+
 Judge0 CE 1.13.1 runs on the host via rootless podman
 (`~/judge0/docker-compose.yml`, passwords in `~/judge0/judge0.conf`), reusing
 the repo's LocalStack-style pattern (`distrobox-host-exec ...` when the host
