@@ -163,7 +163,7 @@ C mede o mesmo tradeoff entre baseline e multicore com pthreads (aula 28a); Go m
 
 Use [pistas graduais](exercicios/29a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/29a_solucoes.md) depois de registrar sua própria explicação.
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

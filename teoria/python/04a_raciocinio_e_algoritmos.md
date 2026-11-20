@@ -216,7 +216,7 @@ JavaScript usa `Number` (ponto flutuante de 64 bits) para a aritmética comum: n
 
 Use [pistas graduais](exercicios/04a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/04a_solucoes.md) depois de registrar sua própria explicação.
 
-## 10. Critério de aprovação e checklist
+## 10. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

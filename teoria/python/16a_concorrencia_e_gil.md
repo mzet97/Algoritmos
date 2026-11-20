@@ -215,7 +215,7 @@ Go executa goroutines em paralelo real e detecta data race com `-race`; Python d
 
 Use [pistas graduais](exercicios/16a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/16a_solucoes.md) depois de registrar sua própria explicação.
 
-## 8. Critério de aprovação e checklist
+## 8. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

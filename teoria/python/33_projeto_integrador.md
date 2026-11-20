@@ -6,7 +6,7 @@ layout: default
 
 ## Nesta aula
 
-Você vai aprender a integrar plataforma de experimentos distribuídos sob a mesma rubrica, confrontar frentes, e declarar o que foi provado.
+Você vai aprender a integrar plataforma de experimentos distribuídos sob os mesmos critérios, confrontar frentes, e declarar o que foi provado.
 
 Você vai entregar uma plataforma local e reproduzível que junta as peças do livro: (1) o serviço replicado de dois nós da 23a com a política de consistência da 23b escrita em uma frase e demonstrada; (2) uma CLI de observação do SO (processos filhos, RSS por `/proc`, tempo e estado/erro, na linha da 14a) apontada para o serviço; (3) uma carga numérica da 29c com baseline e Amdahl; (4) injeção de falhas (atraso, duplicação, queda com kill, reinício) com esperado × observado.
 
@@ -22,7 +22,7 @@ Você vai entregar uma plataforma local e reproduzível que junta as peças do l
 
 O serviço (23a/23b) sob carga numérica (29c) observado pela CLI (14a) com falhas injetadas: cada peça verificada isolada agora convive, e a convivência é o teste. A carga da 29c contra o serviço mostra o que o livro inteiro ensinou sobre transporte — pickle serializando blocos entre processos é a mesma "viagem" que a conta da 29c já precificou, agora atravessando o serviço em vez do pool. A CLI de observação lê RSS por `/proc` (residência real, incluindo o que `tracemalloc` não vê) e distingue pico de atual — e é por isso que a solução comentada avisa onde `tracemalloc` engana: instrumento de alocação Python não mede memória de outro processo, e o relatório que troca um pelo outro mente com número verdadeiro. O roteiro de falhas fecha o círculo: atraso exercita deadline, duplicação exercita idempotência com replay, queda com `kill` exercita o log com fsync da 23a, reinício exercita a reconciliação da 23b — cada falha com esperado escrito antes e observado depois, e divergência é defeito (do projeto ou da doc, ambos entregáveis). Sem consenso, sem TLS, log sem rotação: a seção de limitações vira o contrato do que o projeto não promete — e projeto sem limitações declaradas promete tudo, que é a forma mais comum de não entregar nada.
 
-## Rubrica (resumo)
+## Como o projeto é avaliado
 
 | Critério | Evidência |
 |---|---|
