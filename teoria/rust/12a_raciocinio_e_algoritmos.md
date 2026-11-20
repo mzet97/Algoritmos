@@ -231,7 +231,7 @@ E o contrato de hash que sustenta `HashSet` e `HashMap`: se `k1 == k2`, então `
 
 Use [pistas graduais](exercicios/12a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/12a_solucoes.md) depois de registrar sua própria explicação.
 
-## 9. Critério de aprovação e checklist
+## 9. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

@@ -63,7 +63,7 @@ O que provaria NUMA: a mesma tríade em máquina de 2+ nós, com `numactl --cpun
 
 C faz o primeiro toque na [30c](../c/30c_numa_primeiro_toque.md) com a mesma declaração de nó único; C++ modela custo de transferência na 30b sem placa; Go mede contenção granular na 23a sem prender núcleo. Em Python, o análogo honesto é `numactl` + `numpy` com a mesma tríade — e a mesma declaração de máquina. O padrão "checksum afirma, tempo publica, máquina acompanha o número" vale nas cinco trilhas.
 
-## 5. Critério de aprovação e checklist
+## 5. Ao final, você consegue
 
 - [ ] Rodo com máscara cheia e com `taskset -c 0` e explico cada razão (ruído vs oversubscription).
 - [ ] Mostro o checksum igual e digo por que ele é exato aqui (e tolerância na 23c).

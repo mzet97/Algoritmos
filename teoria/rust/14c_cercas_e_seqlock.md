@@ -59,7 +59,7 @@ A primeira linha (`cercas ok: 50000 publicacoes conferidas par a par`) prova pub
 
 C++ escreve a mesma cerca com `std::atomic_thread_fence` na 17a de C++; Go esconde cercas atrás do `sync.Mutex` e do canal (o modelo *happens-before* do Go proíbe o programador de errar a cerca — ao preço de não poder escrevê-la); C usa `atomic_thread_fence` explícito como aqui. O seqlock em qualquer linguagem tem o mesmo contador ímpar — o protocolo é do modelo de memória, não da sintaxe. A 14b mostrou ordenação na operação; esta mostra ordenação sem operação; juntas, fecham o R5 de ordenação.
 
-## 5. Critério de aprovação e checklist
+## 5. Ao final, você consegue
 
 - [ ] Rodo o exemplo e explico por que o sinal pode ser `Relaxed` (a cerca ordena, não ele).
 - [ ] Digo o que quebra se qualquer uma das cercas sair (data race no par).

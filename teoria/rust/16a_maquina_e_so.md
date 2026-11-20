@@ -212,7 +212,7 @@ Python: `os.getpid`, `resource.getrusage`, `subprocess.run` cobrem o mesmo terre
 
 Use [pistas graduais](exercicios/16a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/16a_solucoes.md) depois de registrar sua própria explicação.
 
-## 9. Critério de aprovação e checklist
+## 9. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

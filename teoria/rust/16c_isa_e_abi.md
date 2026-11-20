@@ -60,7 +60,7 @@ Primeiro o layout: `repr(C)` continua válido, mas tamanhos de tipos C (`long`, 
 
 C declara o mesmo layout com `offsetof` e `_Static_assert` na aula de ABI; C++ atravessa a mesma fronteira com `extern "C"` e `noexcept` na [13b](../cpp/13b_ffi_e_ameacas.md); Go esconde a ABI atrás do `cgo` (com custo documentado). Em Rust, o `repr(C)` é o idioma comum das três fronteiras — kernel, FFI e formato binário. A 28a mostra o preço dele onde dói mais (tabela Sv39); esta aula mostra o contrato onde dói menos.
 
-## 5. Critério de aprovação e checklist
+## 5. Ao final, você consegue
 
 - [ ] Rodo o exemplo e aponto os três `assert` que virariam erro em port errado.
 - [ ] Explico por que o `TrapFrame` do kernel precisa de `repr(C)`.
