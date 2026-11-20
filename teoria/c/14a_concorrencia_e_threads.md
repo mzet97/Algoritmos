@@ -171,7 +171,7 @@ Python teria o GIL no caminho do contador (aula 16a) e `threading.Lock` no lugar
 
 Use [pistas graduais](exercicios/14a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/14a_solucoes.md) depois de registrar sua própria explicação.
 
-## 8. Critério de aprovação e checklist
+## 8. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

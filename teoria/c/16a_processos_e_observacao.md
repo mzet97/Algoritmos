@@ -179,7 +179,7 @@ O bloco de 8 MiB é memória anônima: reservada no `malloc`, materializada pág
 
 Use [pistas graduais](exercicios/16a_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/16a_solucoes.md) depois de registrar sua própria explicação.
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

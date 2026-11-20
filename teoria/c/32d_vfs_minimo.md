@@ -326,7 +326,7 @@ Os quatro proibidos, cada um com sua mensagem de defeito: `/dados` resolve mas �
 
 C++ faz a ROM didática por id na [38](../cpp/38.md) (sem caminho, sem diretório — o passo anterior; aqui o caminho existe e é resolvido de verdade, o passo seguinte que a 38 declarou como futuro). Rust valida ponteiros de usuário no kernel da 28a (a validação que aqui falta, lá existe — comparar os dois mostra o preço e o valor); C++ promete a mesma validação na 38. Em Python, o análogo honesto é `open()` com `pathlib` — com a diferença de que lá o SO resolve por você, e aqui a aula mostra o que "resolver" significa, nível por nível. Em Go, o `os.Open` com caminho limpo pelo `path.Clean` (que remove `..` por normalização) é o primo em espaço de usuário da regra 2 — mesma negação, outra camada. O padrão "resolve nível a nível, nega subida e tipo errado, conta EOF como dado" vale nas cinco trilhas — muda onde o resolvedor mora.
 
-## 8. Critério de aprovação e checklist
+## 8. Ao final, você consegue
 
 - [ ] Rodo o estágio e mostro `/dados/const.txt` resolvido em dois níveis, explicando cada passo do andador (pai, comprimento, conteúdo).
 - [ ] Explico por que `/dados/../versao.txt` é recusado no parse (antes de existir estado) e não na busca.

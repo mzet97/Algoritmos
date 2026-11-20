@@ -468,7 +468,7 @@ if __name__ == "__main__":
 
 C++ faz o mesmo trio de tetos em simulação na [23d](../cpp/23d_limites_globais.md) (orçamento em memória, sem socket — determinístico, sem fio); aqui o socket é real e o teste é o juiz, porque a 31 já provou que o servidor real é testável. Go exige o mesmo par túnel+crachá na 20b sem teto de bytes (o teto lá é de taxa no cliente); Rust isola cliente lento com backpressure na 14b (fila limitada em vez de teto global — mesma família, outro membro). Em Python, o análogo é a 19a (cinco casos de framing, thread por conexão) — e a comparação ensina: thread-por-conexão testa framing, `poll` com tetos testa o servidor. O padrão "teto global + recusa com motivo + lento não paralisa" vale nas cinco trilhas — muda onde a contagem mora e quem a audita (aqui, o teste Python).
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 - [ ] Rodo o teste e digo qual `assert` prova cada um dos cinco comportamentos (por IP, global, rápido-entre-lentos, linha, bytes).
 - [ ] Explico por que bytes silenciam (RST engole o motivo) e por que por-IP/global fecham (FIN limpo, nada lido).

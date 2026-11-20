@@ -173,7 +173,7 @@ Limites antes de alocação: nenhum `malloc` acontece antes do tamanho passar pe
 
 ## 7. Ponte com as demais trilhas
 
-O formato — fronteira, abuso, limite, teste — é o mesmo cobrado nos projetos de C++, Rust, Go e Python pela rubrica de projeto (correção, falhas, segurança, medição, comunicação): a [rubrica SDD](../RUBRICA_SDD.md) não pede "segurança", pede abusos nomeados com testes. Em JavaScript, a fronteira é o formulário e a query string: mesmo trio (teto de tamanho, NUL/encoding hostil, replay do duplo clique), mesmos tetos, mesmo replay (o duplo clique que cria dois pedidos — a 23e com roupa de usuário). A ameaça muda de endereço, não de forma. E a 23f mostra o que acontece quando um teto desta tabela falta no servidor real: o global que a 32c declara aqui é medido lá.
+O formato — fronteira, abuso, limite, teste — é o mesmo cobrado nos projetos de C++, Rust, Go e Python pelos critérios do projeto (correção, falhas, segurança, medição, comunicação): a [critérios de avaliação](../RUBRICA_SDD.md) não pede "segurança", pede abusos nomeados com testes. Em JavaScript, a fronteira é o formulário e a query string: mesmo trio (teto de tamanho, NUL/encoding hostil, replay do duplo clique), mesmos tetos, mesmo replay (o duplo clique que cria dois pedidos — a 23e com roupa de usuário). A ameaça muda de endereço, não de forma. E a 23f mostra o que acontece quando um teto desta tabela falta no servidor real: o global que a 32c declara aqui é medido lá.
 
 ---
 
@@ -194,7 +194,7 @@ A execucao bem-sucedida sozinha nao aprova: a maior parcela esta em demonstrar q
 - [ ] Escrevo a quarta linha da tabela (novo ator, entrada, limite, teste) no formato exigido.
 - [ ] Declaro o que o modelo não cobre: cripto, mTLS e hospedeiro comprometido — e digo qual curso cobriria.
 
-**Referências primárias:** [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) como referência de processo (não checklist — processo diz *quando* validar, a tabela diz *o quê*); `man 2 read`/`man 2 recv` para parcialidade de leitura (toda fronteira de rede lê parcial antes de decidir); a [rubrica de projeto SDD](../RUBRICA_SDD.md) para as dimensões cobradas. Modelo de ameaças sem teste de abuso é ensaio — esta aula exige os dois, e o exemplo é os dois.
+**Referências primárias:** [NIST SSDF](https://csrc.nist.gov/pubs/sp/800/218/final) como referência de processo (não checklist — processo diz *quando* validar, a tabela diz *o quê*); `man 2 read`/`man 2 recv` para parcialidade de leitura (toda fronteira de rede lê parcial antes de decidir); a [critérios de avaliação do projeto](../RUBRICA_SDD.md) para as dimensões cobradas. Modelo de ameaças sem teste de abuso é ensaio — esta aula exige os dois, e o exemplo é os dois.
 
 ## 9. Exercícios obrigatórios
 

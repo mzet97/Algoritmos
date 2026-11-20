@@ -207,7 +207,7 @@ Há um segundo modo de mentira, mais sutil: resumo sobre dado *parcialmente atua
 
 C++ resolve a mesma divergência por cura com termo novo na [23f](../cpp/23f_eleicao_commit_rpc.md) (descarte nomeado, sem resumo — quando o termo decide, o dado obedece); Go repara na leitura com vetor na 23c (paga o custo total por leitura, sem rodada de fundo); Rust declara o conflito e repara em duas passadas na 23d (o resumo como pré-filtro antes do vetor). Em Python, o análogo honesto é comparar `hashlib` por partição antes de copiar arquivos (rsync didático: resumo decide, cópia obedece). Em JavaScript, o par é ETag/If-None-Match no HTTP: resumo (hash do corpo) decide se o corpo viaja — a mesma divisão escopo/direção, com o servidor no papel do outro nó. O padrão "resumo decide escopo, versão decide direção" vale nas cinco trilhas — muda a função de hash, o tamanho da faixa e quem paga a rodada.
 
-## 8. Critério de aprovação e checklist
+## 8. Ao final, você consegue
 
 - [ ] Rodo o exemplo e digo, por cenário, quantas faixas viajaram, quantas entradas se moveram — e por quê (resumo + versão).
 - [ ] Explico por que o cenário 2 copia 0 entradas num sentido e 1 no outro (direção pela versão).

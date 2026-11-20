@@ -77,7 +77,7 @@ NumPy faz o mesmo produto interno chamando BLAS — que usa exatamente acumulado
 
 Use [pistas graduais](exercicios/30b_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/30b_solucoes.md) depois de registrar sua própria explicação.
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 

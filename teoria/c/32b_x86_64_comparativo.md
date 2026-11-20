@@ -71,7 +71,7 @@ O kernel RISC-V continua sendo **o** projeto de C (C8): completo, com tarefas e 
 
 Use [pistas graduais](exercicios/32b_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/32b_solucoes.md) depois de registrar sua própria explicação.
 
-## 7. Critério de aprovação e checklist
+## 7. Ao final, você consegue
 
 Você concluiu a aula se consegue, sem olhar a solução:
 
