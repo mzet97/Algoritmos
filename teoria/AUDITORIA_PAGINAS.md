@@ -37,3 +37,19 @@ Combinações mais comuns: só níveis de proficiência (94), “como ler” + p
   e em `AUDITORIA_POR_ARQUIVO.csv`.
 - Piloto do formato: C 01, 04, 07, 10a, 14, 23, 31. Depois varredura por livro
   na ordem C, C++, Rust, Go, Python.
+
+## Execução (2026-11-20)
+
+- Andaime removido das 253 aulas (busca por códigos/pesos/rubrica: zero).
+- Fechamentos convertidos para “Ao final, você consegue”; 26 arquivos sem esse
+  fechamento são planos de estudo, projetos integradores e anexos de
+  benchmark/GPU, que encerram com entrega de projeto — formato mantido de
+  propósito.
+- Aberturas com problema concreto escritas para as 253 aulas (piloto C à mão,
+  demais livros em lotes por livro com título conferido antes de escrever).
+- Expansões do mapa curricular: as pontes MAT/ALG, ARQ/OS, CON/NET/DST/SEC e
+  HPC/GPU já existem como aulas-anexo em todos os livros (ex.: C 03a/10a/13a-b/
+  30a-c, Rust 12a-b/16a-c/23a-e, Go 08a-d/28a-c, Python 04a-b/14a-b/29a-c).
+  Nenhuma aula nova foi criada nesta rodada: criar duplicata de ponte existente
+  violaria a fonte única. Lacuna nova só entra com evidência contra esta
+  matriz, via `MAPA_SDD.md` de cada livro.
