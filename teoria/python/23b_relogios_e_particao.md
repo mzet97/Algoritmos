@@ -4,17 +4,11 @@ layout: default
 
 # Aula 23b — Relógios e partição bilateral em Python
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: distinguir relógios físico/lógico, ordenar por causalidade, simular partição bilateral, e prever anomalia.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir relógio lógico, causalidade e partição`;
-- **Nível 2 — Aplicar:** `prever anomalia sob partição e corrigir o modelo`;
-- **Nível 3 — Projetar:** `projetar consistência justificando trade-offs`.
+Você vai aprender a distinguir relógios físico/lógico, ordenar por causalidade, simular partição bilateral, e prever anomalia.
 
-**Competências SDD:** DST, NET, CON. **Pré-requisitos:** [23a](23a_sistemas_distribuidos.md) (IDs, log com fsync, dedup, kill -9, replay) e [19a](19a_protocolos_tcp.md). Esta ponte completa o PY7: relógios/ordem e consistência declarada sobre a base da 23a.
-
-**Objetivo observável:** ordenar eventos por Lamport, detectar concorrência por vetores, reproduzir a partição bilateral (`k=111` × `k=222`) e reconciliar por anti-entropia com ordem total publicada, nomeando o descarte — na quarta linguagem em que este teorema aparece (C 23c, Go 23b, Rust 23b análogo), porque reconhecer o padrão é a competência.
+Você vai ordenar eventos por Lamport, detectar concorrência por vetores, reproduzir a partição bilateral (`k=111` × `k=222`) e reconciliar por anti-entropia com ordem total publicada, nomeando o descarte — na quarta linguagem em que este teorema aparece (C 23c, Go 23b, Rust 23b análogo), porque reconhecer o padrão é a competência.
 
 **Contrato e exemplo:** simulação determinística (o transporte é a 23a). O [arquivo-fonte](exemplos/23b_relogios.py):
 

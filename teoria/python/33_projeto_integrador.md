@@ -4,17 +4,11 @@ layout: default
 
 # Aula 33 — Projeto integrador de Python: plataforma de experimentos distribuídos
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: integrar plataforma de experimentos distribuídos sob a mesma rubrica, confrontar frentes, e declarar o que foi provado.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir a rubrica integradora`;
-- **Nível 2 — Aplicar:** `diagnosticar divergência e atribuir causa`;
-- **Nível 3 — Projetar:** `projetar a integração justificando evidências`.
+Você vai aprender a integrar plataforma de experimentos distribuídos sob a mesma rubrica, confrontar frentes, e declarar o que foi provado.
 
-**Competências SDD:** todas (PY10). **Pré-requisitos:** PY1–PY9, com as pontes [19a](19a_protocolos_tcp.md), [23a](23a_sistemas_distribuidos.md)/[23b](23b_relogios_e_particao.md), [29b](29b_seguranca_defensiva.md) e [29c](29c_localidade_e_amdahl.md) executadas.
-
-**Objetivo observável:** entregar uma plataforma local e reproduzível que junta as peças do livro: (1) o serviço replicado de dois nós da 23a com a política de consistência da 23b escrita em uma frase e demonstrada; (2) uma CLI de observação do SO (processos filhos, RSS por `/proc`, tempo e estado/erro, na linha da 14a) apontada para o serviço; (3) uma carga numérica da 29c com baseline e Amdahl; (4) injeção de falhas (atraso, duplicação, queda com kill, reinício) com esperado × observado.
+Você vai entregar uma plataforma local e reproduzível que junta as peças do livro: (1) o serviço replicado de dois nós da 23a com a política de consistência da 23b escrita em uma frase e demonstrada; (2) uma CLI de observação do SO (processos filhos, RSS por `/proc`, tempo e estado/erro, na linha da 14a) apontada para o serviço; (3) uma carga numérica da 29c com baseline e Amdahl; (4) injeção de falhas (atraso, duplicação, queda com kill, reinício) com esperado × observado.
 
 ## Contrato de entrega
 

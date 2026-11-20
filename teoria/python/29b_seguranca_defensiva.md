@@ -4,17 +4,11 @@ layout: default
 
 # Aula 29b — Segurança defensiva em Python: a fronteira é o programa
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: tratar a fronteira como programa (validar entradas, segredos, subprocessos), e auditar um script apontando injeções.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir injeção, segredo e superfície de ataque de um script`;
-- **Nível 2 — Aplicar:** `diagnosticar comando shell com interpolação e corrigir`;
-- **Nível 3 — Projetar:** `projetar automação segura justificando cada validação`.
+Você vai aprender a tratar a fronteira como programa (validar entradas, segredos, subprocessos), e auditar um script apontando injeções.
 
-**Competências SDD:** SEC, NET, MEM, OS. **Pré-requisitos:** 08, 13, 20–26 e [19a](19a_protocolos_tcp.md). Esta é a ponte do PY9: revisão de ameaças e falhas operacionais integrando o que as aulas introduziram disperso.
-
-**Objetivo observável:** demonstrar dois riscos clássicos de Python com a correção executável ao lado: `pickle` de entrada não confiável (o veneno é gerado e **não** desserializado; a fronteira é JSON com esquema e tetos) e injeção de comando via `subprocess` (corrigida com lista de argumentos, sem shell, padrão validado).
+Você vai demonstrar dois riscos clássicos de Python com a correção executável ao lado: `pickle` de entrada não confiável (o veneno é gerado e **não** desserializado; a fronteira é JSON com esquema e tetos) e injeção de comando via `subprocess` (corrigida com lista de argumentos, sem shell, padrão validado).
 
 **Contrato e exemplo:** nenhuma entrada externa vira objeto Python sem passar por validação de fronteira (tipo, campos, tamanhos); nenhum comando externo é montado por concatenação de strings. O [arquivo-fonte](exemplos/29b_seguranca.py):
 

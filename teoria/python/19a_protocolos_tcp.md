@@ -4,17 +4,11 @@ layout: default
 
 # Aula 19a — Protocolos TCP em Python puro: framing antes de framework
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: implementar framing antes de framework, tratar leitura parcial, e confrontar cada byte com o protocolo.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir framing, leitura parcial e protocolo`;
-- **Nível 2 — Aplicar:** `diagnosticar mensagem parcial e corrigir com framing`;
-- **Nível 3 — Projetar:** `projetar protocolo justificando framing e limites`.
+Você vai aprender a implementar framing antes de framework, tratar leitura parcial, e confrontar cada byte com o protocolo.
 
-**Competências SDD:** NET, CON, SEC. **Pré-requisitos:** 13 (I/O) e [16b](16b_deadlock_e_backpressure.md). Esta é a ponte do PY6: socket, framing e entrada hostil com a biblioteca padrão, **antes** de qualquer FastAPI das aulas 20+.
-
-**Objetivo observável:** executar um servidor de linhas com teto de 1 024 bytes e demonstrar os cinco casos do contrato de framing: comando fragmentado em dois envios, dois comandos coalescidos num envio, comando malformado e UTF-8 inválido (ERRO sem matar o servidor), linha longa (só a conexão infratora fecha) e cliente lento sem bloquear os demais.
+Você vai executar um servidor de linhas com teto de 1 024 bytes e demonstrar os cinco casos do contrato de framing: comando fragmentado em dois envios, dois comandos coalescidos num envio, comando malformado e UTF-8 inválido (ERRO sem matar o servidor), linha longa (só a conexão infratora fecha) e cliente lento sem bloquear os demais.
 
 **Contrato e exemplo:** protocolo por linhas UTF-8 (`PING`/`ECO`/`SAIR`); `recv` devolve quantos bytes houver — nunca "uma mensagem". O [arquivo-fonte](exemplos/19a_protocolo.py) sobe o servidor em porta efêmera e roda os cinco casos como teste:
 

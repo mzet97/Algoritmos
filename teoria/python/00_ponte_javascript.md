@@ -4,19 +4,13 @@ layout: default
 
 # Aula 00 — Ponte de partida: o que muda vindo de JavaScript
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: mapear o que JavaScript ensinou (closures, assincronia, tipagem dinâmica) para o que muda em Python (indentação, GIL, protocolos), e prever quais hábitos JS geram erros em Python.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir as diferenças de modelo entre as linguagens`;
-- **Nível 2 — Aplicar:** `prever o erro de um hábito JS em Python e corrigir`;
-- **Nível 3 — Projetar:** `projetar sua transição justificando o que reaproveitar`.
+Você vai aprender a mapear o que JavaScript ensinou (closures, assincronia, tipagem dinâmica) para o que muda em Python (indentação, GIL, protocolos), e prever quais hábitos JS geram erros em Python.
 
-**Competências SDD:** FND, MEM, SEC. **Pré-requisitos:** saber variáveis, condicionais, laços e funções em Python ou JavaScript. Nada de interpretadores, tipagem ou contagem de referências é pressuposto sem explicação.
+Você vai ao terminar, você deverá dizer, para cada hábito trazido de JavaScript, o que continua valendo em Python e o que quebra — e executar um programa que demonstra as quatro quebras sem nenhuma falhar.
 
-**Objetivo observável:** ao terminar, você deverá dizer, para cada hábito trazido de JavaScript, o que continua valendo em Python e o que quebra — e executar um programa que demonstra as quatro quebras sem nenhuma falhar.
-
-**Motivação:** JavaScript e Python parecem primos — e são, até o dia em que `"1" + 1` dá `"11"` de um lado e `TypeError` do outro. Esta aula traduz os reflexos: igualdade, identidade, referência e entrada externa, antes que o primeiro bug silencioso cobre a aula.
+JavaScript e Python parecem primos — e são, até o dia em que `"1" + 1` dá `"11"` de um lado e `TypeError` do outro. Esta aula traduz os reflexos: igualdade, identidade, referência e entrada externa, antes que o primeiro bug silencioso cobre a aula.
 
 ## 1. Contrato antes do código
 
@@ -139,7 +133,7 @@ Go recusa a coerção na compilação; C soma bytes sem perguntar o tipo; Rust t
 
 1. Luciano Ramalho, *Python Fluente* (Novatec/O'Reilly, ISBN 978-1492056355); 2. Documentação oficial em [docs.python.org/3](https://docs.python.org/3/); 3. *Tutorial oficial* em [docs.python.org/3/tutorial](https://docs.python.org/3/tutorial/).
 
-## 6. Checklist do que esta aula garante
+## 6. Ao final, você consegue
 
 - [ ] Distingo etiqueta de objeto e prevejo quem muda quando o apelido muta.
 - [ ] Uso `==` para valor e `is` para identidade, e digo quando cada um mente.

@@ -4,17 +4,11 @@ layout: default
 
 # Aula 16b — Deadlock reproduzido e backpressure em Python
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: reproduzir deadlock, aplicar backpressure com fila limitada, e prever esgotamento sem limite.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir deadlock, backpressure e fila limitada`;
-- **Nível 2 — Aplicar:** `diagnosticar deadlock reproduzido e corrigir ordem/limite`;
-- **Nível 3 — Projetar:** `projetar pipeline com backpressure justificando limites`.
+Você vai aprender a reproduzir deadlock, aplicar backpressure com fila limitada, e prever esgotamento sem limite.
 
-**Competências SDD:** CON, MEM, SEC. **Pré-requisitos:** [16a](16a_concorrencia_e_gil.md) (corrida demonstrada, `Lock`, threads/processos/asyncio medidos) e 15–16. Esta ponte completa o PY5: deadlock, backpressure e isolamento de processo sobre a base da 16a.
-
-**Objetivo observável:** reproduzir um deadlock por ordem oposta de aquisição com detecção por timeout (threads travadas observadas vivas, sem matar o processo de teste), corrigir com ordem global de aquisição e medir o backpressure de uma `queue.Queue(maxsize=4)` com consumidor dormindo.
+Você vai reproduzir um deadlock por ordem oposta de aquisição com detecção por timeout (threads travadas observadas vivas, sem matar o processo de teste), corrigir com ordem global de aquisição e medir o backpressure de uma `queue.Queue(maxsize=4)` com consumidor dormindo.
 
 **Contrato e exemplo:** o cenário de deadlock usa threads `daemon` e `join(timeout)`: a detecção é "continuam vivas depois do prazo", nunca um palpite. O [arquivo-fonte](exemplos/16b_deadlock.py) é o programa completo:
 

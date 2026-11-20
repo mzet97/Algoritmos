@@ -4,17 +4,11 @@ layout: default
 
 # Aula 14b — Cache e página vistos de Python: duas representações, duas físicas
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: distinguir duas representações e duas físicas (cache/página), prever efeito de layout no tempo, e medir sem alegar causa sem evidência.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir linha de cache, página e layout`;
-- **Nível 2 — Aplicar:** `prever padrão mais rápido e confirmar por medição`;
-- **Nível 3 — Projetar:** `projetar layout justificando com números`.
+Você vai aprender a distinguir duas representações e duas físicas (cache/página), prever efeito de layout no tempo, e medir sem alegar causa sem evidência.
 
-**Competências SDD:** ARQ, MEM, OS. **Pré-requisitos:** [14a](14a_do_interpretador_ao_kernel.md) (bytecode, RSS contra `tracemalloc`, syscalls) e 13/17. Esta ponte completa o PY4: hierarquia de cache e página medidas de dentro de um programa Python.
-
-**Objetivo observável:** medir a mesma soma por linhas e por colunas em duas representações — lista de listas e `array('l')` plano —, ler o tamanho de página do SO (`SC_PAGE_SIZE`) e o pico de RSS (`ru_maxrss`), e explicar por que as razões diferem entre as representações.
+Você vai medir a mesma soma por linhas e por colunas em duas representações — lista de listas e `array('l')` plano —, ler o tamanho de página do SO (`SC_PAGE_SIZE`) e o pico de RSS (`ru_maxrss`), e explicar por que as razões diferem entre as representações.
 
 **Contrato e exemplo:** somas idênticas conferidas por asserção antes de qualquer cronômetro. O [arquivo-fonte](exemplos/14b_cache.py) é o programa completo:
 

@@ -4,19 +4,13 @@ layout: default
 
 # Aula 04a — Raciocínio discreto e algoritmos em Python
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: enunciar invariantes, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir invariante, pré/pós-condição`;
-- **Nível 2 — Aplicar:** `prever violação de invariante e corrigir`;
-- **Nível 3 — Projetar:** `projetar algoritmo com invariante e prova`.
+Você vai aprender a enunciar invariantes, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.
 
-**Competências SDD:** MAT, ALG e SEC. **Pré-requisitos:** aulas 01 a 04; saber criar listas, dicionários e conjuntos, escrever funções e laços, e executar um script. Não é preciso conhecer classes, decoradores ou bibliotecas externas.
+Você vai ao terminar, você deverá escrever a pré-condição e a pós-condição de uma função, declarar o invariante de um laço, argumentar terminação por uma grandeza que diminui, provar um caso recursivo por indução e confrontar uma previsão assintótica com uma medição. Tudo com a biblioteca padrão, sem instalar nada.
 
-**Objetivo observável:** ao terminar, você deverá escrever a pré-condição e a pós-condição de uma função, declarar o invariante de um laço, argumentar terminação por uma grandeza que diminui, provar um caso recursivo por indução e confrontar uma previsão assintótica com uma medição. Tudo com a biblioteca padrão, sem instalar nada.
-
-**Motivação:** as coleções da aula 04 resolvem o caso comum, mas escondem duas perguntas que voltam em desempenho, redes e sistemas distribuídos: *esta busca sempre termina com a resposta certa?* e *quanto ela custa quando a entrada cresce?* Um teste mostra o comportamento nas entradas testadas. Um argumento de correção explica o comportamento em todas as entradas do contrato. Esta aula ensina os dois, e quando cada um basta.
+as coleções da aula 04 resolvem o caso comum, mas escondem duas perguntas que voltam em desempenho, redes e sistemas distribuídos: *esta busca sempre termina com a resposta certa?* e *quanto ela custa quando a entrada cresce?* Um teste mostra o comportamento nas entradas testadas. Um argumento de correção explica o comportamento em todas as entradas do contrato. Esta aula ensina os dois, e quando cada um basta.
 
 ## 1. Contrato antes do código
 

@@ -4,7 +4,7 @@ layout: default
 
 # Aula 19 - Plano de Estudos de Especializacao em Python
 
-## Objetivo da Aula
+## Nesta aula
 
 Depois de concluirmos a trilha principal de Python das Aulas 1 a 19, este documento organiza a proxima fase do estudo: sair dos fundamentos da linguagem e entrar em dominios reais de engenharia, backend, automacao, dados, integracao nativa e operacao.
 

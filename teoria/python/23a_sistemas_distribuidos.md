@@ -4,15 +4,11 @@ layout: default
 
 # Aula 23a — Falhas parciais: dois processos, um log e nenhuma ilusão
 
-## Objetivo da Aula
+## Nesta aula
 
 Construir dois processos que trocam mensagens com IDs, registram tudo em log durável e sobrevivem a atraso, duplicação, queda e reinício — e explicar exatamente o que *não* foi garantido. Pré-requisitos: aulas 13, 14a, 16a, 20 a 23. Não precisa saber consenso, relógios vetoriais, Kubernetes nem nuvem.
 
-Ao final, você deverá: executar dois processos com um log, explicar falhas parciais sem ilusão, e declarar o que foi provado.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir falha parcial, log e quorum simples`;
-- **Nível 2 — Aplicar:** `diagnosticar suposição de atomicidade e corrigir`;
-- **Nível 3 — Projetar:** `projetar experimento distribuído justificando limites`.
+Você vai aprender a executar dois processos com um log, explicar falhas parciais sem ilusão, e declarar o que foi provado.
 
 ## 1. A rede mente, atrasa e repete
 

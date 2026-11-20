@@ -4,15 +4,11 @@ layout: default
 
 # Aula 14a — Do interpretador ao kernel
 
-## Objetivo da Aula
+## Nesta aula
 
 Explicar o caminho de uma operação Python entre código-fonte, bytecode, implementação CPython, bibliotecas nativas, sistema operacional e hardware — e investigar cada camada com ferramentas do espaço de usuário. Pré-requisitos: aulas 01 a 14. Não precisa saber C, Assembly, QEMU nem kernel.
 
-Ao final, você deverá: traçar o caminho do bytecode ao kernel (interpretador, syscalls), distinguir tempo de CPU de I/O, e apontar o que Python observa.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir bytecode, syscall e as camadas até o kernel`;
-- **Nível 2 — Aplicar:** `diagnosticar atribuição errada de custo e corrigir com medição`;
-- **Nível 3 — Projetar:** `projetar uma investigação justificando cada camada`.
+Você vai aprender a traçar o caminho do bytecode ao kernel (interpretador, syscalls), distinguir tempo de CPU de I/O, e apontar o que Python observa.
 
 ## 1. Linguagem, implementação e máquina são três contratos
 

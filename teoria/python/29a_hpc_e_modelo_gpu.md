@@ -4,15 +4,11 @@ layout: default
 
 # Aula 29a — Multicore, HPC e modelo de GPU sem placa
 
-## Objetivo da Aula
+## Nesta aula
 
 Medir onde o paralelismo ajuda Python, onde atrapalha e quando uma GPU valeria a pena — tudo com CPU comum, referência escalar verificada e a conta da transferência explícita. Pré-requisitos: aulas 14a, 16a, 17, 18 e 29. Não precisa de placa GPU, CUDA, MPI nem cluster.
 
-Ao final, você deverá: explicar multicore real (processos), modelar GPU sem placa (hierarquia de memória, paralelismo massivo), e decidir no papel se acelerador vale a transferência.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir SM, coalescência e hierarquia de memória GPU`;
-- **Nível 2 — Aplicar:** `diagnosticar estimativa otimista e corrigir com a conta da viagem`;
-- **Nível 3 — Projetar:** `projetar avaliação justificando veredito numérico`.
+Você vai aprender a explicar multicore real (processos), modelar GPU sem placa (hierarquia de memória, paralelismo massivo), e decidir no papel se acelerador vale a transferência.
 
 ## 1. O mapa do paralelismo em Python
 

@@ -4,15 +4,11 @@ layout: default
 
 # Aula 16a - Concorrência, GIL e paralelismo real em Python
 
-## Objetivo da Aula
+## Nesta aula
 
 Distinguir o que `threading`, `multiprocessing` e `asyncio` garantem — e o que não garantem. Pré-requisitos: aulas 14a, 15 e 16. Não precisa saber C, Rust, rede nem `cgo`.
 
-Ao final, você deverá: explicar o GIL e quando há paralelismo real, comparar threads/processos/`async`, e medir para decidir.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir GIL e paralelismo real vs. concorrência`;
-- **Nível 2 — Aplicar:** `diagnosticar escolha errada de modelo e corrigir com medição`;
-- **Nível 3 — Projetar:** `projetar modelo de concorrência justificando com números`.
+Você vai aprender a explicar o GIL e quando há paralelismo real, comparar threads/processos/`async`, e medir para decidir.
 
 ## 1. O GIL, sem mito e sem desculpa
 

@@ -4,17 +4,11 @@ layout: default
 
 # Aula 04b — Árvores e ordenação em Python: o preço de um nó-objeto
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: implementar árvore explicando o custo do nó-objeto, enunciar invariante de ordenação, e comparar com a `std`.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir nó, invariante e complexidades`;
-- **Nível 2 — Aplicar:** `diagnosticar quebra de invariante e corrigir`;
-- **Nível 3 — Projetar:** `projetar estrutura ordenada justificando invariante e custos`.
+Você vai aprender a implementar árvore explicando o custo do nó-objeto, enunciar invariante de ordenação, e comparar com a `std`.
 
-**Competências SDD:** MAT, ALG, MEM. **Pré-requisitos:** [04a](04a_raciocinio_e_algoritmos.md) (invariantes, busca, BFS, hash) e 04. Esta ponte completa o PY2 sobre a base da 04a.
-
-**Objetivo observável:** implementar uma BST em Python puro, provar o percurso em ordem contra `sorted(set(...))` em 300 casos, medir a degeneração (altura 300 ordenada contra ~20 embaralhada) e explicar por que `sorted` vence qualquer árvore manual nesta linguagem.
+Você vai implementar uma BST em Python puro, provar o percurso em ordem contra `sorted(set(...))` em 300 casos, medir a degeneração (altura 300 ordenada contra ~20 embaralhada) e explicar por que `sorted` vence qualquer árvore manual nesta linguagem.
 
 **Contrato e exemplo:** invariante esquerda < nó < direita, duplicata sem efeito, em-ordem igual ao oráculo. O [arquivo-fonte](exemplos/04b_arvores.py) é o programa completo:
 

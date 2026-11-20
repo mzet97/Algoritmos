@@ -4,17 +4,11 @@ layout: default
 
 # Aula 29c — Localidade, processos e Amdahl: o teto antes do entusiasmo
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: aplicar Amdahl antes do entusiasmo, medir localidade com processos, e declarar o teto do speedup.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir lei de Amdahl, fração serial e localidade`;
-- **Nível 2 — Aplicar:** `diagnosticar speedup prometido sem fração serial e corrigir`;
-- **Nível 3 — Projetar:** `projetar experimento justificando o teto medido`.
+Você vai aprender a aplicar Amdahl antes do entusiasmo, medir localidade com processos, e declarar o teto do speedup.
 
-**Competências SDD:** HPC, GPU, ARQ, MEM. **Pré-requisitos:** [29a](29a_hpc_e_modelo_gpu.md) (baseline escalar, NumPy, threads/processos e conta da viagem) e [14b](14b_cache_e_pagina.md). Esta ponte completa o PY8 sobre a base da 29a.
-
-**Objetivo observável:** conferir a referência sequencial antes de paralelizar, medir o speedup real com `multiprocessing.Pool` (limitado a 8 processos), calcular os tetos de Amdahl para três frações paralelizáveis e demonstrar o caso em que o pool perde por três ordens de grandeza (trabalho microscópico).
+Você vai conferir a referência sequencial antes de paralelizar, medir o speedup real com `multiprocessing.Pool` (limitado a 8 processos), calcular os tetos de Amdahl para três frações paralelizáveis e demonstrar o caso em que o pool perde por três ordens de grandeza (trabalho microscópico).
 
 **Contrato e exemplo:** corretude por soma conferida contra a referência; speedup só com os dois tempos e o número de processos declarados. O [arquivo-fonte](exemplos/29c_localidade.py):
 
