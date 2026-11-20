@@ -6,17 +6,13 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Escrever a pré-condição e a pós-condição de uma função, declarar o invariante de um laço, argumentar terminação por uma grandeza que diminui e provar um caso recursivo por indução — tudo em Go, com a biblioteca padrão e `go vet` limpo. Pré-requisitos: aulas 01 a 08. Não precisa saber ponteiros internos, concorrência, `cgo` nem benchmarks formais.
 
 Esta aula é o módulo G2 do mapa: quem domina invariantes aqui carrega o raciocínio para concorrência (10–11), testes e profiling (14, 17) e protocolos (16 em diante), onde a invariante violada não dá erro gentil — dá corrida, vazamento de goroutine ou cliente travado.
 
-Ao final, você deverá: enunciar invariantes de laço, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir invariante, pré-condição e pós-condição`;
-- **Nível 2 — Aplicar:** `prever a violação de um invariante e corrigir o laço`;
-- **Nível 3 — Projetar:** `projetar um algoritmo com invariante declarado e prova`.
+Você vai aprender a enunciar invariantes de laço, provar correção por invariante, e distinguir a prova da rede de segurança da linguagem.
 
 ---
 

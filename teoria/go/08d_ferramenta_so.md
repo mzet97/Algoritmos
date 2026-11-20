@@ -4,17 +4,11 @@ layout: default
 
 # Aula 08d — Ferramenta de observação do SO em Go
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: construir uma ferramenta de observação do SO em Go, interpretar a saída sem extrapolar, e confrontar cada número com o modelo.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir as fontes de observação (`/proc`, syscalls) e seus limites`;
-- **Nível 2 — Aplicar:** `diagnosticar leitura mal interpretada e corrigir`;
-- **Nível 3 — Projetar:** `projetar a ferramenta justificando cada métrica`.
+Você vai aprender a construir uma ferramenta de observação do SO em Go, interpretar a saída sem extrapolar, e confrontar cada número com o modelo.
 
-**Competências SDD:** ARQ, MEM, OS. **Pré-requisitos:** [08b](08b_maquina_memoria_e_so.md) (processos, `/proc`, RSS e custo), 09 e 13. Esta ponte entrega a **ferramenta** que o G3 pedia: um binário Go que observa o próprio processo e liga cada número ao caminho programa → runtime → kernel → hardware.
-
-**Objetivo observável:** executar a ferramenta e interpretar: goroutines paradas e com 32 trabalhadores, `GOMAXPROCS`, threads do SO por `/proc/self/task`, faltas de página menores crescendo ao tocar 32 MiB novos (e as maiores paradas), `HeapAlloc`/`HeapSys`/`NumGC` do runtime.
+Você vai executar a ferramenta e interpretar: goroutines paradas e com 32 trabalhadores, `GOMAXPROCS`, threads do SO por `/proc/self/task`, faltas de página menores crescendo ao tocar 32 MiB novos (e as maiores paradas), `HeapAlloc`/`HeapSys`/`NumGC` do runtime.
 
 **Contrato:** Linux (a fonte de verdade é `/proc`); página anônima nova nasce por falta **menor** — falta maior é disco, e as duas não se confundem no relatório. O [arquivo-fonte](exemplos/08d_ferramenta.go) é a ferramenta completa:
 

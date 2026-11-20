@@ -4,19 +4,13 @@ layout: default
 
 # Aula 11b — Cancelamento, shutdown forçado e GOMAXPROCS (G4)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: implementar cancelamento cooperativo e shutdown forçado, explicar o efeito de `GOMAXPROCS`, e prever o comportamento sob cancelamento no meio de uma operação.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir cancelamento, shutdown e `GOMAXPROCS``;
-- **Nível 2 — Aplicar:** `diagnosticar shutdown que trava e corrigir com contexto/timeout`;
-- **Nível 3 — Projetar:** `projetar encerramento gracioso justificando prazos e forçamento`.
+Você vai aprender a implementar cancelamento cooperativo e shutdown forçado, explicar o efeito de `GOMAXPROCS`, e prever o comportamento sob cancelamento no meio de uma operação.
 
-**Competências SDD:** CON, MEM. **Pré-requisitos:** aulas 10–11 e [11a](11a_modelo_de_memoria.md) (pool limitado, deadlock por projeto, `-race`). Toolchain registrada: Go 1.26.8 (`go vet`, `go run -race`).
+Você vai ao terminar, você deverá executar o exemplo, mostrar o pool parando no meio por `context`, o teto de dreno estourando sem pendurar e a mesma soma com `GOMAXPROCS=1` e `=N` — e explicar por que os tempos sob `-race` não entram na tabela.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o pool parando no meio por `context`, o teto de dreno estourando sem pendurar e a mesma soma com `GOMAXPROCS=1` e `=N` — e explicar por que os tempos sob `-race` não entram na tabela.
-
-**Motivação:** a 11a construiu o pool e declarou que o cancelamento cooperativo ficava de fora do exemplo. Esta aula cobra a dívida: `context` que fecha no meio, shutdown que desiste com dignidade (teto em vez de espera infinita) e a comparação de paralelismo que separa ganho de ilusão. Sem isso, o G4 teria pool sem freio — e pool sem freio é vazamento com outro nome.
+a 11a construiu o pool e declarou que o cancelamento cooperativo ficava de fora do exemplo. Esta aula cobra a dívida: `context` que fecha no meio, shutdown que desiste com dignidade (teto em vez de espera infinita) e a comparação de paralelismo que separa ganho de ilusão. Sem isso, o G4 teria pool sem freio — e pool sem freio é vazamento com outro nome.
 
 ## 1. Contrato antes do código
 

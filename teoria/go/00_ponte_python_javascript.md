@@ -4,19 +4,13 @@ layout: default
 
 # Aula 00 — Ponte de partida: o que Python e JavaScript te ensinaram (e o que muda aqui)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: mapear o que Python e JavaScript ensinaram (tipagem dinâmica, GC, closures) para o que muda em Go (tipagem estática, compilação, goroutines), e prever quais hábitos dinâmicos geram erros em Go.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir tipagem estática vs. dinâmica e compilação vs. interpretação`;
-- **Nível 2 — Aplicar:** `prever o erro de um hábito dinâmico transplantado para Go e corrigir`;
-- **Nível 3 — Projetar:** `projetar seu plano de transição justificando o que reaproveitar e o que desaprender`.
+Você vai aprender a mapear o que Python e JavaScript ensinaram (tipagem dinâmica, GC, closures) para o que muda em Go (tipagem estática, compilação, goroutines), e prever quais hábitos dinâmicos geram erros em Go.
 
-**Competências SDD:** FND. **Pré-requisitos:** saber variáveis, condicionais, laços e funções em Python ou JavaScript. Nada de compiladores, tipos estáticos ou terminais é pressuposto sem explicação.
+Você vai ao terminar, você deverá dizer, para cada hábito trazido de Python/JS, o que continua valendo em Go e o que quebra — e compilar um programa que demonstra as três quebras clássicas sem nenhuma falhar.
 
-**Objetivo observável:** ao terminar, você deverá dizer, para cada hábito trazido de Python/JS, o que continua valendo em Go e o que quebra — e compilar um programa que demonstra as três quebras clássicas sem nenhuma falhar.
-
-**Motivação:** todo leitor deste livro chega com reflexos de outra linguagem: somar `"1" + 1`, comparar com `==` sem pensar, partir do `None`/`undefined` como "vazio universal". Go não pune esses reflexos em produção — ele os recusa na compilação. Esta aula traduz os reflexos antes que o compilador precise gritar.
+todo leitor deste livro chega com reflexos de outra linguagem: somar `"1" + 1`, comparar com `==` sem pensar, partir do `None`/`undefined` como "vazio universal". Go não pune esses reflexos em produção — ele os recusa na compilação. Esta aula traduz os reflexos antes que o compilador precise gritar.
 
 ## 1. Contrato antes do código
 
@@ -148,7 +142,7 @@ C recusa menos na compilação e cobra mais no sanitizer; Rust recusa mais (owne
 
 1. Alan Donovan e Brian Kernighan, *The Go Programming Language* (Addison-Wesley, ISBN 978-0134190440); 2. Documentação oficial em [go.dev/doc](https://go.dev/doc/); 3. Referência de pacotes em [pkg.go.dev](https://pkg.go.dev/).
 
-## 6. Checklist do que esta aula garante
+## 6. Ao final, você consegue
 
 - [ ] Explico `go run` vs `go build` e onde o erro de tipo aparece em cada linguagem.
 - [ ] Demonstro o zero de cada tipo e digo quando ele é armadilha.

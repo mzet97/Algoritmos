@@ -6,15 +6,11 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Medir um programa paralelo em Go com método — hipótese, baseline correto, aquecimento, mínimo de repetições, variância, ambiente anotado — e explicar speedup e seus limites com a lei de Amdahl e o custo da contenção. Pré-requisitos: aulas 08a, 08b, 11a, 14 e 17. Não precisa de cluster, GPU, MPI nem contadores de hardware.
 
-Ao final, você deverá: construir benchmark honesto com linha de base, medir escala multicore, distinguir contenção real de granularidade, e emitir veredito numérico.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir linha de base, speedup e contenção`;
-- **Nível 2 — Aplicar:** `diagnosticar benchmark inválido e corrigir a metodologia`;
-- **Nível 3 — Projetar:** `projetar um experimento justificando hipótese e veredito numérico`.
+Você vai aprender a construir benchmark honesto com linha de base, medir escala multicore, distinguir contenção real de granularidade, e emitir veredito numérico.
 
 ## 1. O protocolo, antes do cronômetro
 

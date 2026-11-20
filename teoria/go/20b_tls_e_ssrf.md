@@ -4,19 +4,13 @@ layout: default
 
 # Aula 20b — TLS com certificado efêmero e guarda anti-SSRF (G5)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: configurar TLS com certificado efêmero, validar entradas para impedir SSRF, e explicar o que o TLS garante (e não garante).
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir TLS, certificado, SSRF e allowlist`;
-- **Nível 2 — Aplicar:** `diagnosticar fetch de URL interna não validada e corrigir com allowlist`;
-- **Nível 3 — Projetar:** `projetar um cliente HTTP seguro justificando validação e TLS`.
+Você vai aprender a configurar TLS com certificado efêmero, validar entradas para impedir SSRF, e explicar o que o TLS garante (e não garante).
 
-**Competências SDD:** NET, SEC. **Pré-requisitos:** aulas 16 (HTTP idiomático), 20 (servidores) e [23a](23a_protocolos_distribuidos.md) (framing, idempotência, falhas injetadas — sem TLS, declarado). Toolchain registrada: Go 1.26.8, só biblioteca padrão (`crypto/tls`, `crypto/x509`, `net/http`).
+Você vai ao terminar, você deverá executar o exemplo, mostrar o token certo passando e o errado negado dentro do TLS, listar os sete alvos SSRF recusados antes de qualquer byte viajar — e explicar por que o exemplo usa pinagem TOFU em vez de CA.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o token certo passando e o errado negado dentro do TLS, listar os sete alvos SSRF recusados antes de qualquer byte viajar — e explicar por que o exemplo usa pinagem TOFU em vez de CA.
-
-**Motivação:** quatro aulas deste livro adiam o TLS ("faltam TLS", "não precisa de TLS", "futuramente terminar TLS"). Esta aula quita a dívida do lado do protocolo: servidor HTTPS em `127.0.0.1` com certificado autofirmado **efêmero** gerado em memória, cliente que fixa a impressão SHA-256 e token viajando dentro do túnel. E fecha a outra ponta da confiança: o cliente que *sai* precisa do guarda anti-SSRF, porque URL é entrada do atacante — `http://169.254.169.254/` não é endereço, é pedido de credencial da nuvem.
+quatro aulas deste livro adiam o TLS ("faltam TLS", "não precisa de TLS", "futuramente terminar TLS"). Esta aula quita a dívida do lado do protocolo: servidor HTTPS em `127.0.0.1` com certificado autofirmado **efêmero** gerado em memória, cliente que fixa a impressão SHA-256 e token viajando dentro do túnel. E fecha a outra ponta da confiança: o cliente que *sai* precisa do guarda anti-SSRF, porque URL é entrada do atacante — `http://169.254.169.254/` não é endereço, é pedido de credencial da nuvem.
 
 ## 1. Contrato antes do código
 

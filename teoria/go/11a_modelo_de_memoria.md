@@ -6,15 +6,11 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Explicar quando uma escrita feita por uma goroutine passa a ser visível para outra — e construir um worker pool limitado que preserva invariantes sob cancelamento e carga. Pré-requisitos: aulas 08b a 11. Não precisa saber `context` em detalhe, rede, `cgo` nem benchmarks formais.
 
-Ao final, você deverá: enunciar as garantias do modelo de memória Go (happens-before via sincronização), prever visibilidade entre goroutines, e disciplinar compartilhamento.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir happens-before e os pontos de sincronização do modelo`;
-- **Nível 2 — Aplicar:** `diagnosticar visibilidade não garantida e corrigir com sincronização`;
-- **Nível 3 — Projetar:** `projetar compartilhamento disciplinado justificando cada garantia usada`.
+Você vai aprender a enunciar as garantias do modelo de memória Go (happens-before via sincronização), prever visibilidade entre goroutines, e disciplinar compartilhamento.
 ---
 
 ## 1. Visibilidade não é imediata: happens-before

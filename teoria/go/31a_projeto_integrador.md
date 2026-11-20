@@ -4,17 +4,11 @@ layout: default
 
 # Aula 31a — Projeto integrador de Go: serviço, ferramenta e benchmark sob a mesma rubrica
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: integrar serviço, ferramenta e benchmark sob a mesma rubrica, confrontar resultados entre frentes, e declarar o que foi provado.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir a rubrica integradora e seus critérios`;
-- **Nível 2 — Aplicar:** `diagnosticar divergência entre frentes e atribuir a causa`;
-- **Nível 3 — Projetar:** `projetar a integração justificando cobertura e evidências`.
+Você vai aprender a integrar serviço, ferramenta e benchmark sob a mesma rubrica, confrontar resultados entre frentes, e declarar o que foi provado.
 
-**Competências SDD:** FND–SEC (G8). **Pré-requisitos:** o livro até a 31, com as pontes [23a](23a_protocolos_distribuidos.md), [23b](23b_relogios_e_consistencia.md), [08d](08d_ferramenta_so.md) e [28a](28a_hpc.md)/[28b](28b_vetorizacao_e_numa.md) executadas.
-
-**Objetivo observável:** montar, a partir das peças do livro, um repositório reproduzível com os três entregáveis do G8 funcionando juntos: (1) o serviço distribuído de dois nós da 23a com a política de consistência da 23b documentada; (2) a ferramenta de observação da 08d apontada para o serviço em execução; (3) um benchmark da 28a/28b sobre a carga do serviço. A defesa é escrita, usando a rubrica.
+Você vai montar, a partir das peças do livro, um repositório reproduzível com os três entregáveis do G8 funcionando juntos: (1) o serviço distribuído de dois nós da 23a com a política de consistência da 23b documentada; (2) a ferramenta de observação da 08d apontada para o serviço em execução; (3) um benchmark da 28a/28b sobre a carga do serviço. A defesa é escrita, usando a rubrica.
 
 ## Contrato de entrega
 

@@ -4,17 +4,11 @@ layout: default
 
 # Aula 23b — Relógios, ordem causal e consistência declarada em Go
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: distinguir relógio físico de relógio lógico, ordenar eventos por causalidade, declarar o nível de consistência, e prever anomalia de leitura.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir relógio lógico, causalidade e níveis de consistência`;
-- **Nível 2 — Aplicar:** `prever anomalia sob consistência fraca e corrigir o nível`;
-- **Nível 3 — Projetar:** `projetar o modelo de consistência justificando trade-offs`.
+Você vai aprender a distinguir relógio físico de relógio lógico, ordenar eventos por causalidade, declarar o nível de consistência, e prever anomalia de leitura.
 
-**Competências SDD:** DST, SEC, MAT. **Pré-requisitos:** [23a](23a_protocolos_distribuidos.md) (dois nós com persistência e idempotência) e 22–26. Esta ponte completa o G6 no ponto que a 23a declarou aberto: relógios/ordem e a política de consistência quando os dois lados escrevem.
-
-**Objetivo observável:** ordenar eventos com Lamport, detectar concorrência com relógios vetoriais, reproduzir a partição bilateral (`k=111` contra `k=222`), reconciliar por anti-entropia com ordem total publicada `(lamport, autor, seq)` convergindo os dois nós — e nomear a escrita descartada.
+Você vai ordenar eventos com Lamport, detectar concorrência com relógios vetoriais, reproduzir a partição bilateral (`k=111` contra `k=222`), reconciliar por anti-entropia com ordem total publicada `(lamport, autor, seq)` convergindo os dois nós — e nomear a escrita descartada.
 
 **Contrato:** simulação determinística em processo (o transporte é a 23a). Reconciliação = trocar logs, reaplicar em ordem total crescente, o último por chave vence; a perda é declarada na saída. Consenso (eleição/quorum) continua fora — especificado como fronteira, não implementado. O [arquivo-fonte](exemplos/23b_relogios.go) é o programa completo:
 

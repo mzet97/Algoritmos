@@ -4,7 +4,7 @@ layout: default
 
 # Aula 19 - Plano de Estudos de Especializacao em Go
 
-## Objetivo da Aula
+## Nesta aula
 Depois de concluirmos a trilha principal de Go das Aulas 1 a 19, este documento organiza a proxima fase do estudo: sair dos fundamentos da linguagem e entrar em dominios reais de engenharia.
 
 Daqui para a frente, o foco deixa de ser "aprender sintaxe e mecanismos isolados" e passa a ser:

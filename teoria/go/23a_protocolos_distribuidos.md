@@ -6,15 +6,11 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Construir um serviço replicado de pares chave-valor com enquadramento binário, idempotência por chave de operação e log durável — e quebrá-lo de propósito com atraso, duplicação, truncamento, queda e reinício. Pré-requisitos: aulas 08b a 22. Não precisa de consenso, quorum, TLS nem orquestrador.
 
-Ao final, você deverá: implementar framing com prefixo de tamanho, replicar com confirmação, tratar falhas sob controle, e estimar limites.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir framing, réplica, confirmação e falha controlada`;
-- **Nível 2 — Aplicar:** `diagnosticar leitura parcial e corrigir com framing`;
-- **Nível 3 — Projetar:** `projetar o protocolo justificando framing, réplicas e limites`.
+Você vai aprender a implementar framing com prefixo de tamanho, replicar com confirmação, tratar falhas sob controle, e estimar limites.
 
 ## 1. TCP é fluxo de bytes: enquadre com tamanho, não com esperança
 

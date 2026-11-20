@@ -4,19 +4,13 @@ layout: default
 
 # Aula 28c — Multinó simulado: a tríade em dois processos (G7)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: simular multinó em dois processos aplicando a tríade (framing, quorum, relógios), confrontar os resultados, e declarar limites da simulação.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir a tríade e os limites de uma simulação local`;
-- **Nível 2 — Aplicar:** `diagnosticar divergência entre processos e atribuir à causa`;
-- **Nível 3 — Projetar:** `projetar a simulação justificando o que ela prova e o que não prova`.
+Você vai aprender a simular multinó em dois processos aplicando a tríade (framing, quorum, relógios), confrontar os resultados, e declarar limites da simulação.
 
-**Competências SDD:** HPC, DST, NET. **Pré-requisitos:** aulas [28a](28a_hpc.md) (baseline, banda, conta da viagem), [28b](28b_vetorizacao_e_numa.md) (NUMA contado, multinó declarado como simulado) e [23a](23a_protocolos_distribuidos.md) (framing, deadline, falha). Toolchain registrada: Go 1.26.8 (`go vet`, `-race` para correção). Máquina registrada: 24 núcleos, um nó NUMA.
+Você vai ao terminar, você deverá executar o exemplo, mostrar o checksum combinado igual à referência local, apontar no código onde o deadline limita cada fase do protocolo — e explicar por que a razão medida aqui não prova nada sobre multinó real.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar o checksum combinado igual à referência local, apontar no código onde o deadline limita cada fase do protocolo — e explicar por que a razão medida aqui não prova nada sobre multinó real.
-
-**Motivação:** a 28b contou um nó NUMA e declarou o multinó como simulado; o G7 pede o multinó "simulado declarado" virar procedimento. Esta aula atravessa a fronteira: a mesma tríade, metade calculada em cada um de dois processos conversando por TCP em `127.0.0.1`, checksum confrontado com a referência de um processo só. O que viaja é metadado (fatia + checksum + tempo); o dado é derivado da mesma semente nos dois lados — mover 32 MiB pelo loopback para provar soma seria medir o loopback, não o multinó.
+a 28b contou um nó NUMA e declarou o multinó como simulado; o G7 pede o multinó "simulado declarado" virar procedimento. Esta aula atravessa a fronteira: a mesma tríade, metade calculada em cada um de dois processos conversando por TCP em `127.0.0.1`, checksum confrontado com a referência de um processo só. O que viaja é metadado (fatia + checksum + tempo); o dado é derivado da mesma semente nos dois lados — mover 32 MiB pelo loopback para provar soma seria medir o loopback, não o multinó.
 
 ## 1. Contrato antes do código
 

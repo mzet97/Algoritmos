@@ -4,19 +4,13 @@ layout: default
 
 # Aula 23c — Quorum de escrita e leitura com reparo: a maioria decide, o atraso obedece
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: dimensionar quoruns de leitura/escrita, executar reparo após divergência, e prever perda com quorum insuficiente.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir quorum de leitura/escrita e reparo`;
-- **Nível 2 — Aplicar:** `prever perda com quorum insuficiente e corrigir tamanhos`;
-- **Nível 3 — Projetar:** `projetar replicação justificando quoruns e reparo`.
+Você vai aprender a dimensionar quoruns de leitura/escrita, executar reparo após divergência, e prever perda com quorum insuficiente.
 
-**Competências SDD:** DST e SEC. **Pré-requisitos:** aulas [23a](23a_protocolos_distribuidos.md) (framing, idempotência, log) e [23b](23b_relogios_e_consistencia.md) (Lamport, vetores, perda declarada). Esta ponte fecha o que a 23b declarou em aberto: reconciliar sem quorum é convergir sem garantia; aqui a escrita exige a maioria antes de existir para o cliente.
+Você vai ao terminar, você deverá escrever com quorum (W=2 de 3), ler com quorum (R=2 de 3), detectar a escrita concorrente pelo vetor e reparar a réplica atrasada — apontando onde cada decisão mora no código.
 
-**Objetivo observável:** ao terminar, você deverá escrever com quorum (W=2 de 3), ler com quorum (R=2 de 3), detectar a escrita concorrente pelo vetor e reparar a réplica atrasada — apontando onde cada decisão mora no código.
-
-**Motivação:** a 23b reconcilia *depois* da partição e declara a perda. Falta impedir a leitura obsoleta *durante* a operação normal: com W+R maior que o número de réplicas, toda leitura encontra pelo menos uma réplica que viu a última escrita confirmada. Quorum não é votação por gosto — é interseção garantida.
+a 23b reconcilia *depois* da partição e declara a perda. Falta impedir a leitura obsoleta *durante* a operação normal: com W+R maior que o número de réplicas, toda leitura encontra pelo menos uma réplica que viu a última escrita confirmada. Quorum não é votação por gosto — é interseção garantida.
 
 ## 1. Contrato antes do código
 
@@ -220,7 +214,7 @@ C confirma por maioria na 23d e lê pelo `id` na 23e; C++ declara conflito no qu
 
 Use [pistas graduais](exercicios/23c_pistas.md) somente após uma tentativa. Consulte as [soluções comentadas](exercicios/23c_solucoes.md) depois de registrar sua própria explicação.
 
-## 7. Checklist do que esta aula garante
+## 7. Ao final, você consegue
 
 - [ ] Explico por que W+R > N impede a leitura obsoleta, com a interseção desenhada.
 - [ ] Demonstro escrita e leitura recusadas na minoria, com o quorum contado.
@@ -229,5 +223,3 @@ Use [pistas graduais](exercicios/23c_pistas.md) somente após uma tentativa. Con
 - [ ] Distingo quorum (desta aula) de consenso (outro curso).
 
 **Referências primárias:** [Dynamo (Amazon)](https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store) para W/R/N e reparo de leitura; [Raft](https://raft.github.io/raft.pdf) para o que quorum sem eleição não entrega.
-
-*Atividades e avaliação desta aula serão publicadas ao fim do volume, junto com as demais — por decisão editorial, o conteúdo vem primeiro.*

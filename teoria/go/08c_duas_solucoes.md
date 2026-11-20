@@ -4,17 +4,11 @@ layout: default
 
 # Aula 08c — Duas soluções em Go: BST, ordenação e a análise confrontada
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: implementar BST e ordenação confrontando as análises, enunciar invariantes, e distinguir o que cada solução garante.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir invariante de BST e complexidades de ordenação`;
-- **Nível 2 — Aplicar:** `diagnosticar quebra de invariante e corrigir`;
-- **Nível 3 — Projetar:** `projetar a comparação justificando critérios e vencedor por cenário`.
+Você vai aprender a implementar BST e ordenação confrontando as análises, enunciar invariantes, e distinguir o que cada solução garante.
 
-**Competências SDD:** MAT, ALG. **Pré-requisitos:** [08a](08a_raciocinio_e_algoritmos.md) (busca, invariante, BFS e hash) e 04–05. Esta ponte amplia o G2: duas estratégias para o mesmo problema, correção argumentada e análise confrontada com medição.
-
-**Objetivo observável:** implementar uma BST com inserção recursiva e percurso em ordem, provar o em-ordem contra `sort.Ints` como oráculo em 300 casos, medir a degeneração (altura 1 000 ordenada, ~21 embaralhada) e comparar a ordenação da std com a inserção quadrática em dois tamanhos.
+Você vai implementar uma BST com inserção recursiva e percurso em ordem, provar o em-ordem contra `sort.Ints` como oráculo em 300 casos, medir a degeneração (altura 1 000 ordenada, ~21 embaralhada) e comparar a ordenação da std com a inserção quadrática em dois tamanhos.
 
 **Contrato:** invariante esquerda < nó < direita; duplicata sem efeito; o em-ordem da BST é igual ao vetor ordenado sem duplicatas (dedup do oráculo). Altura degenerada igual a `n` é resultado esperado e medido, não defeito escondido. O [arquivo-fonte](exemplos/08c_algoritmos.go) é o programa completo:
 

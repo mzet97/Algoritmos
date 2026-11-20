@@ -6,15 +6,11 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Explicar o caminho de um programa Go entre código-fonte, runtime, chamadas de sistema e hardware — e investigar cada camada com ferramentas do espaço de usuário, sem sair da biblioteca padrão. Pré-requisitos: aulas 01 a 08a. Não precisa saber escape analysis, `cgo`, concorrência nem benchmarks formais.
 
-Ao final, você deverá: interpretar uso de memória e tempo sem inferir causas microarquiteturais, distinguir medição de alegação, e apontar o que o runtime observa.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir RSS, tempo monotônico e o papel do runtime`;
-- **Nível 2 — Aplicar:** `diagnosticar conclusão inválida a partir de medição e corrigir`;
-- **Nível 3 — Projetar:** `projetar uma medição justificando réguas e limites`.
+Você vai aprender a interpretar uso de memória e tempo sem inferir causas microarquiteturais, distinguir medição de alegação, e apontar o que o runtime observa.
 ---
 
 ## 1. O runtime é um SO em miniatura

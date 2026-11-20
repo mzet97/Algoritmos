@@ -4,17 +4,11 @@ layout: default
 
 # Aula 28b — Vetorização e NUMA em Go: o empate também é resultado
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: explicar por que Go não expõe SIMD diretamente (assembly/intrínsecos), medir localidade e efeito NUMA, e aceitar o empate como resultado quando a medição manda.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir SIMD, NUMA e first-touch`;
-- **Nível 2 — Aplicar:** `diagnosticar conclusão sem medição e corrigir com experimento`;
-- **Nível 3 — Projetar:** `projetar um experimento justificando o veredito, inclusive o empate`.
+Você vai aprender a explicar por que Go não expõe SIMD diretamente (assembly/intrínsecos), medir localidade e efeito NUMA, e aceitar o empate como resultado quando a medição manda.
 
-**Competências SDD:** HPC, GPU, ARQ. **Pré-requisitos:** [28a](28a_hpc.md) (baseline, escala e conta da viagem) e G3–G6. Esta ponte completa o G7 sobre a base da 28a.
-
-**Objetivo observável:** verificar a soma sequencial e a soma com quatro acumuladores contra uma referência `float64` (tolerâncias do modelo de erro), medir as duas nesta máquina, contar os nós NUMA por `/sys` e declarar o multinó como simulado enquanto houver um nó só.
+Você vai verificar a soma sequencial e a soma com quatro acumuladores contra uma referência `float64` (tolerâncias do modelo de erro), medir as duas nesta máquina, contar os nós NUMA por `/sys` e declarar o multinó como simulado enquanto houver um nó só.
 
 **Contrato:** corretude antes de tempo; razão reportada com o ambiente (incluindo se o binário roda sob `-race`, que muda os dois lados). O [arquivo-fonte](exemplos/28b_vetorizacao.go) é o programa completo:
 
