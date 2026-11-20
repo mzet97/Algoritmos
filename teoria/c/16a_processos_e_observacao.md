@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16a — Processos, syscalls e observação do sistema operacional
 
+Um processo não é o seu programa: é o programa mais tudo que o kernel mantém sobre ele. Aprender a observar processos, syscalls e estado do sistema é aprender a ler o sistema operacional como quem lê um painel de instrumentos.
+
 Você vai ao terminar, você deverá criar um processo filho e colher seu código de saída, medir o custo de uma syscall simples, ler o mapa de memória do próprio processo em `/proc/self/maps` e explicar faltas de página menores e maiores com `getrusage`. Tudo no espaço de usuário, em Linux ou WSL.
 
 os programas até aqui rodaram *dentro* de um processo sem examiná-lo de fora. Sistemas operacionais isolam processos, traduzem endereços e cobram cada travessia usuário→kernel. Esta aula torna esses mecanismos observáveis com ferramentas do próprio espaço de usuário. O laboratório de kernel em QEMU (etapa seguinte do módulo C4) implementa esses mecanismos; aqui você aprende a medi-los antes de implementá-los.

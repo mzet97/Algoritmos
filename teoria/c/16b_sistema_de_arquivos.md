@@ -4,6 +4,8 @@ layout: default
 
 # Aula 16b — Sistema de arquivos: nome, inode e o crash no meio
 
+Um arquivo é um nome apontando para um inode, e um crash no meio de uma escrita expõe exatamente o que isso significa. Sistema de arquivos é onde dados sobrevivem — ou não — ao processo que os criou.
+
 Você vai ao terminar, você deverá publicar um arquivo de forma atômica (tmp + `fsync` + `rename`), detectar uma escrita rasgada por checksum, explicar o que o diretório garante (nome → inode) e o que ele não garante (conteúdo pela metade) — e dizer, para cada uma das três reordenações possíveis da sequência, qual leitor ou qual crash ela expõe.
 
 quase todo bug de durabilidade tem a mesma forma: o programa escreveu "quase tudo" e caiu. Sem disciplina, o leitor seguinte encontra meio arquivo e confia nele. Esta aula estabelece a disciplina mínima: publique de uma vez, desconfie de tudo que não foi publicado, e prove a integridade antes de confiar.

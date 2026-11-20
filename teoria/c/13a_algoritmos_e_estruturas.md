@@ -4,6 +4,8 @@ layout: default
 
 # Aula 13a — Busca, ordenação, hash e o custo da abstração
 
+Buscar e ordenar parecem problemas resolvidos até a entrada crescer mil vezes. Esta ponte mede o custo real de cada estratégia e ensina a pergunta certa: não 'qual é o mais rápido?', mas 'rápido para qual entrada, a que custo de memória?'
+
 Você vai ao terminar, você deverá implementar busca binária com invariante declarado, uma tabela hash de endereçamento aberto que recusa crescer além da capacidade contratada, e um teste de propriedade determinístico que confronta sua ordenação com `qsort`. Tudo com `size_t` verificado, sem overflow silencioso na conta de alocação.
 
 a aula 13 mostrou pilha, fila, lista e tabela simples. Falta a pergunta que separa estrutura que funciona de estrutura que se pode defender: *qual é o invariante que cada operação preserva, quanto custa quando a entrada cresce, e o que acontece quando a conta de memória estoura?* O `malloc(nmemb * size)` da aula 07 já avisou: multiplicar tamanhos sem verificar é convidar o overflow. Esta aula fecha o módulo C3.

@@ -4,6 +4,8 @@ layout: default
 
 # Aula 13b — Árvores binárias de busca e ordenação estável
 
+Uma árvore binária de busca promete ordem com inserção barata — e degenera em lista se você alimentar chaves ordenadas. Entender a invariante, medir a degeneração e saber quando ela mente é o conteúdo desta aula.
+
 Você vai ao terminar, você deverá implementar uma árvore binária de busca (BST) com inserção, busca e os três casos de remoção; provar que o percurso em ordem entrega as chaves ordenadas; medir a degeneração da árvore quando a entrada já vem ordenada; e implementar um mergesort estável confrontado com `qsort` como oráculo em 500 casos determinísticos.
 
 a 13a fechou com busca binária sobre vetor ordenado: rápido para buscar, caro para inserir no meio. A BST promete busca e inserção no mesmo caminho — *se* a forma da árvore colaborar. Esta aula é sobre a distância entre a promessa (`O(log n)`) e o contrato real (`O(altura)`, e a altura depende da ordem de chegada). É a ponte que faltava no módulo C3 entre "estrutura que funciona" e "estrutura cujo custo você consegue defender".

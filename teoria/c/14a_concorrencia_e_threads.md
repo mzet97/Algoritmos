@@ -4,6 +4,8 @@ layout: default
 
 # Aula 14a — Concorrência em C: threads, memória e ciclo de vida
 
+Threads compartilham memória; memória compartilhada sem regras é corrida de dados. Esta ponte aprofunda o ciclo de vida das threads e o modelo de memória que decide o que cada núcleo enxerga — o fundamento de toda concorrência em sistemas.
+
 Você vai ao terminar, você deverá distinguir data race de corrida lógica no modelo de memória do C11, preservar uma invariante compartilhada com `pthread_mutex_t`, coordenar duas threads com variável de condição e explicar por que o argumento de uma thread precisa sobreviver à thread que o criou.
 
 a aula 14 apresentou pthreads; esta aula responde o que o padrão *garante*. Em C, ao contrário de Go ou Java, data race não é "comportamento indefinido pelo modelo com diagnóstico garantido" — é comportamento indefinido ponto final: o compilador pode assumir que isso nunca acontece e otimizar em cima. A prova de correção vem antes do teste, e o teste vem com sanitizers.
