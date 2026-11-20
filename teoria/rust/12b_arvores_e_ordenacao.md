@@ -4,19 +4,13 @@ layout: default
 
 # Aula 12b — Árvores e ordenação em Rust: `Box`, invariante e o oráculo da std
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: implementar árvore com `Box` explicando ownership dos nós, enunciar o invariante de ordenação, prever o custo de operações, e distinguir o que a implementação garante do que a `std` garante.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir `Box`, invariante de árvore de busca e complexidades de ordenação`;
-- **Nível 2 — Aplicar:** `diagnosticar quebra de invariante em inserção e corrigir`;
-- **Nível 3 — Projetar:** `projetar uma estrutura ordenada justificando invariante e custos`.
+Você vai aprender a implementar árvore com `Box` explicando ownership dos nós, enunciar o invariante de ordenação, prever o custo de operações, e distinguir o que a implementação garante do que a `std` garante.
 
-**Competências SDD:** MAT, ALG, MEM. **Pré-requisitos:** aulas 09–12 e [12a](12a_raciocinio_e_algoritmos.md) (busca e invariante em vetor). Você precisa saber `Option<Box<T>>`, `match` e empréstimos mutáveis.
+Você vai implementar uma BST com `Box` por nó, provar que o percurso em ordem devolve as chaves ordenadas contra `sort_unstable` como oráculo em 300 casos, e medir a degeneração (altura 1 000 ordenada contra ~20 embaralhada) declarando o custo de um `Box` por nó.
 
-**Objetivo observável:** implementar uma BST com `Box` por nó, provar que o percurso em ordem devolve as chaves ordenadas contra `sort_unstable` como oráculo em 300 casos, e medir a degeneração (altura 1 000 ordenada contra ~20 embaralhada) declarando o custo de um `Box` por nó.
-
-**Motivação:** em C, a BST da 13b é ponteiro e `malloc` por nó; em Rust, cada nó é um `Box` — dono único, liberação pelo `Drop`, e a recursão de inserção vira navegação por `&mut Link`. A invariante é a mesma; o que muda é quem prova a liberação: o compilador, pela árvore de ownership. O R3 do mapa pedia ordenação, árvores e custo de alocação com afirmações executáveis: é isto.
+em C, a BST da 13b é ponteiro e `malloc` por nó; em Rust, cada nó é um `Box` — dono único, liberação pelo `Drop`, e a recursão de inserção vira navegação por `&mut Link`. A invariante é a mesma; o que muda é quem prova a liberação: o compilador, pela árvore de ownership. O R3 do mapa pedia ordenação, árvores e custo de alocação com afirmações executáveis: é isto.
 
 ## Contrato e exemplo
 

@@ -4,19 +4,13 @@ layout: default
 
 # Aula 14c — Cercas e seqlock: ordenação sem operação e leitura otimista (R5)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: explicar cercas de memória e leitura otimista (seqlock), distinguir ordenação sem operação atômica do custo de um lock, e apontar quando a técnica é aplicável ou proibida.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir cerca, seqlock e leitura otimista com retentativa`;
-- **Nível 2 — Aplicar:** `prever leitura inconsistente sem validação de sequência e corrigir`;
-- **Nível 3 — Projetar:** `projetar um caminho de leitura otimista justificando quando o lock pode ser evitado`.
+Você vai aprender a explicar cercas de memória e leitura otimista (seqlock), distinguir ordenação sem operação atômica do custo de um lock, e apontar quando a técnica é aplicável ou proibida.
 
-**Competências SDD:** CON, MEM. **Pré-requisitos:** aulas 13–14 e [14b](14b_ordem_e_backpressure.md) (Release/Acquire grudado na operação, backpressure e cancelamento). Toolchain registrada: `rustc` 1.99.1 (stable, sem nightly, sem crates externas).
+Você vai ao terminar, você deverá executar o exemplo, mostrar 50 mil publicações conferidas par a par via `fence` (sem nenhum `Release`/`Acquire` nas operações) e explicar por que o leitor do seqlock retenta em vez de bloquear — e o que o contador ímpar proíbe.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo, mostrar 50 mil publicações conferidas par a par via `fence` (sem nenhum `Release`/`Acquire` nas operações) e explicar por que o leitor do seqlock retenta em vez de bloquear — e o que o contador ímpar proíbe.
-
-**Motivação:** a 14b ensinou ordenação carregada na operação: `store(Release)` publica, `load(Acquire)` consome. Mas ordenar e mover dado são coisas distintas, e o hardware distingue as duas. A `fence` ordena sem operação — publica um par de `u64` comum com `Relaxed` nas pontas e cerca no meio. E o seqlock mostra para que isso serve: leitor que nunca bloqueia escritor, ao preço de retentar quando pega escrita no meio. É o padrão de "ler muito, escrever pouco" que aparece em relógio, config e versão de estrutura.
+a 14b ensinou ordenação carregada na operação: `store(Release)` publica, `load(Acquire)` consome. Mas ordenar e mover dado são coisas distintas, e o hardware distingue as duas. A `fence` ordena sem operação — publica um par de `u64` comum com `Relaxed` nas pontas e cerca no meio. E o seqlock mostra para que isso serve: leitor que nunca bloqueia escritor, ao preço de retentar quando pega escrita no meio. É o padrão de "ler muito, escrever pouco" que aparece em relógio, config e versão de estrutura.
 
 ## Contrato e exemplo
 

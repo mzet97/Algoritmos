@@ -4,19 +4,13 @@ layout: default
 
 # Aula 23c — Vetorização em Rust: a cadeia de dependência é o inimigo
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: identificar a cadeia de dependência como inimiga da vetorização, reestruturar um laço para expor paralelismo de dados, e medir o ganho contra a linha de base.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir cadeia de dependência e paralelismo de dados`;
-- **Nível 2 — Aplicar:** `diagnosticar laço não vetorizável e corrigir a dependência`;
-- **Nível 3 — Projetar:** `projetar um kernel justificando a reestruturação com speedup medido`.
+Você vai aprender a identificar a cadeia de dependência como inimiga da vetorização, reestruturar um laço para expor paralelismo de dados, e medir o ganho contra a linha de base.
 
-**Competências SDD:** HPC, GPU, ARQ. **Pré-requisitos:** aulas 17, 23a (baseline de HPC), [23b](23b_sistemas_distribuidos.md) e a aula 30b de C (o mesmo fenômeno com acumuladores, lá medido com AVX e aqui sem intrinsics). Você precisa saber iteradores, `chunks_exact` e por que somar `f32` em ordens diferentes muda o resultado.
+Você vai verificar uma soma sequencial e uma soma com quatro acumuladores contra uma referência em `f64` (com tolerâncias derivadas do modelo de erro), medir a razão entre elas e contar os nós NUMA da máquina por `/sys` — declarando o que um nó só não permite concluir, como na 30b de C.
 
-**Objetivo observável:** verificar uma soma sequencial e uma soma com quatro acumuladores contra uma referência em `f64` (com tolerâncias derivadas do modelo de erro), medir a razão entre elas e contar os nós NUMA da máquina por `/sys` — declarando o que um nó só não permite concluir, como na 30b de C.
-
-**Motivação:** o R7 pedia vetorização e NUMA sobre a baseline da 23a. Em Rust seguro não há intrinsics portáveis estáveis para fazer na mão o que a 30b de C fez com AVX: o caminho é escrever o laço de um jeito que o LLVM possa vetorizar — quebrar a cadeia de dependência com acumuladores independentes e dar-lhe fatias de tamanho conhecido (`chunks_exact`). A aula mede se funcionou em vez de acreditar.
+o R7 pedia vetorização e NUMA sobre a baseline da 23a. Em Rust seguro não há intrinsics portáveis estáveis para fazer na mão o que a 30b de C fez com AVX: o caminho é escrever o laço de um jeito que o LLVM possa vetorizar — quebrar a cadeia de dependência com acumuladores independentes e dar-lhe fatias de tamanho conhecido (`chunks_exact`). A aula mede se funcionou em vez de acreditar.
 
 ## Contrato e exemplo
 

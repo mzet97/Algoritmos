@@ -4,19 +4,13 @@ layout: default
 
 # Aula 23e — Afinidade, primeiro toque e o laboratório multinó (R7)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: explicar afinidade de CPU e primeiro toque (first-touch) em NUMA, fixar threads em nós, medir o efeito multinó, e distinguir efeito NUMA de contenção.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir afinidade, first-touch e nó NUMA`;
-- **Nível 2 — Aplicar:** `diagnosticar alocação remota sistemática e corrigir com first-touch local`;
-- **Nível 3 — Projetar:** `projetar um experimento multinó justificando fixação e alocação com números`.
+Você vai aprender a explicar afinidade de CPU e primeiro toque (first-touch) em NUMA, fixar threads em nós, medir o efeito multinó, e distinguir efeito NUMA de contenção.
 
-**Competências SDD:** HPC, MEM, OS. **Pré-requisitos:** aulas [23a](23a_hpc_baseline.md) (baseline honesto) e [23c](23c_vetorizacao.md) (corretude por tolerância, NUMA contado). Toolchain registrada: `rustc` 1.99.1, `taskset` e `numactl` do sistema. Máquina registrada: 24 núcleos, **um** nó NUMA (`node0`: `0-23`).
+Você vai ao terminar, você deverá executar o exemplo com máscara cheia e com `taskset -c 0`, mostrar checksums idênticos nos dois modos de inicialização, ler a afinidade de `/proc/self/status` e explicar por que a razão medida nesta máquina não prova nada sobre NUMA — e o que provaria.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo com máscara cheia e com `taskset -c 0`, mostrar checksums idênticos nos dois modos de inicialização, ler a afinidade de `/proc/self/status` e explicar por que a razão medida nesta máquina não prova nada sobre NUMA — e o que provaria.
-
-**Motivação:** o R7 pedia afinidade/NUMA e multinó sobre a base da 23a; a 23c vetorizou e contou o nó. Faltava atravessar a fronteira entre "rodar em N threads" e "rodar nos N lugares certos": quem inicializa a página decide onde ela mora (primeiro toque), e quem prende a thread decide onde ela computa (afinidade). Numa máquina de um nó, o efeito é ~zero — e medir ~zero com honestidade é o experimento que autoriza o laboratório multinó em vez de fingi-lo.
+o R7 pedia afinidade/NUMA e multinó sobre a base da 23a; a 23c vetorizou e contou o nó. Faltava atravessar a fronteira entre "rodar em N threads" e "rodar nos N lugares certos": quem inicializa a página decide onde ela mora (primeiro toque), e quem prende a thread decide onde ela computa (afinidade). Numa máquina de um nó, o efeito é ~zero — e medir ~zero com honestidade é o experimento que autoriza o laboratório multinó em vez de fingi-lo.
 
 ## Contrato e exemplo
 

@@ -4,19 +4,13 @@ layout: default
 
 # Aula 15a — Auditoria de `unsafe`: cada bloco com invariante escrita
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: auditar cada bloco `unsafe` registrando a invariante assumida, classificar `unsafe` justificável vs. irredutível, e apontar o que a biblioteca padrão observa e não observa.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir invariante de `unsafe` e as categorias de auditoria`;
-- **Nível 2 — Aplicar:** `auditar um bloco apontando hipótese não documentada e corrigir a documentação`;
-- **Nível 3 — Projetar:** `projetar o encapsulamento seguro de um `unsafe` justificando pré-condições`.
+Você vai aprender a auditar cada bloco `unsafe` registrando a invariante assumida, classificar `unsafe` justificável vs. irredutível, e apontar o que a biblioteca padrão observa e não observa.
 
-**Competências SDD:** MEM e SEC. **Pré-requisitos:** aulas [10](10.md) (lifetimes), [12](12.md) (smart pointers) e [15](15.md) (o `transmute` e o `Vec` do zero). Esta ponte entra antes de qualquer `unsafe` em projeto: quem não auditou quatro blocos pequenos não audita quarenta.
+Você vai ao terminar, você deverá escrever, para cada bloco `unsafe`, a invariante que ele assume, o teste que a cobra e o que quebra se ela falhar — e executar os quatro pares desta aula verdes.
 
-**Objetivo observável:** ao terminar, você deverá escrever, para cada bloco `unsafe`, a invariante que ele assume, o teste que a cobra e o que quebra se ela falhar — e executar os quatro pares desta aula verdes.
-
-**Motivação:** "revisei com cuidado" não é auditoria: cuidado não falha em teste, invariante escrita falha. O método desta aula é mecânico de propósito: liste os blocos `unsafe`, escreva a invariante de cada um como comentário `SAFETY`, e escreva o teste que morre se a invariante mentir. Quatro blocos, quatro invariantes, quatro testes — nem um a mais, nem um a menos.
+"revisei com cuidado" não é auditoria: cuidado não falha em teste, invariante escrita falha. O método desta aula é mecânico de propósito: liste os blocos `unsafe`, escreva a invariante de cada um como comentário `SAFETY`, e escreva o teste que morre se a invariante mentir. Quatro blocos, quatro invariantes, quatro testes — nem um a mais, nem um a menos.
 
 ## 1. Contrato antes do código
 
@@ -79,7 +73,7 @@ C escreve "quem aloca, libera" no cabeçalho; C++ tranca no handle opaco da 13b;
 
 1. *The Rustonomicon* ([doc.rust-lang.org/nomicon](https://doc.rust-lang.org/nomicon)); 2. Documentação do Tokio ([tokio.rs](https://tokio.rs)); 3. *The Rust Performance Book* ([nnethercote.github.io/perf-book](https://nnethercote.github.io/perf-book)).
 
-## 6. Checklist do que esta aula garante
+## 6. Ao final, você consegue
 
 - [ ] Listo os 4 blocos `unsafe` e recito a invariante de cada um sem olhar o código.
 - [ ] Aponto o teste que morre para cada invariante quebrada.

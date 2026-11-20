@@ -6,15 +6,11 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Medir um núcleo numérico em Rust com método — hipótese, baseline verificado, aquecimento, mínimo de repetições, variância, ambiente anotado — e decidir no papel se um acelerador valeria a transferência. Pré-requisitos: aulas 12a a 16. Não precisa de `wgpu`, CUDA, `rust-gpu`, nightly nem placa.
 
-Ao final, você deverá: construir linha de base escalar correta, explicar por que `black_box` é necessário, distinguir contenção real de granularidade grossa com números, e emitir veredito com os números (fazer a conta da viagem).
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir linha de base, `black_box` e contenção vs. granularidade`;
-- **Nível 2 — Aplicar:** `diagnosticar benchmark otimizado para fora e corrigir com `black_box``;
-- **Nível 3 — Projetar:** `projetar um experimento com hipótese e veredito numérico`.
+Você vai aprender a construir linha de base escalar correta, explicar por que `black_box` é necessário, distinguir contenção real de granularidade grossa com números, e emitir veredito com os números (fazer a conta da viagem).
 
 ## 1. O protocolo, antes do cronômetro
 

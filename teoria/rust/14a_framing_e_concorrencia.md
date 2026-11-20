@@ -6,7 +6,7 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Construir um serviço TCP com enquadramento, leitura parcial e limites explícitos — e prová-lo contra fragmentação, coalescência, entrada inválida e cliente lento. Pré-requisitos: aulas 01 a 14, incluindo a ponte 12a. Não precisa saber frameworks HTTP/gRPC, `async`, `unsafe` nem FFI.
 
@@ -14,11 +14,7 @@ Ao terminar, você deverá explicar por que um `read` nunca corresponde a "uma m
 
 Esta aula é o ponto de partida do módulo R5: `async` não implica paralelismo, e nenhum framework dispensa o entendimento do fluxo de bytes que ele esconde.
 
-Ao final, você deverá: explicar por que TCP é fluxo de bytes (não mensagens), implementar framing com prefixo de tamanho, isolar cliente lento sem travar os demais, e estimar o teto de conexões pelo custo de thread.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir fluxo de bytes, framing, e o custo por conexão thread-bloqueante`;
-- **Nível 2 — Aplicar:** `diagnosticar leitura parcial tratada como mensagem completa e corrigir com framing`;
-- **Nível 3 — Projetar:** `projetar um protocolo com framing justificando limites e isolamento`.
+Você vai aprender a explicar por que TCP é fluxo de bytes (não mensagens), implementar framing com prefixo de tamanho, isolar cliente lento sem travar os demais, e estimar o teto de conexões pelo custo de thread.
 
 ---
 

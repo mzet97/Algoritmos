@@ -4,19 +4,13 @@ layout: default
 
 # Aula 16b — Máquina vista de Rust: localidade, syscall e página
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: explicar localidade temporal e espacial, prever o efeito do padrão de acesso no tempo, distinguir página de linha de cache, e medir sem atribuir causa microarquitetural sem evidência.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir localidade, linha de cache e página`;
-- **Nível 2 — Aplicar:** `prever qual padrão de acesso é mais rápido e confirmar por medição`;
-- **Nível 3 — Projetar:** `projetar um layout justificando localidade com números medidos`.
+Você vai aprender a explicar localidade temporal e espacial, prever o efeito do padrão de acesso no tempo, distinguir página de linha de cache, e medir sem atribuir causa microarquitetural sem evidência.
 
-**Competências SDD:** ARQ, OS, MEM. **Pré-requisitos:** aulas 15–16, [16a](16a_maquina_e_so.md) (o mesmo território em espaço de usuário) e a aula 10a de C (hierarquia de cache e página). Esta ponte fecha o R4: ISA e ABI continuam nas aulas 15–16; aqui medem-se cache, fronteira de syscall e página a partir de um binário Rust comum.
+Você vai medir, no mesmo binário, a soma de uma matriz de 2048×2048 por linhas e por colunas (mesma conta, razões esperadas >10×), o custo de 200 mil leituras de 1 byte de `/dev/zero` contra acessos a memória já mapeada, e ler o tamanho virtual do processo de `/proc/self/statm`.
 
-**Objetivo observável:** medir, no mesmo binário, a soma de uma matriz de 2048×2048 por linhas e por colunas (mesma conta, razões esperadas >10×), o custo de 200 mil leituras de 1 byte de `/dev/zero` contra acessos a memória já mapeada, e ler o tamanho virtual do processo de `/proc/self/statm`.
-
-**Motivação:** "Rust é rápido como C" é uma afirmação sobre código gerado; esta aula a verifica onde ela pode falhar sem ser culpa da linguagem: padrão de acesso à memória e custo de fronteira com o kernel. O hardware não sabe em que linguagem o laço foi escrito — e é exatamente por isso que medir é mais instrutivo do que repetir o slogan.
+"Rust é rápido como C" é uma afirmação sobre código gerado; esta aula a verifica onde ela pode falhar sem ser culpa da linguagem: padrão de acesso à memória e custo de fronteira com o kernel. O hardware não sabe em que linguagem o laço foi escrito — e é exatamente por isso que medir é mais instrutivo do que repetir o slogan.
 
 ## Contrato e exemplo
 

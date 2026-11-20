@@ -4,19 +4,13 @@ layout: default
 
 # Aula 23b — Sistemas distribuídos em Rust: o mesmo contrato, outra linguagem
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: enunciar o contrato de um sistema distribuído (o que cada nó garante), distinguir falha de processo de partição, e explicar quorum em termos de maioria.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir contrato, falha, partição e quorum`;
-- **Nível 2 — Aplicar:** `diagnosticar decisão sem maioria e corrigir o protocolo`;
-- **Nível 3 — Projetar:** `projetar um protocolo simples justificando o quorum e o comportamento sob partição`.
+Você vai aprender a enunciar o contrato de um sistema distribuído (o que cada nó garante), distinguir falha de processo de partição, e explicar quorum em termos de maioria.
 
-**Competências SDD:** DST, NET, SEC, CON. **Pré-requisitos:** aulas 13–14, [14a](14a_framing_e_concorrencia.md) (framing e tetos), 20–23 e a leitura da [23a de C](../c/23a_sistemas_distribuidos.md) é recomendada, não exigida. Esta é a ponte R6: entra depois dos fundamentos de rede e antes de qualquer alegação de serviço resiliente.
+Você vai ao terminar, você deverá executar dois nós chave-valor Rust (processos reais via `current_exe`) que persistem cada escrita com `sync_all` antes de responder, recusam duplicar efeito em reenvio com o mesmo `id`, e sobrevivem — com comportamento explicado — a duplicata com valor diferente, pedido malformado, `kill` do processo, cauda de log rasgada, reinício com replay e atraso injetado de 400 ms.
 
-**Objetivo observável:** ao terminar, você deverá executar dois nós chave-valor Rust (processos reais via `current_exe`) que persistem cada escrita com `sync_all` antes de responder, recusam duplicar efeito em reenvio com o mesmo `id`, e sobrevivem — com comportamento explicado — a duplicata com valor diferente, pedido malformado, `kill` do processo, cauda de log rasgada, reinício com replay e atraso injetado de 400 ms.
-
-**Motivação:** HTTP e gRPC das aulas 20–23 provam que um serviço responde; não provam distribuição. O R6 do mapa pedia exatamente o que faltava: falha parcial, repetição, persistência e recuperação executadas, com a garantia nomeada e a lacuna declarada. Rust muda a implementação (ownership do estado compartilhado, `Mutex` envenenado, `Result` em cada borda) — o contrato distribuído, não.
+HTTP e gRPC das aulas 20–23 provam que um serviço responde; não provam distribuição. O R6 do mapa pedia exatamente o que faltava: falha parcial, repetição, persistência e recuperação executadas, com a garantia nomeada e a lacuna declarada. Rust muda a implementação (ownership do estado compartilhado, `Mutex` envenenado, `Result` em cada borda) — o contrato distribuído, não.
 
 ## 1. Contrato antes do código
 

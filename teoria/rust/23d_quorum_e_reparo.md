@@ -4,19 +4,13 @@ layout: default
 
 # Aula 23d — Quorum em Rust: a maioria decide, o borrow checker separa
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: explicar quorum de leitura/escrita, prever quando a maioria decide corretamente, separar responsabilidades via borrow checker, e descrever reparo (read-repair) após divergência.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir quorum de leitura/escrita e reparo`;
-- **Nível 2 — Aplicar:** `prever perda de escrita com quorum insuficiente e corrigir os tamanhos`;
-- **Nível 3 — Projetar:** `projetar um armazenamento replicado justificando quoruns e reparo`.
+Você vai aprender a explicar quorum de leitura/escrita, prever quando a maioria decide corretamente, separar responsabilidades via borrow checker, e descrever reparo (read-repair) após divergência.
 
-**Competências SDD:** DST, CON. **Pré-requisitos:** aulas 13–14, [23b](23b_sistemas_distribuidos.md) (idempotência e log durável) e leitura da [23c de Go](../go/23c_quorum_e_reparo.md) é recomendada. Esta ponte fecha o R6 na parte de ordem: relógios vetoriais e quorum de escrita/leitura com reparo, em Rust puro sem crates.
+Você vai ao terminar, você deverá escrever com quorum (W=2 de 3), ler com quorum declarando conflito em vez de servir o obsoleto, reparar a atrasada — e explicar por que o reparo mora numa segunda passada, apontando o erro de borrow que a primeira tentativa comete.
 
-**Objetivo observável:** ao terminar, você deverá escrever com quorum (W=2 de 3), ler com quorum declarando conflito em vez de servir o obsoleto, reparar a atrasada — e explicar por que o reparo mora numa segunda passada, apontando o erro de borrow que a primeira tentativa comete.
-
-**Motivação:** a 23b prova distribuição com processos reais; esta prova a regra de decisão com simulação determinística. W+R > N é a mesma interseção em toda trilha: a escrita confirmada tocou 2 réplicas, a leitura consulta 2, e 1 réplica em comum carrega a verdade.
+a 23b prova distribuição com processos reais; esta prova a regra de decisão com simulação determinística. W+R > N é a mesma interseção em toda trilha: a escrita confirmada tocou 2 réplicas, a leitura consulta 2, e 1 réplica em comum carrega a verdade.
 
 ## 1. Contrato antes do código
 
@@ -89,7 +83,7 @@ C confirma por maioria com termo e eleição; C++ declara conflito no quorum e c
 
 1. *Designing Data-Intensive Applications*, Martin Kleppmann (O'Reilly, ISBN 978-1449373320), cap. 5; 2. Steve Klabnik e Carol Nichols, *The Rust Programming Language*. 
 
-## 6. Checklist do que esta aula garante
+## 6. Ao final, você consegue
 
 - [ ] Explico W+R > N desenhando a interseção e digo onde cada ack é contado.
 - [ ] Distingo igualdade (mesma versão) de concorrência (conflito), com um par de cada.

@@ -6,7 +6,7 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Explicar o caminho de um programa Rust entre código-fonte, borrow checker, chamadas de sistema e hardware — e investigar cada camada com ferramentas do espaço de usuário, em Rust 100% seguro e só com a biblioteca padrão. Pré-requisitos: aulas 01 a 16. Não precisa saber `unsafe`, `no_std`, Assembly, QEMU nem kernel.
 
@@ -14,11 +14,7 @@ Ao terminar, você deverá criar um processo filho e colher sua saída, medir o 
 
 Esta aula é o módulo R4 do mapa: quem domina a observação aqui carrega o modelo para desempenho (17–18), `unsafe` auditável e o kernel didático (R8), onde cada travessia e cada página passam a ter nome, dono e custo.
 
-Ao final, você deverá: interpretar `/proc/self/maps` e `VmRSS` sem inferir endereços físicos, distinguir medição de tempo de alegação de causa microarquitetural, e apontar o que a `std` observa e não observa.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir mapa de memória, RSS e tempo monotônico`;
-- **Nível 2 — Aplicar:** `diagnosticar conclusão física inválida a partir de endereço virtual e corrigir`;
-- **Nível 3 — Projetar:** `projetar uma medição justificando réguas e limites da observação`.
+Você vai aprender a interpretar `/proc/self/maps` e `VmRSS` sem inferir endereços físicos, distinguir medição de tempo de alegação de causa microarquitetural, e apontar o que a `std` observa e não observa.
 
 ---
 

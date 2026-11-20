@@ -4,17 +4,11 @@ layout: default
 
 # Aula 28b — Comparativo x86-64 da trilha Rust: fechar o R8
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: comparar RISC-V e x86-64 nos pontos do R8 (syscalls, paginação, interrupções), prever diferenças de comportamento entre alvos, e fechar o requisito com diff comportamental zero contra C/C++.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir os pontos do R8 e as diferenças de ABI entre os alvos`;
-- **Nível 2 — Aplicar:** `diagnosticar divergência entre alvos e atribuir à causa correta`;
-- **Nível 3 — Projetar:** `projetar o comparativo final justificando equivalência comportamental`.
+Você vai aprender a comparar RISC-V e x86-64 nos pontos do R8 (syscalls, paginação, interrupções), prever diferenças de comportamento entre alvos, e fechar o requisito com diff comportamental zero contra C/C++.
 
-**Competências SDD:** OS, ARQ. **Pré-requisitos:** aula [28a](28a_kernel_riscv.md) e a leitura da [32b de C](../c/32b_x86_64_comparativo.md). O componente executado é o mesmo (`teoria/rust/kernel-x86/`, rebuild do componente da trilha de C) — a aula é a comparação lida com os olhos de quem acabou de escrever o kernel em Rust.
-
-**Objetivo observável:** executar `KERNEL_X86_OK`, reproduzir a tabela de correspondências da 32b de C de memória, e responder onde o sistema de tipos de Rust ajudaria **neste componente** se ele fosse escrito em Rust (e onde o assembly continuaria assembly).
+Você vai executar `KERNEL_X86_OK`, reproduzir a tabela de correspondências da 32b de C de memória, e responder onde o sistema de tipos de Rust ajudaria **neste componente** se ele fosse escrito em Rust (e onde o assembly continuaria assembly).
 
 **Contrato:** `make -C teoria/rust/kernel-x86 && python3 teoria/rust/kernel-x86/test_kernel_x86.py teoria/rust/kernel-x86/kernel-x86.elf` → `KERNEL_X86_OK`. Fora do contrato: kernel x86 em Rust (a travessia em assembly já prova o mecanismo; reescrevê-la em Rust é o exercício 2).
 

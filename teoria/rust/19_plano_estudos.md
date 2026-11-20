@@ -4,7 +4,7 @@ layout: default
 
 # Aula 19 — Roadmap Avançado: Especialização em Sistemas e Alta Performance
 
-## Objetivo da Aula
+## Nesta aula
 Após concluirmos a fundação rigorosa de Rust (Aulas 1 a 18), equivalente ao domínio avançado de C e C++ moderno, este documento estabelece o nosso **Plano de Estudos de Especialização**.
 
 Daqui para a frente, abandonamos os fundamentos da linguagem e passamos a focar exclusivamente em domínios de aplicação reais, extremos e de baixo nível. As próximas aulas serão estruturadas nos quatro pilares abaixo.

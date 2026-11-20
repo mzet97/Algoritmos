@@ -6,17 +6,13 @@ layout: default
 
 ---
 
-## Objetivo da Aula
+## Nesta aula
 
 Escrever a pré-condição e a pós-condição de uma função, declarar o invariante de um laço, argumentar terminação por uma grandeza que diminui e provar um caso recursivo por indução — tudo em Rust seguro, sem `unsafe`. Pré-requisitos: aulas 01 a 12. Não precisa saber threads, `async`, FFI nem `no_std`.
 
 Esta aula é a ponte R3 do mapa: quem domina invariantes aqui carrega o raciocínio para concorrência (13), `unsafe` (15) e kernel (R8), onde a invariante violada não dá erro gentil — dá condição de corrida ou falha de isolamento.
 
-Ao final, você deverá: enunciar invariantes de laço, provar correção de um algoritmo iterativo simples por invariante, e distinguir a prova do invariante da rede de segurança da linguagem (Rust, Python ou C).
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir invariante, pré-condição e pós-condição`;
-- **Nível 2 — Aplicar:** `prever a violação de um invariante em um exemplo e corrigir o laço`;
-- **Nível 3 — Projetar:** `projetar um algoritmo com invariante declarado e prova de correção`.
+Você vai aprender a enunciar invariantes de laço, provar correção de um algoritmo iterativo simples por invariante, e distinguir a prova do invariante da rede de segurança da linguagem (Rust, Python ou C).
 
 ---
 

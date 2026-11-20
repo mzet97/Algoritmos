@@ -4,19 +4,13 @@ layout: default
 
 # Aula 14b — Ordem de memória, backpressure e cancelamento em Rust
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: explicar ordem de memória (o que `Mutex`/atômicos garantem e não garantem), implementar backpressure com canal limitado, e tratar cancelamento sem vazar tarefa nem perder dado.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir visibilidade, backpressure e cancelamento cooperativo`;
-- **Nível 2 — Aplicar:** `diagnosticar fila ilimitada que estoura memória e corrigir com canal limitado`;
-- **Nível 3 — Projetar:** `projetar um pipeline com backpressure justificando tamanhos de fila e cancelamento`.
+Você vai aprender a explicar ordem de memória (o que `Mutex`/atômicos garantem e não garantem), implementar backpressure com canal limitado, e tratar cancelamento sem vazar tarefa nem perder dado.
 
-**Competências SDD:** CON, MEM. **Pré-requisitos:** aulas 13–14, [14a](14a_framing_e_concorrencia.md) e 17a de C++ (o mesmo modelo de memória, outra sintaxe). Você precisa saber `std::thread`, `mpsc` e o vocabulário happens-before.
+Você vai demonstrar publicação de dados por atômicos com `Release`/`Acquire` (10 mil voltas verificadas), bloquear um produtor num canal limitado de 4 com o consumidor dormindo (backpressure medida em ~300 ms) e parar um worker por cancelamento cooperativo com flag atômica — sem matar a thread.
 
-**Objetivo observável:** demonstrar publicação de dados por atômicos com `Release`/`Acquire` (10 mil voltas verificadas), bloquear um produtor num canal limitado de 4 com o consumidor dormindo (backpressure medida em ~300 ms) e parar um worker por cancelamento cooperativo com flag atômica — sem matar a thread.
-
-**Motivação:** o R5 pedia modelo de memória com ordenação atômica declarada, backpressure e cancelamento. A aula 14 apresentou os primitivos; aqui cada um vira comportamento medido. O ponto de Rust: data race é erro de compilação, **mas ordem fraca demais compila feliz** — `Relaxed` onde devia ser `Release` não é detectado por ninguém nesta aula, só pela sua prova. É por isso que a ordenação se escreve com justificativa, não por hábito.
+o R5 pedia modelo de memória com ordenação atômica declarada, backpressure e cancelamento. A aula 14 apresentou os primitivos; aqui cada um vira comportamento medido. O ponto de Rust: data race é erro de compilação, **mas ordem fraca demais compila feliz** — `Relaxed` onde devia ser `Release` não é detectado por ninguém nesta aula, só pela sua prova. É por isso que a ordenação se escreve com justificativa, não por hábito.
 
 ## Contrato e exemplo
 

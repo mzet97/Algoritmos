@@ -4,19 +4,13 @@ layout: default
 
 # Aula 16c — ISA, ABI e layout: o que o hardware promete e o que o `repr` garante (R4)
 
-## Objetivos verificáveis
+## Nesta aula
 
-Ao final, você deverá: distinguir o que a ISA promete do que o `repr` garante, explicar layout e alinhamento, e prever quebra de ABI por mudança de layout.
-Mediremos com níveis de proficiência:
-- **Nível 1 — Recordar:** `definir ISA, ABI, layout e alinhamento`;
-- **Nível 2 — Aplicar:** `diagnosticar suposição de layout não garantida e corrigir com `repr(C)``;
-- **Nível 3 — Projetar:** `projetar uma struct FFI justificando cada atributo de representação`.
+Você vai aprender a distinguir o que a ISA promete do que o `repr` garante, explicar layout e alinhamento, e prever quebra de ABI por mudança de layout.
 
-**Competências SDD:** ARQ, MEM, SEC. **Pré-requisitos:** aulas [16a](16a_maquina_e_so.md) (espaço de usuário), [16b](16b_maquina_e_cache.md) (localidade) e [15a](15a_auditoria_unsafe.md) (auditoria de `unsafe`). Toolchain registrada: `rustc` 1.99.1 (stable).
+Você vai ao terminar, você deverá executar o exemplo com `rustc --edition 2024 -D warnings`, mostrar os deslocamentos contratuais do `repr(C)`, o roundtrip de endianness e a chamada `extern "C"` por nome e por ponteiro — e explicar qual dessas três provas quebra primeiro num port entre ISAs.
 
-**Objetivo observável:** ao terminar, você deverá executar o exemplo com `rustc --edition 2024 -D warnings`, mostrar os deslocamentos contratuais do `repr(C)`, o roundtrip de endianness e a chamada `extern "C"` por nome e por ponteiro — e explicar qual dessas três provas quebra primeiro num port entre ISAs.
-
-**Motivação:** o R4 pedia ISA, ABI e cache sobre a base da 16a; a 16b mediu cache. Faltavam as outras duas letras: que instruções e registradores existem (ISA) e como os dois lados da fronteira concordam sobre tamanho, ordem e chamada (ABI). Esta aula fixa as três promessas em código que falha em compilação ou em `assert` quando a promessa é falsa — não em prosa.
+o R4 pedia ISA, ABI e cache sobre a base da 16a; a 16b mediu cache. Faltavam as outras duas letras: que instruções e registradores existem (ISA) e como os dois lados da fronteira concordam sobre tamanho, ordem e chamada (ABI). Esta aula fixa as três promessas em código que falha em compilação ou em `assert` quando a promessa é falsa — não em prosa.
 
 ## Contrato e exemplo
 
